@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Resources\icon.ico" />
+    <Content Include="Resources\Icon.ico" />
   </ItemGroup>
 
   <ItemGroup>

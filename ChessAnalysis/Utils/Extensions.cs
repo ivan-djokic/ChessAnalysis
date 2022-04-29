@@ -1,4 +1,6 @@
 ﻿using ChessAnalysis.Classes;
+using DevExpress.XtraLayout.Utils;
+
 
 namespace ChessAnalysis.Utils
 {
@@ -44,6 +46,16 @@ namespace ChessAnalysis.Utils
             }
 
             return input - 'a';
+        }
+
+        public static Color Normalize(this System.Windows.Media.Color input)
+        {
+            return Color.FromArgb(input.A, input.R, input.G, input.B);
+        }
+
+        public static System.Windows.Media.Color Normalize(this Color input)
+        {
+            return System.Windows.Media.Color.FromArgb(input.A, input.R, input.G, input.B);
         }
 
         public static string RemoveFirst(this string input, int count = 1)

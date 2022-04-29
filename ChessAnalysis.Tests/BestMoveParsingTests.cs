@@ -30,7 +30,7 @@ namespace ChessAnalysis.Tests
         {
             ProcessInvalidInputs("R2xg2$", true);
             ProcessInvalidInputs("Bx3b", false);
-            ProcessInvalidInputs("Qx88+", false);
+            ProcessInvalidInputs("qxa8+", false);
             ProcessInvalidInputs("Nxi6#", false);
             ProcessInvalidInputs("xe3", true);
             ProcessInvalidInputs("Pe3", false);
@@ -41,6 +41,7 @@ namespace ChessAnalysis.Tests
         [TestMethod]
         public void TestValidRegularInputs()
         {
+            ProcessValidInputs("-", false, '\0', new Point(-1, -1));
             ProcessValidInputs("Kc5", false, 'k', new Point(2, 3));
             ProcessValidInputs("f4", true, 'P', new Point(5, 4));
             ProcessValidInputs("dxe3", false, 'p', new Point(4, 5));

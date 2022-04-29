@@ -1,4 +1,5 @@
 using ChessAnalysis.Forms;
+using ChessAnalysis.Utils;
 
 namespace ChessAnalysis
 {
@@ -7,9 +8,9 @@ namespace ChessAnalysis
         [STAThread]
         static void Main()
         {
-            System.IO.Directory.CreateDirectory(@"C:\Users\IDjokic\source\repos\ChessAnalysis\ChessAnalysis\Resources\Icons\test\test2");
-
             ApplicationConfiguration.Initialize();
+
+            Theming.ApplyTheme();
             Application.Run(new MainForm());
         }
     }

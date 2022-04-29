@@ -11,7 +11,7 @@ namespace ChessAnalysis.Properties
 
         public static Image? GetPiece(char piece)
         {
-            return ResourceManager.GetObject($"{Options.Instance.PieceStyle}_{(char.IsUpper(piece) ? Constants.PLAYER_WHITE_TAG : Constants.PLAYER_BLACK_TAG)}{piece}", resourceCulture) as Bitmap;
+            return ResourceManager.GetObject($"{Options.Instance.PieceStyle}_{(char.IsUpper(piece) ? Constants.PLAYER_WHITE : Constants.PLAYER_BLACK)}{piece}", resourceCulture) as Bitmap;
         }
     }
 }

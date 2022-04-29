@@ -61,7 +61,7 @@ namespace ChessAnalysis.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BM field format is incorrect.
+        ///   Looks up a localized string similar to {0} format is incorrect.
         /// </summary>
         internal static string IncorrectFormat {
             get {

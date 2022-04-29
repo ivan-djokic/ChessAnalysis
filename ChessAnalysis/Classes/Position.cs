@@ -14,12 +14,7 @@ namespace ChessAnalysis.Classes
         {
             // input: [FEN] [nextPlayer] [castling] [enPasant] [halfMoves] [round] bm [BM]
 
-            var arguments = input.Split(Constants.ARG_DELIMITER);
-
-            if (arguments.Length != Constants.ARG_POSITION_ARGS_COUNT)
-            {
-                throw new InvalidComponentsNumberException(Components.Position);
-            }
+            var arguments = new Parser(Components.Position).Split(input);
 
             BestMove = arguments[Constants.POSITION_BEST_MOVE_INDEX];
             Castling = arguments[Constants.POSITION_CASTLING_INDEX];
@@ -44,6 +39,11 @@ namespace ChessAnalysis.Classes
 
         public int Round { get; set; }
 
+        public bool IsWhitePlayed()
+        {
+            return NextPlayer == NextPlayer.Black;
+        }
+
         private static NextPlayer ParseNextPlayer(string input)
         {
             if (input.Length != 1)
@@ -53,8 +53,8 @@ namespace ChessAnalysis.Classes
 
             return input[0] switch
             {
-                Constants.PLAYER_BLACK_TAG => NextPlayer.Black,
-                Constants.PLAYER_WHITE_TAG => NextPlayer.White,
+                Constants.PLAYER_BLACK => NextPlayer.Black,
+                Constants.PLAYER_WHITE => NextPlayer.White,
                 _ => throw new UnallowedCharactersException(Components.NextPlayer)
             };
         }

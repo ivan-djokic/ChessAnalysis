@@ -8,17 +8,13 @@ namespace ChessAnalysis.Classes
         {
             // input: c0 "players" "timestamp" "opening" "defense"
 
-            var arguments = input.Split(Constants.ARG_DELIMITER_WITHOUT_QUOTES);
+            var parser = new Parser(Components.Comment);
+            var arguments = parser.Split(input);
 
-            if (arguments.Length != Constants.ARG_GAME_ARGS_COUNT)
-            {
-                throw new InvalidComponentsNumberException(Components.Comment);
-            }
-
-            Defense = ProcessString(arguments[Constants.GAME_DEFENSE_INDEX]);
-            Opening = ProcessString(arguments[Constants.GAME_OPENING_INDEX]);
-            Players = ProcessString(arguments[Constants.GAME_PLAYERS_INDEX]);
-            Timestamp = ProcessString(arguments[Constants.GAME_TIMESTAMP_INDEX]);
+            Defense = parser.ParseQuotesInput(arguments[Constants.GAME_DEFENSE_INDEX]);
+            Opening = parser.ParseQuotesInput(arguments[Constants.GAME_OPENING_INDEX]);
+            Players = parser.ParseQuotesInput(arguments[Constants.GAME_PLAYERS_INDEX]);
+            Timestamp = parser.ParseQuotesInput(arguments[Constants.GAME_TIMESTAMP_INDEX]);
         }
 
         public string Defense { get; set; }
@@ -28,15 +24,5 @@ namespace ChessAnalysis.Classes
         public string Players { get; set; }
 
         public string Timestamp { get; set; }
-
-        private static string ProcessString(string input)
-        {
-            if (!input.EndsWith(Constants.QUOTES))
-            {
-                throw new UnallowedCharactersException(Components.Comment);
-            }
-
-            return input.RemoveLast();
-        }
     }
 }

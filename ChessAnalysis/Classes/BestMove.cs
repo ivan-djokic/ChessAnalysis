@@ -4,7 +4,7 @@ namespace ChessAnalysis.Classes
 {
     public class BestMove
     {
-        public BestMove(string input, bool isWhite)
+        public BestMove(string input, bool isWhitePlayed)
         {
             if (input == Constants.ARG_NULL)
             {
@@ -14,12 +14,12 @@ namespace ChessAnalysis.Classes
             if (string.IsNullOrWhiteSpace(input) || input.Length < Constants.BEST_MOVE_MIN_CHARS 
                 || input.Length > Constants.BEST_MOVE_MAX_CHARS)
             {
-                throw new InvalidComponentsNumberException(Components.BM);
+                throw new InvalidComponentsNumberException(Components.BestMove);
             }
 
-            if (!ProcessCastlingMove(input, isWhite))
+            if (!ProcessCastlingMove(input, isWhitePlayed))
             {
-                ProcessRegularMove(input, isWhite);
+                ProcessRegularMove(input, isWhitePlayed);
             }
         }
 
@@ -38,7 +38,7 @@ namespace ChessAnalysis.Classes
 
             if (!y.HasValue || !IsValidColumn(column))
             {
-                throw new IncorrectFormatException();
+                throw new IncorrectFormatException(Components.BestMove);
             }
 
             return new Point(column.LetterOrdinal(), Constants.BOARD_SIZE - y.Value);
@@ -54,7 +54,7 @@ namespace ChessAnalysis.Classes
             return input >= 'a' && input <= 'h';
         }
 
-        private bool ProcessCastlingMove(string input, bool isWhite)
+        private bool ProcessCastlingMove(string input, bool isWhitePlayed)
         {
             // expected input: O-O || O-O-O
 
@@ -64,7 +64,7 @@ namespace ChessAnalysis.Classes
                     return false;
 
                 case 2:
-                    if (isWhite)
+                    if (isWhitePlayed)
                     {
                         Field = new Point(6, 7);
                         Piece = 'K';
@@ -78,7 +78,7 @@ namespace ChessAnalysis.Classes
                     return true;
 
                 case 3:
-                    if (isWhite)
+                    if (isWhitePlayed)
                     {
                         Field = new Point(2, 7);
                         Piece = 'K';
@@ -92,11 +92,11 @@ namespace ChessAnalysis.Classes
                     return true;
 
                 default:
-                    throw new InvalidComponentsNumberException(Components.BM);
+                    throw new InvalidComponentsNumberException(Components.BestMove);
             }
         }
 
-        private void ProcessRegularMove(string input, bool isWhite)
+        private void ProcessRegularMove(string input, bool isWhitePlayed)
         {
             // input: <[piece]> <[prevColumn || prevRow]> <[capture]> <[column]> <[row]> <[check || mate]>
 
@@ -109,7 +109,7 @@ namespace ChessAnalysis.Classes
 
             if (input.Length < 2)
             {
-                throw new InvalidComponentsNumberException(Components.BM);
+                throw new InvalidComponentsNumberException(Components.BestMove);
             }
 
             // input: <[piece]> <[prevColumn || prevRow]> <[capture]> [column] [row]
@@ -122,7 +122,7 @@ namespace ChessAnalysis.Classes
 
             if (string.IsNullOrEmpty(input))
             {
-                Piece = isWhite ? 'P' : 'p';
+                Piece = isWhitePlayed ? 'P' : 'p';
                 return;
             }
 
@@ -137,12 +137,12 @@ namespace ChessAnalysis.Classes
 
             if (string.IsNullOrEmpty(input))
             {
-                throw new InvalidComponentsNumberException(Components.BM);
+                throw new InvalidComponentsNumberException(Components.BestMove);
             }
 
             if (!char.IsLetter(input[0]))
             {
-                throw new IncorrectFormatException();
+                throw new IncorrectFormatException(Components.BestMove);
             }
 
             // input: <[piece]> <[prevColumn || prevRow]>
@@ -153,21 +153,21 @@ namespace ChessAnalysis.Classes
 
                 if (!IsValidColumn(input[0]))
                 {
-                    throw new UnallowedCharactersException(Components.BM);
+                    throw new UnallowedCharactersException(Components.BestMove);
                 }
 
-                Piece = isWhite ? 'P' : 'p';
+                Piece = isWhitePlayed ? 'P' : 'p';
                 return;
             }
 
             if (!IsNonPawnPiece(input[0]))
             {
-                throw new IncorrectFormatException();
+                throw new IncorrectFormatException(Components.BestMove);
             }
 
             // input: [piece] <[prevColumn || prevRow]>
 
-            Piece = isWhite ? input[0] : char.ToLower(input[0]);
+            Piece = isWhitePlayed ? input[0] : char.ToLower(input[0]);
 
             if (input.Length == 1)
             {
@@ -182,7 +182,7 @@ namespace ChessAnalysis.Classes
 
                 if (!input[1].AsFormatedDigit().HasValue)
                 {
-                    throw new UnallowedCharactersException(Components.BM);
+                    throw new UnallowedCharactersException(Components.BestMove);
                 }
 
                 return;
@@ -192,7 +192,7 @@ namespace ChessAnalysis.Classes
 
             if (!IsValidColumn(input[1]))
             {
-                throw new UnallowedCharactersException(Components.BM);
+                throw new UnallowedCharactersException(Components.BestMove);
             }
         }
     }

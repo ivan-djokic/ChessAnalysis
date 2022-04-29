@@ -3,12 +3,6 @@ using DevExpress.Skins;
 
 namespace ChessAnalysis.Utils
 {
-	public enum Themes
-	{
-		Dark,
-		Light
-	}
-
 	public class Theming
 	{
 		public static void ApplyTheme()

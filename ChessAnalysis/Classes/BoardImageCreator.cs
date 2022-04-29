@@ -5,9 +5,9 @@ namespace ChessAnalysis.Classes
 {
     public class BoardImageCreator
     {
-        public static Image Create(string fen)
+        public static Image Create(Position position)
         {
-            if (string.IsNullOrWhiteSpace(fen))
+            if (string.IsNullOrWhiteSpace(position.Fen))
             {
                 throw new InvalidComponentsNumberException(Components.FEN);
             }
@@ -16,17 +16,17 @@ namespace ChessAnalysis.Classes
             var board = new Bitmap(Constants.BOARD_SIZE * fieldSize, Constants.BOARD_SIZE * fieldSize);
             using var g = Graphics.FromImage(board);
 
-            using var emptyBrush = new SolidBrush(Options.Instance.EmptyFieldsColor);
-            using var fillBrush = new SolidBrush(Options.Instance.FillFieldsColor);
+            using var emptyBrush = new SolidBrush(Options.Instance.FieldEmptyColor.Normalize());
+            using var fillBrush = new SolidBrush(Options.Instance.FieldFillColor.Normalize());
 
             DrawFields(g, fieldSize, emptyBrush, fillBrush);
 
-            if (Options.Instance.DrawCoordinates)
+            if (Options.Instance.ShowCoordinates)
             {
                 DrawCoordinates(g, fieldSize, emptyBrush, fillBrush);
             }
 
-            DrawPieces(g, fieldSize, fen, new BestMove("Rh1", true));
+            DrawPieces(g, fieldSize, position.Fen, new BestMove(position.BestMove, position.IsWhitePlayed()));
 
             return board;
         }
@@ -116,7 +116,7 @@ namespace ChessAnalysis.Classes
                     continue;
                 }
 
-                if (Options.Instance.MarkIfMoveIsTheBest && bestMove.Equals(fen[i], x, y))
+                if (Options.Instance.MarkIfBestMoveIsPlayed && bestMove.Equals(fen[i], x, y))
                 {
                     DrawBestMove(g, fieldSize, bestMove);
                 }

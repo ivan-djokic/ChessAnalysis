@@ -28,40 +28,60 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneralTab));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
-            this.rbLight = new DevExpress.XtraEditors.CheckEdit();
-            this.rbDark = new DevExpress.XtraEditors.CheckEdit();
-            this.lblTheme = new DevExpress.XtraEditors.LabelControl();
-            this.txtSnapshotDirectory = new DevExpress.XtraEditors.ButtonEdit();
             this.lblOutput = new DevExpress.XtraEditors.LabelControl();
+            this.txtSnapshotDirectory = new DevExpress.XtraEditors.ButtonEdit();
+            this.lblTheme = new DevExpress.XtraEditors.LabelControl();
+            this.rbDark = new DevExpress.XtraEditors.CheckEdit();
+            this.rbLight = new DevExpress.XtraEditors.CheckEdit();
+            this.lblLanguage = new DevExpress.XtraEditors.LabelControl();
+            this.rbEnglish = new DevExpress.XtraEditors.CheckEdit();
+            this.rbSrpski = new DevExpress.XtraEditors.CheckEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.lciOutput = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem = new DevExpress.XtraLayout.EmptySpaceItem();
             this.lciSnapshotDirectory = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciTheme = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciDark = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciLight = new DevExpress.XtraLayout.LayoutControlItem();
+            this.lciLanguage = new DevExpress.XtraLayout.LayoutControlItem();
+            this.lciEnglish = new DevExpress.XtraLayout.LayoutControlItem();
+            this.lciSrpski = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rbLight.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rbDark.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSnapshotDirectory.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rbDark.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rbLight.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rbEnglish.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rbSrpski.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciOutput)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciSnapshotDirectory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciTheme)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciDark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciLight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciLanguage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciEnglish)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciSrpski)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl
             // 
-            this.layoutControl.Controls.Add(this.rbLight);
-            this.layoutControl.Controls.Add(this.rbDark);
-            this.layoutControl.Controls.Add(this.lblTheme);
-            this.layoutControl.Controls.Add(this.txtSnapshotDirectory);
             this.layoutControl.Controls.Add(this.lblOutput);
+            this.layoutControl.Controls.Add(this.txtSnapshotDirectory);
+            this.layoutControl.Controls.Add(this.lblTheme);
+            this.layoutControl.Controls.Add(this.rbDark);
+            this.layoutControl.Controls.Add(this.rbLight);
+            this.layoutControl.Controls.Add(this.lblLanguage);
+            this.layoutControl.Controls.Add(this.rbEnglish);
+            this.layoutControl.Controls.Add(this.rbSrpski);
             this.layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl.Location = new System.Drawing.Point(0, 0);
             this.layoutControl.Name = "layoutControl";
@@ -70,62 +90,100 @@
             this.layoutControl.TabIndex = 0;
             this.layoutControl.Text = "layoutControl";
             // 
-            // rbLight
+            // lblOutput
             // 
-            this.rbLight.Location = new System.Drawing.Point(81, 87);
-            this.rbLight.Name = "rbLight";
-            this.rbLight.Properties.Caption = "Light";
-            this.rbLight.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
-            this.rbLight.Properties.RadioGroupIndex = 1;
-            this.rbLight.Size = new System.Drawing.Size(307, 20);
-            this.rbLight.StyleController = this.layoutControl;
-            this.rbLight.TabIndex = 8;
-            this.rbLight.TabStop = false;
+            this.lblOutput.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblOutput.Appearance.Options.UseFont = true;
+            this.lblOutput.Location = new System.Drawing.Point(12, 12);
+            this.lblOutput.Name = "lblOutput";
+            this.lblOutput.Size = new System.Drawing.Size(45, 18);
+            this.lblOutput.StyleController = this.layoutControl;
+            this.lblOutput.TabIndex = 1;
+            this.lblOutput.Text = "Output";
+            // 
+            // txtSnapshotDirectory
+            // 
+            this.txtSnapshotDirectory.EditValue = "C:\\User\\Documents";
+            this.txtSnapshotDirectory.Location = new System.Drawing.Point(176, 34);
+            this.txtSnapshotDirectory.Name = "txtSnapshotDirectory";
+            editorButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions2.SvgImage")));
+            editorButtonImageOptions2.SvgImageSize = new System.Drawing.Size(12, 12);
+            this.txtSnapshotDirectory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.txtSnapshotDirectory.Size = new System.Drawing.Size(212, 20);
+            this.txtSnapshotDirectory.StyleController = this.layoutControl;
+            this.txtSnapshotDirectory.TabIndex = 2;
+            this.txtSnapshotDirectory.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtSnapshotDirectory_ButtonClick);
+            // 
+            // lblTheme
+            // 
+            this.lblTheme.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTheme.Appearance.Options.UseFont = true;
+            this.lblTheme.Location = new System.Drawing.Point(12, 63);
+            this.lblTheme.Name = "lblTheme";
+            this.lblTheme.Size = new System.Drawing.Size(47, 18);
+            this.lblTheme.StyleController = this.layoutControl;
+            this.lblTheme.TabIndex = 3;
+            this.lblTheme.Text = "Theme";
             // 
             // rbDark
             // 
             this.rbDark.EditValue = true;
-            this.rbDark.Location = new System.Drawing.Point(32, 87);
+            this.rbDark.Location = new System.Drawing.Point(32, 85);
             this.rbDark.Name = "rbDark";
             this.rbDark.Properties.Caption = "Dark";
             this.rbDark.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
-            this.rbDark.Properties.RadioGroupIndex = 1;
-            this.rbDark.Size = new System.Drawing.Size(45, 20);
+            this.rbDark.Properties.RadioGroupIndex = 0;
+            this.rbDark.Size = new System.Drawing.Size(46, 20);
             this.rbDark.StyleController = this.layoutControl;
-            this.rbDark.TabIndex = 7;
+            this.rbDark.TabIndex = 4;
             // 
-            // lblTheme
+            // rbLight
             // 
-            this.lblTheme.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTheme.Appearance.Options.UseFont = true;
-            this.lblTheme.Location = new System.Drawing.Point(12, 64);
-            this.lblTheme.Name = "lblTheme";
-            this.lblTheme.Size = new System.Drawing.Size(49, 19);
-            this.lblTheme.StyleController = this.layoutControl;
-            this.lblTheme.TabIndex = 6;
-            this.lblTheme.Text = "Theme";
+            this.rbLight.Location = new System.Drawing.Point(82, 85);
+            this.rbLight.Name = "rbLight";
+            this.rbLight.Properties.Caption = "Light";
+            this.rbLight.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
+            this.rbLight.Properties.RadioGroupIndex = 0;
+            this.rbLight.Size = new System.Drawing.Size(306, 20);
+            this.rbLight.StyleController = this.layoutControl;
+            this.rbLight.TabIndex = 5;
+            this.rbLight.TabStop = false;
             // 
-            // txtSnapshotDirectory
+            // lblLanguage
             // 
-            this.txtSnapshotDirectory.Location = new System.Drawing.Point(177, 35);
-            this.txtSnapshotDirectory.Name = "txtSnapshotDirectory";
-            this.txtSnapshotDirectory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph)});
-            this.txtSnapshotDirectory.Size = new System.Drawing.Size(211, 20);
-            this.txtSnapshotDirectory.StyleController = this.layoutControl;
-            this.txtSnapshotDirectory.TabIndex = 5;
-            this.txtSnapshotDirectory.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtSnapshotDirectory_ButtonClick);
+            this.lblLanguage.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblLanguage.Appearance.Options.UseFont = true;
+            this.lblLanguage.Location = new System.Drawing.Point(12, 114);
+            this.lblLanguage.Name = "lblLanguage";
+            this.lblLanguage.Size = new System.Drawing.Size(63, 18);
+            this.lblLanguage.StyleController = this.layoutControl;
+            this.lblLanguage.TabIndex = 6;
+            this.lblLanguage.Text = "Language";
             // 
-            // lblOutput
+            // rbEnglish
             // 
-            this.lblOutput.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblOutput.Appearance.Options.UseFont = true;
-            this.lblOutput.Location = new System.Drawing.Point(12, 12);
-            this.lblOutput.Name = "lblOutput";
-            this.lblOutput.Size = new System.Drawing.Size(49, 19);
-            this.lblOutput.StyleController = this.layoutControl;
-            this.lblOutput.TabIndex = 1;
-            this.lblOutput.Text = "Output";
+            this.rbEnglish.EditValue = true;
+            this.rbEnglish.Location = new System.Drawing.Point(32, 136);
+            this.rbEnglish.Name = "rbEnglish";
+            this.rbEnglish.Properties.Caption = "English";
+            this.rbEnglish.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
+            this.rbEnglish.Properties.RadioGroupIndex = 1;
+            this.rbEnglish.Size = new System.Drawing.Size(57, 20);
+            this.rbEnglish.StyleController = this.layoutControl;
+            this.rbEnglish.TabIndex = 7;
+            // 
+            // rbSrpski
+            // 
+            this.rbSrpski.Location = new System.Drawing.Point(93, 136);
+            this.rbSrpski.Name = "rbSrpski";
+            this.rbSrpski.Properties.Caption = "Srpski";
+            this.rbSrpski.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
+            this.rbSrpski.Properties.RadioGroupIndex = 1;
+            this.rbSrpski.Size = new System.Drawing.Size(295, 20);
+            this.rbSrpski.StyleController = this.layoutControl;
+            this.rbSrpski.TabIndex = 8;
+            this.rbSrpski.TabStop = false;
             // 
             // Root
             // 
@@ -133,11 +191,14 @@
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.lciOutput,
-            this.emptySpaceItem,
             this.lciSnapshotDirectory,
             this.lciTheme,
             this.lciDark,
-            this.lciLight});
+            this.lciLight,
+            this.lciLanguage,
+            this.lciEnglish,
+            this.lciSrpski,
+            this.emptySpaceItem});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(400, 300);
             this.Root.TextVisible = false;
@@ -147,34 +208,26 @@
             this.lciOutput.Control = this.lblOutput;
             this.lciOutput.Location = new System.Drawing.Point(0, 0);
             this.lciOutput.Name = "lciOutput";
-            this.lciOutput.Size = new System.Drawing.Size(380, 23);
+            this.lciOutput.Size = new System.Drawing.Size(380, 22);
             this.lciOutput.TextSize = new System.Drawing.Size(0, 0);
             this.lciOutput.TextVisible = false;
-            // 
-            // emptySpaceItem
-            // 
-            this.emptySpaceItem.AllowHotTrack = false;
-            this.emptySpaceItem.Location = new System.Drawing.Point(0, 107);
-            this.emptySpaceItem.Name = "emptySpaceItem";
-            this.emptySpaceItem.Size = new System.Drawing.Size(380, 173);
-            this.emptySpaceItem.TextSize = new System.Drawing.Size(0, 0);
             // 
             // lciSnapshotDirectory
             // 
             this.lciSnapshotDirectory.Control = this.txtSnapshotDirectory;
-            this.lciSnapshotDirectory.Location = new System.Drawing.Point(0, 23);
+            this.lciSnapshotDirectory.Location = new System.Drawing.Point(0, 22);
             this.lciSnapshotDirectory.Name = "lciSnapshotDirectory";
             this.lciSnapshotDirectory.Size = new System.Drawing.Size(380, 24);
             this.lciSnapshotDirectory.Spacing = new DevExpress.XtraLayout.Utils.Padding(20, 0, 0, 0);
-            this.lciSnapshotDirectory.Text = "Default Snapshot directory:";
-            this.lciSnapshotDirectory.TextSize = new System.Drawing.Size(133, 13);
+            this.lciSnapshotDirectory.Text = "Default snapshot directory:";
+            this.lciSnapshotDirectory.TextSize = new System.Drawing.Size(132, 13);
             // 
             // lciTheme
             // 
             this.lciTheme.Control = this.lblTheme;
-            this.lciTheme.Location = new System.Drawing.Point(0, 47);
+            this.lciTheme.Location = new System.Drawing.Point(0, 46);
             this.lciTheme.Name = "lciTheme";
-            this.lciTheme.Size = new System.Drawing.Size(380, 28);
+            this.lciTheme.Size = new System.Drawing.Size(380, 27);
             this.lciTheme.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 5, 0);
             this.lciTheme.TextSize = new System.Drawing.Size(0, 0);
             this.lciTheme.TextVisible = false;
@@ -182,9 +235,9 @@
             // lciDark
             // 
             this.lciDark.Control = this.rbDark;
-            this.lciDark.Location = new System.Drawing.Point(0, 75);
+            this.lciDark.Location = new System.Drawing.Point(0, 73);
             this.lciDark.Name = "lciDark";
-            this.lciDark.Size = new System.Drawing.Size(69, 24);
+            this.lciDark.Size = new System.Drawing.Size(70, 24);
             this.lciDark.Spacing = new DevExpress.XtraLayout.Utils.Padding(20, 0, 0, 0);
             this.lciDark.TextSize = new System.Drawing.Size(0, 0);
             this.lciDark.TextVisible = false;
@@ -192,31 +245,73 @@
             // lciLight
             // 
             this.lciLight.Control = this.rbLight;
-            this.lciLight.Location = new System.Drawing.Point(69, 75);
+            this.lciLight.Location = new System.Drawing.Point(70, 73);
             this.lciLight.Name = "lciLight";
-            this.lciLight.Size = new System.Drawing.Size(311, 24);
+            this.lciLight.Size = new System.Drawing.Size(310, 24);
             this.lciLight.TextSize = new System.Drawing.Size(0, 0);
             this.lciLight.TextVisible = false;
             // 
+            // lciLanguage
+            // 
+            this.lciLanguage.Control = this.lblLanguage;
+            this.lciLanguage.Location = new System.Drawing.Point(0, 97);
+            this.lciLanguage.Name = "lciLanguage";
+            this.lciLanguage.Size = new System.Drawing.Size(380, 27);
+            this.lciLanguage.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 5, 0);
+            this.lciLanguage.TextSize = new System.Drawing.Size(0, 0);
+            this.lciLanguage.TextVisible = false;
+            // 
+            // lciEnglish
+            // 
+            this.lciEnglish.Control = this.rbEnglish;
+            this.lciEnglish.Location = new System.Drawing.Point(0, 124);
+            this.lciEnglish.Name = "lciEnglish";
+            this.lciEnglish.Size = new System.Drawing.Size(81, 24);
+            this.lciEnglish.Spacing = new DevExpress.XtraLayout.Utils.Padding(20, 0, 0, 0);
+            this.lciEnglish.TextSize = new System.Drawing.Size(0, 0);
+            this.lciEnglish.TextVisible = false;
+            // 
+            // lciSrpski
+            // 
+            this.lciSrpski.Control = this.rbSrpski;
+            this.lciSrpski.Location = new System.Drawing.Point(81, 124);
+            this.lciSrpski.Name = "lciSrpski";
+            this.lciSrpski.Size = new System.Drawing.Size(299, 24);
+            this.lciSrpski.TextSize = new System.Drawing.Size(0, 0);
+            this.lciSrpski.TextVisible = false;
+            // 
+            // emptySpaceItem
+            // 
+            this.emptySpaceItem.AllowHotTrack = false;
+            this.emptySpaceItem.Location = new System.Drawing.Point(0, 148);
+            this.emptySpaceItem.Name = "emptySpaceItem";
+            this.emptySpaceItem.Size = new System.Drawing.Size(380, 132);
+            this.emptySpaceItem.TextSize = new System.Drawing.Size(0, 0);
+            // 
             // GeneralTab
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.layoutControl);
             this.Name = "GeneralTab";
             this.Size = new System.Drawing.Size(400, 300);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.rbLight.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rbDark.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSnapshotDirectory.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rbDark.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rbLight.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rbEnglish.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rbSrpski.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciOutput)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciSnapshotDirectory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciTheme)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciDark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciLight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciLanguage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciEnglish)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciSrpski)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -224,17 +319,23 @@
         #endregion
 
         private DevExpress.XtraLayout.LayoutControl layoutControl;
-        private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraEditors.LabelControl lblOutput;
-        private DevExpress.XtraLayout.LayoutControlItem lciOutput;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem;
         private DevExpress.XtraEditors.ButtonEdit txtSnapshotDirectory;
-        private DevExpress.XtraLayout.LayoutControlItem lciSnapshotDirectory;
         private DevExpress.XtraEditors.LabelControl lblTheme;
-        private DevExpress.XtraLayout.LayoutControlItem lciTheme;
         private DevExpress.XtraEditors.CheckEdit rbDark;
-        private DevExpress.XtraLayout.LayoutControlItem lciDark;
         private DevExpress.XtraEditors.CheckEdit rbLight;
+        private DevExpress.XtraEditors.LabelControl lblLanguage;
+        private DevExpress.XtraEditors.CheckEdit rbEnglish;
+        private DevExpress.XtraEditors.CheckEdit rbSrpski;
+        private DevExpress.XtraLayout.LayoutControlGroup Root;
+        private DevExpress.XtraLayout.LayoutControlItem lciOutput;
+        private DevExpress.XtraLayout.LayoutControlItem lciSnapshotDirectory;
+        private DevExpress.XtraLayout.LayoutControlItem lciTheme;
+        private DevExpress.XtraLayout.LayoutControlItem lciDark;
         private DevExpress.XtraLayout.LayoutControlItem lciLight;
+        private DevExpress.XtraLayout.LayoutControlItem lciLanguage;
+        private DevExpress.XtraLayout.LayoutControlItem lciEnglish;
+        private DevExpress.XtraLayout.LayoutControlItem lciSrpski;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem;
     }
 }

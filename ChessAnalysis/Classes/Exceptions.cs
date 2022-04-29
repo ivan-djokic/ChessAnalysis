@@ -4,12 +4,12 @@ namespace ChessAnalysis.Classes
 {
     public enum Components
     {
-        BM, // Best Move
+        BestMove,
         Comment,
         FEN,
         HalfMoves,
         Id,
-        Input,
+        InputData,
         NextPlayer,
         Position,
         Round
@@ -17,24 +17,24 @@ namespace ChessAnalysis.Classes
 
     public class IncorrectFormatException : Exception
     {
-        public IncorrectFormatException()
-            : base(Strings.IncorrectFormat)
+        public IncorrectFormatException(Components component)
+            : base(string.Format(Strings.IncorrectFormat, component))
         {
         }
     }
 
     public class InvalidComponentsNumberException : Exception
     {
-        public InvalidComponentsNumberException(Components field)
-            : base(string.Format(Strings.InvalidComponentsNumber, field))
+        public InvalidComponentsNumberException(Components component)
+            : base(string.Format(Strings.InvalidComponentsNumber, component))
         {
         }
     }
 
     public class UnallowedCharactersException : Exception
     {
-        public UnallowedCharactersException(Components field)
-            : base(string.Format(Strings.UnallowedCharactersDetected, field))
+        public UnallowedCharactersException(Components component)
+            : base(string.Format(Strings.UnallowedCharactersDetected, component))
         {
         }
     }

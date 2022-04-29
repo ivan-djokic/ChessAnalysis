@@ -9,23 +9,19 @@ namespace ChessAnalysis.Controls
         public GeneralTab()
         {
             InitializeComponent();
-            Reinitialize();
+            BindComponents();
         }
 
-        public void Reinitialize()
+        private void BindComponents()
         {
-            txtSnapshotDirectory.Text = Options.Instance.DefaultSnapshotDirectory;
-            rbDark.Checked = Options.Instance.Theme == Themes.Dark;
-            rbLight.Checked = Options.Instance.Theme == Themes.Light;
+            Options.Instance.Bind(txtSnapshotDirectory, model => model.DefaultSnapshotDirectory);
+            Options.Instance.Bind(rbDark, model => model.ThemeDark);
+            Options.Instance.Bind(rbLight, model => model.ThemeLight);
+            Options.Instance.Bind(rbEnglish, model => model.LanguageEnglish);
+            Options.Instance.Bind(rbSrpski, model => model.LanguageSrpski);
         }
 
-        public void SaveOptions()
-        {
-            Options.Instance.DefaultSnapshotDirectory = txtSnapshotDirectory.Text;
-            Options.Instance.Theme = rbDark.Checked ? Themes.Dark : Themes.Light;
-        }
-
-		private void txtSnapshotDirectory_ButtonClick(object sender, ButtonPressedEventArgs e)
+        private void txtSnapshotDirectory_ButtonClick(object sender, ButtonPressedEventArgs e)
 		{
             using var browserDialog = new XtraFolderBrowserDialog
             {
@@ -35,7 +31,8 @@ namespace ChessAnalysis.Controls
             if (browserDialog.ShowDialog() == DialogResult.OK)
             {
                 txtSnapshotDirectory.Text = browserDialog.SelectedPath;
+                Options.Instance.DefaultSnapshotDirectory = txtSnapshotDirectory.Text;
             }
         }
-	}
+    }
 }

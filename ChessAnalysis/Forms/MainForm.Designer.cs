@@ -6,6 +6,7 @@
         ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private System.ComponentModel.ComponentResourceManager resources;
 
         /// <summary>
         ///  Clean up any resources being used.
@@ -29,7 +30,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.Main = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
             this.popupAdd = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -95,6 +96,7 @@
             this.btnAdd.Caption = "Add";
             this.btnAdd.DropDownControl = this.popupAdd;
             this.btnAdd.Id = 1;
+            this.btnAdd.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.ImageOptions.LargeImage")));
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAdd_ItemClick);
             // 
@@ -108,6 +110,7 @@
             // 
             this.btnAddFromFile.Caption = "Add from file";
             this.btnAddFromFile.Id = 2;
+            this.btnAddFromFile.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAddFromFile.ImageOptions.LargeImage")));
             this.btnAddFromFile.Name = "btnAddFromFile";
             this.btnAddFromFile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAddFromFile_ItemClick);
             // 
@@ -117,6 +120,7 @@
             this.btnSave.Caption = "Save";
             this.btnSave.DropDownControl = this.popupSave;
             this.btnSave.Id = 3;
+            this.btnSave.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSave.ImageOptions.LargeImage")));
             this.btnSave.Name = "btnSave";
             this.btnSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSave_ItemClick);
             // 
@@ -130,6 +134,7 @@
             // 
             this.btnSaveAs.Caption = "Save as";
             this.btnSaveAs.Id = 4;
+            this.btnSaveAs.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSaveAs.ImageOptions.LargeImage")));
             this.btnSaveAs.Name = "btnSaveAs";
             this.btnSaveAs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSaveAs_ItemClick);
             // 
@@ -137,6 +142,7 @@
             // 
             this.btnMail.Caption = "Mail";
             this.btnMail.Id = 5;
+            this.btnMail.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnMail.ImageOptions.LargeImage")));
             this.btnMail.Name = "btnMail";
             this.btnMail.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMail_ItemClick);
             // 
@@ -144,6 +150,7 @@
             // 
             this.btnSnapshot.Caption = "Snapshot";
             this.btnSnapshot.Id = 6;
+            this.btnSnapshot.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSnapshot.ImageOptions.LargeImage")));
             this.btnSnapshot.Name = "btnSnapshot";
             this.btnSnapshot.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSnapshot_ItemClick);
             // 
@@ -151,6 +158,7 @@
             // 
             this.btnOptions.Caption = "Options";
             this.btnOptions.Id = 7;
+            this.btnOptions.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnOptions.ImageOptions.LargeImage")));
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnOptions_ItemClick);
             // 
