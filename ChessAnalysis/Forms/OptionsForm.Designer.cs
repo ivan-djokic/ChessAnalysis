@@ -68,7 +68,7 @@
             this.layoutControl.Location = new System.Drawing.Point(0, 0);
             this.layoutControl.Name = "layoutControl";
             this.layoutControl.Root = this.Root;
-            this.layoutControl.Size = new System.Drawing.Size(506, 382);
+            this.layoutControl.Size = new System.Drawing.Size(504, 350);
             this.layoutControl.TabIndex = 0;
             this.layoutControl.Text = "layoutControl";
             // 
@@ -155,6 +155,7 @@
             // 
             // btnDefaults
             // 
+            this.btnDefaults.AllowFocus = false;
             this.btnDefaults.Location = new System.Drawing.Point(12, 316);
             this.btnDefaults.MaximumSize = new System.Drawing.Size(76, 22);
             this.btnDefaults.MinimumSize = new System.Drawing.Size(76, 22);
@@ -175,7 +176,7 @@
             this.lciDefaults,
             this.emptySpaceItem});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(506, 382);
+            this.Root.Size = new System.Drawing.Size(504, 350);
             this.Root.TextVisible = false;
             // 
             // lciNavigation

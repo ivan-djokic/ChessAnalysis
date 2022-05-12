@@ -54,7 +54,10 @@
         public const char QUOTES = '\"';
 
         public const string SAVE_IMAGE_FILTER = "PNG (*.png)|*.png|JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|Bitmap (*.bmp)|*.bmp|GIF (*.gif)|*.gif|TIFF (*.tif, *.tiff)|*.tif;*.tiff";
-        
+
+        public const int SCALE_FACTOR_BEST_MOVE_IMAGE = 3;
+        public const int SCALE_FACTOR_COORDINATE_FONT = 7;
+
         public const string SNAPSHOTS_DIR = "Snapshots";
 
         public const string THEME_FAMILY = "Visual Studio 2013";

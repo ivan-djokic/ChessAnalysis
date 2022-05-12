@@ -41,25 +41,26 @@
             this.btnMail = new DevExpress.XtraBars.BarButtonItem();
             this.btnSnapshot = new DevExpress.XtraBars.BarButtonItem();
             this.btnOptions = new DevExpress.XtraBars.BarButtonItem();
-            this.lblTotal = new DevExpress.XtraBars.BarStaticItem();
+            this.lblTotalPositions = new DevExpress.XtraBars.BarStaticItem();
+            this.lblNotification = new DevExpress.XtraBars.BarStaticItem();
             this.toolbar = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.groupPositions = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.groupShare = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.groupOther = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.statusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
+            this.board = new ChessAnalysis.Controls.Board();
             this.board2 = new ChessAnalysis.Controls.Board();
-            this.board1 = new ChessAnalysis.Controls.Board();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.lciBoard = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.Main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupSave)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
-            this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
+            this.layoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciBoard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,7 +77,8 @@
             this.btnMail,
             this.btnSnapshot,
             this.btnOptions,
-            this.lblTotal});
+            this.lblTotalPositions,
+            this.lblNotification});
             this.Main.Location = new System.Drawing.Point(0, 0);
             this.Main.MaxItemId = 9;
             this.Main.Name = "Main";
@@ -162,11 +164,18 @@
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnOptions_ItemClick);
             // 
-            // lblTotal
+            // lblTotalPositions
             // 
-            this.lblTotal.Caption = "Total: 0";
-            this.lblTotal.Id = 8;
-            this.lblTotal.Name = "lblTotal";
+            this.lblTotalPositions.Caption = "Total positions: 0";
+            this.lblTotalPositions.Id = 8;
+            this.lblTotalPositions.Name = "lblTotalPositions";
+            // 
+            // lblNotification
+            // 
+            this.lblNotification.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.lblNotification.Caption = "Notifications";
+            this.lblNotification.Id = 9;
+            this.lblNotification.Name = "lblNotification";
             // 
             // toolbar
             // 
@@ -198,23 +207,31 @@
             // 
             // statusBar
             // 
-            this.statusBar.ItemLinks.Add(this.lblTotal);
+            this.statusBar.ItemLinks.Add(this.lblTotalPositions);
+            this.statusBar.ItemLinks.Add(this.lblNotification);
             this.statusBar.Location = new System.Drawing.Point(0, 675);
             this.statusBar.Name = "statusBar";
             this.statusBar.Ribbon = this.Main;
             this.statusBar.Size = new System.Drawing.Size(1198, 24);
             // 
-            // layoutControl1
+            // layoutControl
             // 
-            this.layoutControl1.Controls.Add(this.board2);
-            this.layoutControl1.Controls.Add(this.board1);
-            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 132);
-            this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(1198, 543);
-            this.layoutControl1.TabIndex = 9;
-            this.layoutControl1.Text = "layoutControl1";
+            this.layoutControl.Controls.Add(this.board);
+            this.layoutControl.Controls.Add(this.board2);
+            this.layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl.Location = new System.Drawing.Point(0, 132);
+            this.layoutControl.Name = "layoutControl";
+            this.layoutControl.Root = this.Root;
+            this.layoutControl.Size = new System.Drawing.Size(1198, 543);
+            this.layoutControl.TabIndex = 9;
+            this.layoutControl.Text = "layoutControl";
+            // 
+            // board
+            // 
+            this.board.Location = new System.Drawing.Point(12, 12);
+            this.board.Name = "board";
+            this.board.Size = new System.Drawing.Size(450, 519);
+            this.board.TabIndex = 4;
             // 
             // board2
             // 
@@ -223,32 +240,25 @@
             this.board2.Size = new System.Drawing.Size(720, 519);
             this.board2.TabIndex = 5;
             // 
-            // board1
-            // 
-            this.board1.Location = new System.Drawing.Point(12, 12);
-            this.board1.Name = "board1";
-            this.board1.Size = new System.Drawing.Size(450, 519);
-            this.board1.TabIndex = 4;
-            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1,
+            this.lciBoard,
             this.layoutControlItem2});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(1198, 543);
             this.Root.TextVisible = false;
             // 
-            // layoutControlItem1
+            // lciBoard
             // 
-            this.layoutControlItem1.Control = this.board1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(454, 523);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
+            this.lciBoard.Control = this.board;
+            this.lciBoard.Location = new System.Drawing.Point(0, 0);
+            this.lciBoard.Name = "lciBoard";
+            this.lciBoard.Size = new System.Drawing.Size(454, 523);
+            this.lciBoard.TextSize = new System.Drawing.Size(0, 0);
+            this.lciBoard.TextVisible = false;
             // 
             // layoutControlItem2
             // 
@@ -264,9 +274,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1198, 699);
-            this.Controls.Add(this.layoutControl1);
-            this.Controls.Add(this.statusBar);
             this.Controls.Add(this.Main);
+            this.Controls.Add(this.layoutControl);
+            this.Controls.Add(this.statusBar);
             this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("MainForm.IconOptions.Icon")));
             this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "MainForm";
@@ -278,10 +288,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.Main)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupSave)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
-            this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
+            this.layoutControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciBoard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -291,26 +301,27 @@
         #endregion
 
         private DevExpress.XtraBars.Ribbon.RibbonControl Main;
-        private DevExpress.XtraBars.Ribbon.RibbonPage toolbar;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupPositions;
         private DevExpress.XtraBars.BarButtonItem btnAdd;
         private DevExpress.XtraBars.PopupMenu popupAdd;
         private DevExpress.XtraBars.BarButtonItem btnAddFromFile;
         private DevExpress.XtraBars.BarButtonItem btnSave;
+        private DevExpress.XtraBars.PopupMenu popupSave;
         private DevExpress.XtraBars.BarButtonItem btnSaveAs;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupShare;
         private DevExpress.XtraBars.BarButtonItem btnMail;
         private DevExpress.XtraBars.BarButtonItem btnSnapshot;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupOther;
         private DevExpress.XtraBars.BarButtonItem btnOptions;
-        private DevExpress.XtraBars.Ribbon.RibbonStatusBar statusBar;
-        private DevExpress.XtraBars.BarStaticItem lblTotal;
-        private DevExpress.XtraBars.PopupMenu popupSave;
-        private DevExpress.XtraLayout.LayoutControl layoutControl1;
-        private DevExpress.XtraLayout.LayoutControlGroup Root;
+        private DevExpress.XtraBars.Ribbon.RibbonPage toolbar;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupPositions;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupShare;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupOther;
+        private DevExpress.XtraLayout.LayoutControl layoutControl;
+        private Controls.Board board;
         private Controls.Board board2;
-        private Controls.Board board1;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraBars.Ribbon.RibbonStatusBar statusBar;
+        private DevExpress.XtraBars.BarStaticItem lblTotalPositions;
+        private DevExpress.XtraBars.BarStaticItem lblNotification;        
+        private DevExpress.XtraLayout.LayoutControlGroup Root;
+        private DevExpress.XtraLayout.LayoutControlItem lciBoard;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
     }
 }

@@ -2,8 +2,14 @@
 
 namespace ChessAnalysis.Utils
 {
-	public class OptionsModel : ViewModelBase
+	public class OptionsBindModel : ViewModelBase
 	{
+		public bool AutoFlipBoard
+		{
+			get => Options.Instance.AutoFlipBoard;
+			set => Options.Instance.AutoFlipBoard = value;
+		}
+		
 		public string DefaultSnapshotDirectory
 		{
 			get => Options.Instance.DefaultSnapshotDirectory;
@@ -35,8 +41,11 @@ namespace ChessAnalysis.Utils
 			get => Options.Instance.Language == Languages.English;
 			set
 			{
-				Options.Instance.Language = Languages.English;
-				//TODO: Invoke language changer here
+				if (value)
+				{
+					Options.Instance.Language = Languages.English;
+					//TODO: Invoke language changer here
+				}
 			}
 		}
 
@@ -45,8 +54,11 @@ namespace ChessAnalysis.Utils
 			get => Options.Instance.Language == Languages.Srpski;
 			set
 			{
-				Options.Instance.Language = Languages.Srpski;
-				//TODO: Invoke language changer here
+				if (value)
+				{
+					Options.Instance.Language = Languages.Srpski;
+					//TODO: Invoke language changer here
+				}
 			}
 		}
 		
@@ -65,8 +77,11 @@ namespace ChessAnalysis.Utils
 			get => Options.Instance.PieceStyle == PieceStyles.Classic;
 			set
 			{
-				Options.Instance.PieceStyle = PieceStyles.Classic;
-				Options.BoardOptionsChanged?.Invoke();
+				if (value)
+                {
+					Options.Instance.PieceStyle = PieceStyles.Classic;
+					Options.BoardOptionsChanged?.Invoke();
+				}
 			}
 		}
 
@@ -75,8 +90,11 @@ namespace ChessAnalysis.Utils
 			get => Options.Instance.PieceStyle == PieceStyles.Neo;
 			set
 			{
-				Options.Instance.PieceStyle = PieceStyles.Neo;
-				Options.BoardOptionsChanged?.Invoke();
+				if (value)
+				{
+					Options.Instance.PieceStyle = PieceStyles.Neo;
+					Options.BoardOptionsChanged?.Invoke();
+				}
 			}
 		}
 
@@ -85,9 +103,18 @@ namespace ChessAnalysis.Utils
 			get => Options.Instance.PieceStyle == PieceStyles.Wood;
 			set
 			{
-				Options.Instance.PieceStyle = PieceStyles.Wood;
-				Options.BoardOptionsChanged?.Invoke();
+				if (value)
+                {
+					Options.Instance.PieceStyle = PieceStyles.Wood;
+					Options.BoardOptionsChanged?.Invoke();
+				}
 			}
+		}
+
+		public bool PlaySound
+		{
+			get => Options.Instance.PlaySound;
+			set => Options.Instance.PlaySound = value;
 		}
 
 		public bool ShowCoordinates
@@ -105,8 +132,11 @@ namespace ChessAnalysis.Utils
 			get => Options.Instance.Theme == Themes.Dark;
 			set
 			{
-				Options.Instance.Theme = Themes.Dark;
-				Theming.ApplyTheme();
+				if (value)
+				{
+					Options.Instance.Theme = Themes.Dark;
+					Theming.ApplyTheme();
+				}
 			}
         }
 
@@ -115,19 +145,23 @@ namespace ChessAnalysis.Utils
 			get => Options.Instance.Theme == Themes.Light;
 			set
 			{
-				Options.Instance.Theme = Themes.Light;
-				Theming.ApplyTheme();
+				if (value)
+                {
+					Options.Instance.Theme = Themes.Light;
+					Theming.ApplyTheme();
+				}
 			}
 		}
 
 		public void RaisePropertiesChanged()
         {
+			RaisePropertyChanged(() => AutoFlipBoard);
 			RaisePropertyChanged(() => DefaultSnapshotDirectory);
-			RaisePropertyChanged(() => FieldEmptyColor);
-			RaisePropertyChanged(() => FieldFillColor);
+			RaisePropertiesChanged(() => FieldEmptyColor, () => FieldFillColor);
 			RaisePropertiesChanged(() => LanguageEnglish, () => LanguageSrpski);
 			RaisePropertyChanged(() => MarkIfBestMoveIsPlayed);
 			RaisePropertiesChanged(() => PieceClassic, () => PieceNeo, () => PieceWood);
+			RaisePropertyChanged(() => PlaySound);
 			RaisePropertyChanged(() => ShowCoordinates);
 			RaisePropertiesChanged(() => ThemeDark, () => ThemeLight);
 		}

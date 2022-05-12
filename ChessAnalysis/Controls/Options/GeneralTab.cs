@@ -19,6 +19,7 @@ namespace ChessAnalysis.Controls
             Options.Instance.Bind(rbLight, model => model.ThemeLight);
             Options.Instance.Bind(rbEnglish, model => model.LanguageEnglish);
             Options.Instance.Bind(rbSrpski, model => model.LanguageSrpski);
+            Options.Instance.Bind(chxPlaySound, model => model.PlaySound);
         }
 
         private void txtSnapshotDirectory_ButtonClick(object sender, ButtonPressedEventArgs e)
@@ -31,7 +32,6 @@ namespace ChessAnalysis.Controls
             if (browserDialog.ShowDialog() == DialogResult.OK)
             {
                 txtSnapshotDirectory.Text = browserDialog.SelectedPath;
-                Options.Instance.DefaultSnapshotDirectory = txtSnapshotDirectory.Text;
             }
         }
     }

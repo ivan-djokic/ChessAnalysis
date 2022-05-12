@@ -3,35 +3,59 @@ using ChessAnalysis.Utils;
 
 namespace ChessAnalysis.Classes
 {
-    public class BoardImageCreator
+    public class BoardImageCreator : IDisposable
     {
-        public static Image Create(Position position)
+        private readonly SolidBrush m_brushEmpty = new(Options.Instance.FieldEmptyColor.Normalize());
+        private readonly SolidBrush m_brushFill = new(Options.Instance.FieldFillColor.Normalize());
+        private readonly int m_fieldSize = GetFieldSize();
+        private Graphics m_graphics;
+        private bool m_isWhiteOriented;
+
+        private BoardImageCreator()
+        {
+        }
+
+        public static Image Create(Position position, ref bool? isWhiteOriented)
         {
             if (string.IsNullOrWhiteSpace(position.Fen))
             {
                 throw new InvalidComponentsNumberException(Components.FEN);
             }
 
-            var fieldSize = GetFieldSize();
-            var board = new Bitmap(Constants.BOARD_SIZE * fieldSize, Constants.BOARD_SIZE * fieldSize);
-            using var g = Graphics.FromImage(board);
+            using var creator = new BoardImageCreator();
+            return creator.CreateInternal(position, ref isWhiteOriented);
+        }
 
-            using var emptyBrush = new SolidBrush(Options.Instance.FieldEmptyColor.Normalize());
-            using var fillBrush = new SolidBrush(Options.Instance.FieldFillColor.Normalize());
+        public void Dispose()
+        {
+            m_brushEmpty.Dispose();
+            m_brushFill.Dispose();
+            m_graphics?.Dispose();
+        }
 
-            DrawFields(g, fieldSize, emptyBrush, fillBrush);
+        private Image CreateInternal(Position position, ref bool? isWhiteOriented)
+        {
+            var board = new Bitmap(Constants.BOARD_SIZE * m_fieldSize, Constants.BOARD_SIZE * m_fieldSize);
+            m_graphics = Graphics.FromImage(board);
+
+            var isWhitePlayed = position.IsWhitePlayed();
+            m_isWhiteOriented = isWhiteOriented ?? Options.Instance.AutoFlipBoard || isWhitePlayed;
+            isWhiteOriented = m_isWhiteOriented;
+
+            DrawFields();
 
             if (Options.Instance.ShowCoordinates)
             {
-                DrawCoordinates(g, fieldSize, emptyBrush, fillBrush);
+                DrawCoordinates();
             }
 
-            DrawPieces(g, fieldSize, position.Fen, new BestMove(position.BestMove, position.IsWhitePlayed()));
+            var bestMove = Options.Instance.MarkIfBestMoveIsPlayed ? new BestMove(position.BestMove, isWhitePlayed) : null;
+            DrawPieces(position.Fen, bestMove);
 
             return board;
         }
 
-        private static void DrawBestMove(Graphics g, int fieldSize, BestMove bestMove)
+        private void DrawBestMove(int x, int y)
         {
             using var image = Image.FromFile(@"C:\Users\IDjokic\Downloads\Star.png");
 
@@ -40,49 +64,51 @@ namespace ChessAnalysis.Classes
                 return;
             }
 
-            var size = fieldSize / 3;
-            g.DrawImage(image, new Rectangle((bestMove.Field.X + 1) * fieldSize - size, bestMove.Field.Y * fieldSize, size, size));
+            var size = m_fieldSize / Constants.SCALE_FACTOR_BEST_MOVE_IMAGE;
+
+            // Draw in top right corner
+            m_graphics.DrawImage(image, new Rectangle(x + m_fieldSize - size, y, size, size));
         }
 
-        private static void DrawCoordinates(Graphics g, int fieldSize, SolidBrush emptyBrush, SolidBrush fillBrush)
+        private void DrawCoordinates()
         {
-            using var font = new Font("Segoe UI", fieldSize / 8.0f, FontStyle.Bold);
+            using var font = new Font("Segoe UI", m_fieldSize / GetScaleFactor(), FontStyle.Bold);
 
-            var letterY = Constants.BOARD_SIZE * fieldSize - font.Height;
+            var letterY = Constants.BOARD_SIZE * m_fieldSize - font.Height;
 
             for (var i = 0; i < Constants.BOARD_SIZE; i++)
             {
                 if (i.IsEven())
                 {
-                    g.DrawString((Constants.BOARD_SIZE - i).ToString(), font, fillBrush, new Point(0, i * fieldSize));
-                    g.DrawString(('A' + i).AsString(), font, emptyBrush, new Point(i * fieldSize, letterY));
+                    m_graphics.DrawString(GetXCoordinate(i), font, m_brushEmpty, new Point(i * m_fieldSize, letterY));
+                    m_graphics.DrawString(GetYCoordinate(i), font, m_brushFill, new Point(0, i * m_fieldSize));
                     continue;
                 }
 
-                g.DrawString((Constants.BOARD_SIZE - i).ToString(), font, emptyBrush, new Point(0, i * fieldSize));
-                g.DrawString(('A' + i).AsString(), font, fillBrush, new Point(i * fieldSize, letterY));
+                m_graphics.DrawString(GetXCoordinate(i), font, m_brushFill, new Point(i * m_fieldSize, letterY));
+                m_graphics.DrawString(GetYCoordinate(i), font, m_brushEmpty, new Point(0, i * m_fieldSize));
             }
         }
 
-        private static void DrawFields(Graphics g, int fieldSize, SolidBrush emptyBrush, SolidBrush fillBrush)
+        private void DrawFields()
         {
             for (var i = 0; i < Constants.BOARD_SIZE; i++)
             {
                 for (var j = 0; j < Constants.BOARD_SIZE; j++)
                 {
-                    // Even fields are empty (white) and odd are filled (black)
+                    // Even fields are filled (black) and odd are empty (white)
                     if ((i + j).IsEven())
                     {
-                        g.FillRectangle(emptyBrush, new Rectangle(i * fieldSize, j * fieldSize, fieldSize, fieldSize));
+                        m_graphics.FillRectangle(m_brushEmpty, new Rectangle(i * m_fieldSize, j * m_fieldSize, m_fieldSize, m_fieldSize));
                         continue;
                     }
 
-                    g.FillRectangle(fillBrush, new Rectangle(i * fieldSize, j * fieldSize, fieldSize, fieldSize));
+                    m_graphics.FillRectangle(m_brushFill, new Rectangle(i * m_fieldSize, j * m_fieldSize, m_fieldSize, m_fieldSize));
                 }
             }
         }
 
-        private static void DrawPieces(Graphics g, int fieldSize, string fen, BestMove bestMove)
+        private void DrawPieces(string fen, BestMove? bestMove)
         {
             var x = 0;
             var y = 0;
@@ -116,12 +142,15 @@ namespace ChessAnalysis.Classes
                     continue;
                 }
 
-                if (Options.Instance.MarkIfBestMoveIsPlayed && bestMove.Equals(fen[i], x, y))
+                var actualX = GetPieceCoordinate(x) * m_fieldSize;
+                var actualY = GetPieceCoordinate(y) * m_fieldSize;
+
+                if (bestMove?.Equals(fen[i], x, y) == true)
                 {
-                    DrawBestMove(g, fieldSize, bestMove);
+                    DrawBestMove(actualX, actualY);
                 }
 
-                g.DrawImage(piece, new Rectangle(x * fieldSize, y * fieldSize, fieldSize, fieldSize));
+                m_graphics.DrawImage(piece, new Rectangle(actualX, actualY, m_fieldSize, m_fieldSize));
 
                 x++;
             }
@@ -135,13 +164,42 @@ namespace ChessAnalysis.Classes
         private static int GetFieldSize()
         {
             using var image = Resources.GetPiece('p');
+            return image?.Size.Width ?? Constants.BOARD_FIELD_DEFAULT_SIZE;
+        }
 
-            if (image == null)
+        private int GetPieceCoordinate(int value)
+        {
+            if (m_isWhiteOriented)
             {
-                return Constants.BOARD_FIELD_DEFAULT_SIZE;
+                return value;
             }
 
-            return image.Size.Width;
+            return Constants.BOARD_SIZE - 1 - value;
+        }
+
+        private static float GetScaleFactor()
+        {
+            return Constants.SCALE_FACTOR_COORDINATE_FONT * Screen.PrimaryScreen.Bounds.Width / (float)System.Windows.SystemParameters.PrimaryScreenWidth;
+        }
+
+        private string GetXCoordinate(int offset)
+        {
+            if (m_isWhiteOriented)
+            {
+                return ('A' + offset).AsString();
+            }
+
+            return ('H' - offset).AsString();
+        }
+
+        private string GetYCoordinate(int offset)
+        {
+            if (m_isWhiteOriented)
+            {
+                return (Constants.BOARD_SIZE - offset).ToString();
+            }
+
+            return (offset + 1).ToString();
         }
     }
 }

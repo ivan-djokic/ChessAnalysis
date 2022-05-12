@@ -4,32 +4,37 @@ namespace ChessAnalysis.Utils
 {
     public static class FileHelper
     {
-        public static void CreateDirIfNotExists(string path)
+        public static void CreateDirIfNotExists(string input)
         {
-            path = GetDirectoryName(path);
+            input = GetDirectoryName(input);
 
-            if (string.IsNullOrEmpty(path) || Directory.Exists(path))
+            if (string.IsNullOrEmpty(input) || Directory.Exists(input))
             {
                 return;
             }
 
             try
             {
-                Directory.CreateDirectory(path);
+                Directory.CreateDirectory(input);
             }
             catch
             {
             }
         }
 
-        private static string GetDirectoryName(string path)
+        private static string GetDirectoryName(string input)
         {
-            if (string.IsNullOrEmpty(Path.GetExtension(path)))
+            if (IsDirectory(input))
             {
-                return path;
+                return input;
             }
 
-            return Path.GetDirectoryName(path) ?? string.Empty;
+            return Path.GetDirectoryName(input) ?? string.Empty;
+        }
+
+        private static bool IsDirectory(string input)
+        {
+            return string.IsNullOrEmpty(Path.GetExtension(input));
         }
     }
 }

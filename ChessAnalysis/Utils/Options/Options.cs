@@ -11,6 +11,8 @@ namespace ChessAnalysis.Utils
 
 		private static readonly Lazy<Options> s_instance = new(() => CreateOptions());
 
+		public bool AutoFlipBoard { get; set; }
+
 		public string DefaultSnapshotDirectory { get; set; }
 
 		public Color FieldEmptyColor { get; set; }
@@ -28,6 +30,8 @@ namespace ChessAnalysis.Utils
 
 		public PieceStyles PieceStyle { get; set; }
 
+		public bool PlaySound { get; set; }
+
 		public bool ShowCoordinates { get; set; }
 
 		public Themes Theme { get; set; }
@@ -38,28 +42,35 @@ namespace ChessAnalysis.Utils
 			new XmlSerializer(typeof(Options)).Serialize(writer, this);
 		}
 
-		public void SetDefaults(bool raisePropertiesChanged = true)
+		public void SetDefaults(bool raiseOnChange = true)
 		{
+			AutoFlipBoard = true;
 			DefaultSnapshotDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Constants.APP_NAME, Constants.SNAPSHOTS_DIR);
-			FieldEmptyColor = Color.FromArgb(255, 135, 206, 235);
-			FieldFillColor = Color.FromArgb(255, 230, 230, 230);
+			FieldEmptyColor = Color.FromArgb(255, 230, 230, 230);
+			FieldFillColor = Color.FromArgb(255, 135, 206, 235);
 			Language = Languages.English;
 			MarkIfBestMoveIsPlayed = true;
 			PieceStyle = PieceStyles.Classic;
+			PlaySound = true;
 			ShowCoordinates = true;
 			Theme = Themes.Dark;
 
-			RaisePropertiesChanged(raisePropertiesChanged);
+			if (raiseOnChange)
+			{
+				RaiseOnChange();
+			}
 		}
 
 		private void CopyTo(Options options)
 		{
+			options.AutoFlipBoard = AutoFlipBoard;
 			options.DefaultSnapshotDirectory = DefaultSnapshotDirectory;
 			options.FieldEmptyColor = FieldEmptyColor;
 			options.FieldFillColor = FieldFillColor;
 			options.Language = Language;
 			options.MarkIfBestMoveIsPlayed = MarkIfBestMoveIsPlayed;
 			options.PieceStyle = PieceStyle;
+			options.PlaySound = PlaySound;
 			options.ShowCoordinates = ShowCoordinates;
 			options.Theme = Theme;
 		}

@@ -15,11 +15,6 @@ namespace ChessAnalysis.Controls
             set => pictureBox.BackgroundImage = value;
         }
 
-        public void Save(string fileName)
-        {
-            pictureBox.BackgroundImage?.Save(fileName);
-        }
-
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);

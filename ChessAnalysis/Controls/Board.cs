@@ -8,6 +8,7 @@ namespace ChessAnalysis.Controls
     public partial class Board : XtraUserControl
     {
         private InputData m_inputData;
+        private bool? m_isWhiteOriented;
 
         public Board()
         {
@@ -27,7 +28,7 @@ namespace ChessAnalysis.Controls
             }
         }
 
-        public void Snapshot(IWin32Window owner)
+        public bool Snapshot(IWin32Window owner)
         {
             using var saveDialog = new XtraSaveFileDialog()
             {
@@ -38,25 +39,32 @@ namespace ChessAnalysis.Controls
 
             if (saveDialog.ShowDialog(owner) != DialogResult.OK)
             {
-                return;
+                return false;
             }
 
-            imageBoard.Save(saveDialog.FileName);
+            imageBoard.Image.Save(saveDialog.FileName);
 
             var lastDirectory = Path.GetDirectoryName(saveDialog.FileName);
 
             if (string.IsNullOrEmpty(lastDirectory))
             {
-                return;
+                return false;
             }
 
             Options.Instance.DefaultSnapshotDirectory = lastDirectory;
             Options.Instance.Save();
+            return true;
+        }
+
+        private void btnFlip_Click(object sender, EventArgs e)
+        {
+            m_isWhiteOriented = !m_isWhiteOriented;
+            DrawImage();
         }
 
         private void DrawImage()
         {
-            imageBoard.Image = BoardImageCreator.Create(InputData.Position);
+            imageBoard.Image = BoardImageCreator.Create(InputData.Position, ref m_isWhiteOriented);
         }
 
         private void Reinitialize()
@@ -66,6 +74,7 @@ namespace ChessAnalysis.Controls
             lblOpening.Text = m_inputData.Game.Opening;
             lblDefense.Text = m_inputData.Game.Defense;
 
+            m_isWhiteOriented = null;
             DrawImage();
         }
     }
