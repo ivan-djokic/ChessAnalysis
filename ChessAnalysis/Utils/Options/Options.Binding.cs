@@ -14,7 +14,7 @@ namespace ChessAnalysis.Utils
             m_binding = new(() => CreateBinding());
         }
 
-        public static Action? BoardOptionsChanged;
+        public static Action<bool> BoardOptionsChanged;
 
         private MVVMContextFluentAPI<OptionsBindModel> Binding
         {
@@ -47,7 +47,7 @@ namespace ChessAnalysis.Utils
         {
             m_optionsModel.RaisePropertiesChanged();
             //TODO: Invoke language changer here
-            BoardOptionsChanged?.Invoke();
+            BoardOptionsChanged?.Invoke(false);
             Theming.ApplyTheme();
         }
     }

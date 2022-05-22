@@ -1,6 +1,4 @@
 ﻿using ChessAnalysis.Classes;
-using DevExpress.XtraLayout.Utils;
-
 
 namespace ChessAnalysis.Utils
 {

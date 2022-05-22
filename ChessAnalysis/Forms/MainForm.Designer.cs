@@ -6,7 +6,6 @@
         ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private System.ComponentModel.ComponentResourceManager resources;
 
         /// <summary>
         ///  Clean up any resources being used.
@@ -29,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.Main = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
             this.popupAdd = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -50,10 +47,10 @@
             this.statusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
             this.board = new ChessAnalysis.Controls.Board();
-            this.board2 = new ChessAnalysis.Controls.Board();
+            this.grid = new ChessAnalysis.Controls.DataGrid();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.lciBoard = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.lciGrid = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.Main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupSave)).BeginInit();
@@ -61,15 +58,14 @@
             this.layoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciBoard)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // Main
             // 
+            this.Main.AllowMinimizeRibbon = false;
             this.Main.ExpandCollapseItem.Id = 0;
             this.Main.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.Main.ExpandCollapseItem,
-            this.Main.SearchEditItem,
             this.btnAdd,
             this.btnAddFromFile,
             this.btnSave,
@@ -98,7 +94,7 @@
             this.btnAdd.Caption = "Add";
             this.btnAdd.DropDownControl = this.popupAdd;
             this.btnAdd.Id = 1;
-            this.btnAdd.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.ImageOptions.LargeImage")));
+            this.btnAdd.ImageOptions.LargeImage = ChessAnalysis.Properties.Resources.GetThemedIcon("btnAdd");
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAdd_ItemClick);
             // 
@@ -112,7 +108,7 @@
             // 
             this.btnAddFromFile.Caption = "Add from file";
             this.btnAddFromFile.Id = 2;
-            this.btnAddFromFile.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAddFromFile.ImageOptions.LargeImage")));
+            this.btnAddFromFile.ImageOptions.LargeImage = ChessAnalysis.Properties.Resources.GetThemedIcon("btnAddFromFile");
             this.btnAddFromFile.Name = "btnAddFromFile";
             this.btnAddFromFile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAddFromFile_ItemClick);
             // 
@@ -122,7 +118,7 @@
             this.btnSave.Caption = "Save";
             this.btnSave.DropDownControl = this.popupSave;
             this.btnSave.Id = 3;
-            this.btnSave.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSave.ImageOptions.LargeImage")));
+            this.btnSave.ImageOptions.LargeImage = ChessAnalysis.Properties.Resources.GetThemedIcon("btnSave");
             this.btnSave.Name = "btnSave";
             this.btnSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSave_ItemClick);
             // 
@@ -136,7 +132,7 @@
             // 
             this.btnSaveAs.Caption = "Save as";
             this.btnSaveAs.Id = 4;
-            this.btnSaveAs.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSaveAs.ImageOptions.LargeImage")));
+            this.btnSaveAs.ImageOptions.LargeImage = ChessAnalysis.Properties.Resources.GetThemedIcon("btnSaveAs");
             this.btnSaveAs.Name = "btnSaveAs";
             this.btnSaveAs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSaveAs_ItemClick);
             // 
@@ -144,7 +140,7 @@
             // 
             this.btnMail.Caption = "Mail";
             this.btnMail.Id = 5;
-            this.btnMail.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnMail.ImageOptions.LargeImage")));
+            this.btnMail.ImageOptions.LargeImage = ChessAnalysis.Properties.Resources.GetThemedIcon("btnMail");
             this.btnMail.Name = "btnMail";
             this.btnMail.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMail_ItemClick);
             // 
@@ -152,7 +148,7 @@
             // 
             this.btnSnapshot.Caption = "Snapshot";
             this.btnSnapshot.Id = 6;
-            this.btnSnapshot.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSnapshot.ImageOptions.LargeImage")));
+            this.btnSnapshot.ImageOptions.LargeImage = ChessAnalysis.Properties.Resources.GetThemedIcon("btnSnapshot");
             this.btnSnapshot.Name = "btnSnapshot";
             this.btnSnapshot.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSnapshot_ItemClick);
             // 
@@ -160,13 +156,13 @@
             // 
             this.btnOptions.Caption = "Options";
             this.btnOptions.Id = 7;
-            this.btnOptions.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnOptions.ImageOptions.LargeImage")));
+            this.btnOptions.ImageOptions.LargeImage = ChessAnalysis.Properties.Resources.GetThemedIcon("btnOptions");
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnOptions_ItemClick);
             // 
             // lblTotalPositions
             // 
-            this.lblTotalPositions.Caption = "Total positions: 0";
+            this.lblTotalPositions.Caption = string.Format(ChessAnalysis.Properties.Strings.TotalPositions, 0);
             this.lblTotalPositions.Id = 8;
             this.lblTotalPositions.Name = "lblTotalPositions";
             // 
@@ -217,7 +213,7 @@
             // layoutControl
             // 
             this.layoutControl.Controls.Add(this.board);
-            this.layoutControl.Controls.Add(this.board2);
+            this.layoutControl.Controls.Add(this.grid);
             this.layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl.Location = new System.Drawing.Point(0, 132);
             this.layoutControl.Name = "layoutControl";
@@ -230,15 +226,17 @@
             // 
             this.board.Location = new System.Drawing.Point(12, 12);
             this.board.Name = "board";
-            this.board.Size = new System.Drawing.Size(450, 519);
+            this.board.Size = new System.Drawing.Size(428, 519);
             this.board.TabIndex = 4;
             // 
-            // board2
+            // grid
             // 
-            this.board2.Location = new System.Drawing.Point(466, 12);
-            this.board2.Name = "board2";
-            this.board2.Size = new System.Drawing.Size(720, 519);
-            this.board2.TabIndex = 5;
+            this.grid.Location = new System.Drawing.Point(444, 12);
+            this.grid.Name = "grid";
+            this.grid.Size = new System.Drawing.Size(742, 519);
+            this.grid.TabIndex = 5;
+            this.grid.FocusedRowChanged += this.grid_FocusedRowChanged;
+            this.grid.RowCountChanged += this.grid_RowCountChanged;
             // 
             // Root
             // 
@@ -246,7 +244,7 @@
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.lciBoard,
-            this.layoutControlItem2});
+            this.lciGrid});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(1198, 543);
             this.Root.TextVisible = false;
@@ -256,28 +254,28 @@
             this.lciBoard.Control = this.board;
             this.lciBoard.Location = new System.Drawing.Point(0, 0);
             this.lciBoard.Name = "lciBoard";
-            this.lciBoard.Size = new System.Drawing.Size(454, 523);
+            this.lciBoard.Size = new System.Drawing.Size(432, 523);
             this.lciBoard.TextSize = new System.Drawing.Size(0, 0);
             this.lciBoard.TextVisible = false;
             // 
-            // layoutControlItem2
+            // lciGrid
             // 
-            this.layoutControlItem2.Control = this.board2;
-            this.layoutControlItem2.Location = new System.Drawing.Point(454, 0);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(724, 523);
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem2.TextVisible = false;
+            this.lciGrid.Control = this.grid;
+            this.lciGrid.Location = new System.Drawing.Point(432, 0);
+            this.lciGrid.Name = "lciGrid";
+            this.lciGrid.Size = new System.Drawing.Size(746, 523);
+            this.lciGrid.TextSize = new System.Drawing.Size(0, 0);
+            this.lciGrid.TextVisible = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1198, 699);
-            this.Controls.Add(this.Main);
             this.Controls.Add(this.layoutControl);
             this.Controls.Add(this.statusBar);
-            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("MainForm.IconOptions.Icon")));
+            this.Controls.Add(this.Main);
+            this.IconOptions.Icon = ChessAnalysis.Properties.Resources.Icon;
             this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "MainForm";
             this.Ribbon = this.Main;
@@ -292,7 +290,7 @@
             this.layoutControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciBoard)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,12 +314,12 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupOther;
         private DevExpress.XtraLayout.LayoutControl layoutControl;
         private Controls.Board board;
-        private Controls.Board board2;
+        private Controls.DataGrid grid;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar statusBar;
         private DevExpress.XtraBars.BarStaticItem lblTotalPositions;
         private DevExpress.XtraBars.BarStaticItem lblNotification;        
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem lciBoard;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraLayout.LayoutControlItem lciGrid;
     }
 }

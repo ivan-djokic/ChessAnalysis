@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using ChessAnalysis.Classes;
+using ChessAnalysis.Models;
 using ChessAnalysis.Utils;
 using DevExpress.XtraEditors;
 
@@ -7,23 +8,23 @@ namespace ChessAnalysis.Controls
 {
     public partial class Board : XtraUserControl
     {
-        private InputData m_inputData;
+        private Data m_data;
         private bool? m_isWhiteOriented;
 
         public Board()
         {
             InitializeComponent();
 
-            InputData = new(Constants.DEFAULT_INPUT);
+            Data = Parser.Parse(Constants.DEFAULT_INPUT);
             Options.BoardOptionsChanged += DrawImage;
         }
 
-        public InputData InputData 
+        public Data Data 
         { 
-            get => m_inputData; 
+            get => m_data; 
             set
             {
-                m_inputData = value;
+                m_data = value;
                 Reinitialize();
             }
         }
@@ -32,7 +33,7 @@ namespace ChessAnalysis.Controls
         {
             using var saveDialog = new XtraSaveFileDialog()
             {
-                FileName = m_inputData.Id,
+                FileName = m_data.Id,
                 Filter = Constants.SAVE_IMAGE_FILTER,
                 InitialDirectory = Options.Instance.DefaultSnapshotDirectory
             };
@@ -59,23 +60,27 @@ namespace ChessAnalysis.Controls
         private void btnFlip_Click(object sender, EventArgs e)
         {
             m_isWhiteOriented = !m_isWhiteOriented;
-            DrawImage();
+            DrawImage(false);
         }
 
-        private void DrawImage()
+        private void DrawImage(bool resetOrientation)
         {
-            imageBoard.Image = BoardImageCreator.Create(InputData.Position, ref m_isWhiteOriented);
+            if (resetOrientation)
+            {
+                m_isWhiteOriented = null;
+            }
+
+            imageBoard.Image = BoardImageCreator.Create(m_data.Position, ref m_isWhiteOriented);
         }
 
         private void Reinitialize()
         {
-            lblPlayers.Text = m_inputData.Game.Players;
-            lblTimestamp.Text = m_inputData.Game.Timestamp;
-            lblOpening.Text = m_inputData.Game.Opening;
-            lblDefense.Text = m_inputData.Game.Defense;
+            lblPlayers.Text = m_data.Comment.Players;
+            lblTimestamp.Text = m_data.Comment.Timestamp;
+            lblOpening.Text = m_data.Comment.Opening;
+            lblDefense.Text = m_data.Comment.Defense;
 
-            m_isWhiteOriented = null;
-            DrawImage();
+            DrawImage(true);
         }
     }
 }

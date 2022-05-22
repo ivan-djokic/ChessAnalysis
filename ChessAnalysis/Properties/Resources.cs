@@ -4,9 +4,9 @@ namespace ChessAnalysis.Properties
 {
     internal partial class Resources
     {
-        public static Image? GetIcon(string name)
+        public static Image? GetThemedIcon(string name)
         {
-            return ResourceManager.GetObject($"{Options.Instance.Theme}{name}", resourceCulture) as Bitmap;
+            return ResourceManager.GetObject($"{name}{Options.Instance.Theme}", resourceCulture) as Bitmap;
         }
 
         public static Image? GetPiece(char piece)

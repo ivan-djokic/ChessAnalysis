@@ -7,7 +7,14 @@ namespace ChessAnalysis.Utils
 		public bool AutoFlipBoard
 		{
 			get => Options.Instance.AutoFlipBoard;
-			set => Options.Instance.AutoFlipBoard = value;
+			set
+			{
+				if (Options.Instance.AutoFlipBoard != value)
+                {
+					Options.Instance.AutoFlipBoard = value;
+					RaiseBoardOptionsChanged(true);
+				}
+			}
 		}
 		
 		public string DefaultSnapshotDirectory
@@ -21,8 +28,13 @@ namespace ChessAnalysis.Utils
 			get => Options.Instance.FieldEmptyColor.Normalize();
 			set
 			{
-				Options.Instance.FieldEmptyColor = value.Normalize();
-				Options.BoardOptionsChanged?.Invoke();
+				var color = value.Normalize();
+
+				if (Options.Instance.FieldEmptyColor != color)
+                {
+					Options.Instance.FieldEmptyColor = color;
+					RaiseBoardOptionsChanged();
+				}
 			}
 		}
 		
@@ -31,8 +43,13 @@ namespace ChessAnalysis.Utils
 			get => Options.Instance.FieldFillColor.Normalize();
 			set
 			{
-				Options.Instance.FieldFillColor = value.Normalize();
-				Options.BoardOptionsChanged?.Invoke();
+				var color = value.Normalize();
+
+				if (Options.Instance.FieldEmptyColor != color)
+				{
+					Options.Instance.FieldFillColor = color;
+					RaiseBoardOptionsChanged();
+				}
 			}
 		}
 		
@@ -67,8 +84,11 @@ namespace ChessAnalysis.Utils
 			get => Options.Instance.MarkIfBestMoveIsPlayed;
 			set
 			{
-				Options.Instance.MarkIfBestMoveIsPlayed = value;
-				Options.BoardOptionsChanged?.Invoke();
+				if (Options.Instance.MarkIfBestMoveIsPlayed != value)
+                {
+					Options.Instance.MarkIfBestMoveIsPlayed = value;
+					RaiseBoardOptionsChanged();
+				}
 			}
 		}
 
@@ -80,7 +100,7 @@ namespace ChessAnalysis.Utils
 				if (value)
                 {
 					Options.Instance.PieceStyle = PieceStyles.Classic;
-					Options.BoardOptionsChanged?.Invoke();
+					RaiseBoardOptionsChanged();
 				}
 			}
 		}
@@ -93,7 +113,7 @@ namespace ChessAnalysis.Utils
 				if (value)
 				{
 					Options.Instance.PieceStyle = PieceStyles.Neo;
-					Options.BoardOptionsChanged?.Invoke();
+					RaiseBoardOptionsChanged();
 				}
 			}
 		}
@@ -106,7 +126,7 @@ namespace ChessAnalysis.Utils
 				if (value)
                 {
 					Options.Instance.PieceStyle = PieceStyles.Wood;
-					Options.BoardOptionsChanged?.Invoke();
+					RaiseBoardOptionsChanged();
 				}
 			}
 		}
@@ -123,7 +143,7 @@ namespace ChessAnalysis.Utils
 			set
 			{
 				Options.Instance.ShowCoordinates = value;
-				Options.BoardOptionsChanged?.Invoke();
+				RaiseBoardOptionsChanged();
 			}
 		}
 
@@ -164,6 +184,11 @@ namespace ChessAnalysis.Utils
 			RaisePropertyChanged(() => PlaySound);
 			RaisePropertyChanged(() => ShowCoordinates);
 			RaisePropertiesChanged(() => ThemeDark, () => ThemeLight);
+		}
+
+		private void RaiseBoardOptionsChanged(bool autoFlipBoardChanged = false)
+		{
+			Options.BoardOptionsChanged?.Invoke(autoFlipBoardChanged);
 		}
 	}
 }

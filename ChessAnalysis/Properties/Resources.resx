@@ -118,6 +118,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnAddDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons\btnadddark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnAddFromFileDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons\btnaddfromfiledark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnAddFromFileLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons\btnaddfromfilelight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnAddLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons\btnaddlight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnMailDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons\btnmaildark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnMailLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons\btnmaillight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnOptionsDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons\btnoptionsdark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnOptionsLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons\btnoptionslight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnSaveAsDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons\btnsaveasdark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnSaveAsLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons\btnsaveaslight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnSaveDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons\btnsavedark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnSaveLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons\btnsavelight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnSnapshotDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons\btnsnapshotdark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnSnapshotLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons\btnsnapshotlight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Classic_bb" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\pieces\classic\bb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -154,47 +196,8 @@
   <data name="Classic_wR" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\pieces\classic\wr.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DarkAdd" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\DarkAdd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DarkAddFromFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\DarkAddFromFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DarkMail" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\DarkMail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DarkOptions" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\DarkOptions.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DarkSave" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\DarkSave.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DarkSaveAs" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\DarkSaveAs.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DarkSnapshot" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\DarkSnapshot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LightAdd" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\LightAdd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LightAddFromFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\LightAddFromFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LightMail" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\LightMail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LightOptions" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\LightOptions.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LightSave" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\LightSave.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LightSaveAs" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\LightSaveAs.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LightSnapshot" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\LightSnapshot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Neo_bb" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pieces\Neo\bb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -231,6 +234,9 @@
   </data>
   <data name="Neo_wR" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pieces\Neo\wr.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Star" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Star.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Wood_bb" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pieces\Wood\bb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

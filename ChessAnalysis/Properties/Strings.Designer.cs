@@ -79,6 +79,15 @@ namespace ChessAnalysis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total positions: {0}.
+        /// </summary>
+        internal static string TotalPositions {
+            get {
+                return ResourceManager.GetString("TotalPositions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} contains unallowed character(s).
         /// </summary>
         internal static string UnallowedCharactersDetected {

@@ -1,5 +1,6 @@
 using System.Drawing;
 using ChessAnalysis.Classes;
+using ChessAnalysis.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ChessAnalysis.Tests
@@ -56,7 +57,7 @@ namespace ChessAnalysis.Tests
         {
             try
             {
-                _ = new BestMove(input, isWhite);
+                BestMoveParser.Parse(input, isWhite);
             }
             catch
             {
@@ -68,10 +69,18 @@ namespace ChessAnalysis.Tests
 
         private void ProcessValidInputs(string input, bool isWhite, char expectedPiece, Point expectedField)
         {
-            var bestMove = new BestMove(input, isWhite);
+            var bestMove = BestMoveParser.Parse(input, isWhite);
 
             Assert.AreEqual(expectedField, bestMove.Field);
             Assert.AreEqual(expectedPiece, bestMove.Piece);
+
+            if (input == ParserConsts.ARG_NULL)
+            {
+                Assert.IsNull(bestMove.Value);
+                return;
+            }
+
+            Assert.AreEqual(input, bestMove.Value);
         }
     }
 }

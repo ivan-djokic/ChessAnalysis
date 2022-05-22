@@ -5,11 +5,12 @@ namespace ChessAnalysis.Classes
     public enum Components
     {
         BestMove,
+        Castling,
         Comment,
         FEN,
         HalfMoves,
         Id,
-        InputData,
+        Data,
         NextPlayer,
         Position,
         Round

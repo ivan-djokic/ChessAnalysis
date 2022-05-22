@@ -1,4 +1,5 @@
-﻿using ChessAnalysis.Properties;
+﻿using ChessAnalysis.Models;
+using ChessAnalysis.Properties;
 using ChessAnalysis.Utils;
 
 namespace ChessAnalysis.Classes
@@ -17,11 +18,6 @@ namespace ChessAnalysis.Classes
 
         public static Image Create(Position position, ref bool? isWhiteOriented)
         {
-            if (string.IsNullOrWhiteSpace(position.Fen))
-            {
-                throw new InvalidComponentsNumberException(Components.FEN);
-            }
-
             using var creator = new BoardImageCreator();
             return creator.CreateInternal(position, ref isWhiteOriented);
         }
@@ -38,8 +34,8 @@ namespace ChessAnalysis.Classes
             var board = new Bitmap(Constants.BOARD_SIZE * m_fieldSize, Constants.BOARD_SIZE * m_fieldSize);
             m_graphics = Graphics.FromImage(board);
 
-            var isWhitePlayed = position.IsWhitePlayed();
-            m_isWhiteOriented = isWhiteOriented ?? Options.Instance.AutoFlipBoard || isWhitePlayed;
+            var isWhitePlayed = position.NextPlayer == NextPlayer.Black;
+            m_isWhiteOriented = isWhiteOriented ?? (!Options.Instance.AutoFlipBoard || isWhitePlayed);
             isWhiteOriented = m_isWhiteOriented;
 
             DrawFields();
@@ -49,15 +45,14 @@ namespace ChessAnalysis.Classes
                 DrawCoordinates();
             }
 
-            var bestMove = Options.Instance.MarkIfBestMoveIsPlayed ? new BestMove(position.BestMove, isWhitePlayed) : null;
-            DrawPieces(position.Fen, bestMove);
+            DrawPieces(position.Fen, position.BestMove);
 
             return board;
         }
 
         private void DrawBestMove(int x, int y)
         {
-            using var image = Image.FromFile(@"C:\Users\IDjokic\Downloads\Star.png");
+            using var image = Image.FromFile(@"C:\Users\IDjokic\source\repos\ChessAnalysis\ChessAnalysis\Resources\Icons\Star.png");
 
             if (image == null)
             {
@@ -72,7 +67,7 @@ namespace ChessAnalysis.Classes
 
         private void DrawCoordinates()
         {
-            using var font = new Font("Segoe UI", m_fieldSize / GetScaleFactor(), FontStyle.Bold);
+            using var font = new Font("Segoe UI", Scaling.GetScaledSize(m_fieldSize / Constants.SCALE_FACTOR_COORDINATE_FONT), FontStyle.Bold);
 
             var letterY = Constants.BOARD_SIZE * m_fieldSize - font.Height;
 
@@ -108,7 +103,7 @@ namespace ChessAnalysis.Classes
             }
         }
 
-        private void DrawPieces(string fen, BestMove? bestMove)
+        private void DrawPieces(string fen, BestMove bestMove)
         {
             var x = 0;
             var y = 0;
@@ -145,7 +140,7 @@ namespace ChessAnalysis.Classes
                 var actualX = GetPieceCoordinate(x) * m_fieldSize;
                 var actualY = GetPieceCoordinate(y) * m_fieldSize;
 
-                if (bestMove?.Equals(fen[i], x, y) == true)
+                if (Options.Instance.MarkIfBestMoveIsPlayed && bestMove.Match(fen[i], x, y) == true)
                 {
                     DrawBestMove(actualX, actualY);
                 }
@@ -175,11 +170,6 @@ namespace ChessAnalysis.Classes
             }
 
             return Constants.BOARD_SIZE - 1 - value;
-        }
-
-        private static float GetScaleFactor()
-        {
-            return Constants.SCALE_FACTOR_COORDINATE_FONT * Screen.PrimaryScreen.Bounds.Width / (float)System.Windows.SystemParameters.PrimaryScreenWidth;
         }
 
         private string GetXCoordinate(int offset)

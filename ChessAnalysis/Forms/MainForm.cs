@@ -1,4 +1,5 @@
 using ChessAnalysis.Classes;
+using ChessAnalysis.Models;
 using ChessAnalysis.Properties;
 using ChessAnalysis.Utils;
 using DevExpress.Utils;
@@ -23,7 +24,7 @@ namespace ChessAnalysis.Forms
 
         private void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
         {
-            board.InputData = new InputData("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1 bm e4; id \"KK03\"; c0 \"Kasparov - Karpov\" \"22.12.2003 17:31:05\" \"King's pawn opening\" \"Sicilian defense\"");
+            board.Data = Parser.Parse("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1 bm e4; id \"KK03\"; c0 \"Kasparov - Karpov\" \"22.12.2003 17:31:05\" \"King's pawn opening\" \"Sicilian defense\"");
         }
 
         private void btnAddFromFile_ItemClick(object sender, ItemClickEventArgs e)
@@ -32,6 +33,7 @@ namespace ChessAnalysis.Forms
 
         private void btnMail_ItemClick(object sender, ItemClickEventArgs e)
         {
+            Mailing.SendMail();
         }
 
         private void btnOptions_ItemClick(object sender, ItemClickEventArgs e)
@@ -56,6 +58,16 @@ namespace ChessAnalysis.Forms
             }
         }
 
+        private void grid_FocusedRowChanged(Data data)
+        {
+            board.Data = data;
+        }
+
+        private void grid_RowCountChanged(int count)
+        {
+            lblTotalPositions.Caption = string.Format(Strings.TotalPositions, count);
+        }
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             // da li treba da se sacuva
@@ -64,13 +76,15 @@ namespace ChessAnalysis.Forms
 
         private void SetIcons()
         {
-            btnAdd.ImageOptions.LargeImage = Resources.GetIcon("Add");
-            btnAddFromFile.ImageOptions.LargeImage = Resources.GetIcon("AddFromFile");
-            btnSave.ImageOptions.LargeImage = Resources.GetIcon("Save");
-            btnSaveAs.ImageOptions.LargeImage = Resources.GetIcon("SaveAs");
-            btnMail.ImageOptions.LargeImage = Resources.GetIcon("Mail");
-            btnSnapshot.ImageOptions.LargeImage = Resources.GetIcon("Snapshot");
-            btnOptions.ImageOptions.LargeImage = Resources.GetIcon("Options");
+            // Do not change names of buttons in Designer because this is hardcoded with Resources
+
+            for (var i = 0; i < Main.Items.Count; i++)
+            {
+                if (Main.Items[i] is BarButtonItem button)
+                {
+                    button.ImageOptions.LargeImage = Resources.GetThemedIcon(button.Name);
+                }
+            }
         }
     }
 }
