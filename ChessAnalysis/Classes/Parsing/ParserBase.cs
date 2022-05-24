@@ -40,7 +40,7 @@ namespace ChessAnalysis.Classes
 
         protected string ParseQuotesInput(string input)
         {
-            if (!input.EndsWith(ParserConsts.QUOTES))
+            if (!input.EndsWith(ParseConsts.QUOTES))
             {
                 throw new UnallowedCharactersException(Component);
             }

@@ -17,7 +17,7 @@ namespace ChessAnalysis.Tests
         {
             using var board = new Bitmap(1, 1);
             m_graphics = Graphics.FromImage(board);
-            m_drawPiecesMethod = typeof(BoardImageCreator).GetMethod("DrawPieces", BindingFlags.NonPublic | BindingFlags.Static);
+            m_drawPiecesMethod = typeof(BoardImage).GetMethod("DrawPieces", BindingFlags.NonPublic | BindingFlags.Static);
         }
 
         [TestMethod]

@@ -8,6 +8,8 @@ namespace ChessAnalysis.Controls
     {
         public MultiSelectGridView()
         {
+            OptionsMenu.EnableColumnMenu = false;
+            OptionsMenu.EnableGroupPanelMenu = false;
             OptionsNavigation.AutoFocusNewRow = true;
             OptionsSelection.CheckBoxSelectorColumnWidth = 28;
             OptionsSelection.EnableAppearanceFocusedCell = false;

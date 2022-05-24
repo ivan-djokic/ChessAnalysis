@@ -7,35 +7,47 @@ namespace ChessAnalysis.Classes
         BestMove,
         Castling,
         Comment,
-        FEN,
+        Data,
+        EnPassant,
+        Fen,
         HalfMoves,
         Id,
-        Data,
         NextPlayer,
         Position,
         Round
     }
 
-    public class IncorrectFormatException : Exception
+    public abstract class ExeptionBase : Exception
+    {
+        protected ExeptionBase(string message, Components component)
+           : base(string.Format(message, component))
+        {
+            Component = component;
+        }
+
+        public Components Component { get; }
+    }
+
+    public class IncorrectFormatException : ExeptionBase
     {
         public IncorrectFormatException(Components component)
-            : base(string.Format(Strings.IncorrectFormat, component))
+            : base(Strings.IncorrectFormat, component)
         {
         }
     }
 
-    public class InvalidComponentsNumberException : Exception
+    public class InvalidComponentsNumberException : ExeptionBase
     {
         public InvalidComponentsNumberException(Components component)
-            : base(string.Format(Strings.InvalidComponentsNumber, component))
+            : base(Strings.InvalidComponentsNumber, component)
         {
         }
     }
 
-    public class UnallowedCharactersException : Exception
+    public class UnallowedCharactersException : ExeptionBase
     {
         public UnallowedCharactersException(Components component)
-            : base(string.Format(Strings.UnallowedCharactersDetected, component))
+            : base(Strings.UnallowedCharactersDetected, component)
         {
         }
     }

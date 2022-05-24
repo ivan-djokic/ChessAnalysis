@@ -29,6 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Controls\AddFromClipboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Properties\Icons - Copy.Designer.cs">
       <DependentUpon>Icons.resx</DependentUpon>
       <DesignTime>True</DesignTime>

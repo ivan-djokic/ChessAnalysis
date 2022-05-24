@@ -15,8 +15,8 @@ namespace ChessAnalysis.Controls
         {
             InitializeComponent();
 
-            Data = Parser.Parse(Constants.DEFAULT_INPUT);
             Options.BoardOptionsChanged += DrawImage;
+            Data = Parser.Parse(Constants.DEFAULT_INPUT);
         }
 
         public Data Data 
@@ -70,7 +70,7 @@ namespace ChessAnalysis.Controls
                 m_isWhiteOriented = null;
             }
 
-            imageBoard.Image = BoardImageCreator.Create(m_data.Position, ref m_isWhiteOriented);
+            imageBoard.Image = BoardImage.Create(m_data.Position, ref m_isWhiteOriented);
         }
 
         private void Reinitialize()

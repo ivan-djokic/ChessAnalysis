@@ -11,7 +11,7 @@ namespace ChessAnalysis.Classes
 
         protected override int ArgumentsCount
         {
-            get => ParserConsts.ARGS_COUNT_DATA;
+            get => ParseConsts.ARGS_COUNT_DATA;
         }
 
         protected override Components Component
@@ -21,7 +21,12 @@ namespace ChessAnalysis.Classes
 
         protected override string Delimiter
         {
-            get => ParserConsts.ARGS_DELIMITER_SEMICOLON;
+            get => ParseConsts.ARGS_DELIMITER_SEMICOLON;
+        }
+
+        public static string[] GetArguments(string input)
+        {
+            return new Parser(input).Arguments;
         }
 
         public static Data Parse(string input)
@@ -32,13 +37,11 @@ namespace ChessAnalysis.Classes
 
         protected override Data Parse()
         {
-            return new Data
-            {
-                Comment = CommentParser.Parse(Arguments[ParserConsts.DATA_COMMENT_INDEX]),
-                Id = IdParser.Parse(Arguments[ParserConsts.DATA_ID_INDEX]),
-                Input = m_input,
-                Position = PositionParser.Parse(Arguments[ParserConsts.DATA_POSITION_INDEX])
-            };
+            var position = PositionParser.Parse(Arguments[ParseConsts.DATA_POSITION_INDEX]);
+            var id = IdParser.Parse(Arguments[ParseConsts.DATA_ID_INDEX]);
+            var comment = CommentParser.Parse(Arguments[ParseConsts.DATA_COMMENT_INDEX]);
+
+            return new Data(position, id, comment, m_input);
         }
     }
 }

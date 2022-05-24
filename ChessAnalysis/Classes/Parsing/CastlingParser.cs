@@ -24,7 +24,7 @@ namespace ChessAnalysis.Classes
             var black = Castling.None;
             var white = Castling.None;
 
-            if (m_input == ParserConsts.ARG_NULL)
+            if (m_input == ParseConsts.ARG_NULL)
             {
                 return (black, white);
             }

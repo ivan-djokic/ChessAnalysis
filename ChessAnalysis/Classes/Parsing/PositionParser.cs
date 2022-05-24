@@ -12,7 +12,7 @@ namespace ChessAnalysis.Classes
 
         protected override int ArgumentsCount
         {
-            get => ParserConsts.ARGS_COUNT_POSITION;
+            get => ParseConsts.ARGS_COUNT_POSITION;
         }
 
         protected override Components Component
@@ -22,7 +22,12 @@ namespace ChessAnalysis.Classes
 
         protected override string Delimiter
         {
-            get => ParserConsts.ARGS_DELIMITER_SPACE;
+            get => ParseConsts.ARGS_DELIMITER_SPACE;
+        }
+
+        public static string[] GetArguments(string input)
+        {
+            return new PositionParser(input).Arguments;
         }
 
         public static Position Parse(string input)
@@ -33,23 +38,15 @@ namespace ChessAnalysis.Classes
 
         protected override Position Parse()
         {
-            var result = new Position
-            {
-                Fen = Arguments[ParserConsts.POSITION_FEN_INDEX],
-                HalfMoves = Arguments[ParserConsts.POSITION_HALF_MOVES_INDEX].AsNumber(Components.HalfMoves),
-                Round = Arguments[ParserConsts.POSITION_ROUND_INDEX].AsNumber(Components.Round)
-            };
+            var board = FenParser.Parse(Arguments[ParseConsts.POSITION_FEN_INDEX]);
+            var nextPlayer = NextPlayerParser.Parse(Arguments[ParseConsts.POSITION_NEXT_PLAYER_INDEX]);
+            var enPassant = EnPassantParser.Parse(Arguments[ParseConsts.POSITION_EN_PASSANT_INDEX]);
+            (var blackCastling, var whiteCastling) = CastlingParser.Parse(Arguments[ParseConsts.POSITION_CASTLING_INDEX]);
+            var halfMoves = Arguments[ParseConsts.POSITION_HALF_MOVES_INDEX].AsNumber(Components.HalfMoves);
+            var round = Arguments[ParseConsts.POSITION_ROUND_INDEX].AsNumber(Components.Round);
+            var bestMove = BestMoveParser.Parse(Arguments[ParseConsts.POSITION_BEST_MOVE_INDEX], nextPlayer == NextPlayer.Black);
 
-            if (Arguments[ParserConsts.POSITION_EN_PASSANT_INDEX] != ParserConsts.ARG_NULL)
-            {
-                result.EnPassant = Arguments[ParserConsts.POSITION_EN_PASSANT_INDEX];
-            }
-
-            result.NextPlayer = NextPlayerParser.Parse(Arguments[ParserConsts.POSITION_NEXT_PLAYER_INDEX]);
-            result.BestMove = BestMoveParser.Parse(Arguments[ParserConsts.POSITION_BEST_MOVE_INDEX], result.NextPlayer == NextPlayer.Black);
-            (result.CastlingBlack, result.CastlingWhite) = CastlingParser.Parse(Arguments[ParserConsts.POSITION_CASTLING_INDEX]);
-
-            return result;
+            return new Position(board, nextPlayer, blackCastling, whiteCastling, enPassant, halfMoves, round, bestMove);
         }
     }
 }

@@ -2,20 +2,22 @@
 {
     public class BestMove
     {
+        public BestMove(string value, char piece, Point field)
+        {
+            Field = field;
+            Piece = piece;
+            Value = value;
+        }
+
         public Point Field { get; set; } = new Point(-1, -1);
 
         public char Piece { get; set; }
 
         public string Value { get; set; }
 
-        public bool Match(char piece, int x, int y)
+        public bool ContainsIn(char[,] fen)
         {
-            return Piece == piece && Field.X == x && Field.Y == y;
+            return fen[Field.X, Field.Y] != Piece;
         }
-
-        //public override string ToString()
-        //{
-        //    return Value;
-        //}
     }
 }

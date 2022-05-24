@@ -24,7 +24,9 @@ namespace ChessAnalysis.Forms
 
         private void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
         {
-            board.Data = Parser.Parse("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1 bm e4; id \"KK03\"; c0 \"Kasparov - Karpov\" \"22.12.2003 17:31:05\" \"King's pawn opening\" \"Sicilian defense\"");
+            using var addForm = new AddFromClipboardForm();
+            addForm.ShowDialog();
+            //board.Data = Parser.Parse("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1 bm e4; id \"KK03\"; c0 \"Kasparov - Karpov\" \"22.12.2003 17:31:05\" \"King's pawn opening\" \"Sicilian defense\"");
         }
 
         private void btnAddFromFile_ItemClick(object sender, ItemClickEventArgs e)

@@ -8,6 +8,7 @@ namespace ChessAnalysis
         [STAThread]
         static void Main()
         {
+            //TOOD: check this to swap these 2 lines
             ApplicationConfiguration.Initialize();
 
             Theming.ApplyTheme();

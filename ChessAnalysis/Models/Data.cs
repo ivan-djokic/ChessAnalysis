@@ -2,6 +2,14 @@
 {
     public class Data
     {
+        public Data(Position position, string id, Comment comment, string input)
+        {
+            Comment = comment;
+            Id = id;
+            Input = input;
+            Position = position;
+        }
+
         public Comment Comment { get; set; }
 
         public string Id { get; set; }

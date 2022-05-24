@@ -11,7 +11,7 @@ namespace ChessAnalysis.Classes
 
         protected override int ArgumentsCount
         {
-            get => ParserConsts.ARGS_COUNT_COMMENT;
+            get => ParseConsts.ARGS_COUNT_COMMENT;
         }
 
         protected override Components Component
@@ -21,12 +21,12 @@ namespace ChessAnalysis.Classes
 
         protected override string Delimiter
         {
-            get => ParserConsts.ARGS_DELIMITER_QUOTES;
+            get => ParseConsts.ARGS_DELIMITER_QUOTES;
         }
 
         protected override string KeyWord
         {
-            get => ParserConsts.ARG_COMMENT;
+            get => ParseConsts.ARG_COMMENT;
         }
 
         public static Comment Parse(string input)
@@ -37,13 +37,12 @@ namespace ChessAnalysis.Classes
 
         protected override Comment Parse()
         {
-            return new Comment
-            {
-                Defense = ParseQuotesInput(Arguments[ParserConsts.COMMENT_DEFENSE_INDEX]),
-                Opening = ParseQuotesInput(Arguments[ParserConsts.COMMENT_OPENING_INDEX]),
-                Players = ParseQuotesInput(Arguments[ParserConsts.COMMENT_PLAYERS_INDEX]),
-                Timestamp = ParseQuotesInput(Arguments[ParserConsts.COMMENT_TIMESTAMP_INDEX])
-            };
+            var players = ParseQuotesInput(Arguments[ParseConsts.COMMENT_PLAYERS_INDEX]);
+            var timestamp = ParseQuotesInput(Arguments[ParseConsts.COMMENT_TIMESTAMP_INDEX]);
+            var opening = ParseQuotesInput(Arguments[ParseConsts.COMMENT_OPENING_INDEX]);
+            var defense = ParseQuotesInput(Arguments[ParseConsts.COMMENT_DEFENSE_INDEX]);
+
+            return new Comment(players, timestamp, opening, defense);
         }
     }
 }

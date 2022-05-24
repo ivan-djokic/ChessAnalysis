@@ -1,6 +1,6 @@
 ﻿namespace ChessAnalysis.Classes
 {
-    public static class ParserConsts
+    public static class ParseConsts
     {
         public const string ARG_COMMENT = "c0 ";
         public const string ARG_ID = "id ";
@@ -8,14 +8,14 @@
 
         public const int ARGS_COUNT_COMMENT = 5;
         public const int ARGS_COUNT_DATA = 3;
+        public const int ARGS_COUNT_EN_PASSANT = 2;
         public const int ARGS_COUNT_ID = 2;
-        public const int ARGS_COUNT_MAX_BEST_MOVE = 6; // E.g. Baxd7+
-        public const int ARGS_COUNT_MIN_BEST_MOVE = 2; // E.g. e4
         public const int ARGS_COUNT_NEXT_PLAYER = 1;
         public const int ARGS_COUNT_POSITION = 8;
 
         public const string ARGS_DELIMITER_QUOTES = " \"";
         public const string ARGS_DELIMITER_SEMICOLON = "; ";
+        public const string ARGS_DELIMITER_SLASH = "/";
         public const string ARGS_DELIMITER_SPACE = " ";
 
         public const int COMMENT_DEFENSE_INDEX = 4;

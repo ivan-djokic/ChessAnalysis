@@ -12,7 +12,7 @@ namespace ChessAnalysis.Classes
 
         protected override int ArgumentsCount
         {
-            get => ParserConsts.ARGS_COUNT_NEXT_PLAYER;
+            get => ParseConsts.ARGS_COUNT_NEXT_PLAYER;
         }
 
         protected override Components Component

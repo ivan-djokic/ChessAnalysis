@@ -9,7 +9,7 @@
 
         protected override int ArgumentsCount
         {
-            get => ParserConsts.ARGS_COUNT_ID;
+            get => ParseConsts.ARGS_COUNT_ID;
         }
 
         protected override Components Component
@@ -19,12 +19,12 @@
 
         protected override string Delimiter
         {
-            get => ParserConsts.ARGS_DELIMITER_QUOTES;
+            get => ParseConsts.ARGS_DELIMITER_QUOTES;
         }
 
         protected override string KeyWord
         {
-            get => ParserConsts.ARG_ID;
+            get => ParseConsts.ARG_ID;
         }
 
         public static string Parse(string input)
@@ -34,9 +34,9 @@
 
         protected override string Parse()
         {
-            var result = ParseQuotesInput(Arguments[ParserConsts.ID_INDEX]);
+            var result = ParseQuotesInput(Arguments[ParseConsts.ID_INDEX]);
 
-            if (string.IsNullOrEmpty(result))
+            if (string.IsNullOrWhiteSpace(result))
             {
                 throw new InvalidComponentsNumberException(Component);
             }

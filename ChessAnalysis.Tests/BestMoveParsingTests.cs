@@ -15,7 +15,8 @@ namespace ChessAnalysis.Tests
             ProcessValidInputs("O-O-O", false, 'k', new Point(2, 0));
             
             ProcessInvalidInputs("O-", true);
-            ProcessInvalidInputs("O-O-O-O", false);
+            ProcessInvalidInputs("O-O-Ok", false);
+            ProcessInvalidInputs("O-O-O-O", true);
         }
 
         [TestMethod]
@@ -33,8 +34,10 @@ namespace ChessAnalysis.Tests
             ProcessInvalidInputs("Bx3b", false);
             ProcessInvalidInputs("qxa8+", false);
             ProcessInvalidInputs("Nxi6#", false);
+            ProcessInvalidInputs("ab1", false);
             ProcessInvalidInputs("xe3", true);
-            ProcessInvalidInputs("Pe3", false);
+            ProcessInvalidInputs("Pe3", true);
+            ProcessInvalidInputs("pe3", false);
             ProcessInvalidInputs("BGxb3", true);
             ProcessInvalidInputs("R9xb3", true);
         }
@@ -74,7 +77,7 @@ namespace ChessAnalysis.Tests
             Assert.AreEqual(expectedField, bestMove.Field);
             Assert.AreEqual(expectedPiece, bestMove.Piece);
 
-            if (input == ParserConsts.ARG_NULL)
+            if (input == ParseConsts.ARG_NULL)
             {
                 Assert.IsNull(bestMove.Value);
                 return;

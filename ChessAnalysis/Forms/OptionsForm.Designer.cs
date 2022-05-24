@@ -43,7 +43,6 @@
             this.lciNavigation = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciNavigationFrame = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciDefaults = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navigation)).BeginInit();
@@ -55,7 +54,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.lciNavigation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciNavigationFrame)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciDefaults)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl
@@ -173,8 +171,7 @@
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.lciNavigation,
             this.lciNavigationFrame,
-            this.lciDefaults,
-            this.emptySpaceItem});
+            this.lciDefaults});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(504, 350);
             this.Root.TextVisible = false;
@@ -206,17 +203,9 @@
             this.lciDefaults.Control = this.btnDefaults;
             this.lciDefaults.Location = new System.Drawing.Point(0, 304);
             this.lciDefaults.Name = "lciDefaults";
-            this.lciDefaults.Size = new System.Drawing.Size(80, 26);
+            this.lciDefaults.Size = new System.Drawing.Size(484, 26);
             this.lciDefaults.TextSize = new System.Drawing.Size(0, 0);
             this.lciDefaults.TextVisible = false;
-            // 
-            // emptySpaceItem
-            // 
-            this.emptySpaceItem.AllowHotTrack = false;
-            this.emptySpaceItem.Location = new System.Drawing.Point(80, 304);
-            this.emptySpaceItem.Name = "emptySpaceItem";
-            this.emptySpaceItem.Size = new System.Drawing.Size(404, 26);
-            this.emptySpaceItem.TextSize = new System.Drawing.Size(0, 0);
             // 
             // OptionsForm
             // 
@@ -243,7 +232,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.lciNavigation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciNavigationFrame)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciDefaults)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -265,6 +253,5 @@
         private DevExpress.XtraLayout.LayoutControlItem lciNavigation;
         private DevExpress.XtraLayout.LayoutControlItem lciNavigationFrame;
         private DevExpress.XtraLayout.LayoutControlItem lciDefaults;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem;
     }
 }

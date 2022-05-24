@@ -46,9 +46,6 @@
             this.colDefense = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPlayers = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTimestamp = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colFen = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colInput = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.lciAdd = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciEdit = new DevExpress.XtraLayout.LayoutControlItem();
@@ -147,10 +144,7 @@
             this.colOpening,
             this.colDefense,
             this.colPlayers,
-            this.colTimestamp,
-            this.colFen,
-            this.colId,
-            this.colInput});
+            this.colTimestamp});
             this.gridView.DetailHeight = 303;
             this.gridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridView.GridControl = this.gridControl;
@@ -282,31 +276,6 @@
             this.colTimestamp.VisibleIndex = 10;
             this.colTimestamp.Width = 116;
             // 
-            // colFen
-            // 
-            this.colFen.Caption = "FEN";
-            this.colFen.FieldName = "Position.Fen";
-            this.colFen.Name = "colFen";
-            this.colFen.OptionsColumn.AllowEdit = false;
-            this.colFen.OptionsColumn.AllowFocus = false;
-            this.colFen.Width = 60;
-            // 
-            // colId
-            // 
-            this.colId.FieldName = "Id";
-            this.colId.Name = "colId";
-            this.colId.OptionsColumn.AllowEdit = false;
-            this.colId.OptionsColumn.AllowFocus = false;
-            this.colId.Width = 60;
-            // 
-            // colInput
-            // 
-            this.colInput.FieldName = "Input";
-            this.colInput.Name = "colInput";
-            this.colInput.OptionsColumn.AllowEdit = false;
-            this.colInput.OptionsColumn.AllowFocus = false;
-            this.colInput.Width = 60;
-            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -395,9 +364,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colDefense;
         private DevExpress.XtraGrid.Columns.GridColumn colPlayers;
         private DevExpress.XtraGrid.Columns.GridColumn colTimestamp;
-        private DevExpress.XtraGrid.Columns.GridColumn colFen;
-        private DevExpress.XtraGrid.Columns.GridColumn colId;
-        private DevExpress.XtraGrid.Columns.GridColumn colInput;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem lciAdd;
         private DevExpress.XtraLayout.LayoutControlItem lciEdit;
