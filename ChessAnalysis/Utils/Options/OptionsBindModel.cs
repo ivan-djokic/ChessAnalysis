@@ -16,12 +16,6 @@ namespace ChessAnalysis.Utils
 				}
 			}
 		}
-		
-		public string DefaultSnapshotDirectory
-		{
-			get => Options.Instance.DefaultSnapshotDirectory;
-			set => Options.Instance.DefaultSnapshotDirectory = value;
-		}
 
 		public Color FieldEmptyColor
 		{
@@ -147,12 +141,18 @@ namespace ChessAnalysis.Utils
 			}
 		}
 
+		public string SnapshotDirectory
+		{
+			get => Options.Instance.SnapshotDirectory;
+			set => Options.Instance.SnapshotDirectory = value;
+		}
+
 		public bool ThemeDark
         {
 			get => Options.Instance.Theme == Themes.Dark;
 			set
 			{
-				if (value)
+				if (value && Options.Instance.Theme != Themes.Dark)
 				{
 					Options.Instance.Theme = Themes.Dark;
 					Theming.ApplyTheme();
@@ -165,7 +165,7 @@ namespace ChessAnalysis.Utils
 			get => Options.Instance.Theme == Themes.Light;
 			set
 			{
-				if (value)
+				if (value && Options.Instance.Theme != Themes.Light)
                 {
 					Options.Instance.Theme = Themes.Light;
 					Theming.ApplyTheme();
@@ -176,7 +176,7 @@ namespace ChessAnalysis.Utils
 		public void RaisePropertiesChanged()
         {
 			RaisePropertyChanged(() => AutoFlipBoard);
-			RaisePropertyChanged(() => DefaultSnapshotDirectory);
+			RaisePropertyChanged(() => SnapshotDirectory);
 			RaisePropertiesChanged(() => FieldEmptyColor, () => FieldFillColor);
 			RaisePropertiesChanged(() => LanguageEnglish, () => LanguageSrpski);
 			RaisePropertyChanged(() => MarkIfBestMoveIsPlayed);

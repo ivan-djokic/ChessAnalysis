@@ -34,9 +34,9 @@ namespace ChessAnalysis.Classes
         {
             var result = new char[ArgumentsCount][];
 
-            for (var y = 0; y < Arguments.Length; y++)
+            for (var i = 0; i < Arguments.Length; i++)
             {
-                result[y] = ParseRow(Arguments[y]);
+                result[i] = ParseRow(Arguments[i]);
             }
 
             return result;
@@ -47,21 +47,21 @@ namespace ChessAnalysis.Classes
             var result = new char[ArgumentsCount];
             var x = 0;
 
-            for (var i = 0; i < row.Length; i++)
+            foreach (var item in row)
             {
                 if (x >= ArgumentsCount)
                 {
                     throw new InvalidComponentsNumberException(Component);
                 }
 
-                if (char.ToUpper(row[i]).IsBoardPiece())
+                if (char.ToUpper(item).IsBoardPiece())
                 {
-                    result[x++] = row[i];
+                    result[x++] = item;
                     continue;
                 }
 
                 // Skip empty fields
-                x += row[i].AsNumber(Component);
+                x += item.AsNumber(Component);
             }
 
             if (x < Constants.BOARD_SIZE)

@@ -66,7 +66,7 @@
             this.layoutControl.Location = new System.Drawing.Point(0, 0);
             this.layoutControl.Name = "layoutControl";
             this.layoutControl.Root = this.Root;
-            this.layoutControl.Size = new System.Drawing.Size(504, 350);
+            this.layoutControl.Size = new System.Drawing.Size(508, 348);
             this.layoutControl.TabIndex = 0;
             this.layoutControl.Text = "layoutControl";
             // 
@@ -80,7 +80,7 @@
             this.navigation.Name = "navigation";
             this.navigation.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Hidden;
             this.navigation.ShowGroupExpandButtons = false;
-            this.navigation.Size = new System.Drawing.Size(76, 300);
+            this.navigation.Size = new System.Drawing.Size(62, 298);
             this.navigation.StyleController = this.layoutControl;
             this.navigation.TabIndex = 1;
             // 
@@ -110,13 +110,13 @@
             // 
             this.navigationFrame.Controls.Add(this.pageGeneral);
             this.navigationFrame.Controls.Add(this.pageBoard);
-            this.navigationFrame.Location = new System.Drawing.Point(92, 12);
+            this.navigationFrame.Location = new System.Drawing.Point(78, 12);
             this.navigationFrame.Name = "navigationFrame";
             this.navigationFrame.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.pageGeneral,
             this.pageBoard});
             this.navigationFrame.SelectedPage = this.pageGeneral;
-            this.navigationFrame.Size = new System.Drawing.Size(400, 300);
+            this.navigationFrame.Size = new System.Drawing.Size(418, 298);
             this.navigationFrame.TabIndex = 2;
             this.navigationFrame.Text = "navigationFrame";
             this.navigationFrame.TransitionAnimationProperties.FrameCount = 50;
@@ -126,14 +126,14 @@
             this.pageGeneral.Caption = "pageGeneral";
             this.pageGeneral.Controls.Add(this.generalTab);
             this.pageGeneral.Name = "pageGeneral";
-            this.pageGeneral.Size = new System.Drawing.Size(400, 300);
+            this.pageGeneral.Size = new System.Drawing.Size(418, 298);
             // 
             // generalTab
             // 
             this.generalTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.generalTab.Location = new System.Drawing.Point(0, 0);
             this.generalTab.Name = "generalTab";
-            this.generalTab.Size = new System.Drawing.Size(400, 300);
+            this.generalTab.Size = new System.Drawing.Size(418, 298);
             this.generalTab.TabIndex = 3;
             // 
             // pageBoard
@@ -141,20 +141,20 @@
             this.pageBoard.Caption = "pageBoard";
             this.pageBoard.Controls.Add(this.boardTab);
             this.pageBoard.Name = "pageBoard";
-            this.pageBoard.Size = new System.Drawing.Size(400, 300);
+            this.pageBoard.Size = new System.Drawing.Size(418, 298);
             // 
             // boardTab
             // 
             this.boardTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.boardTab.Location = new System.Drawing.Point(0, 0);
             this.boardTab.Name = "boardTab";
-            this.boardTab.Size = new System.Drawing.Size(400, 300);
+            this.boardTab.Size = new System.Drawing.Size(418, 298);
             this.boardTab.TabIndex = 4;
             // 
             // btnDefaults
             // 
             this.btnDefaults.AllowFocus = false;
-            this.btnDefaults.Location = new System.Drawing.Point(12, 316);
+            this.btnDefaults.Location = new System.Drawing.Point(420, 314);
             this.btnDefaults.MaximumSize = new System.Drawing.Size(76, 22);
             this.btnDefaults.MinimumSize = new System.Drawing.Size(76, 22);
             this.btnDefaults.Name = "btnDefaults";
@@ -173,7 +173,7 @@
             this.lciNavigationFrame,
             this.lciDefaults});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(504, 350);
+            this.Root.Size = new System.Drawing.Size(508, 348);
             this.Root.TextVisible = false;
             // 
             // lciNavigation
@@ -182,7 +182,7 @@
             this.lciNavigation.Location = new System.Drawing.Point(0, 0);
             this.lciNavigation.MinSize = new System.Drawing.Size(54, 20);
             this.lciNavigation.Name = "lciNavigation";
-            this.lciNavigation.Size = new System.Drawing.Size(80, 304);
+            this.lciNavigation.Size = new System.Drawing.Size(66, 302);
             this.lciNavigation.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.lciNavigation.TextSize = new System.Drawing.Size(0, 0);
             this.lciNavigation.TextVisible = false;
@@ -190,20 +190,21 @@
             // lciNavigationFrame
             // 
             this.lciNavigationFrame.Control = this.navigationFrame;
-            this.lciNavigationFrame.Location = new System.Drawing.Point(80, 0);
+            this.lciNavigationFrame.Location = new System.Drawing.Point(66, 0);
             this.lciNavigationFrame.MinSize = new System.Drawing.Size(104, 24);
             this.lciNavigationFrame.Name = "lciNavigationFrame";
-            this.lciNavigationFrame.Size = new System.Drawing.Size(404, 304);
+            this.lciNavigationFrame.Size = new System.Drawing.Size(422, 302);
             this.lciNavigationFrame.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.lciNavigationFrame.TextSize = new System.Drawing.Size(0, 0);
             this.lciNavigationFrame.TextVisible = false;
             // 
             // lciDefaults
             // 
+            this.lciDefaults.ContentHorzAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lciDefaults.Control = this.btnDefaults;
-            this.lciDefaults.Location = new System.Drawing.Point(0, 304);
+            this.lciDefaults.Location = new System.Drawing.Point(0, 302);
             this.lciDefaults.Name = "lciDefaults";
-            this.lciDefaults.Size = new System.Drawing.Size(484, 26);
+            this.lciDefaults.Size = new System.Drawing.Size(488, 26);
             this.lciDefaults.TextSize = new System.Drawing.Size(0, 0);
             this.lciDefaults.TextVisible = false;
             // 
@@ -211,7 +212,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(504, 350);
+            this.ClientSize = new System.Drawing.Size(508, 348);
             this.Controls.Add(this.layoutControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IconOptions.ShowIcon = false;

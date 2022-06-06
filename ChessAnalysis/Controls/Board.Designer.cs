@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Board));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
             this.lblPlayers = new DevExpress.XtraEditors.LabelControl();
             this.lblTimestamp = new DevExpress.XtraEditors.LabelControl();
@@ -126,9 +126,9 @@
             this.btnFlip.Name = "btnFlip";
             this.btnFlip.Size = new System.Drawing.Size(18, 18);
             this.btnFlip.StyleController = this.layoutControl;
-            toolTipItem1.Text = "Flip board";
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btnFlip.SuperTip = superToolTip1;
+            toolTipItem2.Text = "Flip board";
+            superToolTip2.Items.Add(toolTipItem2);
+            this.btnFlip.SuperTip = superToolTip2;
             this.btnFlip.TabIndex = 5;
             this.btnFlip.Click += new System.EventHandler(this.btnFlip_Click);
             // 
@@ -181,7 +181,7 @@
             this.lciOpening.Control = this.lblOpening;
             this.lciOpening.Location = new System.Drawing.Point(0, 44);
             this.lciOpening.MaxSize = new System.Drawing.Size(0, 22);
-            this.lciOpening.MinSize = new System.Drawing.Size(69, 22);
+            this.lciOpening.MinSize = new System.Drawing.Size(1, 22);
             this.lciOpening.Name = "lciOpening";
             this.lciOpening.Size = new System.Drawing.Size(203, 22);
             this.lciOpening.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
@@ -193,7 +193,7 @@
             this.lciDefense.Control = this.lblDefense;
             this.lciDefense.Location = new System.Drawing.Point(203, 44);
             this.lciDefense.MaxSize = new System.Drawing.Size(0, 22);
-            this.lciDefense.MinSize = new System.Drawing.Size(69, 22);
+            this.lciDefense.MinSize = new System.Drawing.Size(1, 22);
             this.lciDefense.Name = "lciDefense";
             this.lciDefense.Size = new System.Drawing.Size(204, 22);
             this.lciDefense.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;

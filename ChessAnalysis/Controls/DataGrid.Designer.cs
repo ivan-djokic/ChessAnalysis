@@ -123,6 +123,7 @@
             // 
             // gridControl
             // 
+            this.gridControl.DataSource = new Classes.DataCollection();
             this.gridControl.Location = new System.Drawing.Point(12, 38);
             this.gridControl.MainView = this.gridView;
             this.gridControl.Name = "gridControl";

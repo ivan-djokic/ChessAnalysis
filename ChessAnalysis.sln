@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChessAnalysis", "ChessAnalysis\ChessAnalysis.csproj", "{A1F5C189-FEF1-4C9B-BC50-6DC552254F26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessAnalysis.Tests", "ChessAnalysis.Tests\ChessAnalysis.Tests.csproj", "{B00524DB-B54F-4D1D-9849-632C44F689FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChessAnalysis.Tests", "ChessAnalysis.Tests\ChessAnalysis.Tests.csproj", "{B00524DB-B54F-4D1D-9849-632C44F689FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -13,8 +13,6 @@ namespace ChessAnalysis.Utils
 
 		public bool AutoFlipBoard { get; set; }
 
-		public string DefaultSnapshotDirectory { get; set; }
-
 		public Color FieldEmptyColor { get; set; }
 
 		public Color FieldFillColor { get; set; }
@@ -26,6 +24,8 @@ namespace ChessAnalysis.Utils
 
 		public Languages Language { get; set; }
 
+		public string LastInputDirectory { get; set; }
+
 		public bool MarkIfBestMoveIsPlayed { get; set; }
 
 		public PieceStyles PieceStyle { get; set; }
@@ -33,6 +33,8 @@ namespace ChessAnalysis.Utils
 		public bool PlaySound { get; set; }
 
 		public bool ShowCoordinates { get; set; }
+
+		public string SnapshotDirectory { get; set; }
 
 		public Themes Theme { get; set; }
 
@@ -45,7 +47,6 @@ namespace ChessAnalysis.Utils
 		public void SetDefaults(bool raiseOnChange = true)
 		{
 			AutoFlipBoard = true;
-			DefaultSnapshotDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Constants.APP_NAME, Constants.SNAPSHOTS_DIR);
 			FieldEmptyColor = Color.FromArgb(255, 230, 230, 230);
 			FieldFillColor = Color.FromArgb(255, 135, 206, 235);
 			Language = Languages.English;
@@ -53,6 +54,7 @@ namespace ChessAnalysis.Utils
 			PieceStyle = PieceStyles.Classic;
 			PlaySound = true;
 			ShowCoordinates = true;
+			SnapshotDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Constants.APP_NAME, Constants.SNAPSHOTS_DIR);
 			Theme = Themes.Dark;
 
 			if (raiseOnChange)
@@ -64,14 +66,15 @@ namespace ChessAnalysis.Utils
 		private void CopyTo(Options options)
 		{
 			options.AutoFlipBoard = AutoFlipBoard;
-			options.DefaultSnapshotDirectory = DefaultSnapshotDirectory;
 			options.FieldEmptyColor = FieldEmptyColor;
 			options.FieldFillColor = FieldFillColor;
 			options.Language = Language;
+			options.LastInputDirectory = LastInputDirectory;
 			options.MarkIfBestMoveIsPlayed = MarkIfBestMoveIsPlayed;
 			options.PieceStyle = PieceStyle;
 			options.PlaySound = PlaySound;
 			options.ShowCoordinates = ShowCoordinates;
+			options.SnapshotDirectory = SnapshotDirectory;
 			options.Theme = Theme;
 		}
 
@@ -86,7 +89,7 @@ namespace ChessAnalysis.Utils
 		private void CreateDirsIfNotExist()
         {
 			FileHelper.CreateDirIfNotExists(m_optionsFileName);
-			FileHelper.CreateDirIfNotExists(DefaultSnapshotDirectory);
+			FileHelper.CreateDirIfNotExists(SnapshotDirectory);
         }
 
 		private void Load()

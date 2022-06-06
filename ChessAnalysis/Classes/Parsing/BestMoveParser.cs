@@ -27,7 +27,7 @@ namespace ChessAnalysis.Classes
         {
             if (m_input == ParseConsts.ARG_NULL)
             {
-                return new BestMove(m_input, Constants.EMPTY_CHAR, new Point(-1, -1));
+                return new BestMove(string.Empty, Constants.EMPTY_CHAR, new Point(-1, -1));
             }
 
             return ParseCastlingMove() ?? ProcessRegularMove();

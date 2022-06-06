@@ -1,16 +1,17 @@
+using System.IO;
 using ChessAnalysis.Classes;
-using ChessAnalysis.Models;
 using ChessAnalysis.Properties;
 using ChessAnalysis.Utils;
-using DevExpress.Utils;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
-using System.Media;
+using DevExpress.XtraEditors;
 
 namespace ChessAnalysis.Forms
 {
     public partial class MainForm : RibbonForm
     {
+        private string m_savedFile = string.Empty;
+
         public MainForm()
         {
             InitializeComponent();
@@ -22,67 +23,74 @@ namespace ChessAnalysis.Forms
             SetIcons();
         }
 
-        private void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            using var addForm = new AddFromClipboardForm();
-            addForm.ShowDialog();
-            //board.Data = Parser.Parse("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1 bm e4; id \"KK03\"; c0 \"Kasparov - Karpov\" \"22.12.2003 17:31:05\" \"King's pawn opening\" \"Sicilian defense\"");
+        private void btnAdd_ItemClick(object sender, EventArgs e)
+        { 
+            using var addForm = new AddForm();
+            addForm.ShowDialog(this);
         }
 
-        private void btnAddFromFile_ItemClick(object sender, ItemClickEventArgs e)
+        private void btnAddFromFile_ItemClick(object sender, EventArgs e)
         {
+            using var addFromFileForm = new AddFromFileForm(panel.Collection);
+            addFromFileForm.ShowDialog(this);
         }
 
-        private void btnMail_ItemClick(object sender, ItemClickEventArgs e)
+        private void btnMail_ItemClick(object sender, EventArgs e)
         {
-            Mailing.SendMail();
+            Mailing.SendMail(panel.Collection);
         }
 
-        private void btnOptions_ItemClick(object sender, ItemClickEventArgs e)
+        private void btnOptions_ItemClick(object sender, EventArgs e)
         {
             using var optionsForm = new OptionsForm();
-            optionsForm.ShowDialog();
+            optionsForm.ShowDialog(this);
         }
 
-        private void btnSave_ItemClick(object sender, ItemClickEventArgs e)
+        private void btnSave_ItemClick(object sender, EventArgs e)
         {
-        }
-
-        private void btnSaveAs_ItemClick(object sender, ItemClickEventArgs e)
-        {
-        }
-
-        private void btnSnapshot_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            if (board.Snapshot(this))
+            if (!File.Exists(m_savedFile))
             {
-                SoundPlay.Snapshot();
+                btnSaveAs_ItemClick(new object(), EventArgs.Empty);
+                return;
+            }
+
+            FileHelper.Save(m_savedFile, panel.Collection.ToString());
+        }
+
+        private void btnSaveAs_ItemClick(object sender, EventArgs e)
+        {
+            using var fileDialog = new XtraSaveFileDialog();
+
+            if (fileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                m_savedFile = fileDialog.FileName;
+                FileHelper.Save(m_savedFile, panel.Collection.ToString());
             }
         }
 
-        private void grid_FocusedRowChanged(Data data)
+        private void btnSnapshot_ItemClick(object sender, EventArgs e)
         {
-            board.Data = data;
+            try
+            {
+                panel.TakeSnapshot();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(this, ex.Message, "Error message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void grid_RowCountChanged(int count)
+        private void RowCountChanged(int count)
         {
             lblTotalPositions.Caption = string.Format(Strings.TotalPositions, count);
-        }
-
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            // da li treba da se sacuva
-            // ovde moze da se suva TEMP proj
         }
 
         private void SetIcons()
         {
             // Do not change names of buttons in Designer because this is hardcoded with Resources
-
-            for (var i = 0; i < Main.Items.Count; i++)
+            foreach (var item in Main.Items)
             {
-                if (Main.Items[i] is BarButtonItem button)
+                if (item is BarButtonItem button)
                 {
                     button.ImageOptions.LargeImage = Resources.GetThemedIcon(button.Name);
                 }

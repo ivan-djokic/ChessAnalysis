@@ -3,6 +3,7 @@ using ChessAnalysis.Classes;
 using ChessAnalysis.Models;
 using ChessAnalysis.Utils;
 using DevExpress.XtraEditors;
+using DevExpress.XtraLayout.Utils;
 
 namespace ChessAnalysis.Controls
 {
@@ -10,6 +11,7 @@ namespace ChessAnalysis.Controls
     {
         private Data m_data;
         private bool? m_isWhiteOriented;
+        private LayoutVisibility m_controlsVisibility;
 
         public Board()
         {
@@ -29,32 +31,22 @@ namespace ChessAnalysis.Controls
             }
         }
 
-        public bool Snapshot(IWin32Window owner)
+        public bool ShowOnlyBoard
         {
-            using var saveDialog = new XtraSaveFileDialog()
+            get => m_controlsVisibility == LayoutVisibility.Never;
+            set
             {
-                FileName = m_data.Id,
-                Filter = Constants.SAVE_IMAGE_FILTER,
-                InitialDirectory = Options.Instance.DefaultSnapshotDirectory
-            };
-
-            if (saveDialog.ShowDialog(owner) != DialogResult.OK)
-            {
-                return false;
+                if (ShowOnlyBoard != value)
+                {
+                    m_controlsVisibility = value ? LayoutVisibility.Never : LayoutVisibility.Always;
+                    ChangeControlsVisibility();
+                }
             }
+        }
 
-            imageBoard.Image.Save(saveDialog.FileName);
-
-            var lastDirectory = Path.GetDirectoryName(saveDialog.FileName);
-
-            if (string.IsNullOrEmpty(lastDirectory))
-            {
-                return false;
-            }
-
-            Options.Instance.DefaultSnapshotDirectory = lastDirectory;
-            Options.Instance.Save();
-            return true;
+        public void TakeSnapshot()
+        {
+            Snapshot.Save(imageBoard.Image, m_data.Id);
         }
 
         private void btnFlip_Click(object sender, EventArgs e)
@@ -63,11 +55,20 @@ namespace ChessAnalysis.Controls
             DrawImage(false);
         }
 
+        private void ChangeControlsVisibility()
+        {
+            lciPlayers.Visibility = m_controlsVisibility;
+            lciTimestamp.Visibility = m_controlsVisibility;
+            lciOpening.Visibility = m_controlsVisibility;
+            lciDefense.Visibility = m_controlsVisibility;
+            lciFlip.Visibility = m_controlsVisibility;
+        }
+
         private void DrawImage(bool resetOrientation)
         {
             if (resetOrientation)
             {
-                m_isWhiteOriented = null;
+                m_isWhiteOriented = ShowOnlyBoard ? true : null;
             }
 
             imageBoard.Image = BoardImage.Create(m_data.Position, ref m_isWhiteOriented);

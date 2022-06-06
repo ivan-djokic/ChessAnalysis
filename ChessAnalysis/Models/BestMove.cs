@@ -14,10 +14,5 @@
         public char Piece { get; set; }
 
         public string Value { get; set; }
-
-        public bool ContainsIn(char[,] fen)
-        {
-            return fen[Field.X, Field.Y] != Piece;
-        }
     }
 }

@@ -25,12 +25,24 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="devexpress.win.design" Version="21.2.4" />
+    <PackageReference Include="devexpress.win.design" Version="21.2.7" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Controls\ErrorGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\MainPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Controls\AddFromClipboard.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\ErrorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\AddFromFileForm.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Properties\Icons - Copy.Designer.cs">
       <DependentUpon>Icons.resx</DependentUpon>

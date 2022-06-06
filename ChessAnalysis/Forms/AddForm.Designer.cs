@@ -1,6 +1,6 @@
 ﻿namespace ChessAnalysis.Forms
 {
-    partial class AddFromClipboardForm
+    partial class AddForm
     {
         /// <summary>
         /// Required designer variable.
@@ -89,7 +89,7 @@
             this.Name = "AddForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Add from clipboard";
+            this.Text = "Add data from clipboard";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();

@@ -14,7 +14,7 @@ namespace ChessAnalysis.Controls
 
         private void BindComponents()
         {
-            Options.Instance.Bind(txtSnapshotDirectory, model => model.DefaultSnapshotDirectory);
+            Options.Instance.Bind(txtSnapshotDirectory, model => model.SnapshotDirectory);
             Options.Instance.Bind(rbDark, model => model.ThemeDark);
             Options.Instance.Bind(rbLight, model => model.ThemeLight);
             Options.Instance.Bind(rbEnglish, model => model.LanguageEnglish);
@@ -26,7 +26,7 @@ namespace ChessAnalysis.Controls
 		{
             using var browserDialog = new XtraFolderBrowserDialog
             {
-                SelectedPath = Options.Instance.DefaultSnapshotDirectory
+                SelectedPath = Options.Instance.SnapshotDirectory
             };
             
             if (browserDialog.ShowDialog() == DialogResult.OK)

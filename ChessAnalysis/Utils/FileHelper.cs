@@ -22,7 +22,7 @@ namespace ChessAnalysis.Utils
             }
         }
 
-        private static string GetDirectoryName(string input)
+        public static string GetDirectoryName(string input)
         {
             if (IsDirectory(input))
             {
@@ -30,6 +30,11 @@ namespace ChessAnalysis.Utils
             }
 
             return Path.GetDirectoryName(input) ?? string.Empty;
+        }
+
+        public static void Save(string fileName, string content)
+        {
+            File.WriteAllText(fileName, content);
         }
 
         private static bool IsDirectory(string input)

@@ -112,14 +112,14 @@
             // 
             // txtSnapshotDirectory
             // 
-            this.txtSnapshotDirectory.EditValue = "C:\\User\\Documents";
-            this.txtSnapshotDirectory.Location = new System.Drawing.Point(176, 34);
+            this.txtSnapshotDirectory.EditValue = "C:\\Users\\User\\Documents";
+            this.txtSnapshotDirectory.Location = new System.Drawing.Point(139, 34);
             this.txtSnapshotDirectory.Name = "txtSnapshotDirectory";
             editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
             editorButtonImageOptions1.SvgImageSize = new System.Drawing.Size(12, 12);
             this.txtSnapshotDirectory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.txtSnapshotDirectory.Size = new System.Drawing.Size(212, 20);
+            this.txtSnapshotDirectory.Size = new System.Drawing.Size(249, 20);
             this.txtSnapshotDirectory.StyleController = this.layoutControl;
             this.txtSnapshotDirectory.TabIndex = 2;
             this.txtSnapshotDirectory.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtSnapshotDirectory_ButtonClick);
@@ -256,8 +256,8 @@
             this.lciSnapshotDirectory.Name = "lciSnapshotDirectory";
             this.lciSnapshotDirectory.Size = new System.Drawing.Size(380, 24);
             this.lciSnapshotDirectory.Spacing = new DevExpress.XtraLayout.Utils.Padding(20, 0, 0, 0);
-            this.lciSnapshotDirectory.Text = "Default snapshot directory:";
-            this.lciSnapshotDirectory.TextSize = new System.Drawing.Size(132, 13);
+            this.lciSnapshotDirectory.Text = "Snapshot directory:";
+            this.lciSnapshotDirectory.TextSize = new System.Drawing.Size(95, 13);
             // 
             // lciTheme
             // 

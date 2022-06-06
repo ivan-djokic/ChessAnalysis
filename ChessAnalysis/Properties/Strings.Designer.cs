@@ -61,6 +61,15 @@ namespace ChessAnalysis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data source already contains item with ID: &quot;{0}&quot;.
+        /// </summary>
+        internal static string DataSourceContainsId {
+            get {
+                return ResourceManager.GetString("DataSourceContainsId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} format is incorrect.
         /// </summary>
         internal static string IncorrectFormat {

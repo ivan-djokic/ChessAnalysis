@@ -96,5 +96,10 @@ namespace ChessAnalysis.Utils
         {
             return input.Remove(input.Length - count);
         }
+
+        public static IEnumerable<T> WithoutNullValues<T>(this IEnumerable<T> input)
+        {
+            return input.Where(e => e != null);
+        }
     }
 }

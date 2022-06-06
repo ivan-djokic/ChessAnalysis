@@ -25,6 +25,23 @@ namespace ChessAnalysis.Controls
             get => true;
         }
 
+        public void RefreshData(bool refreshSelection)
+        {
+            var selection = GetSelectedRows();
+            base.RefreshData();
+            ClearSelection();
+
+            if (!refreshSelection)
+            {
+                return;
+            }
+
+            foreach (var row in selection)
+            {
+                SelectRow(row - 1);
+            }
+        }
+
         protected override void CreateCheckboxSelectorColumn()
         {
             base.CreateCheckboxSelectorColumn();

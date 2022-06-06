@@ -1,7 +1,5 @@
-﻿using System.IO;
-using ChessAnalysis.Classes;
+﻿using ChessAnalysis.Classes;
 using ChessAnalysis.Models;
-using ChessAnalysis.Utils;
 using DevExpress.XtraEditors;
 
 namespace ChessAnalysis.Controls

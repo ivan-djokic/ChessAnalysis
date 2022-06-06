@@ -38,27 +38,22 @@
             this.btnMail = new DevExpress.XtraBars.BarButtonItem();
             this.btnSnapshot = new DevExpress.XtraBars.BarButtonItem();
             this.btnOptions = new DevExpress.XtraBars.BarButtonItem();
-            this.lblTotalPositions = new DevExpress.XtraBars.BarStaticItem();
-            this.lblNotification = new DevExpress.XtraBars.BarStaticItem();
             this.toolbar = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.groupPositions = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.groupShare = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.groupOther = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.statusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
-            this.board = new ChessAnalysis.Controls.Board();
-            this.grid = new ChessAnalysis.Controls.DataGrid();
+            this.panel = new ChessAnalysis.Controls.MainPanel();
+            this.lblTotalPositions = new DevExpress.XtraBars.BarStaticItem();
+            this.lblNotification = new DevExpress.XtraBars.BarStaticItem();
+            this.statusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.lciBoard = new DevExpress.XtraLayout.LayoutControlItem();
-            this.lciGrid = new DevExpress.XtraLayout.LayoutControlItem();
+            this.lciPanel = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.Main)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupAdd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lciBoard)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lciGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciPanel)).BeginInit();
             this.SuspendLayout();
             // 
             // Main
@@ -212,8 +207,7 @@
             // 
             // layoutControl
             // 
-            this.layoutControl.Controls.Add(this.board);
-            this.layoutControl.Controls.Add(this.grid);
+            this.layoutControl.Controls.Add(this.panel);
             this.layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl.Location = new System.Drawing.Point(0, 132);
             this.layoutControl.Name = "layoutControl";
@@ -222,59 +216,42 @@
             this.layoutControl.TabIndex = 9;
             this.layoutControl.Text = "layoutControl";
             // 
-            // board
+            // panel
             // 
-            this.board.Location = new System.Drawing.Point(12, 12);
-            this.board.Name = "board";
-            this.board.Size = new System.Drawing.Size(428, 519);
-            this.board.TabIndex = 4;
-            // 
-            // grid
-            // 
-            this.grid.Location = new System.Drawing.Point(444, 12);
-            this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(742, 519);
-            this.grid.TabIndex = 5;
-            this.grid.FocusedRowChanged += this.grid_FocusedRowChanged;
-            this.grid.RowCountChanged += this.grid_RowCountChanged;
+            this.panel.Location = new System.Drawing.Point(12, 12);
+            this.panel.Name = "panel";
+            this.panel.ShowOnlyMainControls = false;
+            this.panel.Size = new System.Drawing.Size(1174, 519);
+            this.panel.TabIndex = 4;
+            this.panel.RowCountChanged += RowCountChanged;
             // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.lciBoard,
-            this.lciGrid});
+            this.lciPanel});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(1198, 543);
             this.Root.TextVisible = false;
             // 
-            // lciBoard
+            // lciPanel
             // 
-            this.lciBoard.Control = this.board;
-            this.lciBoard.Location = new System.Drawing.Point(0, 0);
-            this.lciBoard.Name = "lciBoard";
-            this.lciBoard.Size = new System.Drawing.Size(432, 523);
-            this.lciBoard.TextSize = new System.Drawing.Size(0, 0);
-            this.lciBoard.TextVisible = false;
-            // 
-            // lciGrid
-            // 
-            this.lciGrid.Control = this.grid;
-            this.lciGrid.Location = new System.Drawing.Point(432, 0);
-            this.lciGrid.Name = "lciGrid";
-            this.lciGrid.Size = new System.Drawing.Size(746, 523);
-            this.lciGrid.TextSize = new System.Drawing.Size(0, 0);
-            this.lciGrid.TextVisible = false;
+            this.lciPanel.Control = this.panel;
+            this.lciPanel.Location = new System.Drawing.Point(0, 0);
+            this.lciPanel.Name = "lciPanel";
+            this.lciPanel.Size = new System.Drawing.Size(1178, 523);
+            this.lciPanel.TextSize = new System.Drawing.Size(0, 0);
+            this.lciPanel.TextVisible = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1198, 699);
+            this.Controls.Add(this.Main);
             this.Controls.Add(this.layoutControl);
             this.Controls.Add(this.statusBar);
-            this.Controls.Add(this.Main);
             this.IconOptions.Icon = ChessAnalysis.Properties.Resources.Icon;
             this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "MainForm";
@@ -282,15 +259,13 @@
             this.StatusBar = this.statusBar;
             this.Text = "Chess analysis";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.Main)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lciBoard)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lciGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciPanel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,13 +288,11 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupShare;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupOther;
         private DevExpress.XtraLayout.LayoutControl layoutControl;
-        private Controls.Board board;
-        private Controls.DataGrid grid;
+        private Controls.MainPanel panel;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar statusBar;
         private DevExpress.XtraBars.BarStaticItem lblTotalPositions;
         private DevExpress.XtraBars.BarStaticItem lblNotification;        
         private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private DevExpress.XtraLayout.LayoutControlItem lciBoard;
-        private DevExpress.XtraLayout.LayoutControlItem lciGrid;
+        private DevExpress.XtraLayout.LayoutControlItem lciPanel;
     }
 }

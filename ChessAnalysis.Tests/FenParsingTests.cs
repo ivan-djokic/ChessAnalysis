@@ -61,7 +61,7 @@ namespace ChessAnalysis.Tests
                 return;
             }
 
-            m_drawPiecesMethod?.Invoke(null, new object[] { m_graphics, Constants.BOARD_FIELD_DEFAULT_SIZE, input, null });
+            m_drawPiecesMethod?.Invoke(null, new object[] { m_graphics, 300, input, null });
         }
     }
 }

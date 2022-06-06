@@ -10,6 +10,8 @@
 
         public const char EMPTY_CHAR = '\0';
 
+        public const string DIALOG_FILTER = "Text files (*.txt)|*.txt";
+
         public const string OPTIONS_FILE_NAME = "Options.xml";
 
         public const char PAWN = 'P';
@@ -19,11 +21,11 @@
         public const char PLAYER_BLACK = 'b';
         public const char PLAYER_WHITE = 'w';
 
-        public const string SAVE_IMAGE_FILTER = "PNG (*.png)|*.png|JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|Bitmap (*.bmp)|*.bmp|GIF (*.gif)|*.gif|TIFF (*.tif, *.tiff)|*.tif;*.tiff";
+        public const string SNAPSHOT_EXTENSION = ".png";
 
         public const int SCALE_FACTOR_BEST_MOVE_IMAGE = 3;
 
-        public const float SCALE_FACTOR_COORDINATE_FONT = 7;
+        public const float SCALE_FACTOR_COORDINATE_FONT = 8;
 
         public const string SNAPSHOTS_DIR = "Snapshots";
 

@@ -29,9 +29,9 @@ namespace ChessAnalysis.Classes
                 return (black, white);
             }
 
-            for (var i = 0; i < m_input.Length; i++)
+            foreach (var item in m_input)
             {
-                switch (m_input[i])
+                switch (item)
                 {
                     case 'k':
                         black = ExecuteOrOperation(black, Castling.King);
