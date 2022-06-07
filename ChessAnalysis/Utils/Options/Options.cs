@@ -9,7 +9,7 @@ namespace ChessAnalysis.Utils
 		private readonly string m_optionsFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
 				Constants.APP_NAME, Constants.OPTIONS_FILE_NAME);
 
-		private static readonly Lazy<Options> s_instance = new(() => CreateOptions());
+		private static readonly Lazy<Options> s_instance = new(CreateInstance);
 
 		public bool AutoFlipBoard { get; set; }
 
@@ -26,13 +26,25 @@ namespace ChessAnalysis.Utils
 
 		public string LastInputDirectory { get; set; }
 
+		public string LastOutputDirectory { get; set; }
+
+		public string MailContent { get; set; }
+
 		public bool MarkIfBestMoveIsPlayed { get; set; }
 
 		public PieceStyles PieceStyle { get; set; }
 
 		public bool PlaySound { get; set; }
 
+		public string ReceiverMail { get; set; }
+
+		public string SenderMail { get; set; }
+
+		public string SenderPassword { get; set; }
+
 		public bool ShowCoordinates { get; set; }
+
+		public string SmtpClient { get; set; }
 
 		public string SnapshotDirectory { get; set; }
 
@@ -40,8 +52,20 @@ namespace ChessAnalysis.Utils
 
 		public void Save()
 		{
-			using var writer = new StreamWriter(m_optionsFileName);
-			new XmlSerializer(typeof(Options)).Serialize(writer, this);
+			var senderPassword = SenderPassword;
+
+			try
+            {
+				SenderPassword = Crypto.Encrypt(SenderPassword);
+
+				FileHelper.CreateDirIfNotExists(m_optionsFileName);
+				using var writer = new StreamWriter(m_optionsFileName);
+				new XmlSerializer(typeof(Options)).Serialize(writer, this);
+			}
+			finally
+            {
+				SenderPassword = senderPassword;
+            }
 		}
 
 		public void SetDefaults(bool raiseOnChange = true)
@@ -53,7 +77,10 @@ namespace ChessAnalysis.Utils
 			MarkIfBestMoveIsPlayed = true;
 			PieceStyle = PieceStyles.Classic;
 			PlaySound = true;
+			SenderMail = "chess.analysis.bot@gmail.com";
+			SenderPassword = "ihlwdcigekjkqonl";
 			ShowCoordinates = true;
+			SmtpClient = "smtp.gmail.com";
 			SnapshotDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Constants.APP_NAME, Constants.SNAPSHOTS_DIR);
 			Theme = Themes.Dark;
 
@@ -70,15 +97,21 @@ namespace ChessAnalysis.Utils
 			options.FieldFillColor = FieldFillColor;
 			options.Language = Language;
 			options.LastInputDirectory = LastInputDirectory;
+			options.LastOutputDirectory = LastOutputDirectory;
+			options.MailContent = MailContent;
 			options.MarkIfBestMoveIsPlayed = MarkIfBestMoveIsPlayed;
 			options.PieceStyle = PieceStyle;
 			options.PlaySound = PlaySound;
+			options.ReceiverMail = ReceiverMail;
+			options.SenderMail = SenderMail;
+			options.SenderPassword = Crypto.Decrypt(SenderPassword);
 			options.ShowCoordinates = ShowCoordinates;
+			options.SmtpClient = SmtpClient;
 			options.SnapshotDirectory = SnapshotDirectory;
 			options.Theme = Theme;
 		}
 
-		private static Options CreateOptions()
+		private static Options CreateInstance()
         {
 			var options = new Options();
 			options.Load();

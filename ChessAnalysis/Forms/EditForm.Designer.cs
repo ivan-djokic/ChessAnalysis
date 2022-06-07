@@ -1,6 +1,6 @@
 ﻿namespace ChessAnalysis.Forms
 {
-    partial class AddForm
+    partial class EditForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,43 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
-            this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             this.dataInput = new ChessAnalysis.Controls.DataInput();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.lciInput = new DevExpress.XtraLayout.LayoutControlItem();
-            this.lciAdd = new DevExpress.XtraLayout.LayoutControlItem();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
-            this.layoutControl.SuspendLayout();
+            this.lciEdit = new DevExpress.XtraLayout.LayoutControlItem();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
+            this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciInput)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lciAdd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciEdit)).BeginInit();
             this.SuspendLayout();
             // 
-            // layoutControl
+            // layoutControl1
             // 
-            this.layoutControl.Controls.Add(this.btnAdd);
-            this.layoutControl.Controls.Add(this.dataInput);
-            this.layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl.Name = "layoutControl";
-            this.layoutControl.Root = this.Root;
-            this.layoutControl.Size = new System.Drawing.Size(746, 78);
-            this.layoutControl.TabIndex = 0;
-            this.layoutControl.Text = "layoutControl1";
+            this.layoutControl1.Controls.Add(this.btnEdit);
+            this.layoutControl1.Controls.Add(this.dataInput);
+            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.Root = this.Root;
+            this.layoutControl1.Size = new System.Drawing.Size(746, 78);
+            this.layoutControl1.TabIndex = 0;
+            this.layoutControl1.Text = "layoutControl1";
             // 
-            // btnAdd
+            // btnEdit
             // 
-            this.btnAdd.AllowFocus = false;
-            this.btnAdd.Location = new System.Drawing.Point(658, 44);
-            this.btnAdd.MaximumSize = new System.Drawing.Size(76, 22);
-            this.btnAdd.MinimumSize = new System.Drawing.Size(76, 22);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(76, 22);
-            this.btnAdd.StyleController = this.layoutControl;
-            this.btnAdd.TabIndex = 7;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnEdit.AllowFocus = false;
+            this.btnEdit.Location = new System.Drawing.Point(658, 44);
+            this.btnEdit.MaximumSize = new System.Drawing.Size(76, 22);
+            this.btnEdit.MinimumSize = new System.Drawing.Size(76, 22);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(76, 22);
+            this.btnEdit.StyleController = this.layoutControl1;
+            this.btnEdit.TabIndex = 7;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // dataInput
             // 
@@ -79,7 +79,7 @@
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.lciInput,
-            this.lciAdd});
+            this.lciEdit});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(746, 78);
             this.Root.TextVisible = false;
@@ -93,46 +93,46 @@
             this.lciInput.TextSize = new System.Drawing.Size(0, 0);
             this.lciInput.TextVisible = false;
             // 
-            // lciAdd
+            // lciEdit
             // 
-            this.lciAdd.ContentHorzAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.lciAdd.Control = this.btnAdd;
-            this.lciAdd.Location = new System.Drawing.Point(0, 32);
-            this.lciAdd.Name = "lciAdd";
-            this.lciAdd.Size = new System.Drawing.Size(726, 26);
-            this.lciAdd.TextSize = new System.Drawing.Size(0, 0);
-            this.lciAdd.TextVisible = false;
+            this.lciEdit.ContentHorzAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.lciEdit.Control = this.btnEdit;
+            this.lciEdit.Location = new System.Drawing.Point(0, 32);
+            this.lciEdit.Name = "lciEdit";
+            this.lciEdit.Size = new System.Drawing.Size(726, 26);
+            this.lciEdit.TextSize = new System.Drawing.Size(0, 0);
+            this.lciEdit.TextVisible = false;
             // 
-            // AddForm
+            // EditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(746, 78);
-            this.Controls.Add(this.layoutControl);
+            this.Controls.Add(this.layoutControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IconOptions.ShowIcon = false;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AddForm";
+            this.Name = "EditForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Add data from clipboard";
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
-            this.layoutControl.ResumeLayout(false);
+            this.Text = "Edit data";
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
+            this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciInput)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lciAdd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciEdit)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraLayout.LayoutControl layoutControl;
+        private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private Controls.DataInput dataInput;
         private DevExpress.XtraLayout.LayoutControlItem lciInput;
-        private DevExpress.XtraEditors.SimpleButton btnAdd;
-        private DevExpress.XtraLayout.LayoutControlItem lciAdd;
+        private DevExpress.XtraEditors.SimpleButton btnEdit;
+        private DevExpress.XtraLayout.LayoutControlItem lciEdit;
     }
 }

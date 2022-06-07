@@ -33,6 +33,7 @@ namespace ChessAnalysis.Forms
             {
                 Options.Instance.LastInputDirectory = FileHelper.GetDirectoryName(fileDialog.FileName);
                 LoadFromFile(fileDialog.FileName);
+                Options.Instance.Save();
             }
         }
 
@@ -61,7 +62,7 @@ namespace ChessAnalysis.Forms
                     panel.Collection.ValidateIdUniqueness(data.Id);
                     m_collection.ValidateIdUniqueness(data.Id);
 
-                    result.Add(data);
+                    result.Insert(i, data);
                 }
                 catch (Exception ex)
                 {

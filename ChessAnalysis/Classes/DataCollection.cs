@@ -48,9 +48,9 @@ namespace ChessAnalysis.Classes
             return string.Join(Environment.NewLine, this.Select(data => data.ToString()));
         }
 
-        public void ValidateIdUniqueness(string id)
+        public void ValidateIdUniqueness(string id, Data? skipIdValidation = null)
         {
-            if (this.Any(item => item?.Id == id))
+            if (this.Any(item => item != skipIdValidation && item?.Id == id))
             {
                 throw new NotUniqueIdException(id);
             }

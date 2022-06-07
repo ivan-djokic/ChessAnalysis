@@ -4,20 +4,27 @@ using DevExpress.XtraEditors;
 
 namespace ChessAnalysis.Controls
 {
-    public partial class AddFromClipboard : XtraUserControl
+    public partial class DataInput : XtraUserControl
     {
-        public AddFromClipboard()
+        public DataInput()
         {
             InitializeComponent();
         }
 
-        public Data? Data { get; private set; }
+        public string Input
+        {
+            get => txtInput.Text;
+            set => txtInput.Text = value;
+        }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        public Data? ParseInput(DataCollection collection, Data? skipIdValidation = null)
         {
             try
             {
-                Data = Parser.Parse(txtInput.Text);
+                var data = Parser.Parse(txtInput.Text);
+                collection.ValidateIdUniqueness(data.Id, skipIdValidation);
+
+                return data;
             }
             catch (ExeptionBase ex)
             {
@@ -26,10 +33,8 @@ namespace ChessAnalysis.Controls
                 var (start, length) = GetBadInputRange(ex.Component);
                 txtInput.Select(start, length);
             }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(this, ex.Message, "Error message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
+            return null;
         }
 
         private (int Start, int Length) GetBadInputRange(Components component)
@@ -102,7 +107,6 @@ namespace ChessAnalysis.Controls
             if (!string.IsNullOrEmpty(pastedText))
             {
                 txtInput.Text = pastedText;
-                txtInput.Select(5, 10);
             }
         }
     }

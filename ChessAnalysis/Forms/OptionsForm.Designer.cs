@@ -33,11 +33,14 @@
             this.itemParent = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.itemGeneral = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.itemBoard = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.itemMail = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.navigationFrame = new DevExpress.XtraBars.Navigation.NavigationFrame();
             this.pageGeneral = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.generalTab = new ChessAnalysis.Controls.GeneralTab();
             this.pageBoard = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.pageMail = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.generalTab = new ChessAnalysis.Controls.GeneralTab();
             this.boardTab = new ChessAnalysis.Controls.BoardTab();
+            this.mailTab = new ChessAnalysis.Controls.MailTab();
             this.btnDefaults = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.lciNavigation = new DevExpress.XtraLayout.LayoutControlItem();
@@ -88,7 +91,8 @@
             // 
             this.itemParent.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.itemGeneral,
-            this.itemBoard});
+            this.itemBoard,
+            this.itemMail});
             this.itemParent.Expanded = true;
             this.itemParent.HeaderVisible = false;
             this.itemParent.Name = "itemParent";
@@ -106,15 +110,23 @@
             this.itemBoard.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.itemBoard.Text = "Board";
             // 
+            // itemBoard
+            // 
+            this.itemMail.Name = "itemMail";
+            this.itemMail.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.itemMail.Text = "Mail";
+            // 
             // navigationFrame
             // 
             this.navigationFrame.Controls.Add(this.pageGeneral);
             this.navigationFrame.Controls.Add(this.pageBoard);
+            this.navigationFrame.Controls.Add(this.pageMail);
             this.navigationFrame.Location = new System.Drawing.Point(78, 12);
             this.navigationFrame.Name = "navigationFrame";
             this.navigationFrame.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.pageGeneral,
-            this.pageBoard});
+            this.pageBoard,
+            this.pageMail});
             this.navigationFrame.SelectedPage = this.pageGeneral;
             this.navigationFrame.Size = new System.Drawing.Size(418, 298);
             this.navigationFrame.TabIndex = 2;
@@ -128,6 +140,20 @@
             this.pageGeneral.Name = "pageGeneral";
             this.pageGeneral.Size = new System.Drawing.Size(418, 298);
             // 
+            // pageBoard
+            // 
+            this.pageBoard.Caption = "pageBoard";
+            this.pageBoard.Controls.Add(this.boardTab);
+            this.pageBoard.Name = "pageBoard";
+            this.pageBoard.Size = new System.Drawing.Size(418, 298);
+            // 
+            // pageBoard
+            // 
+            this.pageMail.Caption = "pageMail";
+            this.pageMail.Controls.Add(this.mailTab);
+            this.pageMail.Name = "pageMail";
+            this.pageMail.Size = new System.Drawing.Size(418, 298);
+            // 
             // generalTab
             // 
             this.generalTab.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -136,13 +162,6 @@
             this.generalTab.Size = new System.Drawing.Size(418, 298);
             this.generalTab.TabIndex = 3;
             // 
-            // pageBoard
-            // 
-            this.pageBoard.Caption = "pageBoard";
-            this.pageBoard.Controls.Add(this.boardTab);
-            this.pageBoard.Name = "pageBoard";
-            this.pageBoard.Size = new System.Drawing.Size(418, 298);
-            // 
             // boardTab
             // 
             this.boardTab.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -150,6 +169,14 @@
             this.boardTab.Name = "boardTab";
             this.boardTab.Size = new System.Drawing.Size(418, 298);
             this.boardTab.TabIndex = 4;
+            // 
+            // generalTab
+            // 
+            this.mailTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mailTab.Location = new System.Drawing.Point(0, 0);
+            this.mailTab.Name = "mailTab";
+            this.mailTab.Size = new System.Drawing.Size(418, 298);
+            this.mailTab.TabIndex = 5;
             // 
             // btnDefaults
             // 
@@ -160,7 +187,7 @@
             this.btnDefaults.Name = "btnDefaults";
             this.btnDefaults.Size = new System.Drawing.Size(76, 22);
             this.btnDefaults.StyleController = this.layoutControl;
-            this.btnDefaults.TabIndex = 5;
+            this.btnDefaults.TabIndex = 6;
             this.btnDefaults.Text = "Defaults";
             this.btnDefaults.Click += new System.EventHandler(this.btnDefaults_Click);
             // 
@@ -244,11 +271,14 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement itemParent;
         private DevExpress.XtraBars.Navigation.AccordionControlElement itemGeneral;
         private DevExpress.XtraBars.Navigation.AccordionControlElement itemBoard;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement itemMail;
         private DevExpress.XtraBars.Navigation.NavigationFrame navigationFrame;
         private DevExpress.XtraBars.Navigation.NavigationPage pageGeneral;
-        private Controls.GeneralTab generalTab;
         private DevExpress.XtraBars.Navigation.NavigationPage pageBoard;
+        private DevExpress.XtraBars.Navigation.NavigationPage pageMail;
+        private Controls.GeneralTab generalTab;
         private Controls.BoardTab boardTab;
+        private Controls.MailTab mailTab;
         private DevExpress.XtraEditors.SimpleButton btnDefaults;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem lciNavigation;

@@ -16,6 +16,7 @@ namespace ChessAnalysis.Forms
         {
             InitializeComponent();
             SetIcons();
+            Notification.Notify += SetNotification;
         }
 
         protected override void OnBackColorChanged(EventArgs e)
@@ -25,7 +26,7 @@ namespace ChessAnalysis.Forms
 
         private void btnAdd_ItemClick(object sender, EventArgs e)
         { 
-            using var addForm = new AddForm();
+            using var addForm = new AddForm(panel.Collection);
             addForm.ShowDialog(this);
         }
 
@@ -37,7 +38,12 @@ namespace ChessAnalysis.Forms
 
         private void btnMail_ItemClick(object sender, EventArgs e)
         {
-            Mailing.SendMail(panel.Collection);
+            using var mailForm = new MailForm(panel.Collection);
+            
+            if (mailForm.ShowDialog(this) == DialogResult.OK)
+            {
+                SetNotification("Mail was sent");
+            }
         }
 
         private void btnOptions_ItemClick(object sender, EventArgs e)
@@ -54,17 +60,21 @@ namespace ChessAnalysis.Forms
                 return;
             }
 
-            FileHelper.Save(m_savedFile, panel.Collection.ToString());
+            SaveCollection();
         }
 
         private void btnSaveAs_ItemClick(object sender, EventArgs e)
         {
-            using var fileDialog = new XtraSaveFileDialog();
+            using var fileDialog = new XtraSaveFileDialog
+            {
+                Filter = Constants.DIALOG_FILTER,
+                InitialDirectory = Options.Instance.LastInputDirectory
+            };
 
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 m_savedFile = fileDialog.FileName;
-                FileHelper.Save(m_savedFile, panel.Collection.ToString());
+                SaveCollection();
             }
         }
 
@@ -73,16 +83,26 @@ namespace ChessAnalysis.Forms
             try
             {
                 panel.TakeSnapshot();
+                SetNotification("Snapshot was saved");
             }
-            catch (Exception ex)
+            catch
             {
-                XtraMessageBox.Show(this, ex.Message, "Error message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show(this, "Failed to snapshot image. Change Snapshot directory in Options and try again", "Error message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void RowCountChanged(int count)
         {
             lblTotalPositions.Caption = string.Format(Strings.TotalPositions, count);
+        }
+
+        private void SaveCollection()
+        {
+            FileHelper.Save(m_savedFile, panel.Collection.ToString());
+            SetNotification("File was saved");
+
+            Options.Instance.LastOutputDirectory = FileHelper.GetDirectoryName(m_savedFile);
+            Options.Instance.Save();
         }
 
         private void SetIcons()
@@ -95,6 +115,19 @@ namespace ChessAnalysis.Forms
                     button.ImageOptions.LargeImage = Resources.GetThemedIcon(button.Name);
                 }
             }
+        }
+
+        private void SetNotification(string message)
+        {
+            lblNotification.Caption = message;
+            timer.Stop();
+            timer.Start();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            timer.Stop();
+            lblNotification.Caption = string.Empty;
         }
     }
 }

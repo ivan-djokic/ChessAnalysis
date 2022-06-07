@@ -72,7 +72,13 @@ namespace ChessAnalysis.Utils
 				}
 			}
 		}
-		
+
+		public string MailContent
+		{
+			get => Options.Instance.MailContent;
+			set => Options.Instance.MailContent = value;
+		}
+
 		public bool MarkIfBestMoveIsPlayed
 		{
 			get => Options.Instance.MarkIfBestMoveIsPlayed;
@@ -131,6 +137,24 @@ namespace ChessAnalysis.Utils
 			set => Options.Instance.PlaySound = value;
 		}
 
+		public string ReceiverMail
+		{
+			get => Options.Instance.ReceiverMail;
+			set => Options.Instance.ReceiverMail = value;
+		}
+
+		public string SenderMail
+		{
+			get => Options.Instance.SenderMail;
+			set => Options.Instance.SenderMail = value;
+		}
+						
+		public string SenderPassword
+		{
+			get => Options.Instance.SenderPassword;
+			set => Options.Instance.SenderPassword = value;
+		}
+
 		public bool ShowCoordinates
 		{
 			get => Options.Instance.ShowCoordinates;
@@ -141,6 +165,12 @@ namespace ChessAnalysis.Utils
 			}
 		}
 
+		public string SmtpClient
+		{
+			get => Options.Instance.SmtpClient;
+			set => Options.Instance.SmtpClient = value;
+		}
+		
 		public string SnapshotDirectory
 		{
 			get => Options.Instance.SnapshotDirectory;
@@ -176,13 +206,15 @@ namespace ChessAnalysis.Utils
 		public void RaisePropertiesChanged()
         {
 			RaisePropertyChanged(() => AutoFlipBoard);
-			RaisePropertyChanged(() => SnapshotDirectory);
 			RaisePropertiesChanged(() => FieldEmptyColor, () => FieldFillColor);
 			RaisePropertiesChanged(() => LanguageEnglish, () => LanguageSrpski);
 			RaisePropertyChanged(() => MarkIfBestMoveIsPlayed);
 			RaisePropertiesChanged(() => PieceClassic, () => PieceNeo, () => PieceWood);
 			RaisePropertyChanged(() => PlaySound);
+			RaisePropertiesChanged(() => SenderMail, () => SenderPassword);
 			RaisePropertyChanged(() => ShowCoordinates);
+			RaisePropertyChanged(() => SmtpClient);
+			RaisePropertyChanged(() => SnapshotDirectory);
 			RaisePropertiesChanged(() => ThemeDark, () => ThemeLight);
 		}
 

@@ -28,10 +28,10 @@ namespace ChessAnalysis.Classes
         public Components Component { get; }
     }
 
-    public class NotUniqueIdException : Exception
+    public class NotUniqueIdException : ExeptionBase
     {
         public NotUniqueIdException(string id)
-            : base(string.Format(Strings.DataSourceContainsId, id))
+            : base(string.Format(Strings.DataSourceContainsId, id), Components.Id)
         {
         }
     }

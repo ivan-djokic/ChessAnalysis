@@ -46,7 +46,9 @@ namespace ChessAnalysis.Controls
 
         public void TakeSnapshot()
         {
-            Snapshot.Save(imageBoard.Image, m_data.Id);
+            FileHelper.CreateDirIfNotExists(Options.Instance.SnapshotDirectory);
+            imageBoard.Image.Save(Path.Combine(Options.Instance.SnapshotDirectory, $"{m_data.Id}{Constants.SNAPSHOT_EXTENSION}"));
+            SoundPlay.Snapshot();
         }
 
         private void btnFlip_Click(object sender, EventArgs e)

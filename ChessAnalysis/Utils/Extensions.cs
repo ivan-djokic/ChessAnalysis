@@ -1,5 +1,7 @@
 ﻿using ChessAnalysis.Classes;
 using ChessAnalysis.Models;
+using System.IO;
+using System.Security.Cryptography;
 
 namespace ChessAnalysis.Utils
 {
@@ -92,14 +94,30 @@ namespace ChessAnalysis.Utils
             return System.Windows.Media.Color.FromArgb(input.A, input.R, input.G, input.B);
         }
 
+        public static string Read(this ICryptoTransform crypto, MemoryStream memoryStream)
+        {
+            using var cryptoStream = new CryptoStream(memoryStream, crypto, CryptoStreamMode.Read);
+            using var reader = new StreamReader(cryptoStream);
+            return reader.ReadToEnd();
+        }
+
         public static string RemoveLast(this string input, int count = 1)
         {
             return input.Remove(input.Length - count);
         }
 
-        public static IEnumerable<T> WithoutNullValues<T>(this IEnumerable<T> input)
+        public static IEnumerable<Error> WithoutNullValues(this Error[] input)
         {
             return input.Where(e => e != null);
+        }
+
+        public static void Write(this ICryptoTransform crypto, MemoryStream memoryStream, string input)
+        {
+            using var cryptoStream = new CryptoStream(memoryStream, crypto, CryptoStreamMode.Write);
+            using var writer = new StreamWriter(cryptoStream);
+            writer.Write(input);
+            writer.Flush();
+            cryptoStream.FlushFinalBlock();
         }
     }
 }

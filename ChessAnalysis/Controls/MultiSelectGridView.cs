@@ -18,6 +18,7 @@ namespace ChessAnalysis.Controls
             OptionsSelection.ResetSelectionClickOutsideCheckboxSelector = true;
         }
 
+        // TODO: Thoes it needed
         public int LastSelectedHandle { get; private set; }
 
         protected override bool AllowFixedCheckboxSelectorColumn

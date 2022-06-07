@@ -35,13 +35,25 @@
     <Compile Update="Controls\MainPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Controls\AddFromClipboard.cs">
+    <Compile Update="Controls\DataInput.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Options\MailTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\EditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\MailForm.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\ErrorForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\AddFromFileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\MailForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Properties\Icons - Copy.Designer.cs">

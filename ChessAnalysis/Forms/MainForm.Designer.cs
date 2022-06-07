@@ -28,6 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
+            this.panel = new ChessAnalysis.Controls.MainPanel();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.lciPanel = new DevExpress.XtraLayout.LayoutControlItem();
             this.Main = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
             this.popupAdd = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -38,23 +44,58 @@
             this.btnMail = new DevExpress.XtraBars.BarButtonItem();
             this.btnSnapshot = new DevExpress.XtraBars.BarButtonItem();
             this.btnOptions = new DevExpress.XtraBars.BarButtonItem();
+            this.lblTotalPositions = new DevExpress.XtraBars.BarStaticItem();
+            this.lblNotification = new DevExpress.XtraBars.BarStaticItem();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolbar = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.groupPositions = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.groupShare = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.groupOther = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
-            this.panel = new ChessAnalysis.Controls.MainPanel();
-            this.lblTotalPositions = new DevExpress.XtraBars.BarStaticItem();
-            this.lblNotification = new DevExpress.XtraBars.BarStaticItem();
             this.statusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.lciPanel = new DevExpress.XtraLayout.LayoutControlItem();
-            ((System.ComponentModel.ISupportInitialize)(this.Main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciPanel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Main)).BeginInit();
             this.SuspendLayout();
+            // 
+            // layoutControl
+            // 
+            this.layoutControl.Controls.Add(this.panel);
+            this.layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl.Location = new System.Drawing.Point(0, 132);
+            this.layoutControl.Name = "layoutControl";
+            this.layoutControl.Root = this.Root;
+            this.layoutControl.Size = new System.Drawing.Size(1198, 543);
+            this.layoutControl.TabIndex = 9;
+            this.layoutControl.Text = "layoutControl";
+            // 
+            // panel
+            // 
+            this.panel.Location = new System.Drawing.Point(12, 12);
+            this.panel.Name = "panel";
+            this.panel.ShowOnlyMainControls = false;
+            this.panel.Size = new System.Drawing.Size(1174, 519);
+            this.panel.TabIndex = 4;
+            // 
+            // Root
+            // 
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.lciPanel});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(1198, 543);
+            this.Root.TextVisible = false;
+            // 
+            // lciPanel
+            // 
+            this.lciPanel.Control = this.panel;
+            this.lciPanel.Location = new System.Drawing.Point(0, 0);
+            this.lciPanel.Name = "lciPanel";
+            this.lciPanel.Size = new System.Drawing.Size(1178, 523);
+            this.lciPanel.TextSize = new System.Drawing.Size(0, 0);
+            this.lciPanel.TextVisible = false;
             // 
             // Main
             // 
@@ -89,7 +130,7 @@
             this.btnAdd.Caption = "Add";
             this.btnAdd.DropDownControl = this.popupAdd;
             this.btnAdd.Id = 1;
-            this.btnAdd.ImageOptions.LargeImage = ChessAnalysis.Properties.Resources.GetThemedIcon("btnAdd");
+            this.btnAdd.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.ImageOptions.LargeImage")));
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAdd_ItemClick);
             // 
@@ -103,7 +144,7 @@
             // 
             this.btnAddFromFile.Caption = "Add from file";
             this.btnAddFromFile.Id = 2;
-            this.btnAddFromFile.ImageOptions.LargeImage = ChessAnalysis.Properties.Resources.GetThemedIcon("btnAddFromFile");
+            this.btnAddFromFile.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAddFromFile.ImageOptions.LargeImage")));
             this.btnAddFromFile.Name = "btnAddFromFile";
             this.btnAddFromFile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAddFromFile_ItemClick);
             // 
@@ -113,7 +154,7 @@
             this.btnSave.Caption = "Save";
             this.btnSave.DropDownControl = this.popupSave;
             this.btnSave.Id = 3;
-            this.btnSave.ImageOptions.LargeImage = ChessAnalysis.Properties.Resources.GetThemedIcon("btnSave");
+            this.btnSave.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSave.ImageOptions.LargeImage")));
             this.btnSave.Name = "btnSave";
             this.btnSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSave_ItemClick);
             // 
@@ -127,7 +168,7 @@
             // 
             this.btnSaveAs.Caption = "Save as";
             this.btnSaveAs.Id = 4;
-            this.btnSaveAs.ImageOptions.LargeImage = ChessAnalysis.Properties.Resources.GetThemedIcon("btnSaveAs");
+            this.btnSaveAs.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSaveAs.ImageOptions.LargeImage")));
             this.btnSaveAs.Name = "btnSaveAs";
             this.btnSaveAs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSaveAs_ItemClick);
             // 
@@ -135,7 +176,7 @@
             // 
             this.btnMail.Caption = "Mail";
             this.btnMail.Id = 5;
-            this.btnMail.ImageOptions.LargeImage = ChessAnalysis.Properties.Resources.GetThemedIcon("btnMail");
+            this.btnMail.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnMail.ImageOptions.LargeImage")));
             this.btnMail.Name = "btnMail";
             this.btnMail.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMail_ItemClick);
             // 
@@ -143,7 +184,7 @@
             // 
             this.btnSnapshot.Caption = "Snapshot";
             this.btnSnapshot.Id = 6;
-            this.btnSnapshot.ImageOptions.LargeImage = ChessAnalysis.Properties.Resources.GetThemedIcon("btnSnapshot");
+            this.btnSnapshot.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSnapshot.ImageOptions.LargeImage")));
             this.btnSnapshot.Name = "btnSnapshot";
             this.btnSnapshot.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSnapshot_ItemClick);
             // 
@@ -151,13 +192,13 @@
             // 
             this.btnOptions.Caption = "Options";
             this.btnOptions.Id = 7;
-            this.btnOptions.ImageOptions.LargeImage = ChessAnalysis.Properties.Resources.GetThemedIcon("btnOptions");
+            this.btnOptions.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnOptions.ImageOptions.LargeImage")));
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnOptions_ItemClick);
             // 
             // lblTotalPositions
             // 
-            this.lblTotalPositions.Caption = string.Format(ChessAnalysis.Properties.Strings.TotalPositions, 0);
+            this.lblTotalPositions.Caption = "Total positions: 0";
             this.lblTotalPositions.Id = 8;
             this.lblTotalPositions.Name = "lblTotalPositions";
             // 
@@ -205,44 +246,10 @@
             this.statusBar.Ribbon = this.Main;
             this.statusBar.Size = new System.Drawing.Size(1198, 24);
             // 
-            // layoutControl
+            // timer
             // 
-            this.layoutControl.Controls.Add(this.panel);
-            this.layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl.Location = new System.Drawing.Point(0, 132);
-            this.layoutControl.Name = "layoutControl";
-            this.layoutControl.Root = this.Root;
-            this.layoutControl.Size = new System.Drawing.Size(1198, 543);
-            this.layoutControl.TabIndex = 9;
-            this.layoutControl.Text = "layoutControl";
-            // 
-            // panel
-            // 
-            this.panel.Location = new System.Drawing.Point(12, 12);
-            this.panel.Name = "panel";
-            this.panel.ShowOnlyMainControls = false;
-            this.panel.Size = new System.Drawing.Size(1174, 519);
-            this.panel.TabIndex = 4;
-            this.panel.RowCountChanged += RowCountChanged;
-            // 
-            // Root
-            // 
-            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.Root.GroupBordersVisible = false;
-            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.lciPanel});
-            this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1198, 543);
-            this.Root.TextVisible = false;
-            // 
-            // lciPanel
-            // 
-            this.lciPanel.Control = this.panel;
-            this.lciPanel.Location = new System.Drawing.Point(0, 0);
-            this.lciPanel.Name = "lciPanel";
-            this.lciPanel.Size = new System.Drawing.Size(1178, 523);
-            this.lciPanel.TextSize = new System.Drawing.Size(0, 0);
-            this.lciPanel.TextVisible = false;
+            this.timer.Interval = 5000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // MainForm
             // 
@@ -291,7 +298,8 @@
         private Controls.MainPanel panel;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar statusBar;
         private DevExpress.XtraBars.BarStaticItem lblTotalPositions;
-        private DevExpress.XtraBars.BarStaticItem lblNotification;        
+        private DevExpress.XtraBars.BarStaticItem lblNotification;
+        private System.Windows.Forms.Timer timer;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem lciPanel;
     }
