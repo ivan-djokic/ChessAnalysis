@@ -130,8 +130,8 @@
     <comment>E.g. Invalid number of components in FEN</comment>
   </data>
   <data name="TotalPositions" xml:space="preserve">
-    <value>Total positions: {0}</value>
-    <comment>E.g. Total positions: 138</comment>
+    <value>{0} row(s)</value>
+    <comment>E.g. 138 row(s)</comment>
   </data>
   <data name="UnallowedCharactersDetected" xml:space="preserve">
     <value>{0} contains unallowed character(s)</value>

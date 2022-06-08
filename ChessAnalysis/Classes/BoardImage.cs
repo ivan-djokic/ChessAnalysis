@@ -22,8 +22,8 @@ namespace ChessAnalysis.Classes
 
         public static Image Create(Position position, ref bool? isWhiteOriented)
         {
-            using var creator = new BoardImage(position.NextPlayer == NextPlayer.Black, isWhiteOriented);
-            return creator.Create(position.Board, position.BestMove, out isWhiteOriented);
+            using var boardImage = new BoardImage(position.NextPlayer == NextPlayer.Black, isWhiteOriented);
+            return boardImage.Create(position.Board, position.BestMove, out isWhiteOriented);
         }
 
         public void Dispose()
@@ -70,7 +70,7 @@ namespace ChessAnalysis.Classes
                 return;
             }
 
-            using var font = new Font("Segoe UI", Scaling.GetScaledSize(m_fieldSize / Constants.SCALE_FACTOR_COORDINATE_FONT), FontStyle.Bold);
+            using var font = new Font("Segoe UI", GetScaledFontSize(), FontStyle.Bold);
 
             var letterY = Constants.BOARD_SIZE * m_fieldSize - font.Height;
 
@@ -134,6 +134,11 @@ namespace ChessAnalysis.Classes
             }
 
             return (input + 1).AsBoardRow();
+        }
+
+        private float GetScaledFontSize()
+        {
+            return m_fieldSize * (float)System.Windows.SystemParameters.PrimaryScreenWidth / (Constants.SCALE_FACTOR_COORDINATE_FONT * Screen.PrimaryScreen.Bounds.Width);
         }
 
         private string GetXCoordinate(int input)

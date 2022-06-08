@@ -29,27 +29,21 @@
         private void InitializeComponent()
         {
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
-            this.txtContent = new DevExpress.XtraEditors.MemoEdit();
-            this.txtReceiver = new DevExpress.XtraEditors.TextEdit();
+            this.mail = new ChessAnalysis.Controls.Mail();
             this.btnSend = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.lciSend = new DevExpress.XtraLayout.LayoutControlItem();
-            this.lciReceiver = new DevExpress.XtraLayout.LayoutControlItem();
-            this.lciContent = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtContent.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtReceiver.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciSend)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lciReceiver)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lciContent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl
             // 
-            this.layoutControl.Controls.Add(this.txtContent);
-            this.layoutControl.Controls.Add(this.txtReceiver);
+            this.layoutControl.Controls.Add(this.mail);
             this.layoutControl.Controls.Add(this.btnSend);
             this.layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl.Location = new System.Drawing.Point(0, 0);
@@ -59,22 +53,12 @@
             this.layoutControl.TabIndex = 0;
             this.layoutControl.Text = "layoutControl";
             // 
-            // txtContent
+            // mail
             // 
-            this.txtContent.Location = new System.Drawing.Point(101, 36);
-            this.txtContent.Name = "txtContent";
-            this.txtContent.Properties.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtContent.Size = new System.Drawing.Size(585, 94);
-            this.txtContent.StyleController = this.layoutControl;
-            this.txtContent.TabIndex = 5;
-            // 
-            // txtReceiver
-            // 
-            this.txtReceiver.Location = new System.Drawing.Point(101, 12);
-            this.txtReceiver.Name = "txtReceiver";
-            this.txtReceiver.Size = new System.Drawing.Size(585, 20);
-            this.txtReceiver.StyleController = this.layoutControl;
-            this.txtReceiver.TabIndex = 4;
+            this.mail.Location = new System.Drawing.Point(12, 12);
+            this.mail.Name = "mail";
+            this.mail.Size = new System.Drawing.Size(674, 118);
+            this.mail.TabIndex = 4;
             // 
             // btnSend
             // 
@@ -95,8 +79,7 @@
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.lciSend,
-            this.lciReceiver,
-            this.lciContent});
+            this.layoutControlItem1});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(698, 168);
             this.Root.TextVisible = false;
@@ -111,26 +94,14 @@
             this.lciSend.TextSize = new System.Drawing.Size(0, 0);
             this.lciSend.TextVisible = false;
             // 
-            // lciReceiver
+            // layoutControlItem1
             // 
-            this.lciReceiver.Control = this.txtReceiver;
-            this.lciReceiver.Location = new System.Drawing.Point(0, 0);
-            this.lciReceiver.Name = "lciReceiver";
-            this.lciReceiver.Size = new System.Drawing.Size(678, 24);
-            this.lciReceiver.Spacing = new DevExpress.XtraLayout.Utils.Padding(10, 0, 0, 0);
-            this.lciReceiver.Text = "Receiver mail:";
-            this.lciReceiver.TextSize = new System.Drawing.Size(67, 13);
-            // 
-            // lciContent
-            // 
-            this.lciContent.Control = this.txtContent;
-            this.lciContent.Location = new System.Drawing.Point(0, 24);
-            this.lciContent.Name = "lciContent";
-            this.lciContent.Size = new System.Drawing.Size(678, 98);
-            this.lciContent.Spacing = new DevExpress.XtraLayout.Utils.Padding(10, 0, 0, 0);
-            this.lciContent.Text = "Content:";
-            this.lciContent.TextLocation = DevExpress.Utils.Locations.Left;
-            this.lciContent.TextSize = new System.Drawing.Size(67, 13);
+            this.layoutControlItem1.Control = this.mail;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(678, 122);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
             // 
             // MailForm
             // 
@@ -148,12 +119,9 @@
             this.Text = "Send mail";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtContent.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtReceiver.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciSend)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lciReceiver)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lciContent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -164,9 +132,7 @@
         private DevExpress.XtraEditors.SimpleButton btnSend;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem lciSend;
-        private DevExpress.XtraEditors.MemoEdit txtContent;
-        private DevExpress.XtraEditors.TextEdit txtReceiver;
-        private DevExpress.XtraLayout.LayoutControlItem lciReceiver;
-        private DevExpress.XtraLayout.LayoutControlItem lciContent;
+        private Controls.Mail mail;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
     }
 }

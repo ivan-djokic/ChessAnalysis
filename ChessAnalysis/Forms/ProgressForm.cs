@@ -23,7 +23,7 @@ namespace ChessAnalysis.Forms
             form.ShowDialog(owner);
         }
 
-		private void DoWork(object? sender, DoWorkEventArgs e)
+		private void DoWork(object? sender, EventArgs e)
 		{
 			Parallel.For(0, m_collection.Count, (i, state) =>
             {
@@ -38,7 +38,7 @@ namespace ChessAnalysis.Forms
             });
         }
 
-		private void RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
+		private void RunWorkerCompleted(object? sender, EventArgs e)
 		{
 			Close();
 		}

@@ -32,7 +32,7 @@ namespace ChessAnalysis.Classes
                 throw new InvalidComponentsNumberException(Component);
             }
 
-            return m_input[0] switch
+            return m_input switch
             {
                 Constants.PLAYER_BLACK => NextPlayer.Black,
                 Constants.PLAYER_WHITE => NextPlayer.White,

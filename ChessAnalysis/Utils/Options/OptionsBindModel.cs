@@ -2,7 +2,7 @@
 
 namespace ChessAnalysis.Utils
 {
-	public class OptionsBindModel : ViewModelBase
+    public class OptionsBindModel : ViewModelBase
 	{
 		public bool AutoFlipBoard
 		{
@@ -185,7 +185,7 @@ namespace ChessAnalysis.Utils
 				if (value && Options.Instance.Theme != Themes.Dark)
 				{
 					Options.Instance.Theme = Themes.Dark;
-					Theming.ApplyTheme();
+					Theme.ApplyTheme();
 				}
 			}
         }
@@ -198,7 +198,7 @@ namespace ChessAnalysis.Utils
 				if (value && Options.Instance.Theme != Themes.Light)
                 {
 					Options.Instance.Theme = Themes.Light;
-					Theming.ApplyTheme();
+					Theme.ApplyTheme();
 				}
 			}
 		}

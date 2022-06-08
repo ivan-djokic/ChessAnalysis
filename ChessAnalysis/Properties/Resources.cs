@@ -1,22 +1,28 @@
-﻿using ChessAnalysis.Utils;
+﻿using System.IO;
+using ChessAnalysis.Utils;
 
 namespace ChessAnalysis.Properties
 {
     internal partial class Resources
     {
-        public static Image? GetThemedIcon(string input)
-        {
-            return ResourceManager.GetObject($"{input}{Options.Instance.Theme}", resourceCulture) as Bitmap;
-        }
-
         public static Image GetPiece(char input)
         {
-            return ResourceManager.GetObject($"{Options.Instance.PieceStyle}_{GetColoredPiece(input)}", resourceCulture) as Bitmap;
+            if (ResourceManager.GetObject($"{Options.Instance.PieceStyle}_{GetPieceColor(input)}{input}", resourceCulture) is Bitmap result)
+            {
+                return result;
+            }
+
+            throw new Exception("Could not found piece");
         }
 
-        private static string GetColoredPiece(char input)
+        public static Stream? GetSound(Sounds input)
         {
-            return $"{(char.IsUpper(input) ? Constants.PLAYER_WHITE : Constants.PLAYER_BLACK)}{input}";
+            return ResourceManager.GetStream(input.ToString());
+        }
+
+        private static string GetPieceColor(char input)
+        {
+            return char.IsUpper(input) ? Constants.PLAYER_WHITE : Constants.PLAYER_BLACK;
         }
     }
 }

@@ -4,7 +4,7 @@ using Color = System.Windows.Media.Color; // XML serialization can not serialize
 
 namespace ChessAnalysis.Utils
 {
-	public partial class Options
+    public partial class Options
 	{
 		private readonly string m_optionsFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
 				Constants.APP_NAME, Constants.OPTIONS_FILE_NAME);

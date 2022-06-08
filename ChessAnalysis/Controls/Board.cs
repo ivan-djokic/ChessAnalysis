@@ -46,15 +46,24 @@ namespace ChessAnalysis.Controls
 
         public void TakeSnapshot()
         {
-            FileHelper.CreateDirIfNotExists(Options.Instance.SnapshotDirectory);
-            imageBoard.Image.Save(Path.Combine(Options.Instance.SnapshotDirectory, $"{m_data.Id}{Constants.SNAPSHOT_EXTENSION}"));
-            SoundPlay.Snapshot();
+            try
+            {
+                FileHelper.CreateDirIfNotExists(Options.Instance.SnapshotDirectory);
+                imageBoard.Image.Save(Path.Combine(Options.Instance.SnapshotDirectory, $"{m_data.Id}{Constants.SNAPSHOT_EXTENSION}"));
+                Sound.Play(Sounds.Snapshot);
+                Notification.Notify?.Invoke("Snapshot was saved");
+            }
+            catch
+            {
+                XtraMessageBox.Show(this, "Failed to snapshot image. Change Snapshot directory in Options and try again", "Error message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnFlip_Click(object sender, EventArgs e)
         {
             m_isWhiteOriented = !m_isWhiteOriented;
             DrawImage(false);
+            Sound.Play(Sounds.Flip);
         }
 
         private void ChangeControlsVisibility()

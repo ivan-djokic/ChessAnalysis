@@ -1,5 +1,6 @@
 ﻿using ChessAnalysis.Classes;
 using ChessAnalysis.Models;
+using ChessAnalysis.Utils;
 using DevExpress.XtraEditors;
 
 namespace ChessAnalysis.Controls
@@ -28,7 +29,7 @@ namespace ChessAnalysis.Controls
             }
             catch (ExeptionBase ex)
             {
-                XtraMessageBox.Show(this, ex.Message, "Error message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Alert.Error(this, ex.Message, MessageBoxButtons.OK);
 
                 var (start, length) = GetBadInputRange(ex.Component);
                 txtInput.Select(start, length);

@@ -57,22 +57,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="DevExpress.Data.v21.2" name="DevExpress.Data.v21.2, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="lciMessage.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjIsIFZlcnNpb249MjEuMi43
-        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
-        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAFUCAAAC77u/
-        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgdmlld0JveD0iMCAwIDg1
-        IDg1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0KICA8cGF0aCBkPSJNMS4wMDAw
-        MyA0Mi41QzEuMDAwMDMgMTkuNTgwMiAxOS41ODAyIDEuMDAwMDMgNDIuNSAxLjAwMDAzIDY1LjQxOTcg
-        MS4wMDAwMyA4My45OTk5IDE5LjU4MDIgODMuOTk5OSA0Mi41IDgzLjk5OTkgNjUuNDE5NyA2NS40MTk3
-        IDgzLjk5OTkgNDIuNSA4My45OTk5IDE5LjU4MDIgODMuOTk5OSAxLjAwMDAzIDY1LjQxOTcgMS4wMDAw
-        MyA0Mi41WiIgZmlsbD0iI0YwM0ExNyIgc3Ryb2tlPSIjOTkyMzEyIiBzdHJva2Utd2lkdGg9IjIuMjkx
-        NjdweCIgLz4NCiAgPHBhdGggZD0iTTIxLjEzMjEgMjUuMTg3NiAyNC44NzU5IDIxLjEzMjYgNDIuNSAz
-        OC43MDI5IDU5Ljg2MDEgMjEgNjMuOTk5OSAyNS4zMjAzIDQ2LjkyNyA0Mi43MzQ1IDYzLjg2OCA2MC41
-        NDY5IDYwLjI1NiA2NSA0Mi42MzIgNDYuNzY2IDI1LjAwNzkgNjQuNjAxOCAyMSA2MC42Nzk2IDM4LjQ2
-        ODggNDIuNzM0NSAyMS4xMzIxIDI1LjE4NzZaIiBmaWxsPSIjRkZGRkZFIiAvPg0KPC9zdmc+Cw==
-</value>
-  </data>
 </root>

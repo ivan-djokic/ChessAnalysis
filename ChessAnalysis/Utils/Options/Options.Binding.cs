@@ -44,7 +44,7 @@ namespace ChessAnalysis.Utils
             m_optionsModel.RaisePropertiesChanged();
             //TODO: Invoke language changer here
             BoardOptionsChanged?.Invoke(false);
-            Theming.ApplyTheme();
+            Utils.Theme.ApplyTheme();
         }
     }
 }

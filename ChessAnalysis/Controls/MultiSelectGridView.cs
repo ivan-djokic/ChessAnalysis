@@ -1,5 +1,4 @@
-﻿using DevExpress.Data;
-using DevExpress.XtraGrid.Columns;
+﻿using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
 
 namespace ChessAnalysis.Controls
@@ -17,9 +16,6 @@ namespace ChessAnalysis.Controls
             OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
             OptionsSelection.ResetSelectionClickOutsideCheckboxSelector = true;
         }
-
-        // TODO: Thoes it needed
-        public int LastSelectedHandle { get; private set; }
 
         protected override bool AllowFixedCheckboxSelectorColumn
         {
@@ -52,10 +48,7 @@ namespace ChessAnalysis.Controls
         protected override void OnBeginUpdate()
         {
             base.OnBeginUpdate();
-
-            FocusRectStyle = DrawFocusRectStyle.RowFocus;
             RowStyle += new RowStyleEventHandler(PaintFocusedRow);
-            SelectionChanged += new SelectionChangedEventHandler(SetLastSelectedHandle);
         }
 
         private void PaintFocusedRow(object sender, RowStyleEventArgs e)
@@ -64,11 +57,6 @@ namespace ChessAnalysis.Controls
             {
                 e.Appearance.Assign(PaintAppearance.SelectedRow);
             }
-        }
-
-        private void SetLastSelectedHandle(object sender, SelectionChangedEventArgs e)
-        {
-            LastSelectedHandle = FocusedRowHandle;
         }
     }
 }

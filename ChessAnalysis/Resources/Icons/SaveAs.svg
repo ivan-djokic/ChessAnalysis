@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;">
+	<style>.Blue{fill:#1177D7;}.Black{fill:#727272;}</style>
+	<path class="Black" d="M31,2H19c-0.6,0-1,0.4-1,1v16c0,0.6,0.4,1,1,1h12c0.6,0,1-0.4,1-1V3C32,2.4,31.6,2,31,2z M30,18H20V4h10V18"/>
+	<path class="Blue" d="M22,22v4H6v-6h10v-4H6V6H3C2.4,6,2,6.4,2,7v22c0,0.6,0.4,1,1,1h22c0.6,0,1-0.4,1-1v-7H22z 
+		M16,6H8v8h8V6z M12,12h-2V8h2V12z"/>
+</svg>

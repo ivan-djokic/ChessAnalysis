@@ -2,6 +2,7 @@
 using ChessAnalysis.Classes;
 using ChessAnalysis.Forms;
 using ChessAnalysis.Models;
+using ChessAnalysis.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraLayout.Utils;
 
@@ -69,8 +70,11 @@ namespace ChessAnalysis.Controls
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            using var editForm = new EditForm(Collection, gridView.LastSelectedHandle);
-            editForm.ShowDialog();
+            if (gridView.FocusedRowHandle >= 0)
+            {
+                using var editForm = new EditForm(Collection, gridView.FocusedRowHandle);
+                editForm.ShowDialog(this);
+            }
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -103,6 +107,7 @@ namespace ChessAnalysis.Controls
         {
             if (gridView.FocusedRowHandle >= 0)
             {
+                Sound.Play(Sounds.Piece);
                 FocusedRowChanged?.Invoke(Collection[gridView.FocusedRowHandle]);
             }
         }

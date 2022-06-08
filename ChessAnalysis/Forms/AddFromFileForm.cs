@@ -29,10 +29,11 @@ namespace ChessAnalysis.Forms
                 InitialDirectory = Options.Instance.LastInputDirectory
             };
 
-            if (fileDialog.ShowDialog() == DialogResult.OK)
+            if (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                Options.Instance.LastInputDirectory = FileHelper.GetDirectoryName(fileDialog.FileName);
                 LoadFromFile(fileDialog.FileName);
+
+                Options.Instance.LastInputDirectory = FileHelper.GetDirectoryName(fileDialog.FileName);
                 Options.Instance.Save();
             }
         }
@@ -42,8 +43,8 @@ namespace ChessAnalysis.Forms
             return errors.Count() switch
             {
                 0 => true,
-                1 => XtraMessageBox.Show(this, $"{errors.First().Message}\nDo you want to continue?", "Error message", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes, // TODO: umesto Continue na srpski ce ide Ipak nastavi?
-                _ => ErrorForm.Show(this, errors) == DialogResult.Yes
+                1 => Alert.Error(this, $"{errors.First().Message}\nDo you want to continue?"), // TODO: umesto Continue na srpski ce ide Ipak nastavi?
+                _ => Alert.ErrorList(this, errors)
             };
         }
 

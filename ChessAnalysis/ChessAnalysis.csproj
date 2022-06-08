@@ -29,6 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Controls\Mail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Controls\ErrorGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>

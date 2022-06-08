@@ -34,6 +34,7 @@ namespace ChessAnalysis.Utils
 
         public static void Save(string fileName, string content)
         {
+            CreateDirIfNotExists(fileName);
             File.WriteAllText(fileName, content);
         }
 

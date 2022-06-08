@@ -2,7 +2,6 @@ using System.IO;
 using ChessAnalysis.Classes;
 using ChessAnalysis.Properties;
 using ChessAnalysis.Utils;
-using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 
@@ -14,14 +13,15 @@ namespace ChessAnalysis.Forms
 
         public MainForm()
         {
+            Theme.ApplyTheme();
             InitializeComponent();
-            SetIcons();
             Notification.Notify += SetNotification;
         }
 
-        protected override void OnBackColorChanged(EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            SetIcons();
+            base.OnLoad(e);
+            Sound.Play(Sounds.Start);
         }
 
         private void btnAdd_ItemClick(object sender, EventArgs e)
@@ -39,11 +39,7 @@ namespace ChessAnalysis.Forms
         private void btnMail_ItemClick(object sender, EventArgs e)
         {
             using var mailForm = new MailForm(panel.Collection);
-            
-            if (mailForm.ShowDialog(this) == DialogResult.OK)
-            {
-                SetNotification("Mail was sent");
-            }
+            mailForm.ShowDialog(this);
         }
 
         private void btnOptions_ItemClick(object sender, EventArgs e)
@@ -68,7 +64,7 @@ namespace ChessAnalysis.Forms
             using var fileDialog = new XtraSaveFileDialog
             {
                 Filter = Constants.DIALOG_FILTER,
-                InitialDirectory = Options.Instance.LastInputDirectory
+                InitialDirectory = Options.Instance.LastOutputDirectory
             };
 
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
@@ -80,15 +76,7 @@ namespace ChessAnalysis.Forms
 
         private void btnSnapshot_ItemClick(object sender, EventArgs e)
         {
-            try
-            {
-                panel.TakeSnapshot();
-                SetNotification("Snapshot was saved");
-            }
-            catch
-            {
-                XtraMessageBox.Show(this, "Failed to snapshot image. Change Snapshot directory in Options and try again", "Error message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            panel.TakeSnapshot();
         }
 
         private void RowCountChanged(int count)
@@ -99,29 +87,17 @@ namespace ChessAnalysis.Forms
         private void SaveCollection()
         {
             FileHelper.Save(m_savedFile, panel.Collection.ToString());
-            SetNotification("File was saved");
+            Sound.Play(Sounds.Save);
+            Notification.Notify?.Invoke("File was saved");
 
             Options.Instance.LastOutputDirectory = FileHelper.GetDirectoryName(m_savedFile);
             Options.Instance.Save();
         }
 
-        private void SetIcons()
-        {
-            // Do not change names of buttons in Designer because this is hardcoded with Resources
-            foreach (var item in Main.Items)
-            {
-                if (item is BarButtonItem button)
-                {
-                    button.ImageOptions.LargeImage = Resources.GetThemedIcon(button.Name);
-                }
-            }
-        }
-
         private void SetNotification(string message)
         {
             lblNotification.Caption = message;
-            timer.Stop();
-            timer.Start();
+            timer.Restart();
         }
 
         private void timer_Tick(object sender, EventArgs e)

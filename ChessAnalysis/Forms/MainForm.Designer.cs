@@ -46,17 +46,19 @@
             this.btnOptions = new DevExpress.XtraBars.BarButtonItem();
             this.lblTotalPositions = new DevExpress.XtraBars.BarStaticItem();
             this.lblNotification = new DevExpress.XtraBars.BarStaticItem();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolbar = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.groupPositions = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.groupShare = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.groupOther = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.statusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Main)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupAdd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupSave)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl
@@ -77,6 +79,7 @@
             this.panel.ShowOnlyMainControls = false;
             this.panel.Size = new System.Drawing.Size(1174, 519);
             this.panel.TabIndex = 4;
+            this.panel.RowCountChanged += this.RowCountChanged;
             // 
             // Root
             // 
@@ -102,6 +105,8 @@
             this.Main.AllowMinimizeRibbon = false;
             this.Main.ExpandCollapseItem.Id = 0;
             this.Main.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.Main.ExpandCollapseItem,
+            this.Main.SearchEditItem,
             this.btnAdd,
             this.btnAddFromFile,
             this.btnSave,
@@ -130,7 +135,7 @@
             this.btnAdd.Caption = "Add";
             this.btnAdd.DropDownControl = this.popupAdd;
             this.btnAdd.Id = 1;
-            this.btnAdd.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.ImageOptions.LargeImage")));
+            this.btnAdd.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAdd.ImageOptions.SvgImage")));
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAdd_ItemClick);
             // 
@@ -144,7 +149,7 @@
             // 
             this.btnAddFromFile.Caption = "Add from file";
             this.btnAddFromFile.Id = 2;
-            this.btnAddFromFile.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAddFromFile.ImageOptions.LargeImage")));
+            this.btnAddFromFile.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAddFromFile.ImageOptions.SvgImage")));
             this.btnAddFromFile.Name = "btnAddFromFile";
             this.btnAddFromFile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAddFromFile_ItemClick);
             // 
@@ -154,7 +159,7 @@
             this.btnSave.Caption = "Save";
             this.btnSave.DropDownControl = this.popupSave;
             this.btnSave.Id = 3;
-            this.btnSave.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSave.ImageOptions.LargeImage")));
+            this.btnSave.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSave.ImageOptions.SvgImage")));
             this.btnSave.Name = "btnSave";
             this.btnSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSave_ItemClick);
             // 
@@ -168,7 +173,7 @@
             // 
             this.btnSaveAs.Caption = "Save as";
             this.btnSaveAs.Id = 4;
-            this.btnSaveAs.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSaveAs.ImageOptions.LargeImage")));
+            this.btnSaveAs.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSaveAs.ImageOptions.SvgImage")));
             this.btnSaveAs.Name = "btnSaveAs";
             this.btnSaveAs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSaveAs_ItemClick);
             // 
@@ -176,7 +181,7 @@
             // 
             this.btnMail.Caption = "Mail";
             this.btnMail.Id = 5;
-            this.btnMail.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnMail.ImageOptions.LargeImage")));
+            this.btnMail.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnMail.ImageOptions.SvgImage")));
             this.btnMail.Name = "btnMail";
             this.btnMail.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMail_ItemClick);
             // 
@@ -184,7 +189,7 @@
             // 
             this.btnSnapshot.Caption = "Snapshot";
             this.btnSnapshot.Id = 6;
-            this.btnSnapshot.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSnapshot.ImageOptions.LargeImage")));
+            this.btnSnapshot.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSnapshot.ImageOptions.SvgImage")));
             this.btnSnapshot.Name = "btnSnapshot";
             this.btnSnapshot.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSnapshot_ItemClick);
             // 
@@ -192,22 +197,25 @@
             // 
             this.btnOptions.Caption = "Options";
             this.btnOptions.Id = 7;
-            this.btnOptions.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnOptions.ImageOptions.LargeImage")));
+            this.btnOptions.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnOptions.ImageOptions.SvgImage")));
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnOptions_ItemClick);
             // 
             // lblTotalPositions
             // 
-            this.lblTotalPositions.Caption = "Total positions: 0";
+            this.lblTotalPositions.Caption = "0 row(s)";
             this.lblTotalPositions.Id = 8;
+            this.lblTotalPositions.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("lblTotalPositions.ImageOptions.SvgImage")));
             this.lblTotalPositions.Name = "lblTotalPositions";
+            this.lblTotalPositions.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // lblNotification
             // 
             this.lblNotification.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.lblNotification.Caption = "Notifications";
             this.lblNotification.Id = 9;
+            this.lblNotification.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("lblNotification.ImageOptions.SvgImage")));
             this.lblNotification.Name = "lblNotification";
+            this.lblNotification.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // toolbar
             // 
@@ -256,23 +264,23 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1198, 699);
-            this.Controls.Add(this.Main);
             this.Controls.Add(this.layoutControl);
             this.Controls.Add(this.statusBar);
-            this.IconOptions.Icon = ChessAnalysis.Properties.Resources.Icon;
+            this.Controls.Add(this.Main);
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("MainForm.IconOptions.Icon")));
             this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "MainForm";
             this.Ribbon = this.Main;
             this.StatusBar = this.statusBar;
             this.Text = "Chess analysis";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.Main)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupAdd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciPanel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Main)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupAdd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupSave)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -22,14 +22,14 @@ namespace ChessAnalysis.Controls
             Options.Instance.Bind(chxPlaySound, model => model.PlaySound);
         }
 
-        private void txtSnapshotDirectory_ButtonClick(object sender, ButtonPressedEventArgs e)
+        private void txtSnapshotDirectory_ButtonClick(object sender, EventArgs e)
 		{
             using var browserDialog = new XtraFolderBrowserDialog
             {
                 SelectedPath = Options.Instance.SnapshotDirectory
             };
             
-            if (browserDialog.ShowDialog() == DialogResult.OK)
+            if (browserDialog.ShowDialog(this) == DialogResult.OK)
             {
                 txtSnapshotDirectory.Text = browserDialog.SelectedPath;
             }

@@ -18,8 +18,8 @@
 
         public const string PIECES = "BKNPQR";
 
-        public const char PLAYER_BLACK = 'b';
-        public const char PLAYER_WHITE = 'w';
+        public const string PLAYER_BLACK = "b";
+        public const string PLAYER_WHITE = "w";
 
         public const string SNAPSHOT_EXTENSION = ".png";
 

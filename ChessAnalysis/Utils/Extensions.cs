@@ -2,6 +2,7 @@
 using ChessAnalysis.Models;
 using System.IO;
 using System.Security.Cryptography;
+using Timer = System.Windows.Forms.Timer;
 
 namespace ChessAnalysis.Utils
 {
@@ -104,6 +105,12 @@ namespace ChessAnalysis.Utils
         public static string RemoveLast(this string input, int count = 1)
         {
             return input.Remove(input.Length - count);
+        }
+
+        public static void Restart(this Timer timer)
+        {
+            timer.Stop();
+            timer.Start();
         }
 
         public static IEnumerable<Error> WithoutNullValues(this Error[] input)
