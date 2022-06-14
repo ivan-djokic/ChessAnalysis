@@ -87,8 +87,9 @@ namespace ChessAnalysis.Forms
         private void SaveCollection()
         {
             FileHelper.Save(m_savedFile, panel.Collection.ToString());
-            Sound.Play(Sounds.Save);
             Notification.Notify?.Invoke("File was saved");
+            Text = $"{Path.GetFileNameWithoutExtension(m_savedFile)} - Chess analysis";
+            Sound.Play(Sounds.Save);
 
             Options.Instance.LastOutputDirectory = FileHelper.GetDirectoryName(m_savedFile);
             Options.Instance.Save();

@@ -272,7 +272,7 @@
             this.Name = "MainForm";
             this.Ribbon = this.Main;
             this.StatusBar = this.statusBar;
-            this.Text = "Chess analysis";
+            this.Text = "* - Chess analysis";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);

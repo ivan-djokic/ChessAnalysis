@@ -6,16 +6,11 @@ namespace ChessAnalysis.Controls
 {
     public partial class MainPanel : XtraUserControl
     {
-        private double m_ratio = 2.6;
+        private double m_ratio;
 
         public MainPanel()
         {
             InitializeComponent();
-            Resize += (obj, e) => 
-
-            splitContainerControl.SplitterPosition = (int)(splitContainerControl.Width / m_ratio);
-
-            splitContainerControl.SplitterMoved += (obj, e) => m_ratio = (double)splitContainerControl.Width / splitContainerControl.SplitterPosition;
         }
 
         public event Action<int> RowCountChanged
@@ -45,9 +40,26 @@ namespace ChessAnalysis.Controls
             board.TakeSnapshot();
         }
 
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+
+            if (m_ratio == 0)
+            {
+                splitContainerControl_SplitterMoved(new object(), EventArgs.Empty);
+            }
+
+            splitContainerControl.SplitterPosition = (int)(splitContainerControl.Width / m_ratio);
+        }
+
         private void grid_FocusedRowChanged(Data data)
         {
             board.Data = data;
+        }
+
+        private void splitContainerControl_SplitterMoved(object sender, EventArgs e)
+        {
+            m_ratio = (double)splitContainerControl.Width / splitContainerControl.SplitterPosition;
         }
     }
 }

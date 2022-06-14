@@ -76,6 +76,7 @@
             this.splitContainerControl.Size = new System.Drawing.Size(1052, 522);
             this.splitContainerControl.SplitterPosition = 400;
             this.splitContainerControl.TabIndex = 4;
+            this.splitContainerControl.SplitterMoved += new System.EventHandler(this.splitContainerControl_SplitterMoved);
             // 
             // board
             // 

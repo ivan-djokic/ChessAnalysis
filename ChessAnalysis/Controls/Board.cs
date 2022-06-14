@@ -49,7 +49,7 @@ namespace ChessAnalysis.Controls
             try
             {
                 FileHelper.CreateDirIfNotExists(Options.Instance.SnapshotDirectory);
-                imageBoard.Image.Save(Path.Combine(Options.Instance.SnapshotDirectory, $"{m_data.Id}{Constants.SNAPSHOT_EXTENSION}"));
+                SaveSnapshot(Path.Combine(Options.Instance.SnapshotDirectory, $"{m_data.Id}{Constants.SNAPSHOT_EXTENSION}"));
                 Sound.Play(Sounds.Snapshot);
                 Notification.Notify?.Invoke("Snapshot was saved");
             }
@@ -93,6 +93,17 @@ namespace ChessAnalysis.Controls
             lblDefense.Text = m_data.Comment.Defense;
 
             DrawImage(true);
+        }
+
+        private void SaveSnapshot(string fileName, int tryCount = 2)
+        {
+            if (!File.Exists(fileName))
+            {
+                imageBoard.Image.Save(fileName);
+                return;
+            }
+
+            SaveSnapshot(Path.Combine(Options.Instance.SnapshotDirectory, $"{m_data.Id} ({tryCount}){Constants.SNAPSHOT_EXTENSION}"), tryCount + 1);
         }
     }
 }

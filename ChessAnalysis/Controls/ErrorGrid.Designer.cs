@@ -75,7 +75,7 @@
             this.lblMessage.Size = new System.Drawing.Size(429, 30);
             this.lblMessage.StyleController = this.layoutControl;
             this.lblMessage.TabIndex = 1;
-            this.lblMessage.Text = "There is more errors occurred during the parsing.\r\nDo you want to continue?";
+            this.lblMessage.Text = "Only correctly generated data will be imported.\r\nDo you want to continue?";
             // 
             // gridControl
             // 
