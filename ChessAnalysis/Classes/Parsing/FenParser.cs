@@ -1,5 +1,4 @@
-﻿using ChessAnalysis.Models;
-using ChessAnalysis.Utils;
+﻿using ChessAnalysis.Utils;
 
 namespace ChessAnalysis.Classes
 {

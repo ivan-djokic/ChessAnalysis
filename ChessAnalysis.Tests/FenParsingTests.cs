@@ -1,5 +1,4 @@
-using System.Drawing;
-using System.Reflection;
+using System.Linq;
 using ChessAnalysis.Classes;
 using ChessAnalysis.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -9,25 +8,15 @@ namespace ChessAnalysis.Tests
     [TestClass]
     public class FenParsingTests
     {
-        private Graphics? m_graphics;
-        private MethodInfo? m_drawPiecesMethod;
-
-        [TestInitialize]
-        public void Initialize()
-        {
-            using var board = new Bitmap(1, 1);
-            m_graphics = Graphics.FromImage(board);
-            m_drawPiecesMethod = typeof(BoardImage).GetMethod("DrawPieces", BindingFlags.NonPublic | BindingFlags.Static);
-        }
-
         [TestMethod]
         public void TestInvalidInputs()
         {
-            ProcessInvalidInputs("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNRR");
-            ProcessInvalidInputs("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBN");
-            ProcessInvalidInputs("rnbqkbnr/pppppppp/8/8/8/PPPPPPPP/RNBQKBNR");
-            ProcessInvalidInputs("rnbqkbnr/pppppppp/8/8/8/0/PPPPPPPP/RNBQKBNR");
-            ProcessInvalidInputs("rnbqkbnr/pppppppp/0/8/8/8/PPPPPPPP/RNBQKBNH");
+            ProcessInvalidInput(@"rnbqkbnr\pppppppp\8\8\8\8\PPPPPPPP\RNBQKBNR");
+            ProcessInvalidInput("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNRR");
+            ProcessInvalidInput("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBN");
+            ProcessInvalidInput("rnbqkbnr/pppppppp/8/8/8/PPPPPPPP/RNBQKBNR");
+            ProcessInvalidInput("rnbqkbnr/pppppppp/8/8/8/0/PPPPPPPP/RNBQKBNR");
+            ProcessInvalidInput("rnbqkbnr/pp3pp/8/8/8/8/PPPPPPPP/RNBQKBNH");
         }
 
         [TestMethod]
@@ -39,29 +28,51 @@ namespace ChessAnalysis.Tests
             ProcessValidInputs("8/8/8/8/8/8/8/8");
         }
 
-        private void ProcessInvalidInputs(string input)
+        private static void ProcessInvalidInput(string input)
         {
             try
             {
-                ProcessValidInputs(input);
+                FenParser.Parse(input);
+                Assert.Fail();
             }
             catch
             {
-                return;
             }
-
-            Assert.Fail();
         }
 
-        private void ProcessValidInputs(string input)
+        private static void ProcessValidInputs(string input)
         {
-            if (m_drawPiecesMethod == null || m_graphics == null)
+            Assert.AreEqual(input, string.Join(ParseConsts.ARGS_DELIMITER_SLASH, FenParser.Parse(input).Select(row => RowToString(row))));
+        }
+
+        private static string RowToString(char[] input)
+        {
+            var result = string.Empty;
+            var emptySpaces = 0;
+
+            for (var i = 0; i < input.Length; i++)
             {
-                Assert.Fail();
-                return;
+                if (input[i] == Constants.EMPTY_CHAR)
+                {
+                    emptySpaces++;
+                    continue;
+                }
+
+                if (emptySpaces > 0)
+                {
+                    result += emptySpaces;
+                    emptySpaces = 0;
+                }
+
+                result += input[i];
             }
 
-            m_drawPiecesMethod?.Invoke(null, new object[] { m_graphics, 300, input, null });
+            if (emptySpaces > 0)
+            {
+                result += emptySpaces;
+            }
+
+            return result;
         }
     }
 }

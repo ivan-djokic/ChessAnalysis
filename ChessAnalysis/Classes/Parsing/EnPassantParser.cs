@@ -1,5 +1,4 @@
-﻿using ChessAnalysis.Models;
-using ChessAnalysis.Utils;
+﻿using ChessAnalysis.Utils;
 
 namespace ChessAnalysis.Classes
 {
@@ -37,7 +36,7 @@ namespace ChessAnalysis.Classes
                 throw new InvalidComponentsNumberException(Component);
             }
 
-            if (!m_input[0].IsBoardColumn() || !m_input[1].IsBoardRow())
+            if (!m_input[0].IsBoardColumn() || !ParseConsts.ALLOWED_EN_PASSANT_ROWS.Contains(m_input[1]))
             {
                 throw new UnallowedCharactersException(Component);
             }

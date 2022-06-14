@@ -2,6 +2,8 @@
 {
     public static class ParseConsts
     {
+        public const string ALLOWED_EN_PASSANT_ROWS = "36";
+
         public const string ARG_COMMENT = "c0 ";
         public const string ARG_ID = "id ";
         public const string ARG_NULL = "-";

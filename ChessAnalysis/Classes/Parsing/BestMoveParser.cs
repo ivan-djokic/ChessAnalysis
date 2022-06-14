@@ -40,7 +40,7 @@ namespace ChessAnalysis.Classes
                 return new BestMove(m_input, 'K', new Point(column, Constants.BOARD_SIZE - 1));
             }
 
-            return new BestMove(m_input, 'k', new Point(6, 0));
+            return new BestMove(m_input, 'k', new Point(column, 0));
         }
 
         private Point GetField()

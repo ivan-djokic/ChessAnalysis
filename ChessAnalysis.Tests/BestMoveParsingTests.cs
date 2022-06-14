@@ -9,81 +9,65 @@ namespace ChessAnalysis.Tests
     public class BestMoveParsingTests
     {
         [TestMethod]
-        public void TestCastlingInputs()
-        {
-            ProcessValidInputs("O-O", true, 'K', new Point(6, 7));
-            ProcessValidInputs("O-O-O", false, 'k', new Point(2, 0));
-            
-            ProcessInvalidInputs("O-", true);
-            ProcessInvalidInputs("O-O-Ok", false);
-            ProcessInvalidInputs("O-O-O-O", true);
-        }
-
-        [TestMethod]
         public void TestInvalidInputs()
         {
-            ProcessInvalidInputs(string.Empty, true);
-            ProcessInvalidInputs("e", false);
-            ProcessInvalidInputs("R21xg2+", false);
+            ProcessInvalidInput(string.Empty, true);
+            ProcessInvalidInput("e", false);
+            ProcessInvalidInput("R2xg2$", true);
+            ProcessInvalidInput("Bx3b", false);
+            ProcessInvalidInput("qxa8+", false);
+            ProcessInvalidInput("Nxi6#", false);
+            ProcessInvalidInput("ab1", false);
+            ProcessInvalidInput("xe3", true);
+            ProcessInvalidInput("Pe3", true);
+            ProcessInvalidInput("pe3", false);
+            ProcessInvalidInput("BGxb3", true);
+            ProcessInvalidInput("R9xb3", true);
+            ProcessInvalidInput("R21xg2+", false);
+
+            ProcessInvalidInput("O-", true);
+            ProcessInvalidInput("O-O-Ok", false);
+            ProcessInvalidInput("O-O-O-O", true);
         }
 
         [TestMethod]
-        public void TestInvalidRegularInputs()
+        public void TestValidInputs()
         {
-            ProcessInvalidInputs("R2xg2$", true);
-            ProcessInvalidInputs("Bx3b", false);
-            ProcessInvalidInputs("qxa8+", false);
-            ProcessInvalidInputs("Nxi6#", false);
-            ProcessInvalidInputs("ab1", false);
-            ProcessInvalidInputs("xe3", true);
-            ProcessInvalidInputs("Pe3", true);
-            ProcessInvalidInputs("pe3", false);
-            ProcessInvalidInputs("BGxb3", true);
-            ProcessInvalidInputs("R9xb3", true);
+            ProcessValidInput(ParseConsts.ARG_NULL, false, Constants.EMPTY_CHAR, new Point(-1, -1));
+            ProcessValidInput("Kc5", false, 'k', new Point(2, 3));
+            ProcessValidInput("f4", true, 'P', new Point(5, 4));
+            ProcessValidInput("dxe3", false, 'p', new Point(4, 5));
+            ProcessValidInput("Bxb3", true, 'B', new Point(1, 5));
+            ProcessValidInput("Qxa8", false, 'q', new Point(0, 0));
+            ProcessValidInput("R2xg2+", true, 'R', new Point(6, 6));
+            ProcessValidInput("Naxd7#", false, 'n', new Point(3, 1));
+            ProcessValidInput("Kxh6", true, 'K', new Point(7, 2));
+
+            ProcessValidInput("O-O", true, 'K', new Point(6, 7));
+            ProcessValidInput("O-O", false, 'k', new Point(6, 0));
+            ProcessValidInput("O-O-O", true, 'K', new Point(2, 7));
+            ProcessValidInput("O-O-O", false, 'k', new Point(2, 0));
         }
 
-        [TestMethod]
-        public void TestValidRegularInputs()
-        {
-            ProcessValidInputs("-", false, '\0', new Point(-1, -1));
-            ProcessValidInputs("Kc5", false, 'k', new Point(2, 3));
-            ProcessValidInputs("f4", true, 'P', new Point(5, 4));
-            ProcessValidInputs("dxe3", false, 'p', new Point(4, 5));
-            ProcessValidInputs("Bxb3", true, 'B', new Point(1, 5));
-            ProcessValidInputs("Qxa8", false, 'q', new Point(0, 0));
-            ProcessValidInputs("R2xg2+", true, 'R', new Point(6, 6));
-            ProcessValidInputs("Naxd7#", false, 'n', new Point(3, 1));
-            ProcessValidInputs("Kxh6", true, 'K', new Point(7, 2));
-        }
-
-        private void ProcessInvalidInputs(string input, bool isWhite)
+        private static void ProcessInvalidInput(string input, bool isWhite)
         {
             try
             {
                 BestMoveParser.Parse(input, isWhite);
+                Assert.Fail();
             }
             catch
             {
-                return;
             }
-
-            Assert.Fail();
         }
 
-        private void ProcessValidInputs(string input, bool isWhite, char expectedPiece, Point expectedField)
+        private static void ProcessValidInput(string input, bool isWhite, char expectedPiece, Point expectedField)
         {
-            var bestMove = BestMoveParser.Parse(input, isWhite);
+            var result = BestMoveParser.Parse(input, isWhite);
 
-            Assert.AreEqual(expectedField, bestMove.Field);
-            Assert.AreEqual(expectedPiece, bestMove.Piece);
-
-            if (input == ParseConsts.ARG_NULL)
-            {
-                Assert.IsNull(bestMove.Value);
-                return;
-            }
-
-            Assert.AreEqual(input, bestMove.Value);
+            Assert.AreEqual(expectedField, result.Field);
+            Assert.AreEqual(expectedPiece, result.Piece);
+            Assert.AreEqual(input == ParseConsts.ARG_NULL ? string.Empty : input, result.Value);
         }
     }
 }
