@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
+	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -25,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="devexpress.win.design" Version="21.2.7" />
+    <PackageReference Include="devexpress.win.design" Version="21.2.8" />
   </ItemGroup>
 
   <ItemGroup>
@@ -86,5 +87,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="rmdir /S /Q $(SolutionDir)Build\Release\runtimes&#xD;&#xA;del /Q $(SolutionDir)Build\Release\ChessAnalysis.d*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\ChessAnalysis.p*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.C*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.DataA*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.DataV*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.Di*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.I*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.Ma*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.O*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.P*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.R*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.S*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.T*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.Utils.v21.2.U*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.Xp*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.XtraC*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.XtraD*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.XtraGa*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.XtraM*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.XtraN*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.XtraP*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.XtraR*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.XtraS*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.XtraT*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.XtraV*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\DevExpress.XtraW*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\M*&#xD;&#xA;del /Q $(SolutionDir)Build\Release\S*" />
+  </Target>
 
 </Project>

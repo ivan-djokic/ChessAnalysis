@@ -55,7 +55,7 @@ namespace ChessAnalysis.Controls
             }
             catch
             {
-                XtraMessageBox.Show(this, "Failed to snapshot image. Change Snapshot directory in Options and try again", "Error message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Alert.Error(this, "Failed to snapshot image. Change Snapshot directory in Options and try again", MessageBoxButtons.OK);
             }
         }
 
