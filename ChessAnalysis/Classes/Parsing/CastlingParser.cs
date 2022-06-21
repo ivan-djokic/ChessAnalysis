@@ -9,6 +9,11 @@ namespace ChessAnalysis.Classes
         {
         }
 
+        protected override int ArgumentsCount
+        {
+            get => ParseConsts.ARGS_COUNT_CASTLING;
+        }
+
         protected override Components Component
         {
             get => Components.Castling;
@@ -21,6 +26,11 @@ namespace ChessAnalysis.Classes
 
         protected override (Castling Black, Castling White) Parse()
         {
+            if (m_input.Length < ArgumentsCount)
+            {
+                throw new InvalidComponentsNumberException(Component);
+            }
+
             var black = Castling.None;
             var white = Castling.None;
 

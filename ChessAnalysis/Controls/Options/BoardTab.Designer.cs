@@ -34,7 +34,6 @@
             this.colorEmpty = new DevExpress.XtraEditors.ColorPickEdit();
             this.chxCoords = new DevExpress.XtraEditors.CheckEdit();
             this.chxBestMove = new DevExpress.XtraEditors.CheckEdit();
-            this.chxFlipBoard = new DevExpress.XtraEditors.CheckEdit();
             this.lblPieces = new DevExpress.XtraEditors.LabelControl();
             this.rbClassic = new DevExpress.XtraEditors.CheckEdit();
             this.rbNeo = new DevExpress.XtraEditors.CheckEdit();
@@ -45,7 +44,6 @@
             this.lciEmptyColor = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciCoords = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciBestMove = new DevExpress.XtraLayout.LayoutControlItem();
-            this.lciFlipBoard = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciPieces = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciClassic = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciNeo = new DevExpress.XtraLayout.LayoutControlItem();
@@ -57,7 +55,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.colorEmpty.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chxCoords.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chxBestMove.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chxFlipBoard.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rbClassic.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rbNeo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rbWood.Properties)).BeginInit();
@@ -67,7 +64,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.lciEmptyColor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciCoords)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciBestMove)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lciFlipBoard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciPieces)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciClassic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciNeo)).BeginInit();
@@ -82,7 +78,6 @@
             this.layoutControl.Controls.Add(this.colorEmpty);
             this.layoutControl.Controls.Add(this.chxCoords);
             this.layoutControl.Controls.Add(this.chxBestMove);
-            this.layoutControl.Controls.Add(this.chxFlipBoard);
             this.layoutControl.Controls.Add(this.lblPieces);
             this.layoutControl.Controls.Add(this.rbClassic);
             this.layoutControl.Controls.Add(this.rbNeo);
@@ -154,22 +149,11 @@
             this.chxBestMove.StyleController = this.layoutControl;
             this.chxBestMove.TabIndex = 5;
             // 
-            // chxFlipBoard
-            // 
-            this.chxFlipBoard.EditValue = true;
-            this.chxFlipBoard.Location = new System.Drawing.Point(32, 130);
-            this.chxFlipBoard.Name = "chxFlipBoard";
-            this.chxFlipBoard.Properties.AllowFocused = false;
-            this.chxFlipBoard.Properties.Caption = "Automatically flip board depending on player";
-            this.chxFlipBoard.Size = new System.Drawing.Size(356, 20);
-            this.chxFlipBoard.StyleController = this.layoutControl;
-            this.chxFlipBoard.TabIndex = 6;
-            // 
             // lblPieces
             // 
             this.lblPieces.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPieces.Appearance.Options.UseFont = true;
-            this.lblPieces.Location = new System.Drawing.Point(12, 160);
+            this.lblPieces.Location = new System.Drawing.Point(12, 136);
             this.lblPieces.Name = "lblPieces";
             this.lblPieces.Size = new System.Drawing.Size(40, 18);
             this.lblPieces.StyleController = this.layoutControl;
@@ -179,7 +163,7 @@
             // rbClassic
             // 
             this.rbClassic.EditValue = true;
-            this.rbClassic.Location = new System.Drawing.Point(32, 182);
+            this.rbClassic.Location = new System.Drawing.Point(32, 158);
             this.rbClassic.Name = "rbClassic";
             this.rbClassic.Properties.AllowFocused = false;
             this.rbClassic.Properties.Caption = "Classic";
@@ -191,7 +175,7 @@
             // 
             // rbNeo
             // 
-            this.rbNeo.Location = new System.Drawing.Point(92, 182);
+            this.rbNeo.Location = new System.Drawing.Point(92, 158);
             this.rbNeo.Name = "rbNeo";
             this.rbNeo.Properties.AllowFocused = false;
             this.rbNeo.Properties.Caption = "Neo";
@@ -204,7 +188,7 @@
             // 
             // rbWood
             // 
-            this.rbWood.Location = new System.Drawing.Point(139, 182);
+            this.rbWood.Location = new System.Drawing.Point(139, 158);
             this.rbWood.Name = "rbWood";
             this.rbWood.Properties.AllowFocused = false;
             this.rbWood.Properties.Caption = "Wood";
@@ -225,7 +209,6 @@
             this.lciEmptyColor,
             this.lciCoords,
             this.lciBestMove,
-            this.lciFlipBoard,
             this.lciPieces,
             this.lciClassic,
             this.lciNeo,
@@ -284,20 +267,10 @@
             this.lciBestMove.TextSize = new System.Drawing.Size(0, 0);
             this.lciBestMove.TextVisible = false;
             // 
-            // lciFlipBoard
-            // 
-            this.lciFlipBoard.Control = this.chxFlipBoard;
-            this.lciFlipBoard.Location = new System.Drawing.Point(0, 118);
-            this.lciFlipBoard.Name = "lciFlipBoard";
-            this.lciFlipBoard.Size = new System.Drawing.Size(380, 24);
-            this.lciFlipBoard.Spacing = new DevExpress.XtraLayout.Utils.Padding(20, 0, 0, 0);
-            this.lciFlipBoard.TextSize = new System.Drawing.Size(0, 0);
-            this.lciFlipBoard.TextVisible = false;
-            // 
             // lciPieces
             // 
             this.lciPieces.Control = this.lblPieces;
-            this.lciPieces.Location = new System.Drawing.Point(0, 142);
+            this.lciPieces.Location = new System.Drawing.Point(0, 118);
             this.lciPieces.Name = "lciPieces";
             this.lciPieces.Size = new System.Drawing.Size(380, 28);
             this.lciPieces.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 6, 0);
@@ -307,7 +280,7 @@
             // lciClassic
             // 
             this.lciClassic.Control = this.rbClassic;
-            this.lciClassic.Location = new System.Drawing.Point(0, 170);
+            this.lciClassic.Location = new System.Drawing.Point(0, 146);
             this.lciClassic.Name = "lciClassic";
             this.lciClassic.Size = new System.Drawing.Size(80, 24);
             this.lciClassic.Spacing = new DevExpress.XtraLayout.Utils.Padding(20, 0, 0, 0);
@@ -317,7 +290,7 @@
             // lciNeo
             // 
             this.lciNeo.Control = this.rbNeo;
-            this.lciNeo.Location = new System.Drawing.Point(80, 170);
+            this.lciNeo.Location = new System.Drawing.Point(80, 146);
             this.lciNeo.Name = "lciNeo";
             this.lciNeo.Size = new System.Drawing.Size(47, 24);
             this.lciNeo.TextSize = new System.Drawing.Size(0, 0);
@@ -326,7 +299,7 @@
             // lciWood
             // 
             this.lciWood.Control = this.rbWood;
-            this.lciWood.Location = new System.Drawing.Point(127, 170);
+            this.lciWood.Location = new System.Drawing.Point(127, 146);
             this.lciWood.Name = "lciWood";
             this.lciWood.Size = new System.Drawing.Size(253, 24);
             this.lciWood.TextSize = new System.Drawing.Size(0, 0);
@@ -335,9 +308,9 @@
             // emptySpaceItem
             // 
             this.emptySpaceItem.AllowHotTrack = false;
-            this.emptySpaceItem.Location = new System.Drawing.Point(0, 194);
+            this.emptySpaceItem.Location = new System.Drawing.Point(0, 170);
             this.emptySpaceItem.Name = "emptySpaceItem";
-            this.emptySpaceItem.Size = new System.Drawing.Size(380, 86);
+            this.emptySpaceItem.Size = new System.Drawing.Size(380, 110);
             this.emptySpaceItem.TextSize = new System.Drawing.Size(0, 0);
             // 
             // BoardTab
@@ -353,7 +326,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.colorEmpty.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chxCoords.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chxBestMove.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chxFlipBoard.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rbClassic.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rbNeo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rbWood.Properties)).EndInit();
@@ -363,7 +335,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.lciEmptyColor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciCoords)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciBestMove)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lciFlipBoard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciPieces)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciClassic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciNeo)).EndInit();
@@ -381,7 +352,6 @@
         private DevExpress.XtraEditors.ColorPickEdit colorEmpty;
         private DevExpress.XtraEditors.CheckEdit chxCoords;
         private DevExpress.XtraEditors.CheckEdit chxBestMove;
-        private DevExpress.XtraEditors.CheckEdit chxFlipBoard;
         private DevExpress.XtraEditors.LabelControl lblPieces;
         private DevExpress.XtraEditors.CheckEdit rbWood;
         private DevExpress.XtraEditors.CheckEdit rbNeo;
@@ -392,7 +362,6 @@
         private DevExpress.XtraLayout.LayoutControlItem lciEmptyColor;
         private DevExpress.XtraLayout.LayoutControlItem lciCoords;
         private DevExpress.XtraLayout.LayoutControlItem lciBestMove;
-        private DevExpress.XtraLayout.LayoutControlItem lciFlipBoard;
         private DevExpress.XtraLayout.LayoutControlItem lciPieces;
         private DevExpress.XtraLayout.LayoutControlItem lciClassic;
         private DevExpress.XtraLayout.LayoutControlItem lciNeo;

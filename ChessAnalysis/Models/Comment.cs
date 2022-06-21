@@ -2,12 +2,12 @@
 {
     public class Comment
     {
-        public Comment(string players, string timestamp, string opening, string defense)
+        public Comment(string players, string result, string opening, string defense)
         {
             Defense = defense;
             Opening = opening;
             Players = players;
-            Timestamp = timestamp;
+            Result = result;
         }
 
         public string Defense { get; set; }
@@ -16,6 +16,6 @@
 
         public string Players { get; set; }
 
-        public string Timestamp { get; set; }
+        public string Result { get; set; }
     }
 }

@@ -18,29 +18,30 @@ namespace ChessAnalysis.Tests
         [TestMethod]
         public void TestValidInputs()
         {
-            ProcessValidInputs(ParseConsts.ARG_NULL, Castling.None, Castling.None);
-            ProcessValidInputs("k", Castling.King, Castling.None);
-            ProcessValidInputs("qKQ", Castling.Queen, Castling.King | Castling.Queen);
+            ProcessValidInputs(ParseConsts.ARG_NULL, (Castling.None, Castling.None));
+            ProcessValidInputs("k", (Castling.King, Castling.None));
+            ProcessValidInputs("qKQ", (Castling.Queen, Castling.King | Castling.Queen));
         }
 
         private static void ProcessInvalidInput(string input)
         {
+            var failed = false;
+
             try
             {
                 CastlingParser.Parse(input);
-                Assert.Fail();
             }
             catch
             {
+                failed = true;
             }
+
+            Assert.IsTrue(failed);
         }
 
-        private static void ProcessValidInputs(string input, Castling expectedBlack, Castling expectedWhite)
+        private static void ProcessValidInputs(string input, (Castling Black, Castling White) expected)
         {
-            var (black, white) = CastlingParser.Parse(input);
-
-            Assert.AreEqual(expectedBlack, black);
-            Assert.AreEqual(expectedWhite, white);
+            Assert.AreEqual(expected, CastlingParser.Parse(input));
         }
     }
 }

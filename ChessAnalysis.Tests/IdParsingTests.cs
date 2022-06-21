@@ -27,14 +27,18 @@ namespace ChessAnalysis.Tests
 
         private static void ProcessInvalidInput(string input)
         {
+            var failed = false;
+
             try
             {
                 IdParser.Parse(input);
-                Assert.Fail();
             }
             catch
             {
+                failed = true;
             }
+
+            Assert.IsTrue(failed);
         }
 
         private static void ProcessValidInputs(string input, string expectedId)

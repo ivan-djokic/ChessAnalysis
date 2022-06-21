@@ -13,32 +13,37 @@ namespace ChessAnalysis.Tests
             ProcessInvalidInput("a");
             ProcessInvalidInput("b36");
             ProcessInvalidInput("c2");
-            ProcessInvalidInput("D6");
+            ProcessInvalidInput("D3");
+            ProcessInvalidInput("g3");
         }
 
         [TestMethod]
         public void TestValidInputs()
         {
-            ProcessInvalidInput(ParseConsts.ARG_NULL);
-            ProcessValidInputs("e3");
-            ProcessValidInputs("f6");
+            ProcessValidInputs(ParseConsts.ARG_NULL);
+            ProcessValidInputs("e3", true);
+            ProcessValidInputs("f6", false);
         }
 
-        private static void ProcessInvalidInput(string input)
+        private static void ProcessInvalidInput(string input, bool isWhitePlayed = false)
         {
+            var failed = false;
+
             try
             {
-                EnPassantParser.Parse(input);
-                Assert.Fail();
+                EnPassantParser.Parse(input, isWhitePlayed);
             }
             catch
             {
+                failed = true;
             }
+
+            Assert.IsTrue(failed);
         }
 
-        private static void ProcessValidInputs(string input)
+        private static void ProcessValidInputs(string input, bool isWhitePlayed = false)
         {
-            Assert.AreEqual(input, EnPassantParser.Parse(input));
+            Assert.AreEqual(input == ParseConsts.ARG_NULL ? string.Empty : input, EnPassantParser.Parse(input, isWhitePlayed));
         }
     }
 }

@@ -14,8 +14,8 @@
 
         public const string OPTIONS_FILE_NAME = "Options.xml";
 
-        public const char PAWN = 'P';
-
+        public const char PIECE_PAWN = 'P';
+        public const char PIECE_KING = 'K';
         public const string PIECES = "BKNPQR";
 
         public const string PLAYER_BLACK = "b";

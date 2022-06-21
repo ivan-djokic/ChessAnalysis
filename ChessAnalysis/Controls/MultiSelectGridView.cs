@@ -1,10 +1,13 @@
-﻿using DevExpress.XtraGrid.Columns;
+﻿using System.IO;
+using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
 
 namespace ChessAnalysis.Controls
 {
     public class MultiSelectGridView : GridView
     {
+        private readonly MemoryStream m_layoutStream = new();
+
         public MultiSelectGridView()
         {
             OptionsMenu.EnableColumnMenu = false;
@@ -15,6 +18,8 @@ namespace ChessAnalysis.Controls
             OptionsSelection.MultiSelect = true;
             OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
             OptionsSelection.ResetSelectionClickOutsideCheckboxSelector = true;
+            
+            SaveLayoutToStream(m_layoutStream);
         }
 
         protected override bool AllowFixedCheckboxSelectorColumn
@@ -24,19 +29,20 @@ namespace ChessAnalysis.Controls
 
         public void RefreshData(bool refreshSelection)
         {
-            var selection = GetSelectedRows();
+            var selection = refreshSelection ? GetSelectedRows() : Array.Empty<int>();
             base.RefreshData();
             ClearSelection();
-
-            if (!refreshSelection)
-            {
-                return;
-            }
 
             foreach (var row in selection)
             {
                 SelectRow(row - 1);
             }
+        }
+
+        public void RestoreLayout()
+        {
+            m_layoutStream.Position = 0;
+            RestoreLayoutFromStream(m_layoutStream);
         }
 
         protected override void CreateCheckboxSelectorColumn()

@@ -10,7 +10,6 @@ namespace ChessAnalysis.Controls
     public partial class Board : XtraUserControl
     {
         private Data m_data;
-        private bool? m_isWhiteOriented;
         private LayoutVisibility m_controlsVisibility;
 
         public Board()
@@ -61,38 +60,35 @@ namespace ChessAnalysis.Controls
 
         private void btnFlip_Click(object sender, EventArgs e)
         {
-            m_isWhiteOriented = !m_isWhiteOriented;
-            DrawImage(false);
+            Options.Instance.WhiteOrientedBoard = !Options.Instance.WhiteOrientedBoard;
+            Options.Instance.Save();
+
+            DrawImage();
             Sound.Play(Sounds.Flip);
         }
 
         private void ChangeControlsVisibility()
         {
             lciPlayers.Visibility = m_controlsVisibility;
-            lciTimestamp.Visibility = m_controlsVisibility;
+            lciResult.Visibility = m_controlsVisibility;
             lciOpening.Visibility = m_controlsVisibility;
             lciDefense.Visibility = m_controlsVisibility;
             lciFlip.Visibility = m_controlsVisibility;
         }
 
-        private void DrawImage(bool resetOrientation)
+        private void DrawImage()
         {
-            if (resetOrientation)
-            {
-                m_isWhiteOriented = ShowOnlyBoard ? true : null;
-            }
-
-            imageBoard.Image = BoardImage.Create(m_data.Position, ref m_isWhiteOriented);
+            imageBoard.Image = BoardImage.Create(m_data.Position);
         }
 
         private void Reinitialize()
         {
             lblPlayers.Text = m_data.Comment.Players;
-            lblTimestamp.Text = m_data.Comment.Timestamp;
+            lblResult.Text = m_data.Comment.Result;
             lblOpening.Text = m_data.Comment.Opening;
             lblDefense.Text = m_data.Comment.Defense;
 
-            DrawImage(true);
+            DrawImage();
         }
 
         private void SaveSnapshot(string fileName, int tryCount = 2)

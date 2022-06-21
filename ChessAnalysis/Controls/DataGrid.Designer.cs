@@ -29,8 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataGrid));
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
-            this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
+            this.btnRestore = new DevExpress.XtraEditors.SimpleButton();
             this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             this.btnRemove = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
@@ -42,12 +48,12 @@
             this.colEnPassant = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHalfMoves = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBestMove = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colResult = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOpening = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDefense = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPlayers = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTimestamp = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.lciAdd = new DevExpress.XtraLayout.LayoutControlItem();
+            this.lciRestore = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciEdit = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciRemove = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciGrid = new DevExpress.XtraLayout.LayoutControlItem();
@@ -56,7 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lciAdd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciRestore)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciRemove)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciGrid)).BeginInit();
@@ -64,7 +70,7 @@
             // 
             // layoutControl
             // 
-            this.layoutControl.Controls.Add(this.btnAdd);
+            this.layoutControl.Controls.Add(this.btnRestore);
             this.layoutControl.Controls.Add(this.btnEdit);
             this.layoutControl.Controls.Add(this.btnRemove);
             this.layoutControl.Controls.Add(this.gridControl);
@@ -76,20 +82,23 @@
             this.layoutControl.TabIndex = 0;
             this.layoutControl.Text = "layoutControl";
             // 
-            // btnAdd
+            // btnRestore
             // 
-            this.btnAdd.AllowFocus = false;
-            this.btnAdd.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnAdd.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAdd.ImageOptions.SvgImage")));
-            this.btnAdd.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.btnAdd.Location = new System.Drawing.Point(12, 12);
-            this.btnAdd.MaximumSize = new System.Drawing.Size(18, 18);
-            this.btnAdd.MinimumSize = new System.Drawing.Size(18, 18);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(18, 18);
-            this.btnAdd.StyleController = this.layoutControl;
-            this.btnAdd.TabIndex = 1;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnRestore.AllowFocus = false;
+            this.btnRestore.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnRestore.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnRestore.ImageOptions.SvgImage")));
+            this.btnRestore.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.btnRestore.Location = new System.Drawing.Point(12, 12);
+            this.btnRestore.MaximumSize = new System.Drawing.Size(18, 18);
+            this.btnRestore.MinimumSize = new System.Drawing.Size(18, 18);
+            this.btnRestore.Name = "btnRestore";
+            this.btnRestore.Size = new System.Drawing.Size(18, 18);
+            this.btnRestore.StyleController = this.layoutControl;
+            toolTipItem1.Text = "Reload grid";
+            superToolTip1.Items.Add(toolTipItem1);
+            this.btnRestore.SuperTip = superToolTip1;
+            this.btnRestore.TabIndex = 1;
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // btnEdit
             // 
@@ -103,6 +112,9 @@
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(18, 18);
             this.btnEdit.StyleController = this.layoutControl;
+            toolTipItem2.Text = "Edit selected item";
+            superToolTip2.Items.Add(toolTipItem2);
+            this.btnEdit.SuperTip = superToolTip2;
             this.btnEdit.TabIndex = 1;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -118,12 +130,14 @@
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(18, 18);
             this.btnRemove.StyleController = this.layoutControl;
+            toolTipItem3.Text = "Remove selection";
+            superToolTip3.Items.Add(toolTipItem3);
+            this.btnRemove.SuperTip = superToolTip3;
             this.btnRemove.TabIndex = 7;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // gridControl
             // 
-            this.gridControl.DataSource = new Classes.DataCollection();
             this.gridControl.Location = new System.Drawing.Point(12, 38);
             this.gridControl.MainView = this.gridView;
             this.gridControl.Name = "gridControl";
@@ -134,6 +148,7 @@
             // 
             // gridView
             // 
+            this.gridView.AutoFillColumn = colPlayers;
             this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colRound,
             this.colNextPlayer,
@@ -142,10 +157,10 @@
             this.colEnPassant,
             this.colHalfMoves,
             this.colBestMove,
+            this.colResult,
             this.colOpening,
             this.colDefense,
-            this.colPlayers,
-            this.colTimestamp});
+            this.colPlayers});
             this.gridView.DetailHeight = 303;
             this.gridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridView.GridControl = this.gridControl;
@@ -233,6 +248,17 @@
             this.colBestMove.VisibleIndex = 6;
             this.colBestMove.Width = 81;
             // 
+            // colResult
+            // 
+            this.colResult.Caption = "Result";
+            this.colResult.FieldName = "Comment.Result";
+            this.colResult.Name = "colResult";
+            this.colResult.OptionsColumn.AllowEdit = false;
+            this.colResult.OptionsColumn.AllowFocus = false;
+            this.colResult.Visible = true;
+            this.colResult.VisibleIndex = 7;
+            this.colResult.Width = 60;
+            // 
             // colOpening
             // 
             this.colOpening.Caption = "Opening";
@@ -241,7 +267,7 @@
             this.colOpening.OptionsColumn.AllowEdit = false;
             this.colOpening.OptionsColumn.AllowFocus = false;
             this.colOpening.Visible = true;
-            this.colOpening.VisibleIndex = 7;
+            this.colOpening.VisibleIndex = 8;
             this.colOpening.Width = 130;
             // 
             // colDefense
@@ -252,7 +278,7 @@
             this.colDefense.OptionsColumn.AllowEdit = false;
             this.colDefense.OptionsColumn.AllowFocus = false;
             this.colDefense.Visible = true;
-            this.colDefense.VisibleIndex = 8;
+            this.colDefense.VisibleIndex = 9;
             this.colDefense.Width = 130;
             // 
             // colPlayers
@@ -263,26 +289,15 @@
             this.colPlayers.OptionsColumn.AllowEdit = false;
             this.colPlayers.OptionsColumn.AllowFocus = false;
             this.colPlayers.Visible = true;
-            this.colPlayers.VisibleIndex = 9;
+            this.colPlayers.VisibleIndex = 10;
             this.colPlayers.Width = 160;
-            // 
-            // colTimestamp
-            // 
-            this.colTimestamp.Caption = "Timestamp";
-            this.colTimestamp.FieldName = "Comment.Timestamp";
-            this.colTimestamp.Name = "colTimestamp";
-            this.colTimestamp.OptionsColumn.AllowEdit = false;
-            this.colTimestamp.OptionsColumn.AllowFocus = false;
-            this.colTimestamp.Visible = true;
-            this.colTimestamp.VisibleIndex = 10;
-            this.colTimestamp.Width = 116;
             // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.lciAdd,
+            this.lciRestore,
             this.lciEdit,
             this.lciRemove,
             this.lciGrid});
@@ -290,14 +305,14 @@
             this.Root.Size = new System.Drawing.Size(742, 519);
             this.Root.TextVisible = false;
             // 
-            // lciAdd
+            // lciRestore
             // 
-            this.lciAdd.Control = this.btnAdd;
-            this.lciAdd.Location = new System.Drawing.Point(0, 0);
-            this.lciAdd.Name = "lciAdd";
-            this.lciAdd.Size = new System.Drawing.Size(26, 26);
-            this.lciAdd.TextSize = new System.Drawing.Size(0, 0);
-            this.lciAdd.TextVisible = false;
+            this.lciRestore.Control = this.btnRestore;
+            this.lciRestore.Location = new System.Drawing.Point(0, 0);
+            this.lciRestore.Name = "lciRestore";
+            this.lciRestore.Size = new System.Drawing.Size(26, 26);
+            this.lciRestore.TextSize = new System.Drawing.Size(0, 0);
+            this.lciRestore.TextVisible = false;
             // 
             // lciEdit
             // 
@@ -338,7 +353,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lciAdd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciRestore)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciRemove)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciGrid)).EndInit();
@@ -349,7 +364,7 @@
         #endregion
 
         private DevExpress.XtraLayout.LayoutControl layoutControl;
-        private DevExpress.XtraEditors.SimpleButton btnAdd;
+        private DevExpress.XtraEditors.SimpleButton btnRestore;
         private DevExpress.XtraEditors.SimpleButton btnEdit;
         private DevExpress.XtraEditors.SimpleButton btnRemove;
         private DevExpress.XtraGrid.GridControl gridControl;
@@ -361,12 +376,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn colEnPassant;
         private DevExpress.XtraGrid.Columns.GridColumn colHalfMoves;
         private DevExpress.XtraGrid.Columns.GridColumn colBestMove;
+        private DevExpress.XtraGrid.Columns.GridColumn colResult;
         private DevExpress.XtraGrid.Columns.GridColumn colOpening;
         private DevExpress.XtraGrid.Columns.GridColumn colDefense;
         private DevExpress.XtraGrid.Columns.GridColumn colPlayers;
-        private DevExpress.XtraGrid.Columns.GridColumn colTimestamp;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private DevExpress.XtraLayout.LayoutControlItem lciAdd;
+        private DevExpress.XtraLayout.LayoutControlItem lciRestore;
         private DevExpress.XtraLayout.LayoutControlItem lciEdit;
         private DevExpress.XtraLayout.LayoutControlItem lciRemove;
         private DevExpress.XtraLayout.LayoutControlItem lciGrid;

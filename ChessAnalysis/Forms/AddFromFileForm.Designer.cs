@@ -31,24 +31,24 @@
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
             this.panel = new ChessAnalysis.Controls.MainPanel();
             this.btnLoadFile = new DevExpress.XtraEditors.SimpleButton();
-            this.btnImport = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.lciPanel = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciLoadFile = new DevExpress.XtraLayout.LayoutControlItem();
-            this.lciImport = new DevExpress.XtraLayout.LayoutControlItem();
+            this.lciAdd = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciLoadFile)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lciImport)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciAdd)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl
             // 
             this.layoutControl.Controls.Add(this.panel);
             this.layoutControl.Controls.Add(this.btnLoadFile);
-            this.layoutControl.Controls.Add(this.btnImport);
+            this.layoutControl.Controls.Add(this.btnAdd);
             this.layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl.Location = new System.Drawing.Point(0, 0);
             this.layoutControl.Name = "layoutControl";
@@ -78,19 +78,19 @@
             this.btnLoadFile.Text = "Load file";
             this.btnLoadFile.Click += new System.EventHandler(this.btnLoadFile_Click);
             // 
-            // btnImport
+            // btnAdd
             // 
-            this.btnImport.AllowFocus = false;
-            this.btnImport.DialogResult = DialogResult.OK;
-            this.btnImport.Location = new System.Drawing.Point(992, 539);
-            this.btnImport.MaximumSize = new System.Drawing.Size(76, 22);
-            this.btnImport.MinimumSize = new System.Drawing.Size(76, 22);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(76, 22);
-            this.btnImport.StyleController = this.layoutControl;
-            this.btnImport.TabIndex = 3;
-            this.btnImport.Text = "Import";
-            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            this.btnAdd.AllowFocus = false;
+            this.btnAdd.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnAdd.Location = new System.Drawing.Point(992, 539);
+            this.btnAdd.MaximumSize = new System.Drawing.Size(76, 22);
+            this.btnAdd.MinimumSize = new System.Drawing.Size(76, 22);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(76, 22);
+            this.btnAdd.StyleController = this.layoutControl;
+            this.btnAdd.TabIndex = 3;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // Root
             // 
@@ -99,7 +99,7 @@
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.lciPanel,
             this.lciLoadFile,
-            this.lciImport});
+            this.lciAdd});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(1080, 573);
             this.Root.TextVisible = false;
@@ -122,15 +122,15 @@
             this.lciLoadFile.TextSize = new System.Drawing.Size(0, 0);
             this.lciLoadFile.TextVisible = false;
             // 
-            // lciImport
+            // lciAdd
             // 
-            this.lciImport.ContentHorzAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.lciImport.Control = this.btnImport;
-            this.lciImport.Location = new System.Drawing.Point(80, 527);
-            this.lciImport.Name = "lciImport";
-            this.lciImport.Size = new System.Drawing.Size(980, 26);
-            this.lciImport.TextSize = new System.Drawing.Size(0, 0);
-            this.lciImport.TextVisible = false;
+            this.lciAdd.ContentHorzAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.lciAdd.Control = this.btnAdd;
+            this.lciAdd.Location = new System.Drawing.Point(80, 527);
+            this.lciAdd.Name = "lciAdd";
+            this.lciAdd.Size = new System.Drawing.Size(980, 26);
+            this.lciAdd.TextSize = new System.Drawing.Size(0, 0);
+            this.lciAdd.TextVisible = false;
             // 
             // AddFromFileForm
             // 
@@ -151,7 +151,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciLoadFile)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lciImport)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciAdd)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -161,10 +161,10 @@
         private DevExpress.XtraLayout.LayoutControl layoutControl;
         private Controls.MainPanel panel;
         private DevExpress.XtraEditors.SimpleButton btnLoadFile;
-        private DevExpress.XtraEditors.SimpleButton btnImport;
+        private DevExpress.XtraEditors.SimpleButton btnAdd;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem lciPanel;
         private DevExpress.XtraLayout.LayoutControlItem lciLoadFile;
-        private DevExpress.XtraLayout.LayoutControlItem lciImport;
+        private DevExpress.XtraLayout.LayoutControlItem lciAdd;
     }
 }

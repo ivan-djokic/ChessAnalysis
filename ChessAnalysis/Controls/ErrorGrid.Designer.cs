@@ -34,7 +34,7 @@
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMessage = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colInput = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLine = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnYes = new DevExpress.XtraEditors.SimpleButton();
             this.btnNo = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -91,7 +91,7 @@
             // 
             this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMessage,
-            this.colInput});
+            this.colLine});
             this.gridView.GridControl = this.gridControl;
             this.gridView.GroupCount = 1;
             this.gridView.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
@@ -114,15 +114,15 @@
             this.colMessage.Visible = true;
             this.colMessage.VisibleIndex = 0;
             // 
-            // colInput
+            // colLine
             // 
-            this.colInput.Caption = "Line";
-            this.colInput.FieldName = "Input";
-            this.colInput.Name = "colInput";
-            this.colInput.OptionsColumn.AllowEdit = false;
-            this.colInput.OptionsColumn.AllowFocus = false;
-            this.colInput.Visible = true;
-            this.colInput.VisibleIndex = 0;
+            this.colLine.Caption = "Line";
+            this.colLine.FieldName = "Line";
+            this.colLine.Name = "colLine";
+            this.colLine.OptionsColumn.AllowEdit = false;
+            this.colLine.OptionsColumn.AllowFocus = false;
+            this.colLine.Visible = true;
+            this.colLine.VisibleIndex = 0;
             // 
             // btnYes
             // 
@@ -232,7 +232,7 @@
         private DevExpress.XtraGrid.GridControl gridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView;
         private DevExpress.XtraGrid.Columns.GridColumn colMessage;
-        private DevExpress.XtraGrid.Columns.GridColumn colInput;
+        private DevExpress.XtraGrid.Columns.GridColumn colLine;
         private DevExpress.XtraEditors.SimpleButton btnYes;
         private DevExpress.XtraEditors.SimpleButton btnNo;
         private DevExpress.XtraLayout.LayoutControlGroup Root;

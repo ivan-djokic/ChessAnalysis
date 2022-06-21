@@ -38,16 +38,6 @@ namespace ChessAnalysis.Classes
 
         protected abstract T Parse();
 
-        protected string ParseQuotesInput(string input)
-        {
-            if (!input.EndsWith(ParseConsts.QUOTES))
-            {
-                throw new UnallowedCharactersException(Component);
-            }
-
-            return input.RemoveLast();
-        }
-
         private string[] GetArguments()
         {
             if (!m_input.StartsWith(KeyWord))
@@ -62,7 +52,22 @@ namespace ChessAnalysis.Classes
                 throw new InvalidComponentsNumberException(Component);
             }
 
+            if (Delimiter == ParseConsts.ARGS_DELIMITER_QUOTES)
+            {
+                arguments = arguments.Select(item => ParseQuotesInput(item)).ToArray();
+            }
+
             return arguments;
+        }
+
+        private string ParseQuotesInput(string input)
+        {
+            if (!input.EndsWith(ParseConsts.QUOTES))
+            {
+                throw new UnallowedCharactersException(Component);
+            }
+
+            return input.RemoveLast();
         }
     }
 }

@@ -6,6 +6,7 @@ namespace ChessAnalysis.Tests
     [TestClass]
     /// <summary>
     /// Tests HalfMoves and Round arguments in Position
+    /// All other Position atributes are already tested in other classes
     /// </summary>
     public class PositionParsingTests
     {

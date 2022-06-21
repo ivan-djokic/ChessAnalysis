@@ -26,19 +26,23 @@ namespace ChessAnalysis.Tests
 
         private static void ProcessInvalidInput(string input)
         {
+            var failed = false;
+
             try
             {
                 NextPlayerParser.Parse(input);
-                Assert.Fail();
             }
             catch
             {
+                failed = true;
             }
+
+            Assert.IsTrue(failed);
         }
 
-        private static void ProcessValidInputs(string input, NextPlayer expectedNextPlayer)
+        private static void ProcessValidInputs(string input, NextPlayer expected)
         {
-            Assert.AreEqual(expectedNextPlayer, NextPlayerParser.Parse(input));
+            Assert.AreEqual(expected, NextPlayerParser.Parse(input));
         }
     }
 }

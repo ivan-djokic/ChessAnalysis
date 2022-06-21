@@ -31,18 +31,16 @@ namespace ChessAnalysis.Classes
 
         public static Comment Parse(string input)
         {
-            // input: c0 "[players]" "[timestamp]" "[opening]" "[defense]"
+            // input: c0 "[players]" "[result]" "[opening]" "[defense]"
             return new CommentParser(input).Parse();
         }
 
         protected override Comment Parse()
         {
-            var players = ParseQuotesInput(Arguments[ParseConsts.COMMENT_PLAYERS_INDEX]);
-            var timestamp = ParseQuotesInput(Arguments[ParseConsts.COMMENT_TIMESTAMP_INDEX]);
-            var opening = ParseQuotesInput(Arguments[ParseConsts.COMMENT_OPENING_INDEX]);
-            var defense = ParseQuotesInput(Arguments[ParseConsts.COMMENT_DEFENSE_INDEX]);
-
-            return new Comment(players, timestamp, opening, defense);
+            return new Comment(Arguments[ParseConsts.COMMENT_PLAYERS_INDEX],
+                Arguments[ParseConsts.COMMENT_RESULT_INDEX],
+                Arguments[ParseConsts.COMMENT_OPENING_INDEX],
+                Arguments[ParseConsts.COMMENT_DEFENSE_INDEX]);
         }
     }
 }

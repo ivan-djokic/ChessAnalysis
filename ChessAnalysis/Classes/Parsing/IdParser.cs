@@ -34,14 +34,12 @@
 
         protected override string Parse()
         {
-            var result = ParseQuotesInput(Arguments[ParseConsts.ID_INDEX]);
-
-            if (string.IsNullOrWhiteSpace(result))
+            if (string.IsNullOrWhiteSpace(Arguments[ParseConsts.ID_INDEX]))
             {
                 throw new InvalidComponentsNumberException(Component);
             }
 
-            return result;
+            return Arguments[ParseConsts.ID_INDEX];
         }
     }
 }

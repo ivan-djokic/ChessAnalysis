@@ -14,7 +14,7 @@ namespace ChessAnalysis.Utils
             CreateBinding();
         }
 
-        public static Action<bool>? BoardOptionsChanged;
+        public static Action? BoardOptionsChanged;
 
         public void Bind(CheckEdit control, Expression<Func<OptionsBindModel, bool>> expression)
         {
@@ -42,8 +42,7 @@ namespace ChessAnalysis.Utils
         private void RaiseOnChange()
         {
             m_optionsModel.RaisePropertiesChanged();
-            //TODO: Invoke language changer here
-            BoardOptionsChanged?.Invoke(false);
+            BoardOptionsChanged?.Invoke();
             Utils.Theme.ApplyTheme();
         }
     }

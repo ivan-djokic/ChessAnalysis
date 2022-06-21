@@ -6,12 +6,7 @@ namespace ChessAnalysis.Utils
 {
     public partial class Options
 	{
-		private readonly string m_optionsFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-				Constants.APP_NAME, Constants.OPTIONS_FILE_NAME);
-
 		private static readonly Lazy<Options> s_instance = new(CreateInstance);
-
-		public bool AutoFlipBoard { get; set; }
 
 		public Color FieldEmptyColor { get; set; }
 
@@ -22,8 +17,6 @@ namespace ChessAnalysis.Utils
 			get => s_instance.Value;
 		}
 
-		public Languages Language { get; set; }
-
 		public string LastInputDirectory { get; set; }
 
 		public string LastOutputDirectory { get; set; }
@@ -31,6 +24,8 @@ namespace ChessAnalysis.Utils
 		public string MailContent { get; set; }
 
 		public bool MarkIfBestMoveIsPlayed { get; set; }
+
+		public string OptionsDirectory { get; set; }
 
 		public PieceStyles PieceStyle { get; set; }
 
@@ -50,6 +45,8 @@ namespace ChessAnalysis.Utils
 
 		public Themes Theme { get; set; }
 
+		public bool WhiteOrientedBoard { get; set; }
+
 		public void Save()
 		{
 			var senderPassword = SenderPassword;
@@ -58,8 +55,7 @@ namespace ChessAnalysis.Utils
             {
 				SenderPassword = Crypto.Encrypt(SenderPassword);
 
-				FileHelper.CreateDirIfNotExists(m_optionsFileName);
-				using var writer = new StreamWriter(m_optionsFileName);
+				using var writer = new StreamWriter(Path.Combine(OptionsDirectory, Constants.OPTIONS_FILE_NAME));
 				new XmlSerializer(typeof(Options)).Serialize(writer, this);
 			}
 			finally
@@ -70,11 +66,10 @@ namespace ChessAnalysis.Utils
 
 		public void SetDefaults(bool raiseOnChange = true)
 		{
-			AutoFlipBoard = true;
-			FieldEmptyColor = Color.FromArgb(255, 230, 230, 230);
-			FieldFillColor = Color.FromArgb(255, 135, 206, 235);
-			Language = Languages.English;
+			FieldEmptyColor = Color.FromArgb(255, 238, 236, 225);
+			FieldFillColor = Color.FromArgb(255, 79, 129, 189);
 			MarkIfBestMoveIsPlayed = true;
+			OptionsDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Constants.APP_NAME);
 			PieceStyle = PieceStyles.Classic;
 			PlaySound = true;
 			SenderMail = "chess.analysis.bot@gmail.com";
@@ -83,6 +78,7 @@ namespace ChessAnalysis.Utils
 			SmtpClient = "smtp.gmail.com";
 			SnapshotDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Constants.APP_NAME, Constants.SNAPSHOTS_DIR);
 			Theme = Themes.Dark;
+			WhiteOrientedBoard = true;
 
 			if (raiseOnChange)
 			{
@@ -92,14 +88,13 @@ namespace ChessAnalysis.Utils
 
 		private void CopyTo(Options options)
 		{
-			options.AutoFlipBoard = AutoFlipBoard;
 			options.FieldEmptyColor = FieldEmptyColor;
 			options.FieldFillColor = FieldFillColor;
-			options.Language = Language;
 			options.LastInputDirectory = LastInputDirectory;
 			options.LastOutputDirectory = LastOutputDirectory;
 			options.MailContent = MailContent;
 			options.MarkIfBestMoveIsPlayed = MarkIfBestMoveIsPlayed;
+			options.OptionsDirectory = OptionsDirectory;
 			options.PieceStyle = PieceStyle;
 			options.PlaySound = PlaySound;
 			options.ReceiverMail = ReceiverMail;
@@ -109,6 +104,7 @@ namespace ChessAnalysis.Utils
 			options.SmtpClient = SmtpClient;
 			options.SnapshotDirectory = SnapshotDirectory;
 			options.Theme = Theme;
+			options.WhiteOrientedBoard = WhiteOrientedBoard;
 		}
 
 		private static Options CreateInstance()
@@ -121,7 +117,7 @@ namespace ChessAnalysis.Utils
 
 		private void CreateDirsIfNotExist()
         {
-			FileHelper.CreateDirIfNotExists(m_optionsFileName);
+			FileHelper.CreateDirIfNotExists(OptionsDirectory);
 			FileHelper.CreateDirIfNotExists(SnapshotDirectory);
         }
 
@@ -129,7 +125,7 @@ namespace ChessAnalysis.Utils
 		{
 			try
 			{
-				using var reader = new StreamReader(m_optionsFileName);
+				using var reader = new StreamReader(Path.Combine(OptionsDirectory, Constants.OPTIONS_FILE_NAME));
 				var options = new XmlSerializer(typeof(Options)).Deserialize(reader) as Options;
 				options?.CopyTo(this);
 			}

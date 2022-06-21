@@ -21,13 +21,13 @@ namespace ChessAnalysis.Classes
 
         private static string BuildTableHeader()
         {
-            return string.Format(TABLE_HEADER, "Round", "Next player", "White castling", "Black castling", "En passant", "Half moves", "Best move", "Opening", "Defense", "Players", "Timestamp");
+            return string.Format(TABLE_HEADER, "Round", "Next player", "White castling", "Black castling", "En passant", "Half moves", "Best move", "Opening", "Defense", "Players", "Result");
         }
 
         private static string BuildTableRow(Data data)
         {
             return string.Format(TABLE_ROW, data.Position.Round, data.Position.NextPlayer, data.Position.CastlingWhite, data.Position.CastlingBlack, data.Position.EnPassant, data.Position.HalfMoves, data.Position.BestMove.Value, 
-                data.Comment.Opening, data.Comment.Defense, data.Comment.Players, data.Comment.Timestamp);
+                data.Comment.Opening, data.Comment.Defense, data.Comment.Players, data.Comment.Result);
         }
 
         private static string BuildTableRows(DataCollection collection)

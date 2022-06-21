@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Board));
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
             this.lblPlayers = new DevExpress.XtraEditors.LabelControl();
-            this.lblTimestamp = new DevExpress.XtraEditors.LabelControl();
+            this.lblResult = new DevExpress.XtraEditors.LabelControl();
             this.lblOpening = new DevExpress.XtraEditors.LabelControl();
             this.lblDefense = new DevExpress.XtraEditors.LabelControl();
             this.btnFlip = new DevExpress.XtraEditors.SimpleButton();
             this.imageBoard = new ChessAnalysis.Controls.CenteredImageBox();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.lciPlayers = new DevExpress.XtraLayout.LayoutControlItem();
-            this.lciTimestamp = new DevExpress.XtraLayout.LayoutControlItem();
+            this.lciResult = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciOpening = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciDefense = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciFlip = new DevExpress.XtraLayout.LayoutControlItem();
@@ -49,7 +49,7 @@
             this.layoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciPlayers)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lciTimestamp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciResult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciOpening)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciDefense)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciFlip)).BeginInit();
@@ -59,7 +59,7 @@
             // layoutControl
             // 
             this.layoutControl.Controls.Add(this.lblPlayers);
-            this.layoutControl.Controls.Add(this.lblTimestamp);
+            this.layoutControl.Controls.Add(this.lblResult);
             this.layoutControl.Controls.Add(this.lblOpening);
             this.layoutControl.Controls.Add(this.lblDefense);
             this.layoutControl.Controls.Add(this.btnFlip);
@@ -83,14 +83,16 @@
             this.lblPlayers.TabIndex = 1;
             this.lblPlayers.Text = "White player - Black player";
             // 
-            // lblTimestamp
+            // lblResult
             // 
-            this.lblTimestamp.Location = new System.Drawing.Point(180, 34);
-            this.lblTimestamp.Name = "lblTimestamp";
-            this.lblTimestamp.Size = new System.Drawing.Size(67, 13);
-            this.lblTimestamp.StyleController = this.layoutControl;
-            this.lblTimestamp.TabIndex = 2;
-            this.lblTimestamp.Text = "Date and time";
+            this.lblResult.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblResult.Appearance.Options.UseFont = true;
+            this.lblResult.Location = new System.Drawing.Point(195, 34);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(36, 13);
+            this.lblResult.StyleController = this.layoutControl;
+            this.lblResult.TabIndex = 2;
+            this.lblResult.Text = "Result";
             // 
             // lblOpening
             // 
@@ -126,9 +128,9 @@
             this.btnFlip.Name = "btnFlip";
             this.btnFlip.Size = new System.Drawing.Size(18, 18);
             this.btnFlip.StyleController = this.layoutControl;
-            toolTipItem2.Text = "Flip board";
-            superToolTip2.Items.Add(toolTipItem2);
-            this.btnFlip.SuperTip = superToolTip2;
+            toolTipItem1.Text = "Flip board";
+            superToolTip1.Items.Add(toolTipItem1);
+            this.btnFlip.SuperTip = superToolTip1;
             this.btnFlip.TabIndex = 5;
             this.btnFlip.Click += new System.EventHandler(this.btnFlip_Click);
             // 
@@ -146,7 +148,7 @@
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.lciPlayers,
-            this.lciTimestamp,
+            this.lciResult,
             this.lciOpening,
             this.lciDefense,
             this.lciFlip,
@@ -165,16 +167,16 @@
             this.lciPlayers.TextSize = new System.Drawing.Size(0, 0);
             this.lciPlayers.TextVisible = false;
             // 
-            // lciTimestamp
+            // lciResult
             // 
-            this.lciTimestamp.ContentHorzAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.lciTimestamp.Control = this.lblTimestamp;
-            this.lciTimestamp.Location = new System.Drawing.Point(0, 22);
-            this.lciTimestamp.Name = "lciTimestamp";
-            this.lciTimestamp.Size = new System.Drawing.Size(407, 22);
-            this.lciTimestamp.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 5);
-            this.lciTimestamp.TextSize = new System.Drawing.Size(0, 0);
-            this.lciTimestamp.TextVisible = false;
+            this.lciResult.ContentHorzAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.lciResult.Control = this.lblResult;
+            this.lciResult.Location = new System.Drawing.Point(0, 22);
+            this.lciResult.Name = "lciResult";
+            this.lciResult.Size = new System.Drawing.Size(407, 22);
+            this.lciResult.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 5);
+            this.lciResult.TextSize = new System.Drawing.Size(0, 0);
+            this.lciResult.TextVisible = false;
             // 
             // lciOpening
             // 
@@ -231,7 +233,7 @@
             this.layoutControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciPlayers)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lciTimestamp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciResult)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciOpening)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciDefense)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciFlip)).EndInit();
@@ -244,14 +246,14 @@
 
         private DevExpress.XtraLayout.LayoutControl layoutControl;
         private DevExpress.XtraEditors.LabelControl lblPlayers;
-        private DevExpress.XtraEditors.LabelControl lblTimestamp;
+        private DevExpress.XtraEditors.LabelControl lblResult;
         private DevExpress.XtraEditors.LabelControl lblOpening;
         private DevExpress.XtraEditors.LabelControl lblDefense;
         private DevExpress.XtraEditors.SimpleButton btnFlip;
         private CenteredImageBox imageBoard;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem lciPlayers;
-        private DevExpress.XtraLayout.LayoutControlItem lciTimestamp;
+        private DevExpress.XtraLayout.LayoutControlItem lciResult;
         private DevExpress.XtraLayout.LayoutControlItem lciOpening;
         private DevExpress.XtraLayout.LayoutControlItem lciDefense;
         private DevExpress.XtraLayout.LayoutControlItem lciFlip;

@@ -4,19 +4,6 @@ namespace ChessAnalysis.Utils
 {
     public class OptionsBindModel : ViewModelBase
 	{
-		public bool AutoFlipBoard
-		{
-			get => Options.Instance.AutoFlipBoard;
-			set
-			{
-				if (Options.Instance.AutoFlipBoard != value)
-                {
-					Options.Instance.AutoFlipBoard = value;
-					RaiseBoardOptionsChanged(true);
-				}
-			}
-		}
-
 		public Color FieldEmptyColor
 		{
 			get => Options.Instance.FieldEmptyColor.Normalize();
@@ -46,32 +33,6 @@ namespace ChessAnalysis.Utils
 				}
 			}
 		}
-		
-		public bool LanguageEnglish
-		{
-			get => Options.Instance.Language == Languages.English;
-			set
-			{
-				if (value)
-				{
-					Options.Instance.Language = Languages.English;
-					//TODO: Invoke language changer here
-				}
-			}
-		}
-
-		public bool LanguageSrpski
-		{
-			get => Options.Instance.Language == Languages.Srpski;
-			set
-			{
-				if (value)
-				{
-					Options.Instance.Language = Languages.Srpski;
-					//TODO: Invoke language changer here
-				}
-			}
-		}
 
 		public string MailContent
 		{
@@ -90,6 +51,12 @@ namespace ChessAnalysis.Utils
 					RaiseBoardOptionsChanged();
 				}
 			}
+		}
+
+		public string OptionsDirectory
+		{
+			get => Options.Instance.OptionsDirectory;
+			set => Options.Instance.OptionsDirectory = value;
 		}
 
 		public bool PieceClassic
@@ -205,22 +172,20 @@ namespace ChessAnalysis.Utils
 
 		public void RaisePropertiesChanged()
         {
-			RaisePropertyChanged(() => AutoFlipBoard);
 			RaisePropertiesChanged(() => FieldEmptyColor, () => FieldFillColor);
-			RaisePropertiesChanged(() => LanguageEnglish, () => LanguageSrpski);
 			RaisePropertyChanged(() => MarkIfBestMoveIsPlayed);
+			RaisePropertiesChanged(() => OptionsDirectory, () => SnapshotDirectory);
 			RaisePropertiesChanged(() => PieceClassic, () => PieceNeo, () => PieceWood);
 			RaisePropertyChanged(() => PlaySound);
 			RaisePropertiesChanged(() => SenderMail, () => SenderPassword);
 			RaisePropertyChanged(() => ShowCoordinates);
 			RaisePropertyChanged(() => SmtpClient);
-			RaisePropertyChanged(() => SnapshotDirectory);
 			RaisePropertiesChanged(() => ThemeDark, () => ThemeLight);
 		}
 
-		private void RaiseBoardOptionsChanged(bool autoFlipBoardChanged = false)
+		private static void RaiseBoardOptionsChanged()
 		{
-			Options.BoardOptionsChanged?.Invoke(autoFlipBoardChanged);
+			Options.BoardOptionsChanged?.Invoke();
 		}
 	}
 }

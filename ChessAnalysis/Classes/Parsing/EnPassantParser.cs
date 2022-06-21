@@ -4,9 +4,12 @@ namespace ChessAnalysis.Classes
 {
     public class EnPassantParser : ParserBase<string>
     {
-        private EnPassantParser(string input)
+        private readonly bool m_isWhitePlayed;
+
+        private EnPassantParser(string input, bool isWhitePlayed)
             : base(input)
         {
+            m_isWhitePlayed = isWhitePlayed;
         }
 
         protected override int ArgumentsCount
@@ -19,9 +22,9 @@ namespace ChessAnalysis.Classes
             get => Components.EnPassant;
         }
 
-        public static string Parse(string input)
+        public static string Parse(string input, bool isWhitePlayed)
         {
-            return new EnPassantParser(input).Parse();
+            return new EnPassantParser(input, isWhitePlayed).Parse();
         }
 
         protected override string Parse()
@@ -36,7 +39,7 @@ namespace ChessAnalysis.Classes
                 throw new InvalidComponentsNumberException(Component);
             }
 
-            if (!m_input[0].IsBoardColumn() || !ParseConsts.ALLOWED_EN_PASSANT_ROWS.Contains(m_input[1]))
+            if (!m_input[0].IsBoardColumn() || m_input[1] != ParseConsts.ALLOWED_EN_PASSANT_ROWS[Convert.ToInt32(m_isWhitePlayed)])
             {
                 throw new UnallowedCharactersException(Component);
             }

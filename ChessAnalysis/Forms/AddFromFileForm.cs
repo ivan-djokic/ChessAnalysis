@@ -16,7 +16,7 @@ namespace ChessAnalysis.Forms
             m_collection = collection;
         }
 
-        private void btnImport_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
            m_collection.AddRange(panel.GetSelection());
         }
@@ -38,19 +38,19 @@ namespace ChessAnalysis.Forms
             }
         }
 
-        private bool CanImport(IEnumerable<Error> errors)
+        private bool CanAdd(IEnumerable<Error> errors)
         {
             return errors.Count() switch
             {
                 0 => true,
-                1 => Alert.Error(this, $"{errors.First().Message}\nDo you want to continue?"), // TODO: umesto Continue na srpski ce ide Ipak nastavi?
+                1 => Alert.Error(this, $"{errors.First().Message} in line {errors.First().Line}\nDo you want to continue?"),
                 _ => Alert.ErrorList(this, errors)
             };
         }
 
         private DataCollection CreateCollection(IList<string> lines, out IEnumerable<Error> errorList)
         {
-            var result = new DataCollection(new Data[lines.Count]);
+            var result = new Data[lines.Count];
             var errors = new Error[lines.Count];
 
             ProgressForm<string>.ShowProgress(this, lines, i => 
@@ -63,7 +63,7 @@ namespace ChessAnalysis.Forms
                     panel.Collection.ValidateIdUniqueness(data.Id);
                     m_collection.ValidateIdUniqueness(data.Id);
 
-                    result.Insert(i, data);
+                    result[i] = data;
                 }
                 catch (Exception ex)
                 {
@@ -71,15 +71,15 @@ namespace ChessAnalysis.Forms
                 }
             });
 
-            errorList = errors.WithoutNullValues();
-            return result.WithoutNullValues();
+            errorList = errors.RemoveNullValues();
+            return new DataCollection(result.RemoveNullValues());
         }
 
         private void LoadFromFile(string fileName)
         {
             var collection = CreateCollection(File.ReadLines(fileName).ToList(), out var errors);
 
-            if (CanImport(errors))
+            if (CanAdd(errors))
             {
                 panel.Collection.AddRange(collection);
             }

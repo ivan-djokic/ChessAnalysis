@@ -1,7 +1,7 @@
-﻿using ChessAnalysis.Classes;
-using ChessAnalysis.Models;
-using System.IO;
+﻿using System.IO;
 using System.Security.Cryptography;
+using ChessAnalysis.Classes;
+using ChessAnalysis.Models;
 using Timer = System.Windows.Forms.Timer;
 
 namespace ChessAnalysis.Utils
@@ -75,16 +75,6 @@ namespace ChessAnalysis.Utils
             return char.IsDigit(input) && input != '0' && input != '9';
         }
 
-        public static bool IsEmpty(this char input)
-        {
-            return input == Constants.EMPTY_CHAR;
-        }
-
-        public static bool IsEven(this int input)
-        {
-            return input % 2 == 0;
-        }
-
         public static Color Normalize(this System.Windows.Media.Color input)
         {
             return Color.FromArgb(input.A, input.R, input.G, input.B);
@@ -107,15 +97,23 @@ namespace ChessAnalysis.Utils
             return input.Remove(input.Length - count);
         }
 
+        public static IEnumerable<T> RemoveNullValues<T>(this T[] input)
+        {
+            return input.Where(e => e != null);
+        }
+
         public static void Restart(this Timer timer)
         {
             timer.Stop();
             timer.Start();
         }
 
-        public static IEnumerable<Error> WithoutNullValues(this Error[] input)
+        public static void ValidateIdUniqueness(this IEnumerable<Data> collection, string id, Data? skipIdValidation = null)
         {
-            return input.Where(e => e != null);
+            if (collection.Any(item => item?.Id == id && item != skipIdValidation))
+            {
+                throw new NotUniqueIdException(id);
+            }
         }
 
         public static void Write(this ICryptoTransform crypto, MemoryStream memoryStream, string input)

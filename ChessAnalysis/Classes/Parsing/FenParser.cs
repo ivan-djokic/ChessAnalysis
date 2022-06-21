@@ -31,39 +31,32 @@ namespace ChessAnalysis.Classes
 
         protected override char[][] Parse()
         {
-            var result = new char[ArgumentsCount][];
-
-            for (var i = 0; i < Arguments.Length; i++)
-            {
-                result[i] = ParseRow(Arguments[i]);
-            }
-
-            return result;
+            return Arguments.Select(row => ParseRow(row)).ToArray();
         }
 
-        private char[] ParseRow(string row)
+        private char[] ParseRow(string input)
         {
             var result = new char[ArgumentsCount];
-            var x = 0;
+            var count = 0;
 
-            foreach (var item in row)
+            foreach (var item in input)
             {
-                if (x >= ArgumentsCount)
+                if (count >= ArgumentsCount)
                 {
                     throw new InvalidComponentsNumberException(Component);
                 }
 
                 if (char.ToUpper(item).IsBoardPiece())
                 {
-                    result[x++] = item;
+                    result[count++] = item;
                     continue;
                 }
 
                 // Skip empty fields
-                x += item.AsNumber(Component);
+                count += item.AsNumber(Component);
             }
 
-            if (x < Constants.BOARD_SIZE)
+            if (count != ArgumentsCount)
             {
                 throw new InvalidComponentsNumberException(Component);
             }

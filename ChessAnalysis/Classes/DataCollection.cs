@@ -48,27 +48,6 @@ namespace ChessAnalysis.Classes
             return string.Join(Environment.NewLine, this.Select(data => data.ToString()));
         }
 
-        public void ValidateIdUniqueness(string id, Data? skipIdValidation = null)
-        {
-            if (this.Any(item => item != skipIdValidation && item?.Id == id))
-            {
-                throw new NotUniqueIdException(id);
-            }
-        }
-
-        public DataCollection WithoutNullValues()
-        {
-            for (var i = Count - 1; i >= 0; i--)
-            {
-                if (this[i] == null)
-                {
-                    RemoveAt(i);
-                }
-            }
-
-            return this;
-        }
-
         protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
         {
             if (!m_updating)
