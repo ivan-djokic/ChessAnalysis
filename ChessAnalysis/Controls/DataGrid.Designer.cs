@@ -41,6 +41,7 @@
             this.btnRemove = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new ChessAnalysis.Controls.MultiSelectGridView();
+            this.colPlayers = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRound = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNextPlayer = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCastlingWhite = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -51,7 +52,6 @@
             this.colResult = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOpening = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDefense = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPlayers = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.lciRestore = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciEdit = new DevExpress.XtraLayout.LayoutControlItem();
@@ -148,7 +148,7 @@
             // 
             // gridView
             // 
-            this.gridView.AutoFillColumn = colPlayers;
+            this.gridView.AutoFillColumn = this.colPlayers;
             this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colRound,
             this.colNextPlayer,
@@ -170,6 +170,17 @@
             this.gridView.OptionsFilter.AllowMRUFilterList = false;
             this.gridView.OptionsView.ColumnAutoWidth = false;
             this.gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView_FocusedRowChanged);
+            // 
+            // colPlayers
+            // 
+            this.colPlayers.Caption = "Players";
+            this.colPlayers.FieldName = "Comment.Players";
+            this.colPlayers.Name = "colPlayers";
+            this.colPlayers.OptionsColumn.AllowEdit = false;
+            this.colPlayers.OptionsColumn.AllowFocus = false;
+            this.colPlayers.Visible = true;
+            this.colPlayers.VisibleIndex = 10;
+            this.colPlayers.Width = 160;
             // 
             // colRound
             // 
@@ -281,17 +292,6 @@
             this.colDefense.VisibleIndex = 9;
             this.colDefense.Width = 130;
             // 
-            // colPlayers
-            // 
-            this.colPlayers.Caption = "Players";
-            this.colPlayers.FieldName = "Comment.Players";
-            this.colPlayers.Name = "colPlayers";
-            this.colPlayers.OptionsColumn.AllowEdit = false;
-            this.colPlayers.OptionsColumn.AllowFocus = false;
-            this.colPlayers.Visible = true;
-            this.colPlayers.VisibleIndex = 10;
-            this.colPlayers.Width = 160;
-            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -369,6 +369,7 @@
         private DevExpress.XtraEditors.SimpleButton btnRemove;
         private DevExpress.XtraGrid.GridControl gridControl;
         private MultiSelectGridView gridView;
+        private DevExpress.XtraGrid.Columns.GridColumn colPlayers;
         private DevExpress.XtraGrid.Columns.GridColumn colRound;
         private DevExpress.XtraGrid.Columns.GridColumn colNextPlayer;
         private DevExpress.XtraGrid.Columns.GridColumn colCastlingWhite;
@@ -379,7 +380,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colResult;
         private DevExpress.XtraGrid.Columns.GridColumn colOpening;
         private DevExpress.XtraGrid.Columns.GridColumn colDefense;
-        private DevExpress.XtraGrid.Columns.GridColumn colPlayers;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem lciRestore;
         private DevExpress.XtraLayout.LayoutControlItem lciEdit;

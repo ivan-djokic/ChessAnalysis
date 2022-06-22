@@ -15,6 +15,8 @@ namespace ChessAnalysis.Forms
         {
             Theme.ApplyTheme();
             InitializeComponent();
+
+            panel.RowCountChanged += RowCountChanged;
             Notification.Notify += SetNotification;
         }
 

@@ -36,10 +36,10 @@
             this.itemMail = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.navigationFrame = new DevExpress.XtraBars.Navigation.NavigationFrame();
             this.pageGeneral = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.pageBoard = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.pageMail = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.generalTab = new ChessAnalysis.Controls.GeneralTab();
+            this.pageBoard = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.boardTab = new ChessAnalysis.Controls.BoardTab();
+            this.pageMail = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.mailTab = new ChessAnalysis.Controls.MailTab();
             this.btnDefaults = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -53,6 +53,7 @@
             this.navigationFrame.SuspendLayout();
             this.pageGeneral.SuspendLayout();
             this.pageBoard.SuspendLayout();
+            this.pageMail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciNavigation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciNavigationFrame)).BeginInit();
@@ -110,7 +111,7 @@
             this.itemBoard.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.itemBoard.Text = "Board";
             // 
-            // itemBoard
+            // itemMail
             // 
             this.itemMail.Name = "itemMail";
             this.itemMail.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
@@ -140,20 +141,6 @@
             this.pageGeneral.Name = "pageGeneral";
             this.pageGeneral.Size = new System.Drawing.Size(418, 298);
             // 
-            // pageBoard
-            // 
-            this.pageBoard.Caption = "pageBoard";
-            this.pageBoard.Controls.Add(this.boardTab);
-            this.pageBoard.Name = "pageBoard";
-            this.pageBoard.Size = new System.Drawing.Size(418, 298);
-            // 
-            // pageBoard
-            // 
-            this.pageMail.Caption = "pageMail";
-            this.pageMail.Controls.Add(this.mailTab);
-            this.pageMail.Name = "pageMail";
-            this.pageMail.Size = new System.Drawing.Size(418, 298);
-            // 
             // generalTab
             // 
             this.generalTab.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -161,6 +148,13 @@
             this.generalTab.Name = "generalTab";
             this.generalTab.Size = new System.Drawing.Size(418, 298);
             this.generalTab.TabIndex = 3;
+            // 
+            // pageBoard
+            // 
+            this.pageBoard.Caption = "pageBoard";
+            this.pageBoard.Controls.Add(this.boardTab);
+            this.pageBoard.Name = "pageBoard";
+            this.pageBoard.Size = new System.Drawing.Size(418, 298);
             // 
             // boardTab
             // 
@@ -170,7 +164,14 @@
             this.boardTab.Size = new System.Drawing.Size(418, 298);
             this.boardTab.TabIndex = 4;
             // 
-            // generalTab
+            // pageMail
+            // 
+            this.pageMail.Caption = "pageMail";
+            this.pageMail.Controls.Add(this.mailTab);
+            this.pageMail.Name = "pageMail";
+            this.pageMail.Size = new System.Drawing.Size(418, 298);
+            // 
+            // mailTab
             // 
             this.mailTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mailTab.Location = new System.Drawing.Point(0, 0);
@@ -256,6 +257,7 @@
             this.navigationFrame.ResumeLayout(false);
             this.pageGeneral.ResumeLayout(false);
             this.pageBoard.ResumeLayout(false);
+            this.pageMail.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciNavigation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciNavigationFrame)).EndInit();

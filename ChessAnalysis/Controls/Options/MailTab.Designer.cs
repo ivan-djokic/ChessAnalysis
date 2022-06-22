@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.lblMail = new DevExpress.XtraEditors.LabelControl();
             this.txtSmtpClient = new DevExpress.XtraEditors.TextEdit();
             this.txtMail = new DevExpress.XtraEditors.TextEdit();
             this.txtPassword = new DevExpress.XtraEditors.TextEdit();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.lciMailConfiguration = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciSmtpClient = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciMail = new DevExpress.XtraLayout.LayoutControlItem();
@@ -55,8 +55,8 @@
             // layoutControl
             // 
             this.layoutControl.Controls.Add(this.lblMail);
-            this.layoutControl.Controls.Add(this.txtMail);
             this.layoutControl.Controls.Add(this.txtSmtpClient);
+            this.layoutControl.Controls.Add(this.txtMail);
             this.layoutControl.Controls.Add(this.txtPassword);
             this.layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl.Location = new System.Drawing.Point(0, 0);
@@ -175,10 +175,10 @@
             this.Size = new System.Drawing.Size(400, 300);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSmtpClient.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMail.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciMailConfiguration)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciSmtpClient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciMail)).EndInit();

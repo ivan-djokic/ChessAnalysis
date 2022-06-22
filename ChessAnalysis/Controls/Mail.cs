@@ -17,7 +17,7 @@ namespace ChessAnalysis.Controls
 
         public void Send(DataCollection collection)
         {
-            var client = new SmtpClient(Options.Instance.SmtpClient)
+            using var client = new SmtpClient(Options.Instance.SmtpClient)
             {
                 Credentials = new NetworkCredential(Options.Instance.SenderMail, Options.Instance.SenderPassword),
                 EnableSsl = true

@@ -54,7 +54,7 @@
             this.layoutControl.Location = new System.Drawing.Point(0, 0);
             this.layoutControl.Name = "layoutControl";
             this.layoutControl.Root = this.Root;
-            this.layoutControl.Size = new System.Drawing.Size(722, 27);
+            this.layoutControl.Size = new System.Drawing.Size(725, 27);
             this.layoutControl.TabIndex = 0;
             this.layoutControl.Text = "layoutControl";
             // 
@@ -66,7 +66,7 @@
             editorButtonImageOptions1.SvgImageSize = new System.Drawing.Size(12, 12);
             this.txtInput.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.txtInput.Size = new System.Drawing.Size(698, 20);
+            this.txtInput.Size = new System.Drawing.Size(701, 20);
             this.txtInput.StyleController = this.layoutControl;
             this.txtInput.TabIndex = 2;
             this.txtInput.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtInput_ButtonClick);
@@ -79,7 +79,7 @@
             this.lciInput});
             this.Root.Name = "Root";
             this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.Root.Size = new System.Drawing.Size(722, 27);
+            this.Root.Size = new System.Drawing.Size(725, 27);
             this.Root.TextVisible = false;
             // 
             // lciInput
@@ -87,7 +87,7 @@
             this.lciInput.Control = this.txtInput;
             this.lciInput.Location = new System.Drawing.Point(0, 0);
             this.lciInput.Name = "lciInput";
-            this.lciInput.Size = new System.Drawing.Size(722, 27);
+            this.lciInput.Size = new System.Drawing.Size(725, 27);
             this.lciInput.Spacing = new DevExpress.XtraLayout.Utils.Padding(20, 0, 0, 3);
             this.lciInput.TextSize = new System.Drawing.Size(0, 0);
             this.lciInput.TextVisible = false;
@@ -100,13 +100,13 @@
             this.lciAdd.TextSize = new System.Drawing.Size(0, 0);
             this.lciAdd.TextVisible = false;
             // 
-            // AddFromClipboard
+            // DataInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.layoutControl);
-            this.Name = "AddFromClipboard";
-            this.Size = new System.Drawing.Size(722, 27);
+            this.Name = "DataInput";
+            this.Size = new System.Drawing.Size(725, 27);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtInput.Properties)).EndInit();

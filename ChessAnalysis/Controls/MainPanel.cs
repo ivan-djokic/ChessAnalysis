@@ -11,6 +11,7 @@ namespace ChessAnalysis.Controls
         public MainPanel()
         {
             InitializeComponent();
+            grid.FocusedRowChanged += grid_FocusedRowChanged;
         }
 
         public event Action<int> RowCountChanged

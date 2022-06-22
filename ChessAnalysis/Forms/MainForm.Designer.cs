@@ -79,7 +79,6 @@
             this.panel.ShowOnlyMainControls = false;
             this.panel.Size = new System.Drawing.Size(1174, 519);
             this.panel.TabIndex = 4;
-            this.panel.RowCountChanged += this.RowCountChanged;
             // 
             // Root
             // 

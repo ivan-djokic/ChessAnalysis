@@ -49,14 +49,14 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(746, 78);
+            this.layoutControl1.Size = new System.Drawing.Size(748, 78);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // btnEdit
             // 
             this.btnEdit.AllowFocus = false;
-            this.btnEdit.Location = new System.Drawing.Point(658, 44);
+            this.btnEdit.Location = new System.Drawing.Point(660, 44);
             this.btnEdit.MaximumSize = new System.Drawing.Size(76, 22);
             this.btnEdit.MinimumSize = new System.Drawing.Size(76, 22);
             this.btnEdit.Name = "btnEdit";
@@ -71,7 +71,7 @@
             this.dataInput.Input = "";
             this.dataInput.Location = new System.Drawing.Point(12, 12);
             this.dataInput.Name = "dataInput";
-            this.dataInput.Size = new System.Drawing.Size(722, 28);
+            this.dataInput.Size = new System.Drawing.Size(724, 28);
             this.dataInput.TabIndex = 4;
             // 
             // Root
@@ -82,7 +82,7 @@
             this.lciInput,
             this.lciEdit});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(746, 78);
+            this.Root.Size = new System.Drawing.Size(748, 78);
             this.Root.TextVisible = false;
             // 
             // lciInput
@@ -90,7 +90,7 @@
             this.lciInput.Control = this.dataInput;
             this.lciInput.Location = new System.Drawing.Point(0, 0);
             this.lciInput.Name = "lciInput";
-            this.lciInput.Size = new System.Drawing.Size(726, 32);
+            this.lciInput.Size = new System.Drawing.Size(728, 32);
             this.lciInput.TextSize = new System.Drawing.Size(0, 0);
             this.lciInput.TextVisible = false;
             // 
@@ -100,7 +100,7 @@
             this.lciEdit.Control = this.btnEdit;
             this.lciEdit.Location = new System.Drawing.Point(0, 32);
             this.lciEdit.Name = "lciEdit";
-            this.lciEdit.Size = new System.Drawing.Size(726, 26);
+            this.lciEdit.Size = new System.Drawing.Size(728, 26);
             this.lciEdit.TextSize = new System.Drawing.Size(0, 0);
             this.lciEdit.TextVisible = false;
             // 
@@ -108,7 +108,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(746, 78);
+            this.ClientSize = new System.Drawing.Size(748, 78);
             this.Controls.Add(this.layoutControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IconOptions.ShowIcon = false;
