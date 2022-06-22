@@ -22,7 +22,7 @@ namespace ChessAnalysis.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal partial class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -181,6 +181,15 @@ namespace ChessAnalysis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data source already contains item with ID: &quot;{0}&quot;.
+        /// </summary>
+        internal static string DataSourceContainsId {
+            get {
+                return ResourceManager.GetString("DataSourceContainsId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream Flip {
@@ -200,11 +209,48 @@ namespace ChessAnalysis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} format is incorrect.
+        /// </summary>
+        internal static string IncorrectFormat {
+            get {
+                return ResourceManager.GetString("IncorrectFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid number of components in {0}.
+        /// </summary>
+        internal static string InvalidComponentsNumber {
+            get {
+                return ResourceManager.GetString("InvalidComponentsNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream Mail {
             get {
                 return ResourceManager.GetStream("Mail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error in Mail sender or receiver configuration. 
+        ///Change configuration parameters and try again.
+        /// </summary>
+        internal static string MailError {
+            get {
+                return ResourceManager.GetString("MailError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} - Chess analysis.
+        /// </summary>
+        internal static string MainCaption {
+            get {
+                return ResourceManager.GetString("MainCaption", resourceCulture);
             }
         }
         
@@ -329,6 +375,70 @@ namespace ChessAnalysis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There is nothing to send.
+        ///Select some items and try again.
+        /// </summary>
+        internal static string NothingToSend {
+            get {
+                return ResourceManager.GetString("NothingToSend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Added {0} row(s).
+        /// </summary>
+        internal static string NotifyAdd {
+            get {
+                return ResourceManager.GetString("NotifyAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edited {0}. row.
+        /// </summary>
+        internal static string NotifyEdit {
+            get {
+                return ResourceManager.GetString("NotifyEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mail sent.
+        /// </summary>
+        internal static string NotifyMail {
+            get {
+                return ResourceManager.GetString("NotifyMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removed {0} row(s).
+        /// </summary>
+        internal static string NotifyRemove {
+            get {
+                return ResourceManager.GetString("NotifyRemove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File {0} saved.
+        /// </summary>
+        internal static string NotifySavedFile {
+            get {
+                return ResourceManager.GetString("NotifySavedFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Snapshot {0} saved.
+        /// </summary>
+        internal static string NotifySnapshot {
+            get {
+                return ResourceManager.GetString("NotifySnapshot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream Piece {
@@ -356,6 +466,16 @@ namespace ChessAnalysis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to snapshot image. 
+        ///Change Snapshot directory and try again.
+        /// </summary>
+        internal static string SnapshotError {
+            get {
+                return ResourceManager.GetString("SnapshotError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Star {
@@ -371,6 +491,24 @@ namespace ChessAnalysis.Properties {
         internal static System.IO.UnmanagedMemoryStream Start {
             get {
                 return ResourceManager.GetStream("Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} row(s).
+        /// </summary>
+        internal static string TotalRows {
+            get {
+                return ResourceManager.GetString("TotalRows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} contains unallowed character(s).
+        /// </summary>
+        internal static string UnallowedCharactersDetected {
+            get {
+                return ResourceManager.GetString("UnallowedCharactersDetected", resourceCulture);
             }
         }
         

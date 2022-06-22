@@ -38,15 +38,15 @@ namespace ChessAnalysis.Classes
 
         protected override Position Parse()
         {
-            var board = FenParser.Parse(Arguments[ParseConsts.POSITION_FEN_INDEX]);
             var nextPlayer = NextPlayerParser.Parse(Arguments[ParseConsts.POSITION_NEXT_PLAYER_INDEX]);
-            var enPassant = EnPassantParser.Parse(Arguments[ParseConsts.POSITION_EN_PASSANT_INDEX], nextPlayer == NextPlayer.Black);
-            (var blackCastling, var whiteCastling) = CastlingParser.Parse(Arguments[ParseConsts.POSITION_CASTLING_INDEX]);
-            var halfMoves = Arguments[ParseConsts.POSITION_HALF_MOVES_INDEX].AsNumber(Components.HalfMoves);
-            var round = Arguments[ParseConsts.POSITION_ROUND_INDEX].AsNumber(Components.Round);
-            var bestMove = BestMoveParser.Parse(Arguments[ParseConsts.POSITION_BEST_MOVE_INDEX], nextPlayer == NextPlayer.Black);
 
-            return new Position(board, nextPlayer, blackCastling, whiteCastling, enPassant, halfMoves, round, bestMove);
+            return new Position(nextPlayer, 
+                CastlingParser.Parse(Arguments[ParseConsts.POSITION_CASTLING_INDEX]),
+                EnPassantParser.Parse(Arguments[ParseConsts.POSITION_EN_PASSANT_INDEX], nextPlayer == NextPlayer.Black),
+                Arguments[ParseConsts.POSITION_HALF_MOVES_INDEX].AsNumber(Components.HalfMoves),
+                Arguments[ParseConsts.POSITION_ROUND_INDEX].AsNumber(Components.Round),
+                FenParser.Parse(Arguments[ParseConsts.POSITION_FEN_INDEX]),
+                BestMoveParser.Parse(Arguments[ParseConsts.POSITION_BEST_MOVE_INDEX], nextPlayer == NextPlayer.Black));
         }
     }
 }

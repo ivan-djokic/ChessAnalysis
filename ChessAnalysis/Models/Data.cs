@@ -4,19 +4,19 @@
     {
         private string m_input;
 
-        public Data(Position position, string id, Comment comment, string input)
+        public Data(string input, Position position, string id, Comment comment)
         {
             Comment = comment;
             Id = id;
-            Position = position;
             m_input = input;
+            Position = position;
         }
 
-        public Comment Comment { get; set; }
+        public Comment Comment { get; }
 
-        public string Id { get; set; }
+        public string Id { get; }
 
-        public Position Position { get; set; }
+        public Position Position { get; }
 
         public override string ToString()
         {

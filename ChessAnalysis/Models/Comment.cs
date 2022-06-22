@@ -10,12 +10,12 @@
             Result = result;
         }
 
-        public string Defense { get; set; }
+        public string Defense { get; }
 
-        public string Opening { get; set; }
+        public string Opening { get; }
 
-        public string Players { get; set; }
+        public string Players { get; }
 
-        public string Result { get; set; }
+        public string Result { get; }
     }
 }

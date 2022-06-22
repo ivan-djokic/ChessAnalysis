@@ -1,5 +1,4 @@
 ﻿using System.Media;
-using ChessAnalysis.Properties;
 
 namespace ChessAnalysis.Utils
 {
@@ -18,7 +17,7 @@ namespace ChessAnalysis.Utils
                 return;
             }
 
-            using var stream = Resources.GetSound(input);
+            using var stream = ResourceHelper.GetSound(input);
             using var sound = new SoundPlayer(stream);
             sound.Play();
         }

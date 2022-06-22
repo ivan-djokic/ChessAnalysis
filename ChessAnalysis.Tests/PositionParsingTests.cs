@@ -4,10 +4,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ChessAnalysis.Tests
 {
     [TestClass]
-    /// <summary>
-    /// Tests HalfMoves and Round arguments in Position
-    /// All other Position atributes are already tested in other classes
-    /// </summary>
     public class PositionParsingTests
     {
         [TestMethod]
@@ -39,6 +35,7 @@ namespace ChessAnalysis.Tests
                 failed = true;
             }
 
+            // Tests HalfMoves and Round arguments in Position
             Assert.IsFalse(failExpected ^ failed);
         }
     }

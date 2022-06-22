@@ -1,20 +1,20 @@
-﻿using DevExpress.XtraEditors;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using DevExpress.XtraEditors;
 
 namespace ChessAnalysis.Forms
 {
 	public partial class ProgressForm<T> : XtraForm
 	{
-		private readonly Action<int> m_action;
 		private readonly IList<T> m_collection;
+		private readonly Action<int> m_work;
 
-		private ProgressForm(IList<T> collection, Action<int> action)
+		private ProgressForm(IList<T> collection, Action<int> work)
 		{
 			InitializeComponent();
 
 			inlineProgress.InitializeSteps(collection.Count);
 			m_collection = collection;
-			m_action = action;
+			m_work = work;
 		}
 
 		public static void ShowProgress(IWin32Window owner, IList<T> collection, Action<int> action)
@@ -28,7 +28,7 @@ namespace ChessAnalysis.Forms
 			Parallel.For(0, m_collection.Count, (i, state) =>
             {
 				Thread.Sleep(1);
-				m_action.Invoke(i);
+				m_work.Invoke(i);
                 inlineProgress.NextStep();
 
                 if (inlineProgress.Stop)

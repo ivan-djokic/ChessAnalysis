@@ -53,12 +53,6 @@ namespace ChessAnalysis.Utils
 			}
 		}
 
-		public string OptionsDirectory
-		{
-			get => Options.Instance.OptionsDirectory;
-			set => Options.Instance.OptionsDirectory = value;
-		}
-
 		public bool PieceClassic
 		{
 			get => Options.Instance.PieceStyle == PieceStyles.Classic;
@@ -174,12 +168,12 @@ namespace ChessAnalysis.Utils
         {
 			RaisePropertiesChanged(() => FieldEmptyColor, () => FieldFillColor);
 			RaisePropertyChanged(() => MarkIfBestMoveIsPlayed);
-			RaisePropertiesChanged(() => OptionsDirectory, () => SnapshotDirectory);
 			RaisePropertiesChanged(() => PieceClassic, () => PieceNeo, () => PieceWood);
 			RaisePropertyChanged(() => PlaySound);
 			RaisePropertiesChanged(() => SenderMail, () => SenderPassword);
 			RaisePropertyChanged(() => ShowCoordinates);
 			RaisePropertyChanged(() => SmtpClient);
+			RaisePropertyChanged(() => SnapshotDirectory);
 			RaisePropertiesChanged(() => ThemeDark, () => ThemeLight);
 		}
 

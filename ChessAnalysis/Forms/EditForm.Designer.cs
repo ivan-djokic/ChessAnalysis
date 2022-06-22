@@ -68,6 +68,7 @@
             // 
             // dataInput
             // 
+            this.dataInput.Input = "";
             this.dataInput.Location = new System.Drawing.Point(12, 12);
             this.dataInput.Name = "dataInput";
             this.dataInput.Size = new System.Drawing.Size(722, 28);

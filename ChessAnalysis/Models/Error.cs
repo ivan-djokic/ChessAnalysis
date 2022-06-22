@@ -8,8 +8,8 @@
             Message = error;
         }
 
-        public string Line { get; set; }
+        public string Line { get; }
 
-        public string Message { get; set; }
+        public string Message { get; }
     }
 }

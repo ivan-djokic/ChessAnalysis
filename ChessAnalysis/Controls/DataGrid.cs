@@ -2,6 +2,7 @@
 using ChessAnalysis.Classes;
 using ChessAnalysis.Forms;
 using ChessAnalysis.Models;
+using ChessAnalysis.Properties;
 using ChessAnalysis.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraLayout.Utils;
@@ -113,21 +114,21 @@ namespace ChessAnalysis.Controls
                 case NotifyCollectionChangedAction.Add:
                     if (e.NewItems != null && e.NewItems.Count > 0 && e.NewItems[0] is DataCollection collection && collection.Count > 0)
                     {
-                        Notification.Notify?.Invoke($"{collection.Count} row{(collection.Count == 1 ? " was" : "s were")} added");
+                        Notification.Notify?.Invoke(string.Format(Resources.NotifyAdd, collection.Count));
                     }
-                    
+
                     break;
 
                 case NotifyCollectionChangedAction.Remove:
                     if (e.OldItems != null && e.OldItems.Count > 0 && e.OldItems[0] is int[] array && array.Length > 0)
                     {
-                        Notification.Notify?.Invoke($"{array.Length} row{(array.Length == 1 ? " was" : "s were")} removed");
+                        Notification.Notify?.Invoke(string.Format(Resources.NotifyRemove, array.Length));
                     }
-                    
+
                     break;
 
                 case NotifyCollectionChangedAction.Replace:
-                    Notification.Notify?.Invoke($"{gridView.FocusedRowHandle}. row was edited");
+                    Notification.Notify?.Invoke(string.Format(Resources.NotifyEdit, gridView.FocusedRowHandle));
                     break;
             }
         }

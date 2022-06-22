@@ -9,13 +9,13 @@ namespace ChessAnalysis.Forms
 		public ErrorForm(IEnumerable<Error> errors)
 		{
 			InitializeComponent();
-			grid.SetDataSource(errors);
+			grid.Reinitialize(errors);
 		}
 
         protected override void OnLoad(EventArgs e)
         {
-            base.OnLoad(e);
 			Sound.Play(Sounds.Error);
+			base.OnLoad(e);
 		}
 	}
 }

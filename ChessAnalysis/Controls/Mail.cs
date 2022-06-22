@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Net.Mail;
 using ChessAnalysis.Classes;
+using ChessAnalysis.Properties;
 using ChessAnalysis.Utils;
 using DevExpress.XtraEditors;
 
@@ -26,14 +27,14 @@ namespace ChessAnalysis.Controls
             {
                 Body = HtmlBuilder.BuildPage(txtContent.Text, collection),
                 IsBodyHtml = true,
-                Subject = "Chess analysis"
+                Subject = Constants.APP_NAME
             };
 
             client.Send(message);
-
             Options.Instance.Save();
+
             Sound.Play(Sounds.Mail);
-            Notification.Notify?.Invoke("Mail was sent");
+            Notification.Notify?.Invoke(Resources.NotifyMail);
         }
 
         private void BindComponents()

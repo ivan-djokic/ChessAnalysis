@@ -6,6 +6,8 @@ namespace ChessAnalysis.Utils
 {
     public partial class Options
 	{
+		private readonly string m_optionsFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), 
+			Constants.APP_NAME, Constants.OPTIONS_FILE_NAME);
 		private static readonly Lazy<Options> s_instance = new(CreateInstance);
 
 		public Color FieldEmptyColor { get; set; }
@@ -24,8 +26,6 @@ namespace ChessAnalysis.Utils
 		public string MailContent { get; set; }
 
 		public bool MarkIfBestMoveIsPlayed { get; set; }
-
-		public string OptionsDirectory { get; set; }
 
 		public PieceStyles PieceStyle { get; set; }
 
@@ -55,7 +55,7 @@ namespace ChessAnalysis.Utils
             {
 				SenderPassword = Crypto.Encrypt(SenderPassword);
 
-				using var writer = new StreamWriter(Path.Combine(OptionsDirectory, Constants.OPTIONS_FILE_NAME));
+				using var writer = new StreamWriter(m_optionsFileName);
 				new XmlSerializer(typeof(Options)).Serialize(writer, this);
 			}
 			finally
@@ -69,7 +69,6 @@ namespace ChessAnalysis.Utils
 			FieldEmptyColor = Color.FromArgb(255, 238, 236, 225);
 			FieldFillColor = Color.FromArgb(255, 79, 129, 189);
 			MarkIfBestMoveIsPlayed = true;
-			OptionsDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Constants.APP_NAME);
 			PieceStyle = PieceStyles.Classic;
 			PlaySound = true;
 			SenderMail = "chess.analysis.bot@gmail.com";
@@ -94,7 +93,6 @@ namespace ChessAnalysis.Utils
 			options.LastOutputDirectory = LastOutputDirectory;
 			options.MailContent = MailContent;
 			options.MarkIfBestMoveIsPlayed = MarkIfBestMoveIsPlayed;
-			options.OptionsDirectory = OptionsDirectory;
 			options.PieceStyle = PieceStyle;
 			options.PlaySound = PlaySound;
 			options.ReceiverMail = ReceiverMail;
@@ -117,7 +115,7 @@ namespace ChessAnalysis.Utils
 
 		private void CreateDirsIfNotExist()
         {
-			FileHelper.CreateDirIfNotExists(OptionsDirectory);
+			FileHelper.CreateDirIfNotExists(m_optionsFileName);
 			FileHelper.CreateDirIfNotExists(SnapshotDirectory);
         }
 
@@ -125,7 +123,7 @@ namespace ChessAnalysis.Utils
 		{
 			try
 			{
-				using var reader = new StreamReader(Path.Combine(OptionsDirectory, Constants.OPTIONS_FILE_NAME));
+				using var reader = new StreamReader(m_optionsFileName);
 				var options = new XmlSerializer(typeof(Options)).Deserialize(reader) as Options;
 				options?.CopyTo(this);
 			}

@@ -27,5 +27,13 @@ namespace ChessAnalysis.Forms
 				Close();
             }
         }
+
+        private void EditForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+        }
     }
 }

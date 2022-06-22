@@ -4,7 +4,7 @@ namespace ChessAnalysis.Classes
 {
     public abstract class ParserBase<T>
     {
-        private string[] m_arguments;
+        private string[] m_arguments = Array.Empty<string>();
         protected string m_input;
 
         protected ParserBase(string input)
@@ -18,7 +18,7 @@ namespace ChessAnalysis.Classes
         { 
             get
             {
-                if (m_arguments == null)
+                if (!m_arguments.Any())
                 {
                     m_arguments = GetArguments();
                 }
@@ -29,7 +29,10 @@ namespace ChessAnalysis.Classes
 
         protected abstract Components Component { get; }
 
-        protected virtual string Delimiter { get; }
+        protected virtual string Delimiter
+        {
+            get => string.Empty;
+        }
 
         protected virtual string KeyWord 
         {
@@ -54,20 +57,18 @@ namespace ChessAnalysis.Classes
 
             if (Delimiter == ParseConsts.ARGS_DELIMITER_QUOTES)
             {
-                arguments = arguments.Select(item => ParseQuotesInput(item)).ToArray();
+                for (var i = 1; i < ArgumentsCount; i++)
+                {
+                    if (!arguments[i].EndsWith(ParseConsts.QUOTES))
+                    {
+                        throw new UnallowedCharactersException(Component);
+                    }
+
+                    arguments[i] = arguments[i].RemoveLast();
+                }
             }
 
             return arguments;
-        }
-
-        private string ParseQuotesInput(string input)
-        {
-            if (!input.EndsWith(ParseConsts.QUOTES))
-            {
-                throw new UnallowedCharactersException(Component);
-            }
-
-            return input.RemoveLast();
         }
     }
 }

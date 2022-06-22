@@ -1,13 +1,13 @@
 ﻿using System.IO;
-using ChessAnalysis.Utils;
+using ChessAnalysis.Properties;
 
-namespace ChessAnalysis.Properties
+namespace ChessAnalysis.Utils
 {
-    internal partial class Resources
+    public class ResourceHelper
     {
-        public static Image GetPiece(char input)
+        public static Image GetPiece(char input = Constants.PIECE_KING)
         {
-            if (ResourceManager.GetObject($"{Options.Instance.PieceStyle}_{GetPieceColor(input)}{input}", resourceCulture) is Bitmap result)
+            if (Resources.ResourceManager.GetObject($"{Options.Instance.PieceStyle}_{GetPieceColor(input)}{input}", Resources.Culture) is Bitmap result)
             {
                 return result;
             }
@@ -17,7 +17,7 @@ namespace ChessAnalysis.Properties
 
         public static Stream? GetSound(Sounds input)
         {
-            return ResourceManager.GetStream(input.ToString());
+            return Resources.ResourceManager.GetStream(input.ToString());
         }
 
         private static string GetPieceColor(char input)

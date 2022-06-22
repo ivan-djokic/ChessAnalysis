@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using ChessAnalysis.Classes;
 using ChessAnalysis.Models;
+using ChessAnalysis.Properties;
 using ChessAnalysis.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraLayout.Utils;
@@ -17,17 +18,7 @@ namespace ChessAnalysis.Controls
             InitializeComponent();
 
             Options.BoardOptionsChanged += DrawImage;
-            Data = Parser.Parse(Constants.DEFAULT_INPUT);
-        }
-
-        public Data Data 
-        { 
-            get => m_data; 
-            set
-            {
-                m_data = value;
-                Reinitialize();
-            }
+            Reinitialize(Parser.Parse(Constants.DEFAULT_INPUT));
         }
 
         public bool ShowOnlyBoard
@@ -43,18 +34,30 @@ namespace ChessAnalysis.Controls
             }
         }
 
+        public void Reinitialize(Data data)
+        {
+            lblPlayers.Text = data.Comment.Players;
+            lblResult.Text = data.Comment.Result;
+            lblOpening.Text = data.Comment.Opening;
+            lblDefense.Text = data.Comment.Defense;
+
+            m_data = data;
+            DrawImage();
+        }
+
         public void TakeSnapshot()
         {
             try
             {
                 FileHelper.CreateDirIfNotExists(Options.Instance.SnapshotDirectory);
-                SaveSnapshot(Path.Combine(Options.Instance.SnapshotDirectory, $"{m_data.Id}{Constants.SNAPSHOT_EXTENSION}"));
+                var fileName = SaveSnapshot(Path.Combine(Options.Instance.SnapshotDirectory, string.Format(Constants.SNAPSHOT_FILE, m_data.Id)));
+
                 Sound.Play(Sounds.Snapshot);
-                Notification.Notify?.Invoke("Snapshot was saved");
+                Notification.Notify?.Invoke(string.Format(Resources.NotifySnapshot, Path.GetFileName(fileName)));
             }
             catch
             {
-                Alert.Error(this, "Failed to snapshot image. Change Snapshot directory in Options and try again", MessageBoxButtons.OK);
+                Alert.Error(this, Resources.SnapshotError, MessageBoxButtons.OK);
             }
         }
 
@@ -63,8 +66,8 @@ namespace ChessAnalysis.Controls
             Options.Instance.WhiteOrientedBoard = !Options.Instance.WhiteOrientedBoard;
             Options.Instance.Save();
 
-            DrawImage();
             Sound.Play(Sounds.Flip);
+            DrawImage();
         }
 
         private void ChangeControlsVisibility()
@@ -81,25 +84,16 @@ namespace ChessAnalysis.Controls
             imageBoard.Image = BoardImage.Create(m_data.Position);
         }
 
-        private void Reinitialize()
-        {
-            lblPlayers.Text = m_data.Comment.Players;
-            lblResult.Text = m_data.Comment.Result;
-            lblOpening.Text = m_data.Comment.Opening;
-            lblDefense.Text = m_data.Comment.Defense;
-
-            DrawImage();
-        }
-
-        private void SaveSnapshot(string fileName, int tryCount = 2)
+        private string SaveSnapshot(string fileName, int tryCount = 2)
         {
             if (!File.Exists(fileName))
             {
                 imageBoard.Image.Save(fileName);
-                return;
+                return fileName;
             }
 
-            SaveSnapshot(Path.Combine(Options.Instance.SnapshotDirectory, $"{m_data.Id} ({tryCount}){Constants.SNAPSHOT_EXTENSION}"), tryCount + 1);
+            return SaveSnapshot(
+                Path.Combine(Options.Instance.SnapshotDirectory, string.Format(Constants.SNAPSHOT_FILE_DUPLICATE, m_data.Id, tryCount)), tryCount + 1);
         }
     }
 }

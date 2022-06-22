@@ -1,6 +1,5 @@
-﻿using System.Net;
-using System.Net.Mail;
-using ChessAnalysis.Classes;
+﻿using ChessAnalysis.Classes;
+using ChessAnalysis.Properties;
 using ChessAnalysis.Utils;
 using DevExpress.XtraEditors;
 
@@ -25,7 +24,7 @@ namespace ChessAnalysis.Forms
             }
             catch
             {
-                Alert.Error(this, "Error in Mail sender or receiver configuration. Change configuration parameters and try again", MessageBoxButtons.OK);
+                Alert.Error(this, Resources.MailError, MessageBoxButtons.OK);
             }
         }
     }

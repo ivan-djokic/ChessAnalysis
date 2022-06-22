@@ -54,7 +54,7 @@ namespace ChessAnalysis.Controls
 
         private void grid_FocusedRowChanged(Data data)
         {
-            board.Data = data;
+            board.Reinitialize(data);
         }
 
         private void splitContainerControl_SplitterMoved(object sender, EventArgs e)

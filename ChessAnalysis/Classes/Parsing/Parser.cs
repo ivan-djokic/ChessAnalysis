@@ -37,11 +37,10 @@ namespace ChessAnalysis.Classes
 
         protected override Data Parse()
         {
-            var position = PositionParser.Parse(Arguments[ParseConsts.DATA_POSITION_INDEX]);
-            var id = IdParser.Parse(Arguments[ParseConsts.DATA_ID_INDEX]);
-            var comment = CommentParser.Parse(Arguments[ParseConsts.DATA_COMMENT_INDEX]);
-
-            return new Data(position, id, comment, m_input);
+            return new Data(m_input,
+                PositionParser.Parse(Arguments[ParseConsts.DATA_POSITION_INDEX]),
+                IdParser.Parse(Arguments[ParseConsts.DATA_ID_INDEX]),
+                CommentParser.Parse(Arguments[ParseConsts.DATA_COMMENT_INDEX]));
         }
     }
 }

@@ -91,14 +91,14 @@ namespace ChessAnalysis.Controls
 
         private (int Start, int Length) GetBadInputRange(string[] arguments, int index, string delimiter)
         {
-            var result = 0;
+            var start = 0;
 
             for (var i = 0; i < index; i++)
             {
-                result += arguments[i].Length + delimiter.Length;
+                start += arguments[i].Length + delimiter.Length;
             }
 
-            return (result, arguments[index].Length);
+            return (start, arguments[index].Length);
         }
 
         private void txtInput_ButtonClick(object sender, EventArgs e)

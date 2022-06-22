@@ -2,17 +2,22 @@
 {
     public class BestMove
     {
-        public BestMove(string value, char piece, Point field)
+        private readonly string m_input;
+
+        public BestMove(string input, char piece, Point field)
         {
             Field = field;
+            m_input = input;
             Piece = piece;
-            Value = value;
         }
 
-        public Point Field { get; set; } = new Point(-1, -1);
+        public Point Field { get; }
 
         public char Piece { get; set; }
 
-        public string Value { get; set; }
+        public override string ToString()
+        {
+            return m_input;
+        }
     }
 }

@@ -14,7 +14,6 @@ namespace ChessAnalysis.Controls
         private void BindComponents()
         {
             Options.Instance.Bind(txtSnapshotDirectory, model => model.SnapshotDirectory);
-            Options.Instance.Bind(txtOptionsDirectory, model => model.OptionsDirectory);
             Options.Instance.Bind(rbDark, model => model.ThemeDark);
             Options.Instance.Bind(rbLight, model => model.ThemeLight);
             Options.Instance.Bind(chxPlaySound, model => model.PlaySound);

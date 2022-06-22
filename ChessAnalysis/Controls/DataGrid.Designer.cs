@@ -112,7 +112,7 @@
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(18, 18);
             this.btnEdit.StyleController = this.layoutControl;
-            toolTipItem2.Text = "Edit selected item";
+            toolTipItem2.Text = "Edit focused item";
             superToolTip2.Items.Add(toolTipItem2);
             this.btnEdit.SuperTip = superToolTip2;
             this.btnEdit.TabIndex = 1;
@@ -240,7 +240,7 @@
             // colBestMove
             // 
             this.colBestMove.Caption = "Best move";
-            this.colBestMove.FieldName = "Position.BestMove.Value";
+            this.colBestMove.FieldName = "Position.BestMove";
             this.colBestMove.Name = "colBestMove";
             this.colBestMove.OptionsColumn.AllowEdit = false;
             this.colBestMove.OptionsColumn.AllowFocus = false;

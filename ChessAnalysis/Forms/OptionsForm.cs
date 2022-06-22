@@ -35,15 +35,16 @@ namespace ChessAnalysis.Forms
             if (e.Element == itemGeneral)
             {
                 navigationFrame.SelectedPage = pageGeneral;
+                return;
             }
-            else if (e.Element == itemBoard)
+
+            if (e.Element == itemBoard)
             {
                 navigationFrame.SelectedPage = pageBoard;
+                return;
             }
-            else
-            {
-                navigationFrame.SelectedPage = pageMail;
-            }
+
+            navigationFrame.SelectedPage = pageMail;
         }
 	}
 }

@@ -28,11 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneralTab));
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -57,8 +52,6 @@
             this.lciPlaySound = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtOptionsDirectory = new DevExpress.XtraEditors.ButtonEdit();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSnapshotDirectory.Properties)).BeginInit();
@@ -75,13 +68,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.lciPlaySound)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOptionsDirectory.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl
             // 
-            this.layoutControl.Controls.Add(this.txtOptionsDirectory);
             this.layoutControl.Controls.Add(this.lblOutput);
             this.layoutControl.Controls.Add(this.txtSnapshotDirectory);
             this.layoutControl.Controls.Add(this.lblTheme);
@@ -113,10 +103,10 @@
             this.txtSnapshotDirectory.EditValue = "C:\\Users\\User\\Documents\\Chess Analysis\\Snapshots";
             this.txtSnapshotDirectory.Location = new System.Drawing.Point(139, 34);
             this.txtSnapshotDirectory.Name = "txtSnapshotDirectory";
-            editorButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions2.SvgImage")));
-            editorButtonImageOptions2.SvgImageSize = new System.Drawing.Size(12, 12);
+            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
+            editorButtonImageOptions1.SvgImageSize = new System.Drawing.Size(12, 12);
             this.txtSnapshotDirectory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.txtSnapshotDirectory.Size = new System.Drawing.Size(249, 20);
             this.txtSnapshotDirectory.StyleController = this.layoutControl;
             this.txtSnapshotDirectory.TabIndex = 2;
@@ -126,7 +116,7 @@
             // 
             this.lblTheme.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblTheme.Appearance.Options.UseFont = true;
-            this.lblTheme.Location = new System.Drawing.Point(12, 87);
+            this.lblTheme.Location = new System.Drawing.Point(12, 63);
             this.lblTheme.Name = "lblTheme";
             this.lblTheme.Size = new System.Drawing.Size(47, 18);
             this.lblTheme.StyleController = this.layoutControl;
@@ -136,7 +126,7 @@
             // rbDark
             // 
             this.rbDark.EditValue = true;
-            this.rbDark.Location = new System.Drawing.Point(32, 109);
+            this.rbDark.Location = new System.Drawing.Point(32, 85);
             this.rbDark.Name = "rbDark";
             this.rbDark.Properties.AllowFocused = false;
             this.rbDark.Properties.Caption = "Dark";
@@ -148,7 +138,7 @@
             // 
             // rbLight
             // 
-            this.rbLight.Location = new System.Drawing.Point(82, 109);
+            this.rbLight.Location = new System.Drawing.Point(82, 85);
             this.rbLight.Name = "rbLight";
             this.rbLight.Properties.AllowFocused = false;
             this.rbLight.Properties.Caption = "Light";
@@ -163,7 +153,7 @@
             // 
             this.lblSound.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblSound.Appearance.Options.UseFont = true;
-            this.lblSound.Location = new System.Drawing.Point(12, 138);
+            this.lblSound.Location = new System.Drawing.Point(12, 114);
             this.lblSound.Name = "lblSound";
             this.lblSound.Size = new System.Drawing.Size(40, 18);
             this.lblSound.StyleController = this.layoutControl;
@@ -173,7 +163,7 @@
             // chxPlaySound
             // 
             this.chxPlaySound.EditValue = true;
-            this.chxPlaySound.Location = new System.Drawing.Point(32, 160);
+            this.chxPlaySound.Location = new System.Drawing.Point(32, 136);
             this.chxPlaySound.Name = "chxPlaySound";
             this.chxPlaySound.Properties.AllowFocused = false;
             this.chxPlaySound.Properties.Caption = "Play sounds in application";
@@ -193,8 +183,7 @@
             this.lciLight,
             this.lciSound,
             this.lciPlaySound,
-            this.emptySpaceItem,
-            this.layoutControlItem2});
+            this.emptySpaceItem});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(400, 300);
             this.Root.TextVisible = false;
@@ -221,7 +210,7 @@
             // lciTheme
             // 
             this.lciTheme.Control = this.lblTheme;
-            this.lciTheme.Location = new System.Drawing.Point(0, 70);
+            this.lciTheme.Location = new System.Drawing.Point(0, 46);
             this.lciTheme.Name = "lciTheme";
             this.lciTheme.Size = new System.Drawing.Size(380, 27);
             this.lciTheme.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 5, 0);
@@ -231,7 +220,7 @@
             // lciDark
             // 
             this.lciDark.Control = this.rbDark;
-            this.lciDark.Location = new System.Drawing.Point(0, 97);
+            this.lciDark.Location = new System.Drawing.Point(0, 73);
             this.lciDark.Name = "lciDark";
             this.lciDark.Size = new System.Drawing.Size(70, 24);
             this.lciDark.Spacing = new DevExpress.XtraLayout.Utils.Padding(20, 0, 0, 0);
@@ -241,7 +230,7 @@
             // lciLight
             // 
             this.lciLight.Control = this.rbLight;
-            this.lciLight.Location = new System.Drawing.Point(70, 97);
+            this.lciLight.Location = new System.Drawing.Point(70, 73);
             this.lciLight.Name = "lciLight";
             this.lciLight.Size = new System.Drawing.Size(310, 24);
             this.lciLight.TextSize = new System.Drawing.Size(0, 0);
@@ -250,7 +239,7 @@
             // lciSound
             // 
             this.lciSound.Control = this.lblSound;
-            this.lciSound.Location = new System.Drawing.Point(0, 121);
+            this.lciSound.Location = new System.Drawing.Point(0, 97);
             this.lciSound.Name = "lciSound";
             this.lciSound.Size = new System.Drawing.Size(380, 27);
             this.lciSound.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 5, 0);
@@ -260,7 +249,7 @@
             // lciPlaySound
             // 
             this.lciPlaySound.Control = this.chxPlaySound;
-            this.lciPlaySound.Location = new System.Drawing.Point(0, 148);
+            this.lciPlaySound.Location = new System.Drawing.Point(0, 124);
             this.lciPlaySound.Name = "lciPlaySound";
             this.lciPlaySound.Size = new System.Drawing.Size(380, 24);
             this.lciPlaySound.Spacing = new DevExpress.XtraLayout.Utils.Padding(20, 0, 0, 0);
@@ -270,9 +259,9 @@
             // emptySpaceItem
             // 
             this.emptySpaceItem.AllowHotTrack = false;
-            this.emptySpaceItem.Location = new System.Drawing.Point(0, 172);
+            this.emptySpaceItem.Location = new System.Drawing.Point(0, 148);
             this.emptySpaceItem.Name = "emptySpaceItem";
-            this.emptySpaceItem.Size = new System.Drawing.Size(380, 108);
+            this.emptySpaceItem.Size = new System.Drawing.Size(380, 132);
             this.emptySpaceItem.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem1
@@ -284,29 +273,6 @@
             this.layoutControlItem1.Spacing = new DevExpress.XtraLayout.Utils.Padding(20, 0, 0, 0);
             this.layoutControlItem1.Text = "Snapshot directory:";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(95, 13);
-            // 
-            // txtOptionsDirectory
-            // 
-            this.txtOptionsDirectory.EditValue = "C:\\Users\\User\\AppData\\Local\\Chess Analysis";
-            this.txtOptionsDirectory.Location = new System.Drawing.Point(139, 58);
-            this.txtOptionsDirectory.Name = "txtOptionsDirectory";
-            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
-            editorButtonImageOptions1.SvgImageSize = new System.Drawing.Size(12, 12);
-            this.txtOptionsDirectory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.txtOptionsDirectory.Size = new System.Drawing.Size(249, 20);
-            this.txtOptionsDirectory.StyleController = this.layoutControl;
-            this.txtOptionsDirectory.TabIndex = 11;
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.txtOptionsDirectory;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 46);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(380, 24);
-            this.layoutControlItem2.Spacing = new DevExpress.XtraLayout.Utils.Padding(20, 0, 0, 0);
-            this.layoutControlItem2.Text = "Options directory:";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(95, 13);
             // 
             // GeneralTab
             // 
@@ -331,8 +297,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.lciPlaySound)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOptionsDirectory.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -357,7 +321,5 @@
         private DevExpress.XtraLayout.LayoutControlItem lciPlaySound;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraEditors.ButtonEdit txtOptionsDirectory;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
     }
 }

@@ -13,8 +13,8 @@ namespace ChessAnalysis.Classes
 
         private BoardImage()
         {
-            using var image = Resources.GetPiece('K');
-            m_fieldSize = image.Size.Width;
+            using var piece = ResourceHelper.GetPiece();
+            m_fieldSize = piece.Size.Width;
         }
 
         public static Image Create(Position position)
@@ -101,7 +101,7 @@ namespace ChessAnalysis.Classes
                     var actualX = GetPieceCoordinate(x) * m_fieldSize;
                     var actualY = GetPieceCoordinate(y) * m_fieldSize;
 
-                    using var piece = Resources.GetPiece(board[y][x]);
+                    using var piece = ResourceHelper.GetPiece(board[y][x]);
                     m_graphics.DrawImage(piece, new Rectangle(actualX, actualY, m_fieldSize, m_fieldSize));
                 }
             }

@@ -20,8 +20,8 @@ namespace ChessAnalysis.Forms
 
         protected override void OnLoad(EventArgs e)
         {
-            base.OnLoad(e);
             Sound.Play(Sounds.Start);
+            base.OnLoad(e);
         }
 
         private void btnAdd_ItemClick(object sender, EventArgs e)
@@ -38,7 +38,15 @@ namespace ChessAnalysis.Forms
 
         private void btnMail_ItemClick(object sender, EventArgs e)
         {
-            using var mailForm = new MailForm(panel.Collection);
+            var selection = panel.GetSelection();
+
+            if (!selection.Any())
+            {
+                Alert.Error(this, Resources.NothingToSend, MessageBoxButtons.OK);
+                return;
+            }
+
+            using var mailForm = new MailForm(selection);
             mailForm.ShowDialog(this);
         }
 
@@ -81,18 +89,18 @@ namespace ChessAnalysis.Forms
 
         private void RowCountChanged(int count)
         {
-            lblTotalPositions.Caption = string.Format(Strings.TotalPositions, count);
+            lblTotalPositions.Caption = string.Format(Resources.TotalRows, count);
         }
 
         private void SaveCollection()
         {
             FileHelper.Save(m_savedFile, panel.Collection.ToString());
-            Notification.Notify?.Invoke("File was saved");
-            Text = $"{Path.GetFileNameWithoutExtension(m_savedFile)} - Chess analysis";
-            Sound.Play(Sounds.Save);
-
             Options.Instance.LastOutputDirectory = FileHelper.GetDirectoryName(m_savedFile);
             Options.Instance.Save();
+
+            Sound.Play(Sounds.Save);
+            Text = string.Format(Resources.MainCaption, Path.GetFileNameWithoutExtension(m_savedFile));
+            Notification.Notify?.Invoke(string.Format(Resources.NotifySavedFile, Path.GetFileName(m_savedFile)));
         }
 
         private void SetNotification(string message)

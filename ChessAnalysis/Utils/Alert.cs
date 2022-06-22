@@ -8,13 +8,13 @@ namespace ChessAnalysis.Utils
     {
         public static bool Error(IWin32Window owner, string message, MessageBoxButtons buttons = MessageBoxButtons.YesNo)
         {
-            return XtraMessageBox.Show(owner, message, "Error message", buttons, MessageBoxIcon.Error) == DialogResult.Yes;
+            return XtraMessageBox.Show(owner, message, Constants.ERROR_CAPTION, buttons, MessageBoxIcon.Error) != DialogResult.No;
         }
 
         public static bool ErrorList(IWin32Window owner, IEnumerable<Error> errors)
         {
             using var errorForm = new ErrorForm(errors);
-            return errorForm.ShowDialog(owner) == DialogResult.Yes;
+            return errorForm.ShowDialog(owner) != DialogResult.No;
         }
     }
 }

@@ -6,19 +6,15 @@ namespace ChessAnalysis.Utils
 {
     public static class Crypto
     {
-        private const string PASSWORD = "abcdef0123456789";
-        private const string SALT = "ABCD12efGHIjKl3m";
-        private const int SIZE = 16;
-
         private static readonly byte[] s_iv;
         private static readonly byte[] s_key;
 
         static Crypto()
         {
-            var keyGenerator = new Rfc2898DeriveBytes(PASSWORD, Encoding.Default.GetBytes(SALT));
+            var keyGenerator = new Rfc2898DeriveBytes(Constants.CRYPTO_PASSWORD, Encoding.Default.GetBytes(Constants.CRYPTO_SALT));
 
-            s_key = keyGenerator.GetBytes(SIZE);
-            s_iv = keyGenerator.GetBytes(SIZE / 2);
+            s_key = keyGenerator.GetBytes(Constants.CRYPTO_SIZE);
+            s_iv = keyGenerator.GetBytes(Constants.CRYPTO_SIZE / 2);
         }
 
         public static string Decrypt(string input)

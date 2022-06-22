@@ -10,7 +10,7 @@ namespace ChessAnalysis.Controls
             InitializeComponent();
         }
 
-        public void SetDataSource(IEnumerable<Error> dataSource)
+        public void Reinitialize(IEnumerable<Error> dataSource)
         {
             gridControl.DataSource = dataSource;
         }

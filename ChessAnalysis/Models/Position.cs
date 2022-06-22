@@ -16,32 +16,33 @@
 
     public class Position
     {
-        public Position(char[][] board, NextPlayer nextPlayer, Castling castlingBlack, Castling castlingWhite, string enPassant, int halfMoves, int round, BestMove bestMove)
+        public Position(NextPlayer nextPlayer, (Castling Black, Castling White) castling, 
+            string enPassant, int halfMoves, int round, char[][] board, BestMove bestMove)
         {
             BestMove = bestMove;
             Board = board;
-            CastlingBlack = castlingBlack;
-            CastlingWhite = castlingWhite;
+            CastlingBlack = castling.Black;
+            CastlingWhite = castling.White;
             EnPassant = enPassant;
             HalfMoves = halfMoves;
             NextPlayer = nextPlayer;
             Round = round;
         }
 
-        public BestMove BestMove { get; set; }
+        public BestMove BestMove { get; }
 
-        public char[][] Board { get; set; }
+        public char[][] Board { get; }
 
-        public Castling CastlingBlack { get; set; }
+        public Castling CastlingBlack { get; }
 
-        public Castling CastlingWhite { get; set; }
+        public Castling CastlingWhite { get; }
 
-        public string EnPassant { get; set; }
+        public string EnPassant { get; }
 
-        public int HalfMoves { get; set; }
+        public int HalfMoves { get; }
 
-        public NextPlayer NextPlayer { get; set; }
+        public NextPlayer NextPlayer { get; }
 
-        public int Round { get; set; }
+        public int Round { get; }
     }
 }
