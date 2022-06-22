@@ -66,7 +66,7 @@ namespace ChessAnalysis.Classes
                 return;
             }
 
-            using var font = new Font("Segoe UI", GetScaledFontSize(), FontStyle.Bold);
+            using var font = new Font("Segoe UI", m_fieldSize / Constants.SCALE_FACTOR_COORDINATE_FONT / ScreenHelper.Scaling, FontStyle.Bold);
             var letterY = Constants.BOARD_SIZE * m_fieldSize - font.Height;
 
             for (var i = 0; i < Constants.BOARD_SIZE; i++)
@@ -125,11 +125,6 @@ namespace ChessAnalysis.Classes
             }
 
             return (input + 1).AsBoardRow();
-        }
-
-        private float GetScaledFontSize()
-        {
-            return m_fieldSize * (float)System.Windows.SystemParameters.PrimaryScreenWidth / (Constants.SCALE_FACTOR_COORDINATE_FONT * Screen.PrimaryScreen.Bounds.Width);
         }
 
         private static string GetXCoordinate(int input)

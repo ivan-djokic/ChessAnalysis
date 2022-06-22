@@ -45,7 +45,7 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(428, 72);
+            this.layoutControl1.Size = new System.Drawing.Size(428, 114);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -54,7 +54,7 @@
             this.inlineProgress.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.inlineProgress.Location = new System.Drawing.Point(2, 2);
             this.inlineProgress.Name = "inlineProgress";
-            this.inlineProgress.Size = new System.Drawing.Size(424, 68);
+            this.inlineProgress.Size = new System.Drawing.Size(424, 110);
             this.inlineProgress.TabIndex = 4;
             // 
             // Root
@@ -65,7 +65,7 @@
             this.layoutControlItem1});
             this.Root.Name = "Root";
             this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.Root.Size = new System.Drawing.Size(428, 72);
+            this.Root.Size = new System.Drawing.Size(428, 114);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -73,7 +73,7 @@
             this.layoutControlItem1.Control = this.inlineProgress;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(428, 72);
+            this.layoutControlItem1.Size = new System.Drawing.Size(428, 114);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -81,7 +81,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(428, 72);
+            this.ClientSize = new System.Drawing.Size(428, 114);
             this.CloseBox = false;
             this.Controls.Add(this.layoutControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

@@ -36,9 +36,7 @@
     <Compile Update="Controls\ErrorGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Controls\MainPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="Controls\MainPanel.cs" />
     <Compile Update="Controls\DataInput.cs">
       <SubType>UserControl</SubType>
     </Compile>

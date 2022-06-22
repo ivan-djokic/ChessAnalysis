@@ -6,7 +6,7 @@ namespace ChessAnalysis.Controls
 {
     public partial class MainPanel : XtraUserControl
     {
-        private double m_ratio;
+        private float m_ratio;
 
         public MainPanel()
         {
@@ -60,7 +60,7 @@ namespace ChessAnalysis.Controls
 
         private void splitContainerControl_SplitterMoved(object sender, EventArgs e)
         {
-            m_ratio = (double)splitContainerControl.Width / splitContainerControl.SplitterPosition;
+            m_ratio = (float)splitContainerControl.Width / splitContainerControl.SplitterPosition;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using ChessAnalysis.Utils;
 using DevExpress.XtraEditors;
 
 namespace ChessAnalysis.Forms
@@ -11,6 +12,7 @@ namespace ChessAnalysis.Forms
 		private ProgressForm(IList<T> collection, Action<int> work)
 		{
 			InitializeComponent();
+			SetResolution();
 
 			inlineProgress.InitializeSteps(collection.Count);
 			m_collection = collection;
@@ -50,5 +52,13 @@ namespace ChessAnalysis.Forms
             worker.RunWorkerCompleted += RunWorkerCompleted;
             worker.RunWorkerAsync();
         }
+
+		private void SetResolution()
+        {
+			if (ScreenHelper.IsHD)
+			{
+				ClientSize = new Size(428, 72);
+			}
+		}
 	}
 }

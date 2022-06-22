@@ -17,5 +17,16 @@ namespace ChessAnalysis.Forms
 			Sound.Play(Sounds.Error);
 			base.OnLoad(e);
 		}
+
+		protected override bool ProcessDialogKey(Keys keyData)
+		{
+			if (keyData == Keys.Escape)
+			{
+				Close();
+				return true;
+			}
+
+			return base.ProcessDialogKey(keyData);
+		}
 	}
 }
