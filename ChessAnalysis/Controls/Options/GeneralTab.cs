@@ -25,7 +25,7 @@ namespace ChessAnalysis.Controls
 			{
 				SelectedPath = Options.Instance.SnapshotDirectory
 			};
-			
+
 			if (browserDialog.ShowDialog(this) == DialogResult.OK)
 			{
 				txtSnapshotDirectory.Text = browserDialog.SelectedPath;

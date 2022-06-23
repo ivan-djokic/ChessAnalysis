@@ -62,8 +62,8 @@ namespace ChessAnalysis.Classes
 
 			ValidateArgumentsCount(4, 4);
 
-			if (m_input[1] != ParseConsts.ALLOWED_BEST_MOVE_PROMOTION_ROWS[Convert.ToInt32(m_isWhitePlayed)]
-				|| m_input[^1] == Constants.PIECE_PAWN || m_input[^1] == Constants.PIECE_KING)
+			if (m_input[1] != ParseConsts.ALLOWED_BEST_MOVE_PROMOTION_ROWS[Convert.ToInt32(m_isWhitePlayed)] ||
+				m_input[^1] == Constants.PIECE_PAWN || m_input[^1] == Constants.PIECE_KING)
 			{
 				throw new UnallowedCharactersException(Component);
 			}
@@ -154,8 +154,7 @@ namespace ChessAnalysis.Classes
 		{
 			if (m_input.Length < minCount || m_input.Length > maxCount)
 			{
-				throw countException ? 
-					new InvalidComponentsNumberException(Component) : new UnallowedCharactersException(Component);
+				throw countException ? new InvalidComponentsNumberException(Component) : new UnallowedCharactersException(Component);
 			}
 		}
 	}

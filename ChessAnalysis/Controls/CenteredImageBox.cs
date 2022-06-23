@@ -9,7 +9,7 @@ namespace ChessAnalysis.Controls
 			InitializeComponent();
 		}
 
-		public Image Image 
+		public Image Image
 		{
 			get => pictureBox.BackgroundImage;
 			set => pictureBox.BackgroundImage = value;

@@ -40,17 +40,17 @@ namespace ChessAnalysis.Forms
 			});
 		}
 
-		private void RunWorkerCompleted(object? sender, EventArgs e)
-		{
-			Close();
-		}
-
 		private void ProgressForm_Shown(object sender, EventArgs e)
 		{
 			using var worker = new BackgroundWorker();
 			worker.DoWork += DoWork;
 			worker.RunWorkerCompleted += RunWorkerCompleted;
 			worker.RunWorkerAsync();
+		}
+
+		private void RunWorkerCompleted(object? sender, EventArgs e)
+		{
+			Close();
 		}
 
 		private void SetResolution()

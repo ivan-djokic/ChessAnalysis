@@ -40,7 +40,7 @@ namespace ChessAnalysis.Classes
 		{
 			var nextPlayer = NextPlayerParser.Parse(Arguments[ParseConsts.POSITION_NEXT_PLAYER_INDEX]);
 
-			return new Position(nextPlayer, 
+			return new Position(nextPlayer,
 				CastlingParser.Parse(Arguments[ParseConsts.POSITION_CASTLING_INDEX]),
 				EnPassantParser.Parse(Arguments[ParseConsts.POSITION_EN_PASSANT_INDEX], nextPlayer == NextPlayer.Black),
 				Arguments[ParseConsts.POSITION_HALF_MOVES_INDEX].AsNumber(Components.HalfMoves),

@@ -18,7 +18,7 @@ namespace ChessAnalysis.Controls
 			OptionsSelection.MultiSelect = true;
 			OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
 			OptionsSelection.ResetSelectionClickOutsideCheckboxSelector = true;
-			
+
 			SaveLayoutToStream(m_layoutStream);
 		}
 
@@ -54,7 +54,7 @@ namespace ChessAnalysis.Controls
 		protected override void OnBeginUpdate()
 		{
 			base.OnBeginUpdate();
-			RowStyle += new RowStyleEventHandler(PaintFocusedRow);
+			RowStyle += PaintFocusedRow;
 		}
 
 		private void PaintFocusedRow(object sender, RowStyleEventArgs e)

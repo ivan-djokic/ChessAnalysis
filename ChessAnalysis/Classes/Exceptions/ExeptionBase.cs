@@ -3,7 +3,7 @@
 	public abstract class ExeptionBase : Exception
 	{
 		protected ExeptionBase(string message, Components component)
-		   : base(string.Format(message, component))
+			: base(string.Format(message, component))
 		{
 			Component = component;
 		}

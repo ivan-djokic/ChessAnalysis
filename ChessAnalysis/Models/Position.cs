@@ -16,8 +16,14 @@
 
 	public class Position
 	{
-		public Position(NextPlayer nextPlayer, (Castling Black, Castling White) castling, 
-			string enPassant, int halfMoves, int round, char[][] board, BestMove bestMove)
+		public Position(
+			NextPlayer nextPlayer,
+			(Castling Black, Castling White) castling,
+			string enPassant,
+			int halfMoves,
+			int round,
+			char[][] board,
+			BestMove bestMove)
 		{
 			BestMove = bestMove;
 			Board = board;

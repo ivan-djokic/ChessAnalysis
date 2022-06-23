@@ -23,55 +23,35 @@ namespace ChessAnalysis.Tests
 		[TestMethod]
 		public void TestValidInputs()
 		{
-			var blackPawnRow = new char[] { 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p' };
+			var blackPawnRow = new[] { 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p' };
 
-			ProcessValidInputs("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR", new char[][]
-			{
-				new char[] { 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r' },
-				blackPawnRow,
-				new char[8],
-				new char[8],
-				new char[8],
-				new char[8],
-				new char[] { 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P' },
-				new char[] { 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R' }
-			});
+			ProcessValidInputs("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",
+				new[]
+				{
+					new[] { 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r' },
+					blackPawnRow,
+					new char[8], new char[8], new char[8], new char[8],
+					new[] { 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P' },
+					new[] { 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R' }
+				});
 
-			ProcessValidInputs("r1q2r2/1pp2kpp/1b3p2/p7/Pn1p3B/1N1P2Q1/1PP2PPP/R4RK1", new char[][]
-			{
-				new char[] { 'r', '\0', 'q', '\0', '\0', 'r', '\0', '\0' },
-				new char[] { '\0', 'p', 'p', '\0', '\0', 'k', 'p', 'p' },
-				new char[] { '\0', 'b', '\0', '\0', '\0', 'p', '\0', '\0' },
-				new char[] { 'p', '\0', '\0', '\0', '\0', '\0', '\0', '\0' },
-				new char[] { 'P', 'n', '\0', 'p', '\0', '\0', '\0', 'B' },
-				new char[] { '\0', 'N', '\0', 'P', '\0', '\0', 'Q', '\0' },
-				new char[] { '\0', 'P', 'P', '\0', '\0', 'P', 'P', 'P' },
-				new char[] { 'R', '\0', '\0', '\0', '\0', 'R', 'K', '\0' }
-			});
+			ProcessValidInputs("r1q2r2/1pp2kpp/1b3p2/p7/Pn1p3B/1N1P2Q1/1PP2PPP/R4RK1",
+				new[]
+				{
+					new[] { 'r', '\0', 'q', '\0', '\0', 'r', '\0', '\0' },
+					new[] { '\0', 'p', 'p', '\0', '\0', 'k', 'p', 'p' },
+					new[] { '\0', 'b', '\0', '\0', '\0', 'p', '\0', '\0' },
+					new[] { 'p', '\0', '\0', '\0', '\0', '\0', '\0', '\0' },
+					new[] { 'P', 'n', '\0', 'p', '\0', '\0', '\0', 'B' },
+					new[] { '\0', 'N', '\0', 'P', '\0', '\0', 'Q', '\0' },
+					new[] { '\0', 'P', 'P', '\0', '\0', 'P', 'P', 'P' },
+					new[] { 'R', '\0', '\0', '\0', '\0', 'R', 'K', '\0' }
+				});
 
-			ProcessValidInputs("pppppppp/pppppppp/pppppppp/pppppppp/8/8/8/8", new char[][]
-			{
-				blackPawnRow,
-				blackPawnRow,
-				blackPawnRow,
-				blackPawnRow,
-				new char[8],
-				new char[8],
-				new char[8],
-				new char[8]
-			});
+			ProcessValidInputs("pppppppp/pppppppp/pppppppp/pppppppp/8/8/8/8",
+				new[] { blackPawnRow, blackPawnRow, blackPawnRow, blackPawnRow, new char[8], new char[8], new char[8], new char[8] });
 
-			ProcessValidInputs("8/8/8/8/8/8/8/8", new char[][]
-			{
-				new char[8],
-				new char[8],
-				new char[8],
-				new char[8],
-				new char[8],
-				new char[8],
-				new char[8],
-				new char[8]
-			});
+			ProcessValidInputs("8/8/8/8/8/8/8/8", new[] { new char[8], new char[8], new char[8], new char[8], new char[8], new char[8], new char[8], new char[8] });
 		}
 
 		private static bool AreEqual(char[][] expected, char[][] actual)

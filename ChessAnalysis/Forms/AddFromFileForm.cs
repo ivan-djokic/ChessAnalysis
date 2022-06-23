@@ -18,7 +18,7 @@ namespace ChessAnalysis.Forms
 
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
-		   m_collection.AddRange(panel.GetSelection());
+			m_collection.AddRange(panel.GetSelection());
 		}
 
 		private void btnLoadFile_Click(object sender, EventArgs e)
@@ -53,7 +53,7 @@ namespace ChessAnalysis.Forms
 			var result = new Data[lines.Count];
 			var errors = new Error[lines.Count];
 
-			ProgressForm<string>.ShowProgress(this, lines, i => 
+			ProgressForm<string>.ShowProgress(this, lines, i =>
 			{
 				try
 				{

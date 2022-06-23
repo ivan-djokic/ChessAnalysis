@@ -21,10 +21,6 @@ namespace ChessAnalysis.Controls
 			Collection.CollectionChanged += CollectionChanged;
 		}
 
-		public Action<Data>? FocusedRowChanged;
-
-		public Action<int>? RowCountChanged;
-
 		public DataCollection Collection
 		{
 			get => (DataCollection)gridControl.DataSource;
@@ -43,10 +39,13 @@ namespace ChessAnalysis.Controls
 			}
 		}
 
+		public Action<Data>? FocusedRowChanged;
+		public Action<int>? RowCountChanged;
+
 		public DataCollection GetSelection()
 		{
 			var selection = new DataCollection();
-			
+
 			foreach (var rowHandle in gridView.GetSelectedRows())
 			{
 				if (gridView.GetRow(rowHandle) is Data row)

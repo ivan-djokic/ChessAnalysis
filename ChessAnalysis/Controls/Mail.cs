@@ -62,7 +62,6 @@ namespace ChessAnalysis.Controls
 				}
 				catch
 				{
-
 				}
 			}
 

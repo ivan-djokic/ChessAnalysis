@@ -6,9 +6,10 @@ namespace ChessAnalysis.Utils
 {
 	public partial class Options
 	{
-		private readonly string m_optionsFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), 
-			Constants.APP_NAME, Constants.OPTIONS_FILE_NAME);
 		private static readonly Lazy<Options> s_instance = new(CreateInstance);
+
+		private readonly string m_optionsFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Constants.APP_NAME,
+			Constants.OPTIONS_FILE_NAME);
 
 		public Color FieldEmptyColor { get; set; }
 

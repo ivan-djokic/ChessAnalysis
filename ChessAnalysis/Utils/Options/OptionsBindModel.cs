@@ -18,7 +18,7 @@ namespace ChessAnalysis.Utils
 				}
 			}
 		}
-		
+
 		public Color FieldFillColor
 		{
 			get => Options.Instance.FieldFillColor.Normalize();
@@ -109,7 +109,7 @@ namespace ChessAnalysis.Utils
 			get => Options.Instance.SenderMail;
 			set => Options.Instance.SenderMail = value;
 		}
-						
+
 		public string SenderPassword
 		{
 			get => Options.Instance.SenderPassword;
@@ -131,7 +131,7 @@ namespace ChessAnalysis.Utils
 			get => Options.Instance.SmtpClient;
 			set => Options.Instance.SmtpClient = value;
 		}
-		
+
 		public string SnapshotDirectory
 		{
 			get => Options.Instance.SnapshotDirectory;

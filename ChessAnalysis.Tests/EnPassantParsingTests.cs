@@ -22,7 +22,7 @@ namespace ChessAnalysis.Tests
 		{
 			ProcessValidInputs(ParseConsts.ARG_NULL);
 			ProcessValidInputs("e3", true);
-			ProcessValidInputs("f6", false);
+			ProcessValidInputs("f6");
 		}
 
 		private static void ProcessInvalidInput(string input, bool isWhitePlayed = false)

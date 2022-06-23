@@ -11,20 +11,20 @@ namespace ChessAnalysis.Controls
 
 		public bool Stop { get; private set; }
 
+		public void InitializeSteps(int stepsCount)
+		{
+			progressBar.Properties.Maximum = stepsCount;
+		}
+
 		public void NextStep()
 		{
 			if (InvokeRequired)
 			{
-				Invoke(new Action(NextStep));
+				Invoke(NextStep);
 				return;
 			}
 
 			progressBar.Position++;
-		}
-
-		public void InitializeSteps(int stepsCount)
-		{
-			progressBar.Properties.Maximum = stepsCount;
 		}
 
 		private void btnStop_Click(object sender, EventArgs e)

@@ -14,12 +14,6 @@ namespace ChessAnalysis.Controls
 			grid.FocusedRowChanged += grid_FocusedRowChanged;
 		}
 
-		public event Action<int> RowCountChanged
-		{
-			add => grid.RowCountChanged += value;
-			remove => grid.RowCountChanged -= value;
-		}
-
 		public DataCollection Collection
 		{
 			get => grid.Collection;
@@ -29,6 +23,12 @@ namespace ChessAnalysis.Controls
 		{
 			get => board.ShowOnlyBoard && grid.ShowOnlyGrid;
 			set => board.ShowOnlyBoard = grid.ShowOnlyGrid = value;
+		}
+
+		public event Action<int> RowCountChanged
+		{
+			add => grid.RowCountChanged += value;
+			remove => grid.RowCountChanged -= value;
 		}
 
 		public DataCollection GetSelection()

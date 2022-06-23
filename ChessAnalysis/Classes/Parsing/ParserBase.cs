@@ -12,10 +12,8 @@ namespace ChessAnalysis.Classes
 			m_input = input.Trim();
 		}
 
-		protected virtual int ArgumentsCount { get; }
-
-		protected string[] Arguments 
-		{ 
+		protected string[] Arguments
+		{
 			get
 			{
 				if (!m_arguments.Any())
@@ -27,6 +25,8 @@ namespace ChessAnalysis.Classes
 			}
 		}
 
+		protected virtual int ArgumentsCount { get; }
+
 		protected abstract Components Component { get; }
 
 		protected virtual string Delimiter
@@ -34,7 +34,7 @@ namespace ChessAnalysis.Classes
 			get => string.Empty;
 		}
 
-		protected virtual string KeyWord 
+		protected virtual string KeyWord
 		{
 			get => string.Empty;
 		}

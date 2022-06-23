@@ -17,17 +17,17 @@ namespace ChessAnalysis.Classes
 			m_fieldSize = piece.Size.Width;
 		}
 
-		public static Image Create(Position position)
-		{
-			using var boardImage = new BoardImage();
-			return boardImage.Create(position.Board, position.BestMove);
-		}
-
 		public void Dispose()
 		{
 			m_brushEmpty.Dispose();
 			m_brushFill.Dispose();
 			m_graphics.Dispose();
+		}
+
+		public static Image Create(Position position)
+		{
+			using var boardImage = new BoardImage();
+			return boardImage.Create(position.Board, position.BestMove);
 		}
 
 		private Image Create(char[][] board, BestMove bestMove)
