@@ -3,16 +3,16 @@ using DevExpress.XtraEditors;
 
 namespace ChessAnalysis.Controls
 {
-    public partial class ErrorGrid : XtraUserControl
-    {
-        public ErrorGrid()
-        {
-            InitializeComponent();
-        }
+	public partial class ErrorGrid : XtraUserControl
+	{
+		public ErrorGrid()
+		{
+			InitializeComponent();
+		}
 
-        public void Reinitialize(IEnumerable<Error> dataSource)
-        {
-            gridControl.DataSource = dataSource;
-        }
-    }
+		public void Reinitialize(IEnumerable<Error> dataSource)
+		{
+			gridControl.DataSource = dataSource;
+		}
+	}
 }

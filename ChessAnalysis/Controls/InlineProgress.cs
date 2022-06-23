@@ -27,7 +27,7 @@ namespace ChessAnalysis.Controls
 			progressBar.Properties.Maximum = stepsCount;
 		}
 
-        private void btnStop_Click(object sender, EventArgs e)
+		private void btnStop_Click(object sender, EventArgs e)
 		{
 			Stop = true;
 		}

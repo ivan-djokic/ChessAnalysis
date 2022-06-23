@@ -4,7 +4,7 @@ using Color = System.Windows.Media.Color; // XML serialization can not serialize
 
 namespace ChessAnalysis.Utils
 {
-    public partial class Options
+	public partial class Options
 	{
 		private readonly string m_optionsFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), 
 			Constants.APP_NAME, Constants.OPTIONS_FILE_NAME);
@@ -52,7 +52,7 @@ namespace ChessAnalysis.Utils
 			var senderPassword = SenderPassword;
 
 			try
-            {
+			{
 				SenderPassword = Crypto.Encrypt(SenderPassword);
 
 				FileHelper.CreateDirIfNotExists(m_optionsFileName);
@@ -60,9 +60,9 @@ namespace ChessAnalysis.Utils
 				new XmlSerializer(typeof(Options)).Serialize(writer, this);
 			}
 			finally
-            {
+			{
 				SenderPassword = senderPassword;
-            }
+			}
 		}
 
 		public void SetDefaults(bool raiseOnChange = true)
@@ -107,7 +107,7 @@ namespace ChessAnalysis.Utils
 		}
 
 		private static Options CreateInstance()
-        {
+		{
 			var options = new Options();
 			options.Load();
 			return options;
@@ -126,5 +126,5 @@ namespace ChessAnalysis.Utils
 				SetDefaults(false);
 			}
 		}
-    }
+	}
 }

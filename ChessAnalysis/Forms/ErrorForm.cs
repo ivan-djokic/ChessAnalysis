@@ -12,8 +12,8 @@ namespace ChessAnalysis.Forms
 			grid.Reinitialize(errors);
 		}
 
-        protected override void OnLoad(EventArgs e)
-        {
+		protected override void OnLoad(EventArgs e)
+		{
 			Sound.Play(Sounds.Error);
 			base.OnLoad(e);
 		}

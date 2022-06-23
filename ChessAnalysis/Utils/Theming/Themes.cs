@@ -1,8 +1,8 @@
 ﻿namespace ChessAnalysis.Utils
 {
-    public enum Themes
-    {
-        Dark,
-        Light
-    }
+	public enum Themes
+	{
+		Dark,
+		Light
+	}
 }

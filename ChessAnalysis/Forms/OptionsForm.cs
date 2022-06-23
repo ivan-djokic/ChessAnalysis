@@ -13,38 +13,38 @@ namespace ChessAnalysis.Forms
 			InitNavigation();
 		}
 
-        protected override void OnClosing(CancelEventArgs e)
-        {
+		protected override void OnClosing(CancelEventArgs e)
+		{
 			base.OnClosing(e);
 			Options.Instance.Save();
 		}
 
-        private void btnDefaults_Click(object sender, EventArgs e)
+		private void btnDefaults_Click(object sender, EventArgs e)
 		{
 			Options.Instance.SetDefaults();
 		}
 
 		private void InitNavigation()
-        {
-            navigation.SelectedElement = itemGeneral;
-            navigation.SelectedElementChanged += navigation_SelectedElementChanged;
-        }
+		{
+			navigation.SelectedElement = itemGeneral;
+			navigation.SelectedElementChanged += navigation_SelectedElementChanged;
+		}
 
 		private void navigation_SelectedElementChanged(object sender, SelectedElementChangedEventArgs e)
 		{
-            if (e.Element == itemGeneral)
-            {
-                navigationFrame.SelectedPage = pageGeneral;
-                return;
-            }
+			if (e.Element == itemGeneral)
+			{
+				navigationFrame.SelectedPage = pageGeneral;
+				return;
+			}
 
-            if (e.Element == itemBoard)
-            {
-                navigationFrame.SelectedPage = pageBoard;
-                return;
-            }
+			if (e.Element == itemBoard)
+			{
+				navigationFrame.SelectedPage = pageBoard;
+				return;
+			}
 
-            navigationFrame.SelectedPage = pageMail;
-        }
+			navigationFrame.SelectedPage = pageMail;
+		}
 	}
 }

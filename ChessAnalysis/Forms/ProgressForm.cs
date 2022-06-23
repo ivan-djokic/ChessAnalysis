@@ -21,24 +21,24 @@ namespace ChessAnalysis.Forms
 
 		public static void ShowProgress(IWin32Window owner, IList<T> collection, Action<int> action)
 		{
-            using var form = new ProgressForm<T>(collection, action);
-            form.ShowDialog(owner);
-        }
+			using var form = new ProgressForm<T>(collection, action);
+			form.ShowDialog(owner);
+		}
 
 		private void DoWork(object? sender, EventArgs e)
 		{
 			Parallel.For(0, m_collection.Count, (i, state) =>
-            {
+			{
 				Thread.Sleep(1);
 				m_work.Invoke(i);
-                inlineProgress.NextStep();
+				inlineProgress.NextStep();
 
-                if (inlineProgress.Stop)
-                {
-                    state.Break();
-                }
-            });
-        }
+				if (inlineProgress.Stop)
+				{
+					state.Break();
+				}
+			});
+		}
 
 		private void RunWorkerCompleted(object? sender, EventArgs e)
 		{
@@ -47,14 +47,14 @@ namespace ChessAnalysis.Forms
 
 		private void ProgressForm_Shown(object sender, EventArgs e)
 		{
-            using var worker = new BackgroundWorker();
-            worker.DoWork += DoWork;
-            worker.RunWorkerCompleted += RunWorkerCompleted;
-            worker.RunWorkerAsync();
-        }
+			using var worker = new BackgroundWorker();
+			worker.DoWork += DoWork;
+			worker.RunWorkerCompleted += RunWorkerCompleted;
+			worker.RunWorkerAsync();
+		}
 
 		private void SetResolution()
-        {
+		{
 			if (ScreenHelper.IsHD)
 			{
 				ClientSize = new Size(428, 72);

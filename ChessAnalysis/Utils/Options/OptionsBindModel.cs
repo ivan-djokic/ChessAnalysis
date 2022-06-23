@@ -2,7 +2,7 @@
 
 namespace ChessAnalysis.Utils
 {
-    public class OptionsBindModel : ViewModelBase
+	public class OptionsBindModel : ViewModelBase
 	{
 		public Color FieldEmptyColor
 		{
@@ -12,7 +12,7 @@ namespace ChessAnalysis.Utils
 				var color = value.Normalize();
 
 				if (Options.Instance.FieldEmptyColor != color)
-                {
+				{
 					Options.Instance.FieldEmptyColor = color;
 					RaiseBoardOptionsChanged();
 				}
@@ -46,7 +46,7 @@ namespace ChessAnalysis.Utils
 			set
 			{
 				if (Options.Instance.MarkIfBestMoveIsPlayed != value)
-                {
+				{
 					Options.Instance.MarkIfBestMoveIsPlayed = value;
 					RaiseBoardOptionsChanged();
 				}
@@ -59,7 +59,7 @@ namespace ChessAnalysis.Utils
 			set
 			{
 				if (value)
-                {
+				{
 					Options.Instance.PieceStyle = PieceStyles.Classic;
 					RaiseBoardOptionsChanged();
 				}
@@ -85,7 +85,7 @@ namespace ChessAnalysis.Utils
 			set
 			{
 				if (value)
-                {
+				{
 					Options.Instance.PieceStyle = PieceStyles.Wood;
 					RaiseBoardOptionsChanged();
 				}
@@ -139,7 +139,7 @@ namespace ChessAnalysis.Utils
 		}
 
 		public bool ThemeDark
-        {
+		{
 			get => Options.Instance.Theme == Themes.Dark;
 			set
 			{
@@ -149,7 +149,7 @@ namespace ChessAnalysis.Utils
 					Theme.ApplyTheme();
 				}
 			}
-        }
+		}
 
 		public bool ThemeLight
 		{
@@ -157,7 +157,7 @@ namespace ChessAnalysis.Utils
 			set
 			{
 				if (value && Options.Instance.Theme != Themes.Light)
-                {
+				{
 					Options.Instance.Theme = Themes.Light;
 					Theme.ApplyTheme();
 				}
@@ -165,7 +165,7 @@ namespace ChessAnalysis.Utils
 		}
 
 		public void RaisePropertiesChanged()
-        {
+		{
 			RaisePropertiesChanged(() => FieldEmptyColor, () => FieldFillColor);
 			RaisePropertyChanged(() => MarkIfBestMoveIsPlayed);
 			RaisePropertiesChanged(() => PieceClassic, () => PieceNeo, () => PieceWood);

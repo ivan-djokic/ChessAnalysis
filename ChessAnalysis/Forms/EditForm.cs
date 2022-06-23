@@ -17,23 +17,23 @@ namespace ChessAnalysis.Forms
 			m_editIndex = editIndex;
 		}
 
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
+		private void btnEdit_Click(object sender, EventArgs e)
+		{
 			var data = dataInput.ParseInput(m_collection, m_collection[m_editIndex]);
 
 			if (data != null)
-            {
-                m_collection[m_editIndex] = data;
+			{
+				m_collection[m_editIndex] = data;
 				Close();
-            }
-        }
+			}
+		}
 
-        private void EditForm_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                Close();
-            }
-        }
-    }
+		private void EditForm_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape)
+			{
+				Close();
+			}
+		}
+	}
 }

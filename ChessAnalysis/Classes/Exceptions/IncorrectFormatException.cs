@@ -2,11 +2,11 @@
 
 namespace ChessAnalysis.Classes
 {
-    public class IncorrectFormatException : ExeptionBase
-    {
-        public IncorrectFormatException(Components component)
-            : base(Resources.IncorrectFormat, component)
-        {
-        }
-    }
+	public class IncorrectFormatException : ExeptionBase
+	{
+		public IncorrectFormatException(Components component)
+			: base(Resources.IncorrectFormat, component)
+		{
+		}
+	}
 }

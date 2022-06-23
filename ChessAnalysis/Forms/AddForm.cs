@@ -13,14 +13,14 @@ namespace ChessAnalysis.Forms
 			m_collection = collection;
 		}
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
+		private void btnAdd_Click(object sender, EventArgs e)
+		{
 			var data = dataInput.ParseInput(m_collection);
 
 			if (data != null)
-            {
+			{
 				m_collection.Add(data);
-            }
-        }
-    }
+			}
+		}
+	}
 }
