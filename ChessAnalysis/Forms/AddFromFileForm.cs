@@ -43,8 +43,8 @@ namespace ChessAnalysis.Forms
             return errors.Count() switch
             {
                 0 => true,
-                1 => Alert.Error(this, $"{errors.First().Message} in line {errors.First().Line}\nDo you want to continue?"),
-                _ => Alert.ErrorList(this, errors)
+                1 => ErrorMessage.Show(this, $"{errors.First().Message} in line {errors.First().Line}\nDo you want to continue?"),
+                _ => ErrorMessage.ShowList(this, errors)
             };
         }
 

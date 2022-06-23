@@ -55,6 +55,7 @@ namespace ChessAnalysis.Utils
             {
 				SenderPassword = Crypto.Encrypt(SenderPassword);
 
+				FileHelper.CreateDirIfNotExists(m_optionsFileName);
 				using var writer = new StreamWriter(m_optionsFileName);
 				new XmlSerializer(typeof(Options)).Serialize(writer, this);
 			}
@@ -109,15 +110,8 @@ namespace ChessAnalysis.Utils
         {
 			var options = new Options();
 			options.Load();
-			options.CreateDirsIfNotExist();
 			return options;
 		}
-
-		private void CreateDirsIfNotExist()
-        {
-			FileHelper.CreateDirIfNotExists(m_optionsFileName);
-			FileHelper.CreateDirIfNotExists(SnapshotDirectory);
-        }
 
 		private void Load()
 		{

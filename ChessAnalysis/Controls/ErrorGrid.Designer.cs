@@ -75,7 +75,7 @@
             this.lblMessage.Size = new System.Drawing.Size(429, 30);
             this.lblMessage.StyleController = this.layoutControl;
             this.lblMessage.TabIndex = 1;
-            this.lblMessage.Text = "Only correctly generated data will be imported.\r\nDo you want to continue?";
+            this.lblMessage.Text = "Some data are not correctly generated.\r\nDo you want to continue?";
             // 
             // gridControl
             // 

@@ -103,10 +103,12 @@
             this.txtSnapshotDirectory.EditValue = "C:\\Users\\User\\Documents\\Chess Analysis\\Snapshots";
             this.txtSnapshotDirectory.Location = new System.Drawing.Point(139, 34);
             this.txtSnapshotDirectory.Name = "txtSnapshotDirectory";
+            this.txtSnapshotDirectory.Properties.AllowFocused = false;
             editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
             editorButtonImageOptions1.SvgImageSize = new System.Drawing.Size(12, 12);
             this.txtSnapshotDirectory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.txtSnapshotDirectory.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.txtSnapshotDirectory.Size = new System.Drawing.Size(249, 20);
             this.txtSnapshotDirectory.StyleController = this.layoutControl;
             this.txtSnapshotDirectory.TabIndex = 2;

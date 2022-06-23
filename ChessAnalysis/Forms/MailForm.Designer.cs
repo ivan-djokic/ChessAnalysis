@@ -49,7 +49,7 @@
             this.layoutControl.Location = new System.Drawing.Point(0, 0);
             this.layoutControl.Name = "layoutControl";
             this.layoutControl.Root = this.Root;
-            this.layoutControl.Size = new System.Drawing.Size(698, 168);
+            this.layoutControl.Size = new System.Drawing.Size(698, 198);
             this.layoutControl.TabIndex = 0;
             this.layoutControl.Text = "layoutControl";
             // 
@@ -57,13 +57,13 @@
             // 
             this.mail.Location = new System.Drawing.Point(12, 12);
             this.mail.Name = "mail";
-            this.mail.Size = new System.Drawing.Size(674, 118);
+            this.mail.Size = new System.Drawing.Size(674, 148);
             this.mail.TabIndex = 4;
             // 
             // btnSend
             // 
             this.btnSend.AllowFocus = false;
-            this.btnSend.Location = new System.Drawing.Point(610, 134);
+            this.btnSend.Location = new System.Drawing.Point(610, 164);
             this.btnSend.MaximumSize = new System.Drawing.Size(76, 22);
             this.btnSend.MinimumSize = new System.Drawing.Size(76, 22);
             this.btnSend.Name = "btnSend";
@@ -81,14 +81,14 @@
             this.lciSend,
             this.layoutControlItem1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(698, 168);
+            this.Root.Size = new System.Drawing.Size(698, 198);
             this.Root.TextVisible = false;
             // 
             // lciSend
             // 
             this.lciSend.ContentHorzAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lciSend.Control = this.btnSend;
-            this.lciSend.Location = new System.Drawing.Point(0, 122);
+            this.lciSend.Location = new System.Drawing.Point(0, 152);
             this.lciSend.Name = "lciSend";
             this.lciSend.Size = new System.Drawing.Size(678, 26);
             this.lciSend.TextSize = new System.Drawing.Size(0, 0);
@@ -99,7 +99,7 @@
             this.layoutControlItem1.Control = this.mail;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(678, 122);
+            this.layoutControlItem1.Size = new System.Drawing.Size(678, 152);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -107,7 +107,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(698, 168);
+            this.ClientSize = new System.Drawing.Size(698, 198);
             this.Controls.Add(this.layoutControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IconOptions.ShowIcon = false;

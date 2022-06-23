@@ -61,6 +61,16 @@ namespace ChessAnalysis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Some attachments are missing.
+        ///Do you want to continue?.
+        /// </summary>
+        internal static string AttachmentsMissing {
+            get {
+                return ResourceManager.GetString("AttachmentsMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Classic_bb {
@@ -246,11 +256,20 @@ namespace ChessAnalysis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0}* - Chess analysis.
+        /// </summary>
+        internal static string MainCaptionEdited {
+            get {
+                return ResourceManager.GetString("MainCaptionEdited", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} - Chess analysis.
         /// </summary>
-        internal static string MainCaption {
+        internal static string MainCaptionSaved {
             get {
-                return ResourceManager.GetString("MainCaption", resourceCulture);
+                return ResourceManager.GetString("MainCaptionSaved", resourceCulture);
             }
         }
         

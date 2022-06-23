@@ -109,6 +109,11 @@ namespace ChessAnalysis.Controls
 
         private void RaiseNotification(NotifyCollectionChangedEventArgs e)
         {
+            if (ShowOnlyGrid)
+            {
+                return;
+            }
+
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
@@ -131,6 +136,8 @@ namespace ChessAnalysis.Controls
                     Notification.Notify?.Invoke(string.Format(Resources.NotifyEdit, gridView.FocusedRowHandle));
                     break;
             }
+
+            Notification.Notify?.Invoke(string.Empty);
         }
     }
 }

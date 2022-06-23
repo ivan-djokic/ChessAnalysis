@@ -6,6 +6,8 @@
 
         public const int BOARD_SIZE = 8;
 
+        public const string COMA_SEPARATOR = ", ";
+
         public const string CRYPTO_PASSWORD = "abcdef0123456789";
         public const string CRYPTO_SALT = "ABCD12efGHIjKl3m";
         public const int CRYPTO_SIZE = 16;

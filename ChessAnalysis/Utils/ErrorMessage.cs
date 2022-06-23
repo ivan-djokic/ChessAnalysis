@@ -4,14 +4,14 @@ using DevExpress.XtraEditors;
 
 namespace ChessAnalysis.Utils
 {
-    public static class Alert
+    public static class ErrorMessage
     {
-        public static bool Error(IWin32Window owner, string message, MessageBoxButtons buttons = MessageBoxButtons.YesNo)
+        public static bool Show(IWin32Window owner, string message, MessageBoxButtons buttons = MessageBoxButtons.YesNo)
         {
             return XtraMessageBox.Show(owner, message, Constants.ERROR_CAPTION, buttons, MessageBoxIcon.Error) == DialogResult.Yes;
         }
 
-        public static bool ErrorList(IWin32Window owner, IEnumerable<Error> errors)
+        public static bool ShowList(IWin32Window owner, IEnumerable<Error> errors)
         {
             using var errorForm = new ErrorForm(errors);
             return errorForm.ShowDialog(owner) == DialogResult.Yes;

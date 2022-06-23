@@ -29,7 +29,7 @@ namespace ChessAnalysis.Controls
             }
             catch (ExeptionBase ex)
             {
-                Alert.Error(this, ex.Message, MessageBoxButtons.OK);
+                ErrorMessage.Show(this, ex.Message, MessageBoxButtons.OK);
 
                 var (start, length) = GetBadInputRange(ex.Component);
                 txtInput.Select(start, length);

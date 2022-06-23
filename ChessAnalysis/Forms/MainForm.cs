@@ -27,7 +27,7 @@ namespace ChessAnalysis.Forms
         }
 
         private void btnAdd_ItemClick(object sender, EventArgs e)
-        { 
+        {
             using var addForm = new AddForm(panel.Collection);
             addForm.ShowDialog(this);
         }
@@ -44,7 +44,7 @@ namespace ChessAnalysis.Forms
 
             if (!selection.Any())
             {
-                Alert.Error(this, Resources.NothingToSend, MessageBoxButtons.OK);
+                ErrorMessage.Show(this, Resources.NothingToSend, MessageBoxButtons.OK);
                 return;
             }
 
@@ -101,13 +101,19 @@ namespace ChessAnalysis.Forms
             Options.Instance.Save();
 
             Sound.Play(Sounds.Save);
-            Text = string.Format(Resources.MainCaption, Path.GetFileNameWithoutExtension(m_savedFile));
+            Text = string.Format(Resources.MainCaptionSaved, Path.GetFileNameWithoutExtension(m_savedFile));
             Notification.Notify?.Invoke(string.Format(Resources.NotifySavedFile, Path.GetFileName(m_savedFile)));
         }
 
-        private void SetNotification(string message)
+        private void SetNotification(string notification)
         {
-            lblNotification.Caption = message;
+            if (string.IsNullOrEmpty(notification))
+            {
+                Text = string.Format(Resources.MainCaptionEdited, Path.GetFileNameWithoutExtension(m_savedFile));
+                return;
+            }
+
+            lblNotification.Caption = notification;
             timer.Restart();
         }
 
