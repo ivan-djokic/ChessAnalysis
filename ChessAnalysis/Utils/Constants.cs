@@ -23,6 +23,23 @@
 
 		public const int HD = 1080;
 
+		public const string HTML_PAGE = @"<html>
+											<head>
+												<style>
+													div {{ white-space: pre }} 
+													table {{ border-collapse: collapse; }} 
+													td, th {{ border: 1px solid gray; padding: 5px; }}
+												</style>
+											</head>
+											<body>
+												<div>{0}</div><hr>{1}
+											</body>
+										</html>";
+		public const string HTML_TABLE = "<table>{0}{1}</table>";
+		public const string HTML_TABLE_CELL = "<td>{0}</td>";
+		public const string HTML_TABLE_HEADER_CELL = "<th>{0}</th>";
+		public const string HTML_TABLE_ROW = "<tr>{0}</tr>";
+
 		public const string OPTIONS_FILE_NAME = "Options.xml";
 
 		public const char PIECE_KING = 'K';
