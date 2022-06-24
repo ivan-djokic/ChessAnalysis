@@ -2,6 +2,17 @@
 
 namespace ChessAnalysis.Utils
 {
+	public enum Sounds
+	{
+		Error,
+		Flip,
+		Mail,
+		Save,
+		Piece,
+		Snapshot,
+		Start
+	}
+
 	public static class Sound
 	{
 		public static void Play(Sounds input)

@@ -394,8 +394,16 @@ namespace ChessAnalysis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There is nothing to save.
+        /// </summary>
+        internal static string NothingToSave {
+            get {
+                return ResourceManager.GetString("NothingToSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is nothing to send.
-        ///Select some items and try again.
         /// </summary>
         internal static string NothingToSend {
             get {
@@ -422,7 +430,7 @@ namespace ChessAnalysis.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mail sent.
+        ///   Looks up a localized string similar to Mail sent to {0}.
         /// </summary>
         internal static string NotifyMail {
             get {

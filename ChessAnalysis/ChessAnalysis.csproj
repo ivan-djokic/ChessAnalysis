@@ -56,6 +56,9 @@
     <Compile Update="Forms\MailForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\SelectDataAmountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Properties\Icons - Copy.Designer.cs">
       <DependentUpon>Icons.resx</DependentUpon>
       <DesignTime>True</DesignTime>

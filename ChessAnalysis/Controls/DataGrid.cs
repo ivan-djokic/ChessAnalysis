@@ -12,6 +12,7 @@ namespace ChessAnalysis.Controls
 	public partial class DataGrid : XtraUserControl
 	{
 		private LayoutVisibility m_controlsVisibility;
+		private readonly DataGridHelper m_gridHelper;
 
 		public DataGrid()
 		{
@@ -19,6 +20,7 @@ namespace ChessAnalysis.Controls
 
 			gridControl.DataSource = new DataCollection();
 			Collection.CollectionChanged += CollectionChanged;
+			m_gridHelper = new DataGridHelper(gridView);
 		}
 
 		public DataCollection Collection
@@ -44,17 +46,8 @@ namespace ChessAnalysis.Controls
 
 		public DataCollection GetSelection()
 		{
-			var selection = new DataCollection();
-
-			foreach (var rowHandle in gridView.GetSelectedRows())
-			{
-				if (gridView.GetRow(rowHandle) is Data row)
-				{
-					selection.Add(row);
-				}
-			}
-
-			return selection;
+			gridView.ClearColumnsFilter();
+			return m_gridHelper.GetDataSelection();
 		}
 
 		private void btnEdit_Click(object sender, EventArgs e)

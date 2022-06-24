@@ -24,7 +24,7 @@ namespace ChessAnalysis.Forms
 			}
 			catch
 			{
-				ErrorMessage.Show(this, Resources.MailError, MessageBoxButtons.OK);
+				Messanger.ShowError(this, Resources.MailError);
 			}
 		}
 	}

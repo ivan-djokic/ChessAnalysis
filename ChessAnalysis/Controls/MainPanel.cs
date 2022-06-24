@@ -19,6 +19,11 @@ namespace ChessAnalysis.Controls
 			get => grid.Collection;
 		}
 
+		public DataCollection Selection
+		{
+			get => grid.GetSelection();
+		}
+
 		public bool ShowOnlyMainControls
 		{
 			get => board.ShowOnlyBoard && grid.ShowOnlyGrid;
@@ -29,11 +34,6 @@ namespace ChessAnalysis.Controls
 		{
 			add => grid.RowCountChanged += value;
 			remove => grid.RowCountChanged -= value;
-		}
-
-		public DataCollection GetSelection()
-		{
-			return grid.GetSelection();
 		}
 
 		public void TakeSnapshot()

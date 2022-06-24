@@ -2,6 +2,12 @@
 
 namespace ChessAnalysis.Utils
 {
+	public enum Themes
+	{
+		Dark,
+		Light
+	}
+
 	public class Theme
 	{
 		public static void ApplyTheme()

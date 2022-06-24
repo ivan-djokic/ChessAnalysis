@@ -57,7 +57,7 @@ namespace ChessAnalysis.Controls
 			}
 			catch
 			{
-				ErrorMessage.Show(this, Resources.SnapshotError, MessageBoxButtons.OK);
+				Messanger.ShowError(this, Resources.SnapshotError);
 			}
 		}
 

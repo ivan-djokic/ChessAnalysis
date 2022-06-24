@@ -3,9 +3,9 @@
 	[Flags]
 	public enum Castling
 	{
-		None,
-		King,
-		Queen
+		King = 1,
+		None = 0,
+		Queen = 2
 	}
 
 	public enum NextPlayer

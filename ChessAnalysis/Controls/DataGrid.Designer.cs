@@ -251,7 +251,7 @@
             // colBestMove
             // 
             this.colBestMove.Caption = "Best move";
-            this.colBestMove.FieldName = "Position.BestMove";
+            this.colBestMove.FieldName = "Position.BestMove.Value";
             this.colBestMove.Name = "colBestMove";
             this.colBestMove.OptionsColumn.AllowEdit = false;
             this.colBestMove.OptionsColumn.AllowFocus = false;

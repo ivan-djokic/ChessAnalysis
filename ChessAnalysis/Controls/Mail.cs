@@ -38,7 +38,7 @@ namespace ChessAnalysis.Controls
 			Options.Instance.Save();
 
 			Sound.Play(Sounds.Mail);
-			Notification.Notify?.Invoke(Resources.NotifyMail);
+			Notification.Notify?.Invoke(string.Format(Resources.NotifyMail, txtReceiver.Text));
 		}
 
 		private void BindComponents()
@@ -70,7 +70,7 @@ namespace ChessAnalysis.Controls
 				return;
 			}
 
-			if (!ErrorMessage.Show(this, Resources.AttachmentsMissing))
+			if (!Messanger.ShowWarning(this, Resources.AttachmentsMissing, MessageBoxButtons.YesNoCancel))
 			{
 				message.Attachments.Clear();
 			}

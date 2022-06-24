@@ -19,7 +19,8 @@
 
 		public const char EMPTY_CHAR = '\0';
 
-		public const string ERROR_CAPTION = "Error message";
+		public const string CAPTION_ERROR = "Error message";
+		public const string CAPTION_WARNING = "Warning message";
 
 		public const int HD = 1080;
 
@@ -50,8 +51,9 @@
 		public const string PLAYER_WHITE = "w";
 
 		public const int SCALE_FACTOR_BEST_MOVE_IMAGE = 3;
-
 		public const int SCALE_FACTOR_COORDINATE_FONT = 8;
+
+		public const string SELECTOR_COLUMN = "DX$CheckboxSelectorColumn";
 
 		public const string SNAPSHOT_FILE = "{0}.png";
 		public const string SNAPSHOT_FILE_DUPLICATE = "{0} ({1}).png";

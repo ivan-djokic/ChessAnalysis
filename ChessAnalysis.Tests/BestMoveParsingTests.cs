@@ -86,7 +86,7 @@ namespace ChessAnalysis.Tests
 
 			Assert.AreEqual(expected.Field, result.Field);
 			Assert.AreEqual(expected.Piece, result.Piece);
-			Assert.AreEqual(expected.ToString(), result.ToString());
+			Assert.AreEqual(expected.Value, result.Value);
 		}
 	}
 }

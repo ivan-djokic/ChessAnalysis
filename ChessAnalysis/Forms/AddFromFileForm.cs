@@ -18,7 +18,7 @@ namespace ChessAnalysis.Forms
 
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
-			m_collection.AddRange(panel.GetSelection());
+			m_collection.AddRange(panel.Selection);
 		}
 
 		private void btnLoadFile_Click(object sender, EventArgs e)
@@ -43,8 +43,8 @@ namespace ChessAnalysis.Forms
 			return errors.Count() switch
 			{
 				0 => true,
-				1 => ErrorMessage.Show(this, $"{errors.First().Message} in line {errors.First().Line}\nDo you want to continue?"),
-				_ => ErrorMessage.ShowList(this, errors)
+				1 => Messanger.ShowError(this, $"{errors.First().Message} in line {errors.First().Line}\nDo you want to continue?", MessageBoxButtons.YesNoCancel),
+				_ => Messanger.ShowErrorList(this, errors)
 			};
 		}
 

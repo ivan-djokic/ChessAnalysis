@@ -9,6 +9,8 @@ namespace ChessAnalysis.Forms
 {
 	public partial class MainForm : RibbonForm
 	{
+		private bool? m_onlySelectedMail;
+		private bool? m_onlySelectedSave;
 		private string m_savedFile = string.Empty;
 
 		public MainForm()
@@ -40,15 +42,20 @@ namespace ChessAnalysis.Forms
 
 		private void btnMail_ItemClick(object sender, EventArgs e)
 		{
-			var selection = panel.GetSelection();
+			var dataCollection = SelectDataAmountForm.GetDataCollection(this, panel, ref m_onlySelectedMail);
 
-			if (!selection.Any())
+			if (dataCollection == null)
 			{
-				ErrorMessage.Show(this, Resources.NothingToSend, MessageBoxButtons.OK);
 				return;
 			}
 
-			using var mailForm = new MailForm(selection);
+			if (!dataCollection.Any())
+			{
+				Messanger.ShowWarning(this, Resources.NothingToSend);
+				return;
+			}
+
+			using var mailForm = new MailForm(dataCollection);
 			mailForm.ShowDialog(this);
 		}
 
@@ -96,7 +103,20 @@ namespace ChessAnalysis.Forms
 
 		private void SaveCollection()
 		{
-			FileHelper.Save(m_savedFile, panel.Collection.ToString());
+			var dataCollection = SelectDataAmountForm.GetDataCollection(this, panel, ref m_onlySelectedSave);
+
+			if (dataCollection == null)
+			{
+				return;
+			}
+
+			if (!dataCollection.Any())
+			{
+				Messanger.ShowWarning(this, Resources.NothingToSave);
+				return;
+			}
+
+			FileHelper.Save(m_savedFile, dataCollection.ToString());
 			Options.Instance.LastOutputDirectory = FileHelper.GetDirectoryName(m_savedFile);
 			Options.Instance.Save();
 

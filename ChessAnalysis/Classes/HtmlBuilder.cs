@@ -37,7 +37,7 @@ namespace ChessAnalysis.Classes
 		{
 			return string.Format(Constants.HTML_TABLE_ROW,
 				string.Empty.AppendCell(data.Position.Round).AppendCell(data.Position.NextPlayer).AppendCell(data.Position.CastlingWhite).
-					AppendCell(data.Position.CastlingBlack).AppendCell(data.Position.EnPassant).AppendCell(data.Position.HalfMoves).AppendCell(data.Position.BestMove).
+					AppendCell(data.Position.CastlingBlack).AppendCell(data.Position.EnPassant).AppendCell(data.Position.HalfMoves).AppendCell(data.Position.BestMove.Value).
 					AppendCell(data.Comment.Result).AppendCell(data.Comment.Opening).AppendCell(data.Comment.Defense).AppendCell(data.Comment.Players));
 		}
 
