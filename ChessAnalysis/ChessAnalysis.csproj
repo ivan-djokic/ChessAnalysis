@@ -9,6 +9,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <BaseOutputPath>..\Build\</BaseOutputPath>
     <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -77,5 +78,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="rmdir /S /Q $(SolutionDir)Build\$(ConfigurationName)\runtimes&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\ChessAnalysis.p*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.C*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.DataA*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.DataV*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.Di*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.I*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.Ma*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.O*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.Pd*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.Pi*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.R*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.S*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.T*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.Utils.v21.2.U*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.Xp&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.XtraC*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.XtraD*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.XtraGa*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.XtraM*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.XtraN*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.XtraP*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.XtraR*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.XtraS*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.XtraT*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.XtraV*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\DevExpress.XtraW*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\M*&#xD;&#xA;del /Q $(SolutionDir)Build\$(ConfigurationName)\S*" />
+  </Target>
 
 </Project>

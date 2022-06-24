@@ -2,6 +2,7 @@
 using ChessAnalysis.Properties;
 using ChessAnalysis.Utils;
 using DevExpress.XtraEditors;
+using DevExpress.XtraSplashScreen;
 
 namespace ChessAnalysis.Forms
 {
@@ -17,6 +18,8 @@ namespace ChessAnalysis.Forms
 
 		private void btnSend_Click(object sender, EventArgs e)
 		{
+			var handle = SplashScreenManager.ShowOverlayForm(this);
+
 			try
 			{
 				mail.Send(m_collection);
@@ -24,6 +27,7 @@ namespace ChessAnalysis.Forms
 			}
 			catch
 			{
+				SplashScreenManager.CloseOverlayForm(handle);
 				Messanger.ShowError(this, Resources.MailError);
 			}
 		}
