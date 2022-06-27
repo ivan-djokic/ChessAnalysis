@@ -30,13 +30,13 @@ namespace ChessAnalysis.Classes
 			OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, collection));
 		}
 
-		public void RemoveRange(IList<int> collection)
+		public void RemoveRange(DataCollection collection)
 		{
 			m_updating = true;
 
-			for (var i = collection.Count - 1; i >= 0; i--)
+			foreach (var item in collection)
 			{
-				RemoveAt(collection[i]);
+				Remove(item);
 			}
 
 			m_updating = false;

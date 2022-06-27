@@ -73,8 +73,6 @@ namespace ChessAnalysis.Classes
 			m_gridView.SelectionChanged -= RefreshPreviousSelection;
 			m_hiddenSelection.AddRange(m_previousSelection.Except(GetDataSelection()).Except(m_hiddenSelection));
 
-			Notification.Notify?.Invoke($"prev: {m_previousSelection.Count}, hidd: {m_hiddenSelection.Count}");
-
 			for (var i = m_hiddenSelection.Count - 1; i >= 0; i--)
 			{
 				var rowHandle = m_gridView.FindRow(m_hiddenSelection[i]);

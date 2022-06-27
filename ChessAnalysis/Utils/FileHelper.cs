@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Diagnostics;
+using System.IO;
 
 namespace ChessAnalysis.Utils
 {
@@ -30,6 +31,17 @@ namespace ChessAnalysis.Utils
 			}
 
 			return Path.GetDirectoryName(input) ?? string.Empty;
+		}
+
+		public static void OpenFile(string fileName)
+		{
+			using var process = new Process();
+			process.StartInfo = new ProcessStartInfo(fileName)
+			{
+				UseShellExecute = true
+			};
+
+			process.Start();
 		}
 
 		public static void Save(string fileName, string content)

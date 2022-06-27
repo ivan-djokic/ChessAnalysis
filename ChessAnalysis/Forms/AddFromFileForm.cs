@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.IO;
+﻿using System.IO;
 using ChessAnalysis.Classes;
 using ChessAnalysis.Models;
 using ChessAnalysis.Properties;
@@ -84,22 +83,11 @@ namespace ChessAnalysis.Forms
 
 			if (!CanAdd(errors))
 			{
-				OpenFile(fileName);
+				FileHelper.OpenFile(fileName);
 				return;
 			}
 
 			panel.Collection.AddRange(collection);
-		}
-
-		private static void OpenFile(string fileName)
-		{
-			using var process = new Process();
-			process.StartInfo = new ProcessStartInfo(fileName)
-			{
-				UseShellExecute = true
-			};
-
-			process.Start();
 		}
 	}
 }

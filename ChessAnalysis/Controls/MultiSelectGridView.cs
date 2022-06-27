@@ -18,8 +18,6 @@ namespace ChessAnalysis.Controls
 			OptionsSelection.MultiSelect = true;
 			OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
 			OptionsSelection.ResetSelectionClickOutsideCheckboxSelector = true;
-
-			SaveLayoutToStream(m_layoutStream);
 		}
 
 		protected override bool AllowFixedCheckboxSelectorColumn
@@ -27,7 +25,7 @@ namespace ChessAnalysis.Controls
 			get => true;
 		}
 
-		public void RefreshData(bool refreshSelection)
+		public void RefreshData(bool refreshSelection = false)
 		{
 			var selection = refreshSelection ? GetSelectedRows() : Array.Empty<int>();
 			base.RefreshData();
@@ -51,10 +49,12 @@ namespace ChessAnalysis.Controls
 			CheckboxSelectorColumn.Fixed = FixedStyle.Left;
 		}
 
-		protected override void OnBeginUpdate()
+		protected override void OnEndInit()
 		{
-			base.OnBeginUpdate();
+			base.OnEndInit();
+
 			RowStyle += PaintFocusedRow;
+			SaveLayoutToStream(m_layoutStream);
 		}
 
 		private void PaintFocusedRow(object sender, RowStyleEventArgs e)

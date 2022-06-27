@@ -61,7 +61,7 @@ namespace ChessAnalysis.Controls
 
 		private void btnRemove_Click(object sender, EventArgs e)
 		{
-			Collection.RemoveRange(gridView.GetSelectedRows());
+			Collection.RemoveRange(m_gridHelper.GetDataSelection());
 		}
 
 		private void btnRestore_Click(object sender, EventArgs e)
