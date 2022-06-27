@@ -62,6 +62,7 @@ namespace ChessAnalysis.Controls
 		private void btnRemove_Click(object sender, EventArgs e)
 		{
 			Collection.RemoveRange(m_gridHelper.GetDataSelection());
+			gridView.RefreshGrouping();
 		}
 
 		private void btnRestore_Click(object sender, EventArgs e)
@@ -79,20 +80,14 @@ namespace ChessAnalysis.Controls
 		private void CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
 		{
 			RaiseNotification(e);
-
-			if (e.Action == NotifyCollectionChangedAction.Replace)
-			{
-				gridView_FocusedRowChanged(new object(), EventArgs.Empty);
-				return;
-			}
-
+			gridView_FocusedRowChanged(new object(), EventArgs.Empty);
 			gridView.RefreshData(e.Action == NotifyCollectionChangedAction.Add);
 			RowCountChanged?.Invoke(Collection.Count);
 		}
 
 		private void gridView_FocusedRowChanged(object sender, EventArgs e)
 		{
-			if (gridView.FocusedRowHandle >= 0)
+			if (gridView.FocusedRowHandle >= 0 && gridView.FocusedRowHandle < Collection.Count)
 			{
 				Sound.Play(Sounds.Piece);
 				FocusedRowChanged?.Invoke(Collection[gridView.FocusedRowHandle]);

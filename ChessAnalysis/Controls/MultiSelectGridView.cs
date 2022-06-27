@@ -20,6 +20,12 @@ namespace ChessAnalysis.Controls
 			OptionsSelection.ResetSelectionClickOutsideCheckboxSelector = true;
 		}
 
+		public new int FocusedRowHandle
+		{
+			get => GetDataSourceRowIndex(base.FocusedRowHandle);
+			set => base.FocusedRowHandle = value;
+		}
+
 		protected override bool AllowFixedCheckboxSelectorColumn
 		{
 			get => true;
@@ -34,6 +40,30 @@ namespace ChessAnalysis.Controls
 			foreach (var row in selection)
 			{
 				SelectRow(row - 1);
+			}
+		}
+
+		public void RefreshGrouping()
+		{
+			var count = 0;
+			var groupColumns = new int[Columns.Count];
+
+			for (var i = 0; i < Columns.Count; i++)
+			{
+				if (Columns[i].GroupIndex < 0)
+				{
+					continue;
+				}
+
+				groupColumns[Columns[i].GroupIndex] = i;
+				count++;
+			}
+
+			ClearGrouping();
+
+			for (var i = 0; i < count; i++)
+			{
+				Columns[groupColumns[i]].Group();
 			}
 		}
 
@@ -59,7 +89,7 @@ namespace ChessAnalysis.Controls
 
 		private void PaintFocusedRow(object sender, RowStyleEventArgs e)
 		{
-			if (e.RowHandle == FocusedRowHandle)
+			if (e.RowHandle == FocusedRowHandle && !IsGroupRow(e.RowHandle))
 			{
 				e.Appearance.Assign(PaintAppearance.SelectedRow);
 			}
