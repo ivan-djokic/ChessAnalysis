@@ -162,6 +162,12 @@ Do you want to continue?</value>
     <value>Data source already contains item with ID: "{0}"</value>
     <comment>E.g. Data source already contains item with ID: "id431"</comment>
   </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>{0} in line {1}
+Do you want to continue?</value>
+    <comment>E.g. Invalid number of components in Comment in line 8/8/8/8/8/8/8/8 b - - 0 1 bm -; id ""; c0 
+Do you want to continue?</comment>
+  </data>
   <data name="Flip" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\sounds\flip.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

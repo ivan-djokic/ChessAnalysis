@@ -24,6 +24,7 @@ namespace ChessAnalysis.Controls
 			{
 				var data = Parser.Parse(txtInput.Text);
 				collection.ValidateIdUniqueness(data.Id, skipIdValidation);
+				txtInput.Text = string.Empty;
 
 				return data;
 			}

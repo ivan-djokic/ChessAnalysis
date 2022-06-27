@@ -1,6 +1,8 @@
-﻿using System.IO;
+﻿using System.Diagnostics;
+using System.IO;
 using ChessAnalysis.Classes;
 using ChessAnalysis.Models;
+using ChessAnalysis.Properties;
 using ChessAnalysis.Utils;
 using DevExpress.XtraEditors;
 
@@ -44,12 +46,12 @@ namespace ChessAnalysis.Forms
 			return errors.Count() switch
 			{
 				0 => true,
-				1 => Messanger.ShowError(this, $"{errors.First().Message} in line {errors.First().Line}\nDo you want to continue?", MessageBoxButtons.YesNoCancel),
+				1 => Messanger.ShowError(this, string.Format(Resources.ErrorOccurred, errors.First().Message, errors.First().Line), MessageBoxButtons.YesNo),
 				_ => Messanger.ShowErrorList(this, errors)
 			};
 		}
 
-		private DataCollection CreateCollection(IList<string> lines, out IEnumerable<Error> errorList)
+		private DataCollection CreateCollection(List<string> lines, out IEnumerable<Error> errorList)
 		{
 			var result = new Data[lines.Count];
 			var errors = new Error[lines.Count];
@@ -80,10 +82,24 @@ namespace ChessAnalysis.Forms
 		{
 			var collection = CreateCollection(File.ReadLines(fileName).ToList(), out var errors);
 
-			if (CanAdd(errors))
+			if (!CanAdd(errors))
 			{
-				panel.Collection.AddRange(collection);
+				OpenFile(fileName);
+				return;
 			}
+
+			panel.Collection.AddRange(collection);
+		}
+
+		private static void OpenFile(string fileName)
+		{
+			using var process = new Process();
+			process.StartInfo = new ProcessStartInfo(fileName)
+			{
+				UseShellExecute = true
+			};
+
+			process.Start();
 		}
 	}
 }

@@ -200,6 +200,16 @@ namespace ChessAnalysis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} in line {1}
+        ///Do you want to continue?.
+        /// </summary>
+        internal static string ErrorOccurred {
+            get {
+                return ResourceManager.GetString("ErrorOccurred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream Flip {

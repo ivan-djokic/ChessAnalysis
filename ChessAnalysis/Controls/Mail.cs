@@ -70,7 +70,7 @@ namespace ChessAnalysis.Controls
 				return;
 			}
 
-			if (!Messanger.ShowWarning(this, Resources.AttachmentsMissing, MessageBoxButtons.YesNoCancel))
+			if (!Messanger.ShowWarning(this, Resources.AttachmentsMissing, MessageBoxButtons.YesNo))
 			{
 				message.Attachments.Clear();
 			}
