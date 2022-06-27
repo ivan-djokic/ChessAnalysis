@@ -11,8 +11,9 @@ namespace ChessAnalysis.Tests
 		public void TestInvalidInputs()
 		{
 			ProcessInvalidInput(string.Empty);
-			ProcessInvalidInput("kqKQK");
 			ProcessInvalidInput("kqKQX");
+			ProcessInvalidInput("kqKQK");
+			ProcessInvalidInput("qk");
 		}
 
 		[TestMethod]

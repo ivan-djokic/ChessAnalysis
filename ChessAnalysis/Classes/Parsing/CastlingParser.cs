@@ -44,7 +44,7 @@ namespace ChessAnalysis.Classes
 				switch (item)
 				{
 					case 'k':
-						black = ExecuteOrOperation(black, Castling.King);
+						black = ExecuteOrOperation(black, Castling.King, Castling.Queen);
 						break;
 
 					case 'q':
@@ -52,7 +52,7 @@ namespace ChessAnalysis.Classes
 						break;
 
 					case 'K':
-						white = ExecuteOrOperation(white, Castling.King);
+						white = ExecuteOrOperation(white, Castling.King, Castling.Queen);
 						break;
 
 					case 'Q':
@@ -64,38 +64,26 @@ namespace ChessAnalysis.Classes
 				}
 			}
 
-			return (RemoveNone(black), RemoveNone(white));
+			return (black, white);
 		}
 
-		private Castling ExecuteOrOperation(Castling input, Castling value)
+		private static bool Contains(Castling input, Castling value)
 		{
-			if ((input & value) != 0)
+			return (input & value) == value;
+		}
+
+		private Castling ExecuteOrOperation(Castling input, Castling value, Castling? prevValue = null)
+		{
+			// Remove Castling.None value
+			input &= ~Castling.None;
+
+			if (Contains(input, value) || prevValue.HasValue && Contains(input, prevValue.Value))
 			{
-				// Duplicate characters
+				// Duplicate characters or incorent order
 				throw new UnallowedCharactersException(Component);
 			}
 
 			return input | value;
-		}
-
-		private static Castling RemoveNone(Castling input)
-		{
-			if ((input & Castling.King) == Castling.King)
-			{
-				if ((input & Castling.Queen) == Castling.Queen)
-				{
-					return Castling.King | Castling.Queen;
-				}
-
-				return Castling.King;
-			}
-
-			if ((input & Castling.Queen) == Castling.Queen)
-			{
-				return Castling.Queen;
-			}
-
-			return Castling.None;
 		}
 	}
 }
