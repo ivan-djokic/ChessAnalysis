@@ -80,7 +80,7 @@ namespace ChessAnalysis.Classes
 			if (Contains(input, value) || prevValue.HasValue && Contains(input, prevValue.Value))
 			{
 				// Duplicate characters or incorent order
-				throw new UnallowedCharactersException(Component);
+				throw new IncorrectFormatException(Component);
 			}
 
 			return input | value;
