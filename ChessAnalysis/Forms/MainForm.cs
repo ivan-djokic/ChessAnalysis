@@ -81,7 +81,8 @@ namespace ChessAnalysis.Forms
 			using var fileDialog = new XtraSaveFileDialog
 			{
 				Filter = Constants.DIALOG_FILTER,
-				InitialDirectory = Options.Instance.LastOutputDirectory
+				InitialDirectory = Options.Instance.LastOutputDirectory,
+				StartPosition = FormStartPosition.CenterParent
 			};
 
 			if (fileDialog.ShowDialog(this) == DialogResult.OK)

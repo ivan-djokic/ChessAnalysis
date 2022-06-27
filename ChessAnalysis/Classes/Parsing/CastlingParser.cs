@@ -64,18 +64,38 @@ namespace ChessAnalysis.Classes
 				}
 			}
 
-			return (black, white);
+			return (RemoveNone(black), RemoveNone(white));
 		}
 
 		private Castling ExecuteOrOperation(Castling input, Castling value)
 		{
-			if ((input & value) != Castling.None)
+			if ((input & value) != 0)
 			{
 				// Duplicate characters
 				throw new UnallowedCharactersException(Component);
 			}
 
-			return input |= value;
+			return input | value;
+		}
+
+		private static Castling RemoveNone(Castling input)
+		{
+			if ((input & Castling.King) == Castling.King)
+			{
+				if ((input & Castling.Queen) == Castling.Queen)
+				{
+					return Castling.King | Castling.Queen;
+				}
+
+				return Castling.King;
+			}
+
+			if ((input & Castling.Queen) == Castling.Queen)
+			{
+				return Castling.Queen;
+			}
+
+			return Castling.None;
 		}
 	}
 }

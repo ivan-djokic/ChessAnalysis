@@ -23,7 +23,8 @@ namespace ChessAnalysis.Controls
 		{
 			using var browserDialog = new XtraFolderBrowserDialog
 			{
-				SelectedPath = Options.Instance.SnapshotDirectory
+				SelectedPath = Options.Instance.SnapshotDirectory,
+				StartPosition = FormStartPosition.CenterParent
 			};
 
 			if (browserDialog.ShowDialog(this) == DialogResult.OK)
