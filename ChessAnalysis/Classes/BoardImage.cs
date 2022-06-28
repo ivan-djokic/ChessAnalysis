@@ -10,11 +10,13 @@ namespace ChessAnalysis.Classes
 		private readonly SolidBrush m_brushFill = new(Options.Instance.FieldFillColor.Normalize());
 		private readonly int m_fieldSize;
 		private Graphics m_graphics;
+		private readonly bool m_whiteOrientedBoard;
 
-		private BoardImage()
+		private BoardImage(bool whiteOrientedBoard)
 		{
 			using var piece = ResourceHelper.GetPiece();
 			m_fieldSize = piece.Size.Width;
+			m_whiteOrientedBoard = whiteOrientedBoard;
 		}
 
 		public void Dispose()
@@ -24,9 +26,9 @@ namespace ChessAnalysis.Classes
 			m_graphics.Dispose();
 		}
 
-		public static Image Create(Position position)
+		public static Image Create(Position position, bool whiteOrientedBoard)
 		{
-			using var boardImage = new BoardImage();
+			using var boardImage = new BoardImage(whiteOrientedBoard);
 			return boardImage.Create(position.Board, position.BestMove);
 		}
 
@@ -117,9 +119,9 @@ namespace ChessAnalysis.Classes
 			return input % 2 == 0 ? m_brushFill : m_brushEmpty;
 		}
 
-		private static int GetPieceCoordinate(int input)
+		private int GetPieceCoordinate(int input)
 		{
-			if (Options.Instance.WhiteOrientedBoard)
+			if (m_whiteOrientedBoard)
 			{
 				return input;
 			}
@@ -127,9 +129,9 @@ namespace ChessAnalysis.Classes
 			return (input + 1).AsBoardRow();
 		}
 
-		private static string GetXCoordinate(int input)
+		private string GetXCoordinate(int input)
 		{
-			if (Options.Instance.WhiteOrientedBoard)
+			if (m_whiteOrientedBoard)
 			{
 				return ('A' + input).AsString();
 			}
@@ -137,9 +139,9 @@ namespace ChessAnalysis.Classes
 			return ('H' - input).AsString();
 		}
 
-		private static string GetYCoordinate(int input)
+		private string GetYCoordinate(int input)
 		{
-			if (Options.Instance.WhiteOrientedBoard)
+			if (m_whiteOrientedBoard)
 			{
 				return input.AsBoardRow().ToString();
 			}

@@ -44,7 +44,6 @@ namespace ChessAnalysis.Controls
 		private void BindComponents()
 		{
 			Options.Instance.Bind(txtReceiver, model => model.ReceiverMail);
-			Options.Instance.Bind(txtContent, model => model.MailContent);
 		}
 
 		private void SetAttachments(MailMessage message)

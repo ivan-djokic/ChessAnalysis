@@ -12,6 +12,7 @@ namespace ChessAnalysis.Controls
 	{
 		private LayoutVisibility m_controlsVisibility;
 		private Data m_data;
+		private bool m_whiteOrientedBoard = true;
 
 		public Board()
 		{
@@ -63,9 +64,7 @@ namespace ChessAnalysis.Controls
 
 		private void btnFlip_Click(object sender, EventArgs e)
 		{
-			Options.Instance.WhiteOrientedBoard = !Options.Instance.WhiteOrientedBoard;
-			Options.Instance.Save();
-
+			m_whiteOrientedBoard = !m_whiteOrientedBoard;
 			Sound.Play(Sounds.Flip);
 			DrawImage();
 		}
@@ -81,7 +80,7 @@ namespace ChessAnalysis.Controls
 
 		private void DrawImage()
 		{
-			imageBoard.Image = BoardImage.Create(m_data.Position);
+			imageBoard.Image = BoardImage.Create(m_data.Position, m_whiteOrientedBoard);
 		}
 
 		private string SaveSnapshot(string fileName, int tryCount = 2)

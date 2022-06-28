@@ -24,8 +24,6 @@ namespace ChessAnalysis.Utils
 
 		public string LastOutputDirectory { get; set; }
 
-		public string MailContent { get; set; }
-
 		public bool MarkIfBestMoveIsPlayed { get; set; }
 
 		public PieceStyles PieceStyle { get; set; }
@@ -45,8 +43,6 @@ namespace ChessAnalysis.Utils
 		public string SnapshotDirectory { get; set; }
 
 		public Themes Theme { get; set; }
-
-		public bool WhiteOrientedBoard { get; set; }
 
 		public void Save()
 		{
@@ -79,7 +75,6 @@ namespace ChessAnalysis.Utils
 			SmtpClient = "smtp.gmail.com";
 			SnapshotDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Constants.APP_NAME, Constants.SNAPSHOTS_DIR);
 			Theme = Themes.Dark;
-			WhiteOrientedBoard = true;
 
 			if (raiseOnChange)
 			{
@@ -93,7 +88,6 @@ namespace ChessAnalysis.Utils
 			options.FieldFillColor = FieldFillColor;
 			options.LastInputDirectory = LastInputDirectory;
 			options.LastOutputDirectory = LastOutputDirectory;
-			options.MailContent = MailContent;
 			options.MarkIfBestMoveIsPlayed = MarkIfBestMoveIsPlayed;
 			options.PieceStyle = PieceStyle;
 			options.PlaySound = PlaySound;
@@ -104,7 +98,6 @@ namespace ChessAnalysis.Utils
 			options.SmtpClient = SmtpClient;
 			options.SnapshotDirectory = SnapshotDirectory;
 			options.Theme = Theme;
-			options.WhiteOrientedBoard = WhiteOrientedBoard;
 		}
 
 		private static Options CreateInstance()

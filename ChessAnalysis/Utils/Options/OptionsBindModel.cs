@@ -34,12 +34,6 @@ namespace ChessAnalysis.Utils
 			}
 		}
 
-		public string MailContent
-		{
-			get => Options.Instance.MailContent;
-			set => Options.Instance.MailContent = value;
-		}
-
 		public bool MarkIfBestMoveIsPlayed
 		{
 			get => Options.Instance.MarkIfBestMoveIsPlayed;
