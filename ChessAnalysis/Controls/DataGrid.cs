@@ -104,23 +104,31 @@ namespace ChessAnalysis.Controls
 			switch (e.Action)
 			{
 				case NotifyCollectionChangedAction.Add:
-					if (e.NewItems != null && e.NewItems.Count > 0 && e.NewItems[0] is DataCollection collection && collection.Count > 0)
+					if (e.NewItems != null && e.NewItems.Count > 0)
 					{
-						Notification.Notify?.Invoke(string.Format(Resources.NotifyAdd, collection.Count));
+						if (e.NewItems[0] is Data)
+						{
+							Notification.Notify?.Invoke(string.Format(Resources.NotifyAdd, 1));
+						}
+
+						if (e.NewItems[0] is DataCollection collection && collection.Count > 0)
+						{
+							Notification.Notify?.Invoke(string.Format(Resources.NotifyAdd, collection.Count));
+						}
 					}
 
 					break;
 
 				case NotifyCollectionChangedAction.Remove:
-					if (e.OldItems != null && e.OldItems.Count > 0 && e.OldItems[0] is int[] array && array.Length > 0)
+					if (e.OldItems != null && e.OldItems.Count > 0)
 					{
-						Notification.Notify?.Invoke(string.Format(Resources.NotifyRemove, array.Length));
+						Notification.Notify?.Invoke(string.Format(Resources.NotifyRemove, e.OldItems.Count));
 					}
 
 					break;
 
 				case NotifyCollectionChangedAction.Replace:
-					Notification.Notify?.Invoke(string.Format(Resources.NotifyEdit, gridView.FocusedRowHandle));
+					Notification.Notify?.Invoke(string.Format(Resources.NotifyEdit, gridView.FocusedRowHandle + 1));
 					break;
 			}
 
