@@ -1,4 +1,8 @@
-﻿using DevExpress.XtraEditors;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using DevExpress.XtraEditors;
 
 namespace ChessAnalysis.Controls
 {

@@ -1,3 +1,7 @@
+// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
 using ChessAnalysis.Classes;
 using ChessAnalysis.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

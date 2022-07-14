@@ -1,4 +1,8 @@
-﻿using DevExpress.Mvvm;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using DevExpress.Mvvm;
 
 namespace ChessAnalysis.Utils
 {

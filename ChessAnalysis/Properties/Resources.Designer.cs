@@ -200,6 +200,15 @@ namespace ChessAnalysis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error message.
+        /// </summary>
+        internal static string ErrorCaption {
+            get {
+                return ResourceManager.GetString("ErrorCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} in line {1}
         ///Do you want to continue?.
         /// </summary>
@@ -546,6 +555,15 @@ namespace ChessAnalysis.Properties {
         internal static string UnallowedCharactersDetected {
             get {
                 return ResourceManager.GetString("UnallowedCharactersDetected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning message.
+        /// </summary>
+        internal static string WarningCaption {
+            get {
+                return ResourceManager.GetString("WarningCaption", resourceCulture);
             }
         }
         

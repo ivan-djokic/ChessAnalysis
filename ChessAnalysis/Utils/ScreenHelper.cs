@@ -1,4 +1,8 @@
-﻿using System.Windows;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using System.Windows;
 
 namespace ChessAnalysis.Utils
 {

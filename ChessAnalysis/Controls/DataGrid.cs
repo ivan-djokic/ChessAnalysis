@@ -1,4 +1,8 @@
-﻿using System.Collections.Specialized;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using System.Collections.Specialized;
 using ChessAnalysis.Classes;
 using ChessAnalysis.Forms;
 using ChessAnalysis.Models;
@@ -42,6 +46,7 @@ namespace ChessAnalysis.Controls
 		}
 
 		public Action<Data>? FocusedRowChanged;
+
 		public Action<int>? RowCountChanged;
 
 		public DataCollection GetSelection()

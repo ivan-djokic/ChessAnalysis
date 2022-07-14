@@ -1,4 +1,8 @@
-﻿using System.IO;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using System.IO;
 using System.Net;
 using System.Net.Mail;
 using ChessAnalysis.Classes;

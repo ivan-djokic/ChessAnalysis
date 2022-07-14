@@ -1,4 +1,8 @@
-﻿using ChessAnalysis.Models;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using ChessAnalysis.Models;
 using ChessAnalysis.Utils;
 using DevExpress.XtraEditors;
 

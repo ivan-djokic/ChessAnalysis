@@ -1,4 +1,8 @@
-﻿using System.Diagnostics;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using System.Diagnostics;
 using System.IO;
 
 namespace ChessAnalysis.Utils

@@ -1,4 +1,8 @@
-﻿using ChessAnalysis.Classes;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using ChessAnalysis.Classes;
 using DevExpress.XtraEditors;
 
 namespace ChessAnalysis.Forms

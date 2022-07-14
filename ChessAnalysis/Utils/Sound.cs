@@ -1,4 +1,8 @@
-﻿using System.Media;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using System.Media;
 
 namespace ChessAnalysis.Utils
 {

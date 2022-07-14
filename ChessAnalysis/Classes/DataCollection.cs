@@ -1,4 +1,8 @@
-﻿using System.Collections.ObjectModel;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using ChessAnalysis.Models;
 

@@ -1,4 +1,8 @@
-﻿using System.IO;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using System.IO;
 using ChessAnalysis.Classes;
 using ChessAnalysis.Models;
 using ChessAnalysis.Properties;
@@ -91,8 +95,7 @@ namespace ChessAnalysis.Controls
 				return fileName;
 			}
 
-			return SaveSnapshot(Path.Combine(Options.Instance.SnapshotDirectory, string.Format(Constants.SNAPSHOT_FILE_DUPLICATE, m_data.Id, tryCount)),
-				tryCount + 1);
+			return SaveSnapshot(Path.Combine(Options.Instance.SnapshotDirectory, string.Format(Constants.SNAPSHOT_FILE_DUPLICATE, m_data.Id, tryCount)), tryCount + 1);
 		}
 	}
 }

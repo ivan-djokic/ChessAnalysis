@@ -1,4 +1,8 @@
-﻿using System.Linq.Expressions;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using System.Linq.Expressions;
 using DevExpress.Utils.MVVM;
 using DevExpress.XtraEditors;
 

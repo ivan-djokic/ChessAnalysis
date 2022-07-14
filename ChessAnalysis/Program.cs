@@ -1,3 +1,7 @@
+// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
 using ChessAnalysis.Forms;
 
 namespace ChessAnalysis
@@ -5,7 +9,7 @@ namespace ChessAnalysis
 	internal static class Program
 	{
 		[STAThread]
-		static void Main()
+		private static void Main()
 		{
 			ApplicationConfiguration.Initialize();
 			Application.Run(new MainForm());

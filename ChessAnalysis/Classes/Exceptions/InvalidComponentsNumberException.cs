@@ -1,4 +1,8 @@
-﻿using ChessAnalysis.Properties;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using ChessAnalysis.Properties;
 
 namespace ChessAnalysis.Classes
 {

@@ -1,5 +1,10 @@
-﻿using ChessAnalysis.Forms;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using ChessAnalysis.Forms;
 using ChessAnalysis.Models;
+using ChessAnalysis.Properties;
 using DevExpress.XtraEditors;
 
 namespace ChessAnalysis.Utils
@@ -8,7 +13,7 @@ namespace ChessAnalysis.Utils
 	{
 		public static bool ShowError(IWin32Window owner, string message, MessageBoxButtons buttons = MessageBoxButtons.OK)
 		{
-			return XtraMessageBox.Show(owner, message, Constants.CAPTION_ERROR, buttons, MessageBoxIcon.Error) == DialogResult.Yes;
+			return XtraMessageBox.Show(owner, message, Resources.ErrorCaption, buttons, MessageBoxIcon.Error) == DialogResult.Yes;
 		}
 
 		public static bool ShowErrorList(IWin32Window owner, IEnumerable<Error> errors)
@@ -19,7 +24,7 @@ namespace ChessAnalysis.Utils
 
 		public static bool ShowWarning(IWin32Window owner, string message, MessageBoxButtons buttons = MessageBoxButtons.OK)
 		{
-			return XtraMessageBox.Show(owner, message, Constants.CAPTION_WARNING, buttons, MessageBoxIcon.Warning) == DialogResult.Yes;
+			return XtraMessageBox.Show(owner, message, Resources.WarningCaption, buttons, MessageBoxIcon.Warning) == DialogResult.Yes;
 		}
 	}
 }

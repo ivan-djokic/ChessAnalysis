@@ -1,4 +1,8 @@
-﻿using System.IO;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using System.IO;
 using System.Xml.Serialization;
 using Color = System.Windows.Media.Color; // XML serialization can not serialize System.Drawing.Color, so here is an alternative
 

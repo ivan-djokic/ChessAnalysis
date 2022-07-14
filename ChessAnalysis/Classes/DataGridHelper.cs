@@ -1,4 +1,8 @@
-﻿using System.ComponentModel;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using System.ComponentModel;
 using ChessAnalysis.Models;
 using ChessAnalysis.Utils;
 using DevExpress.Data;
@@ -24,6 +28,19 @@ namespace ChessAnalysis.Classes
 			m_gridView.SelectionChanged += RefreshPreviousSelection;
 		}
 
+		public void CheckIsSelectAllClicked(object? sender, MouseEventArgs e)
+		{
+			var info = m_gridView.CalcHitInfo(e.Location);
+
+			if (e.Button != MouseButtons.Left || info?.Column == null)
+			{
+				m_isSelectAllClicked = false;
+				return;
+			}
+
+			m_isSelectAllClicked = info.Column.Name == Constants.SELECTOR_COLUMN && info.HitTest == GridHitTest.Column;
+		}
+
 		public DataCollection GetDataSelection()
 		{
 			var selection = new DataCollection();
@@ -37,19 +54,6 @@ namespace ChessAnalysis.Classes
 			}
 
 			return selection;
-		}
-
-		public void CheckIsSelectAllClicked(object? sender, MouseEventArgs e)
-		{
-			var info = m_gridView.CalcHitInfo(e.Location);
-
-			if (e.Button != MouseButtons.Left || info?.Column == null)
-			{
-				m_isSelectAllClicked = false;
-				return;
-			}
-
-			m_isSelectAllClicked = info.Column.Name == Constants.SELECTOR_COLUMN && info.HitTest == GridHitTest.Column;
 		}
 
 		private void RefreshPreviousSelection(object sender, SelectionChangedEventArgs e)

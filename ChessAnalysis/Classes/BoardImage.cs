@@ -1,4 +1,8 @@
-﻿using ChessAnalysis.Models;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using ChessAnalysis.Models;
 using ChessAnalysis.Properties;
 using ChessAnalysis.Utils;
 
@@ -19,17 +23,17 @@ namespace ChessAnalysis.Classes
 			m_whiteOrientedBoard = whiteOrientedBoard;
 		}
 
+		public static Image Create(Position position, bool whiteOrientedBoard)
+		{
+			using var boardImage = new BoardImage(whiteOrientedBoard);
+			return boardImage.Create(position.Board, position.BestMove);
+		}
+
 		public void Dispose()
 		{
 			m_brushEmpty.Dispose();
 			m_brushFill.Dispose();
 			m_graphics.Dispose();
-		}
-
-		public static Image Create(Position position, bool whiteOrientedBoard)
-		{
-			using var boardImage = new BoardImage(whiteOrientedBoard);
-			return boardImage.Create(position.Board, position.BestMove);
 		}
 
 		private Image Create(char[][] board, BestMove bestMove)

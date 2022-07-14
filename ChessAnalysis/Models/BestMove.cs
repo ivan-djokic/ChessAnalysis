@@ -1,4 +1,8 @@
-﻿namespace ChessAnalysis.Models
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+namespace ChessAnalysis.Models
 {
 	public class BestMove
 	{

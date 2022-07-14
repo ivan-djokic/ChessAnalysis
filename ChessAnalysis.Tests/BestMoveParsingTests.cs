@@ -1,3 +1,7 @@
+// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
 using System.Drawing;
 using ChessAnalysis.Classes;
 using ChessAnalysis.Models;

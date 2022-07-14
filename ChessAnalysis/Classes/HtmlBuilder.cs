@@ -1,4 +1,8 @@
-﻿using ChessAnalysis.Models;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using ChessAnalysis.Models;
 using ChessAnalysis.Utils;
 
 namespace ChessAnalysis.Classes
@@ -35,10 +39,10 @@ namespace ChessAnalysis.Classes
 
 		private static string BuildTableRow(Data data)
 		{
-			return string.Format(Constants.HTML_TABLE_ROW,
-				string.Empty.AppendCell(data.Position.Round).AppendCell(data.Position.NextPlayer).AppendCell(data.Position.CastlingWhite).
-					AppendCell(data.Position.CastlingBlack).AppendCell(data.Position.EnPassant).AppendCell(data.Position.HalfMoves).AppendCell(data.Position.BestMove.Value).
-					AppendCell(data.Comment.Result).AppendCell(data.Comment.Opening).AppendCell(data.Comment.Defense).AppendCell(data.Comment.Players));
+			return string.Format(Constants.HTML_TABLE_ROW, string.Empty
+				.AppendCell(data.Position.Round).AppendCell(data.Position.NextPlayer).AppendCell(data.Position.CastlingWhite).AppendCell(data.Position.CastlingBlack)
+				.AppendCell(data.Position.EnPassant).AppendCell(data.Position.HalfMoves).AppendCell(data.Position.BestMove.Value)
+				.AppendCell(data.Comment.Result).AppendCell(data.Comment.Opening).AppendCell(data.Comment.Defense).AppendCell(data.Comment.Players));
 		}
 
 		private static string BuildTableRows(DataCollection collection)

@@ -162,6 +162,9 @@ Do you want to continue?</value>
     <value>Data source already contains item with ID: "{0}"</value>
     <comment>E.g. Data source already contains item with ID: "id431"</comment>
   </data>
+  <data name="ErrorCaption" xml:space="preserve">
+    <value>Error message</value>
+  </data>
   <data name="ErrorOccurred" xml:space="preserve">
     <value>{0} in line {1}
 Do you want to continue?</value>
@@ -289,6 +292,9 @@ Change Snapshot directory and try again</value>
   <data name="UnallowedCharactersDetected" xml:space="preserve">
     <value>{0} contains unallowed character(s)</value>
     <comment>E.g. BestMove contains unallowed character(s)</comment>
+  </data>
+  <data name="WarningCaption" xml:space="preserve">
+    <value>Warning message</value>
   </data>
   <data name="Wood_bb" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pieces\Wood\bb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

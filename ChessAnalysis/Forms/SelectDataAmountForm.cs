@@ -1,4 +1,8 @@
-﻿using ChessAnalysis.Classes;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using ChessAnalysis.Classes;
 using ChessAnalysis.Controls;
 using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraEditors;
@@ -29,7 +33,7 @@ namespace ChessAnalysis.Forms
 			}
 
 			using var selectDataAmountForm = new SelectDataAmountForm();
-			
+
 			if (selectDataAmountForm.ShowDialog(owner) != DialogResult.OK)
 			{
 				return null;

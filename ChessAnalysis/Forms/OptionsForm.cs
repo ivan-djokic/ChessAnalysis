@@ -1,4 +1,8 @@
-﻿using System.ComponentModel;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using System.ComponentModel;
 using ChessAnalysis.Utils;
 using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraEditors;

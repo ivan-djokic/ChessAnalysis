@@ -1,4 +1,8 @@
-﻿namespace ChessAnalysis.Utils
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+namespace ChessAnalysis.Utils
 {
 	public static class Constants
 	{
@@ -18,9 +22,6 @@
 		public const string DIALOG_FILTER = "Text files (*.txt)|*.txt";
 
 		public const char EMPTY_CHAR = '\0';
-
-		public const string CAPTION_ERROR = "Error message";
-		public const string CAPTION_WARNING = "Warning message";
 
 		public const int HD = 1080;
 

@@ -1,4 +1,8 @@
-﻿using DevExpress.LookAndFeel;
+﻿// -----------------------------------------------
+// © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
+// -----------------------------------------------
+
+using DevExpress.LookAndFeel;
 
 namespace ChessAnalysis.Utils
 {
