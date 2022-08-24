@@ -87,7 +87,7 @@ namespace ChessAnalysis.Controls
 			imageBoard.Image = BoardImage.Create(m_data.Position, m_whiteOrientedBoard);
 		}
 
-		private string SaveSnapshot(string fileName, int tryCount = 2)
+		private string SaveSnapshot(string fileName, int tryCount = 1)
 		{
 			if (!File.Exists(fileName))
 			{

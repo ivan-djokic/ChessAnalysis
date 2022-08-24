@@ -43,8 +43,8 @@ namespace ChessAnalysis.Classes
 
 			DrawFields();
 			DrawCoordinates();
-			DrawBestMove(board, bestMove);
 			DrawPieces(board);
+			DrawBestMove(board, bestMove);
 
 			return result;
 		}
@@ -72,7 +72,7 @@ namespace ChessAnalysis.Classes
 				return;
 			}
 
-			using var font = new Font("Segoe UI", m_fieldSize / Constants.SCALE_FACTOR_COORDINATE_FONT / ScreenHelper.Scaling, FontStyle.Bold);
+			using var font = new Font(Constants.FONT_NAME, m_fieldSize / Constants.SCALE_FACTOR_COORDINATE_FONT / ScreenHelper.Scaling, FontStyle.Bold);
 			var letterY = Constants.BOARD_SIZE * m_fieldSize - font.Height;
 
 			for (var i = 0; i < Constants.BOARD_SIZE; i++)

@@ -114,7 +114,7 @@ namespace ChessAnalysis.Utils
 
 		public static void ValidateIdUniqueness(this IEnumerable<Data> collection, string id, Data? skipIdValidation = null)
 		{
-			if (collection.Any(item => item?.Id == id && item != skipIdValidation))
+			if (collection.Any(item => item?.Id == id && item?.Id != skipIdValidation?.Id))
 			{
 				throw new NotUniqueIdException(id);
 			}

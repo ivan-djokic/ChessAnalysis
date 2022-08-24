@@ -43,23 +43,37 @@ namespace ChessAnalysis.Classes
 				return (black, white);
 			}
 
+			var isWhiteDone = false;
+
 			foreach (var item in m_input)
 			{
 				switch (item)
 				{
 					case 'k':
+						isWhiteDone = true;
 						black = ExecuteOrOperation(black, Castling.King, Castling.Queen);
 						break;
 
 					case 'q':
+						isWhiteDone = true;
 						black = ExecuteOrOperation(black, Castling.Queen);
 						break;
 
 					case 'K':
+						if (isWhiteDone)
+						{
+							throw new IncorrectFormatException(Component);
+						}
+
 						white = ExecuteOrOperation(white, Castling.King, Castling.Queen);
 						break;
 
 					case 'Q':
+						if (isWhiteDone)
+						{
+							throw new IncorrectFormatException(Component);
+						}
+
 						white = ExecuteOrOperation(white, Castling.Queen);
 						break;
 

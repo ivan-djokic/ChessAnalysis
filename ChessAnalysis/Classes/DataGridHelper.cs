@@ -62,7 +62,7 @@ namespace ChessAnalysis.Classes
 
 			if (selection.Count < m_previousSelection.Count && e.Action != CollectionChangeAction.Remove && !m_isSelectAllClicked)
 			{
-				// Some items are lost - previous selection will be updated in SelectHiddenItems method
+				// Some items are lost - previous selection will be updated in UpdateHiddenSelection method
 				return;
 			}
 

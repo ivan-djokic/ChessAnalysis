@@ -18,6 +18,7 @@ namespace ChessAnalysis.Tests
 			ProcessInvalidInput("kqKQX");
 			ProcessInvalidInput("kqKQK");
 			ProcessInvalidInput("qk");
+			ProcessInvalidInput("qKQ");
 		}
 
 		[TestMethod]
@@ -25,7 +26,7 @@ namespace ChessAnalysis.Tests
 		{
 			ProcessValidInputs(ParseConsts.ARG_NULL, (Castling.None, Castling.None));
 			ProcessValidInputs("k", (Castling.King, Castling.None));
-			ProcessValidInputs("qKQ", (Castling.Queen, Castling.King | Castling.Queen));
+			ProcessValidInputs("KQq", (Castling.Queen, Castling.King | Castling.Queen));
 		}
 
 		private static void ProcessInvalidInput(string input)

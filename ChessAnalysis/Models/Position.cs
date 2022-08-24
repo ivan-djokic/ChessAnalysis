@@ -21,12 +21,12 @@ namespace ChessAnalysis.Models
 	public class Position
 	{
 		public Position(
+			char[][] board,
 			NextPlayer nextPlayer,
 			(Castling Black, Castling White) castling,
 			string enPassant,
 			int halfMoves,
 			int round,
-			char[][] board,
 			BestMove bestMove)
 		{
 			BestMove = bestMove;

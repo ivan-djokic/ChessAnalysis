@@ -23,6 +23,8 @@ namespace ChessAnalysis.Utils
 
 		public const char EMPTY_CHAR = '\0';
 
+		public const string FONT_NAME = "Segoe UI";
+
 		public const int HD = 1080;
 
 		public const string HTML_PAGE = @"<html>

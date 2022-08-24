@@ -87,7 +87,7 @@ namespace ChessAnalysis.Classes
 
 		private BestMove ParseRegularMove()
 		{
-			// input: [column] [row] = [piece] || {[<prevColumn>] || ([<piece>] [<prevColumn || prevRow>]) [<capture>] [column] [row]} [<check || mate>]
+			// input: [column] [row] = [piece] || {[<pawnColumn>] || ([<piece>] [<prevColumn || prevRow>]) [<capture>] [column] [row]} [<check || mate>]
 			ValidateArgumentsCount(2, 6);
 
 			var input = m_input;
@@ -97,27 +97,27 @@ namespace ChessAnalysis.Classes
 				m_input = m_input.RemoveLast();
 			}
 
-			// input: [column] [row] = [piece] || {[<prevColumn>] || ([<piece>] [<prevColumn || prevRow>]) [<capture>] [column] [row]}
+			// input: [column] [row] = [piece] || {[<pawnColumn>] || ([<piece>] [<prevColumn || prevRow>]) [<capture>] [column] [row]}
 			if (IsPromotion())
 			{
 				// input: [column] [row] = [piece]
 				return new BestMove(input, GetPiece(m_input[^1]), GetField(m_input[0], m_input[1]));
 			}
 
-			// input: [<prevColumn>] || ([<piece>] [<prevColumn || prevRow>]) [<capture>] [column] [row]
+			// input: [<pawnColumn>] || ([<piece>] [<prevColumn || prevRow>]) [<capture>] [column] [row]
 			ValidateArgumentsCount(2, 5, false);
 
 			// Pawn has not mark, so piece is pawn by default
 			var result = new BestMove(input, GetPiece(Constants.PIECE_PAWN, true), GetField(m_input[^2], m_input[^1]));
 			m_input = m_input.RemoveLast(2);
 
-			// input: [<prevColumn>] || ([<piece>] [<prevColumn || prevRow>]) [<capture>]
+			// input: [<pawnColumn>] || ([<piece>] [<prevColumn || prevRow>]) [<capture>]
 			if (string.IsNullOrEmpty(m_input))
 			{
 				return result;
 			}
 
-			// input: [prevColumn] || ([<piece>] [<prevColumn || prevRow>]) [<capture>]
+			// input: [pawnColumn] || ([<piece>] [<prevColumn || prevRow>]) [<capture>]
 			var capture = m_input.EndsWith(ParseConsts.BEST_MOVE_CAPTURE);
 
 			if (capture)
@@ -125,12 +125,12 @@ namespace ChessAnalysis.Classes
 				m_input = m_input.RemoveLast();
 			}
 
-			// input: [prevColumn] || ([<piece>] [<prevColumn || prevRow>])
+			// input: [pawnColumn] || ([<piece>] [<prevColumn || prevRow>])
 			ValidateArgumentsCount(1, 2, false);
 
 			if (m_input[0].IsBoardColumn())
 			{
-				// input: [prevColumn]
+				// input: [pawnColumn]
 				ValidateArgumentsCount(1, 1);
 
 				if (!capture)

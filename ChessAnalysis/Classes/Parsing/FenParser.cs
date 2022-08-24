@@ -50,6 +50,7 @@ namespace ChessAnalysis.Classes
 					throw new InvalidComponentsNumberException(Component);
 				}
 
+				// No matter is piece black (lower) or white (upper)
 				if (char.ToUpper(item).IsBoardPiece())
 				{
 					result[count++] = item;
@@ -57,6 +58,7 @@ namespace ChessAnalysis.Classes
 				}
 
 				// Skip empty fields
+				// If item is not a number, this will throw exception
 				count += item.AsNumber(Component);
 			}
 

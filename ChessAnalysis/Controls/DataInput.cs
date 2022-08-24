@@ -94,15 +94,18 @@ namespace ChessAnalysis.Controls
 			}
 		}
 
-		private (int Start, int Length) GetBadInputRange(string[] arguments, int index, string delimiter)
+		private static (int Start, int Length) GetBadInputRange(
+			string[] arguments, int index, string delimiter)
 		{
 			var start = 0;
 
 			for (var i = 0; i < index; i++)
 			{
+				// Skip previous characters
 				start += arguments[i].Length + delimiter.Length;
 			}
 
+			// Returns structure with Start and Length atributes
 			return (start, arguments[index].Length);
 		}
 
