@@ -27,7 +27,7 @@ namespace ChessAnalysis.Models
 			string enPassant,
 			int halfMoves,
 			int round,
-			BestMove bestMove)
+			string bestMove)
 		{
 			BestMove = bestMove;
 			Board = board;
@@ -39,7 +39,7 @@ namespace ChessAnalysis.Models
 			Round = round;
 		}
 
-		public BestMove BestMove { get; }
+		public string BestMove { get; }
 
 		public char[][] Board { get; }
 

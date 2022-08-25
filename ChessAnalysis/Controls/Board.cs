@@ -24,6 +24,7 @@ namespace ChessAnalysis.Controls
 
 			Options.BoardOptionsChanged += DrawImage;
 			Reinitialize(Parser.Parse(Constants.DEFAULT_INPUT));
+			lblNextPlayer.Text = string.Empty;
 		}
 
 		public bool ShowOnlyBoard
@@ -45,6 +46,7 @@ namespace ChessAnalysis.Controls
 			lblResult.Text = data.Comment.Result;
 			lblOpening.Text = data.Comment.Opening;
 			lblDefense.Text = data.Comment.Defense;
+			lblNextPlayer.Text = string.Format(Constants.NEXT_PLAYER, data.Position.NextPlayer);
 
 			m_data = data;
 			DrawImage();
@@ -66,6 +68,11 @@ namespace ChessAnalysis.Controls
 			}
 		}
 
+		private void btnCopy_Click(object sender, EventArgs e)
+		{
+			Clipboard.SetText(m_data.ToString());
+		}
+
 		private void btnFlip_Click(object sender, EventArgs e)
 		{
 			m_whiteOrientedBoard = !m_whiteOrientedBoard;
@@ -80,11 +87,12 @@ namespace ChessAnalysis.Controls
 			lciOpening.Visibility = m_controlsVisibility;
 			lciDefense.Visibility = m_controlsVisibility;
 			lciFlip.Visibility = m_controlsVisibility;
+			lciCopy.Visibility = m_controlsVisibility;
 		}
 
 		private void DrawImage()
 		{
-			imageBoard.Image = BoardImage.Create(m_data.Position, m_whiteOrientedBoard);
+			imageBoard.Image = BoardImage.Create(this, m_data.Position, m_whiteOrientedBoard);
 		}
 
 		private string SaveSnapshot(string fileName, int tryCount = 1)

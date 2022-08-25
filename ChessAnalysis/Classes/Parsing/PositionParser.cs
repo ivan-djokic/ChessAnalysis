@@ -42,16 +42,17 @@ namespace ChessAnalysis.Classes
 
 		protected override Position Parse()
 		{
+			var fen = FenParser.Parse(Arguments[ParseConsts.POSITION_FEN_INDEX]);
 			var nextPlayer = NextPlayerParser.Parse(Arguments[ParseConsts.POSITION_NEXT_PLAYER_INDEX]);
 
 			return new Position(
-				FenParser.Parse(Arguments[ParseConsts.POSITION_FEN_INDEX]),
+				fen,
 				nextPlayer,
 				CastlingParser.Parse(Arguments[ParseConsts.POSITION_CASTLING_INDEX]),
 				EnPassantParser.Parse(Arguments[ParseConsts.POSITION_EN_PASSANT_INDEX], nextPlayer == NextPlayer.Black),
 				Arguments[ParseConsts.POSITION_HALF_MOVES_INDEX].AsNumber(Components.HalfMoves),
 				Arguments[ParseConsts.POSITION_ROUND_INDEX].AsNumber(Components.Round),
-				BestMoveParser.Parse(Arguments[ParseConsts.POSITION_BEST_MOVE_INDEX], nextPlayer == NextPlayer.Black));
+				Arguments[ParseConsts.POSITION_BEST_MOVE_INDEX]);
 		}
 	}
 }

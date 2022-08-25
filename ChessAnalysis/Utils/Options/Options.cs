@@ -40,6 +40,8 @@ namespace ChessAnalysis.Utils
 
 		public string SenderPassword { get; set; }
 
+		public bool ShortComment { get; set; }
+
 		public bool ShowCoordinates { get; set; }
 
 		public string SmtpClient { get; set; }
@@ -75,6 +77,7 @@ namespace ChessAnalysis.Utils
 			PlaySound = true;
 			SenderMail = "chess.analysis.bot@gmail.com";
 			SenderPassword = "ihlwdcigekjkqonl";
+			ShortComment = false;
 			ShowCoordinates = true;
 			SmtpClient = "smtp.gmail.com";
 			SnapshotDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Constants.APP_NAME, Constants.SNAPSHOTS_DIR);
@@ -99,6 +102,7 @@ namespace ChessAnalysis.Utils
 			options.SenderMail = SenderMail;
 			options.SenderPassword = Crypto.Decrypt(SenderPassword);
 			options.ShowCoordinates = ShowCoordinates;
+			options.ShortComment = ShortComment;
 			options.SmtpClient = SmtpClient;
 			options.SnapshotDirectory = SnapshotDirectory;
 			options.Theme = Theme;

@@ -114,6 +114,12 @@ namespace ChessAnalysis.Utils
 			set => Options.Instance.SenderPassword = value;
 		}
 
+		public bool ShortComment
+		{
+			get => Options.Instance.ShortComment;
+			set => Options.Instance.ShortComment = value;
+		}
+
 		public bool ShowCoordinates
 		{
 			get => Options.Instance.ShowCoordinates;
@@ -169,6 +175,7 @@ namespace ChessAnalysis.Utils
 			RaisePropertiesChanged(() => PieceClassic, () => PieceNeo, () => PieceWood);
 			RaisePropertyChanged(() => PlaySound);
 			RaisePropertiesChanged(() => SenderMail, () => SenderPassword);
+			RaisePropertyChanged(() => ShortComment);
 			RaisePropertyChanged(() => ShowCoordinates);
 			RaisePropertyChanged(() => SmtpClient);
 			RaisePropertyChanged(() => SnapshotDirectory);

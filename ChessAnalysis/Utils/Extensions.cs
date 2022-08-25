@@ -54,15 +54,24 @@ namespace ChessAnalysis.Utils
 			return ((char)input).ToString();
 		}
 
-		public static bool Contains(this char[][] input, BestMove value)
+		public static Color Blend(this Color color, Color backColor)
 		{
-			if (value.Field.X < 0 || value.Field.Y < 0)
-			{
-				return false;
-			}
+			byte r = (byte)(color.R * 0.5 + backColor.R * 0.5);
+			byte g = (byte)(color.G * 0.5 + backColor.G * 0.5);
+			byte b = (byte)(color.B * 0.5 + backColor.B * 0.5);
 
-			return input[value.Field.Y][value.Field.X] == value.Piece;
+			return Color.FromArgb(224, r, g, b);
 		}
+
+		//public static bool Contains(this char[][] input, BestMove value)
+		//{
+		//	if (value.EndPoint.X < 0 || value.EndPoint.Y < 0)
+		//	{
+		//		return false;
+		//	}
+
+		//	return input[value.EndPoint.Y][value.EndPoint.X] == value.Piece;
+		//}
 
 		public static bool IsBoardColumn(this char input)
 		{

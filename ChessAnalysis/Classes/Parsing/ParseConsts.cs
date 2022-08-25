@@ -8,6 +8,8 @@ namespace ChessAnalysis.Classes
 	{
 		public const string ALLOWED_BEST_MOVE_PROMOTION_ROWS = "18";
 		public const string ALLOWED_EN_PASSANT_ROWS = "63";
+		public const int ALLOWED_PAWN_TWO_FIELDS_JUMP_BLACK = 3;
+		public const int ALLOWED_PAWN_TWO_FIELDS_JUMP_WHITE = 4;
 
 		public const string ARG_COMMENT = "c0 ";
 		public const string ARG_ID = "id ";
@@ -15,12 +17,14 @@ namespace ChessAnalysis.Classes
 
 		public const int ARGS_COUNT_CASTLING = 1;
 		public const int ARGS_COUNT_COMMENT = 5;
+		public const int ARGS_COUNT_COMMENT_SHORT = 2;
 		public const int ARGS_COUNT_DATA = 3;
 		public const int ARGS_COUNT_EN_PASSANT = 2;
 		public const int ARGS_COUNT_ID = 2;
 		public const int ARGS_COUNT_NEXT_PLAYER = 1;
 		public const int ARGS_COUNT_POSITION = 8;
 
+		public const string ARGS_DELIMITER_COMA = ", ";
 		public const string ARGS_DELIMITER_QUOTES = " \"";
 		public const string ARGS_DELIMITER_SEMICOLON = "; ";
 		public const string ARGS_DELIMITER_SLASH = "/";
@@ -30,6 +34,8 @@ namespace ChessAnalysis.Classes
 		public const string BEST_MOVE_CHECK_OR_MATE = "+#";
 		public const char BEST_MOVE_PROMOTION = '=';
 
+		public const int CASTLING_COLUMN_KING = 6;
+		public const int CASTLING_COLUMN_QUEEN = 2;
 		public const string CASTLING_KING = "O-O";
 		public const string CASTLING_QUEEN = "O-O-O";
 
@@ -43,6 +49,8 @@ namespace ChessAnalysis.Classes
 		public const int DATA_POSITION_INDEX = 0;
 
 		public const int ID_INDEX = 1;
+
+		public const int KING_START_COLUMN = 4;
 
 		public const int POSITION_BEST_MOVE_INDEX = 7;
 		public const int POSITION_CASTLING_INDEX = 2;

@@ -17,6 +17,7 @@ namespace ChessAnalysis.Controls
 
 		private void BindComponents()
 		{
+			Options.Instance.Bind(chxShortInput, model => model.ShortComment);
 			Options.Instance.Bind(txtSnapshotDirectory, model => model.SnapshotDirectory);
 			Options.Instance.Bind(rbDark, model => model.ThemeDark);
 			Options.Instance.Bind(rbLight, model => model.ThemeLight);

@@ -44,10 +44,18 @@ namespace ChessAnalysis.Utils
 		public const string HTML_TABLE_HEADER_CELL = "<th>{0}</th>";
 		public const string HTML_TABLE_ROW = "<tr>{0}</tr>";
 
+		public const int LINE_WIDTH = 50;
+
+		public const string NEXT_PLAYER = "Next player: {0}";
+
 		public const string OPTIONS_FILE_NAME = "Options.xml";
 
+		public const char PIECE_BISHOP = 'B';
 		public const char PIECE_KING = 'K';
+		public const char PIECE_KNIGHT = 'N';
 		public const char PIECE_PAWN = 'P';
+		public const char PIECE_QUEEN = 'Q';
+		public const char PIECE_ROOK = 'R';
 		public const string PIECES = "BKNPQR";
 
 		public const string PLAYER_BLACK = "b";

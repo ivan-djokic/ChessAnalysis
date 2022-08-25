@@ -65,7 +65,7 @@
             // splitContainerControl.Panel1
             // 
             this.splitContainerControl.Panel1.Controls.Add(this.board);
-            this.splitContainerControl.Panel1.MinSize = 200;
+            this.splitContainerControl.Panel1.MinSize = 280;
             this.splitContainerControl.Panel1.Text = "pBoard";
             // 
             // splitContainerControl.Panel2

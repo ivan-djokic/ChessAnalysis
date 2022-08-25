@@ -3,7 +3,6 @@
 // -----------------------------------------------
 
 using ChessAnalysis.Models;
-using ChessAnalysis.Properties;
 using ChessAnalysis.Utils;
 
 namespace ChessAnalysis.Classes
@@ -14,19 +13,22 @@ namespace ChessAnalysis.Classes
 		private readonly SolidBrush m_brushFill = new(Options.Instance.FieldFillColor.Normalize());
 		private readonly int m_fieldSize;
 		private Graphics m_graphics;
+		private readonly IWin32Window m_owner;
 		private readonly bool m_whiteOrientedBoard;
 
-		private BoardImage(bool whiteOrientedBoard)
+		private BoardImage(IWin32Window owner, bool whiteOrientedBoard)
 		{
 			using var piece = ResourceHelper.GetPiece();
 			m_fieldSize = piece.Size.Width;
+
+			m_owner = owner;
 			m_whiteOrientedBoard = whiteOrientedBoard;
 		}
 
-		public static Image Create(Position position, bool whiteOrientedBoard)
+		public static Image Create(IWin32Window owner, Position position, bool whiteOrientedBoard)
 		{
-			using var boardImage = new BoardImage(whiteOrientedBoard);
-			return boardImage.Create(position.Board, position.BestMove);
+			using var boardImage = new BoardImage(owner, whiteOrientedBoard);
+			return boardImage.Create(position);
 		}
 
 		public void Dispose()
@@ -36,33 +38,61 @@ namespace ChessAnalysis.Classes
 			m_graphics.Dispose();
 		}
 
-		private Image Create(char[][] board, BestMove bestMove)
+		private static float CalculatePoint(float start, float end, double angle, double length)
+		{
+			var offset = (float)(angle * length);
+
+			if (start > end)
+			{
+				return start - offset;
+			}
+
+			return start + offset;
+		}
+
+		private Image Create(Position position)
 		{
 			var result = new Bitmap(Constants.BOARD_SIZE * m_fieldSize, Constants.BOARD_SIZE * m_fieldSize);
 			m_graphics = Graphics.FromImage(result);
 
 			DrawFields();
 			DrawCoordinates();
-			DrawPieces(board);
-			DrawBestMove(board, bestMove);
+			DrawPieces(position.Board);
+			DrawBestMove(position);
 
 			return result;
 		}
 
-		private void DrawBestMove(char[][] board, BestMove bestMove)
+		private void DrawArrow(Point start, Point end)
 		{
-			if (!Options.Instance.MarkIfBestMoveIsPlayed || !board.Contains(bestMove))
+			var color = m_brushEmpty.Color.Blend(m_brushFill.Color);
+			var pen = new Pen(color, Constants.LINE_WIDTH);
+
+			// Draw the line
+			m_graphics.DrawLine(pen, start, end);
+
+			// Draw the triangle
+			var arrowPoints = GetArrowPoints(start, end);
+			m_graphics.DrawPolygon(pen, arrowPoints);
+			m_graphics.FillPolygon(new SolidBrush(color), arrowPoints);
+		}
+
+		private void DrawBestMove(Position position)
+		{
+			if (!Options.Instance.MarkIfBestMoveIsPlayed)
 			{
 				return;
 			}
 
-			// Draw in top right corner of the field
-			var size = m_fieldSize / Constants.SCALE_FACTOR_BEST_MOVE_IMAGE;
-			var x = GetPieceCoordinate(bestMove.Field.X) * m_fieldSize + m_fieldSize - size;
-			var y = GetPieceCoordinate(bestMove.Field.Y) * m_fieldSize;
-
-			using var image = Resources.Star;
-			m_graphics.DrawImage(image, new Rectangle(x, y, size, size));
+			try
+			{
+				var (Start, End) = BestMovePointsParser.Parse(position.BestMove, position.Board, position.NextPlayer == NextPlayer.White);
+				DrawArrow(FormatPoint(Start), FormatPoint(End));
+			}
+			catch (ExeptionBase ex)
+			{
+				Messanger.ShowError(m_owner, ex.Message);
+			}
 		}
 
 		private void DrawCoordinates()
@@ -113,6 +143,34 @@ namespace ChessAnalysis.Classes
 			}
 		}
 
+		private static PointF[] GetArrowPoints(PointF start, PointF end)
+		{
+			var length = Math.Sqrt(Math.Pow(Math.Abs(start.X - end.X), 2) + Math.Pow(Math.Abs(start.Y - end.Y), 2));
+
+			var angleA = Math.Atan2(Math.Abs(start.Y - end.Y), Math.Abs(start.X - end.X));
+			var angleB = Math.Atan2(Constants.LINE_WIDTH, length - Constants.LINE_WIDTH);
+			var angleC = Math.PI / 2 - angleA - angleB;
+
+			var secondaryLength = Constants.LINE_WIDTH / Math.Sin(angleB);
+
+			// Get x and y of the left point
+			var pointX = CalculatePoint(start.X, end.X, Math.Sin(angleC), secondaryLength);
+			var pointY = CalculatePoint(start.Y, end.Y, Math.Cos(angleC), secondaryLength);
+			var leftPoint = new PointF(pointX, pointY);
+
+			// Move to the right point
+			pointX = CalculatePoint(start.X, end.X, Math.Cos(angleA - angleB), secondaryLength);
+			pointY = CalculatePoint(start.Y, end.Y, Math.Sin(angleA - angleB), secondaryLength);
+			var rightPoint = new PointF(pointX, pointY);
+
+			return new[]
+			{
+				end,
+				leftPoint,
+				rightPoint
+			};
+		}
+
 		private SolidBrush GetBrush(int input, bool invert = false)
 		{
 			if (!invert)
@@ -151,6 +209,12 @@ namespace ChessAnalysis.Classes
 			}
 
 			return (input + 1).ToString();
+		}
+
+		private Point FormatPoint(Point input)
+		{
+			var halfField = m_fieldSize / 2;
+			return new Point(GetPieceCoordinate(input.X) * m_fieldSize + halfField, GetPieceCoordinate(input.Y) * m_fieldSize + halfField);
 		}
 	}
 }

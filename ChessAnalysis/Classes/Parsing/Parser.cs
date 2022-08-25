@@ -3,6 +3,7 @@
 // -----------------------------------------------
 
 using ChessAnalysis.Models;
+using ChessAnalysis.Utils;
 
 namespace ChessAnalysis.Classes
 {
@@ -41,10 +42,26 @@ namespace ChessAnalysis.Classes
 
 		protected override Data Parse()
 		{
+			Comment? comment = null;
+
+			try
+			{
+				comment = CommentParser.Parse(Arguments[ParseConsts.DATA_COMMENT_INDEX]);
+			}
+			catch
+			{
+				if (!Options.Instance.ShortComment)
+				{
+					throw;
+				}
+				
+				comment = ShortCommentParser.Parse(Arguments[ParseConsts.DATA_COMMENT_INDEX]);
+			}
+
 			return new Data(m_input,
 				PositionParser.Parse(Arguments[ParseConsts.DATA_POSITION_INDEX]),
 				IdParser.Parse(Arguments[ParseConsts.DATA_ID_INDEX]),
-				CommentParser.Parse(Arguments[ParseConsts.DATA_COMMENT_INDEX]));
+				comment);
 		}
 	}
 }

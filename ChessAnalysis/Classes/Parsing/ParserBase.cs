@@ -52,6 +52,11 @@ namespace ChessAnalysis.Classes
 				throw new IncorrectFormatException(Component);
 			}
 
+			if (m_input.EndsWith(ParseConsts.ARGS_DELIMITER_SEMICOLON.Trim()))
+			{
+				m_input = m_input.RemoveLast();
+			}
+
 			var arguments = m_input.Split(Delimiter);
 
 			if (arguments.Length != ArgumentsCount)

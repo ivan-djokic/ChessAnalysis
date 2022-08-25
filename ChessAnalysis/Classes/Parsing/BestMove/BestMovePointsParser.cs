@@ -2,19 +2,18 @@
 // © 2022 [ELFAK] Ivan Djokic. ALL RIGHTS RESERVED
 // -----------------------------------------------
 
-using ChessAnalysis.Models;
 using ChessAnalysis.Utils;
 
 namespace ChessAnalysis.Classes
 {
-	public class BestMoveParser : ParserBase<BestMove>
+	public class BestMovePointsParser : ParserBase<(Point Start, Point End)>
 	{
-		private readonly bool m_isWhitePlayed;
+		private readonly BestMovePointsHelper m_helper;
 
-		private BestMoveParser(string input, bool isWhitePlayed)
+		private BestMovePointsParser(string input, char[][] fen, bool isNextPlayerWhite)
 			: base(input)
 		{
-			m_isWhitePlayed = isWhitePlayed;
+			m_helper = new BestMovePointsHelper(fen, isNextPlayerWhite);
 		}
 
 		protected override Components Component
@@ -22,39 +21,19 @@ namespace ChessAnalysis.Classes
 			get => Components.BestMove;
 		}
 
-		public static BestMove Parse(string input, bool isWhitePlayed)
+		public static (Point Start, Point End) Parse(string input, char[][] fen, bool isNextPlayerWhite)
 		{
-			return new BestMoveParser(input, isWhitePlayed).Parse();
+			return new BestMovePointsParser(input, fen, isNextPlayerWhite).Parse();
 		}
 
-		protected override BestMove Parse()
+		protected override (Point Start, Point End) Parse()
 		{
 			if (m_input == ParseConsts.ARG_NULL)
 			{
-				return new BestMove(string.Empty, Constants.EMPTY_CHAR, new Point(-1, -1));
+				return (new Point(-1, -1), new Point(-1, -1));
 			}
 
 			return ParseCastlingMove() ?? ParseRegularMove();
-		}
-
-		private BestMove CreateCastlingMove(int column)
-		{
-			return new BestMove(m_input, GetPiece(Constants.PIECE_KING), new Point(column, m_isWhitePlayed ? Constants.BOARD_SIZE - 1 : 0));
-		}
-
-		private Point GetField(char column, char row)
-		{
-			return new Point(column.AsBoardColumn(Component), row.AsNumber(Component).AsBoardRow());
-		}
-
-		private char GetPiece(char input, bool allowPawn = false)
-		{
-			if (!input.IsBoardPiece() || !allowPawn && input == Constants.PIECE_PAWN)
-			{
-				throw new UnallowedCharactersException(Component);
-			}
-
-			return m_isWhitePlayed ? input : char.ToLower(input);
 		}
 
 		private bool IsPromotion()
@@ -66,7 +45,7 @@ namespace ChessAnalysis.Classes
 
 			ValidateArgumentsCount(4, 4);
 
-			if (m_input[1] != ParseConsts.ALLOWED_BEST_MOVE_PROMOTION_ROWS[Convert.ToInt32(m_isWhitePlayed)]
+			if (m_input[1] != ParseConsts.ALLOWED_BEST_MOVE_PROMOTION_ROWS[Convert.ToInt32(m_helper.IsNextPlayerWhite)]
 				|| m_input[^1] == Constants.PIECE_PAWN || m_input[^1] == Constants.PIECE_KING)
 			{
 				throw new UnallowedCharactersException(Component);
@@ -75,22 +54,20 @@ namespace ChessAnalysis.Classes
 			return true;
 		}
 
-		private BestMove? ParseCastlingMove()
+		private (Point Start, Point End)? ParseCastlingMove()
 		{
 			return m_input switch
 			{
-				ParseConsts.CASTLING_KING => CreateCastlingMove(6),
-				ParseConsts.CASTLING_QUEEN => CreateCastlingMove(2),
+				ParseConsts.CASTLING_KING => m_helper.GetCastlingPoints(true),
+				ParseConsts.CASTLING_QUEEN => m_helper.GetCastlingPoints(false),
 				_ => null
 			};
 		}
 
-		private BestMove ParseRegularMove()
+		private (Point Start, Point End) ParseRegularMove()
 		{
 			// input: [column] [row] = [piece] || {[<pawnColumn>] || ([<piece>] [<prevColumn || prevRow>]) [<capture>] [column] [row]} [<check || mate>]
 			ValidateArgumentsCount(2, 6);
-
-			var input = m_input;
 
 			if (ParseConsts.BEST_MOVE_CHECK_OR_MATE.Contains(m_input[^1]))
 			{
@@ -101,20 +78,29 @@ namespace ChessAnalysis.Classes
 			if (IsPromotion())
 			{
 				// input: [column] [row] = [piece]
-				return new BestMove(input, GetPiece(m_input[^1]), GetField(m_input[0], m_input[1]));
+				return m_helper.GetPoints(Constants.PIECE_PAWN, m_input[1], m_input[0]);
 			}
 
 			// input: [<pawnColumn>] || ([<piece>] [<prevColumn || prevRow>]) [<capture>] [column] [row]
 			ValidateArgumentsCount(2, 5, false);
 
-			// Pawn has not mark, so piece is pawn by default
-			var result = new BestMove(input, GetPiece(Constants.PIECE_PAWN, true), GetField(m_input[^2], m_input[^1]));
+			var row = m_input[^1];
+			var column = m_input[^2];
+
+			var endPointPiece = m_helper.GetEndPointPiece(column, row);
+
 			m_input = m_input.RemoveLast(2);
 
-			// input: [<pawnColumn>] || ([<piece>] [<prevColumn || prevRow>]) [<capture>]
 			if (string.IsNullOrEmpty(m_input))
 			{
-				return result;
+				if (endPointPiece != Constants.EMPTY_CHAR)
+				{
+					// Pawn regular move can be made only on empty field
+					throw new IncorrectFormatException(Component);
+				}
+
+				// Pawn has not mark, so piece is pawn by default
+				return m_helper.GetPoints(Constants.PIECE_PAWN, row, column);
 			}
 
 			// input: [pawnColumn] || ([<piece>] [<prevColumn || prevRow>]) [<capture>]
@@ -122,7 +108,12 @@ namespace ChessAnalysis.Classes
 
 			if (capture)
 			{
+				ValidateCapture(endPointPiece);
 				m_input = m_input.RemoveLast();
+			}
+			else if (endPointPiece != Constants.EMPTY_CHAR)
+			{
+				throw new IncorrectFormatException(Component);
 			}
 
 			// input: [pawnColumn] || ([<piece>] [<prevColumn || prevRow>])
@@ -133,25 +124,29 @@ namespace ChessAnalysis.Classes
 				// input: [pawnColumn]
 				ValidateArgumentsCount(1, 1);
 
-				if (!capture)
+				// Check is pawn captures on neighbour column
+				if (!capture || Math.Abs(m_input[0] - column) != 1)
 				{
 					throw new UnallowedCharactersException(Component);
 				}
 
-				return result;
+				return m_helper.GetPoints(Constants.PIECE_PAWN, row, column, m_input[0]);
 			}
 
 			// input: [piece] [<prevColumn || prevRow>]
-			result.Piece = GetPiece(m_input[0]);
-			m_input = m_input[1..];
-
-			// input: [<prevColumn || prevRow>]
-			if (!string.IsNullOrEmpty(m_input) && !m_input[0].IsBoardColumn() && !m_input[0].IsBoardRow())
+			if (!m_input[0].IsBoardPiece() || m_input[0] == Constants.PIECE_PAWN)
 			{
 				throw new UnallowedCharactersException(Component);
 			}
 
-			return result;
+			if (m_input.Length > 1)
+			{
+				// input: [piece] [prevColumn || prevRow]
+				return m_helper.GetPoints(m_input[0], row, column, m_input[1]);
+			}
+
+			// input: [piece] 
+			return m_helper.GetPoints(m_input[0], row, column);
 		}
 
 		private void ValidateArgumentsCount(int minCount, int maxCount, bool countException = true)
@@ -159,6 +154,17 @@ namespace ChessAnalysis.Classes
 			if (m_input.Length < minCount || m_input.Length > maxCount)
 			{
 				throw countException ? new InvalidComponentsNumberException(Component) : new UnallowedCharactersException(Component);
+			}
+		}
+
+		private void ValidateCapture(char piece)
+		{
+			if (piece == Constants.EMPTY_CHAR
+				|| m_helper.IsNextPlayerWhite && char.IsUpper(piece) 
+				|| !m_helper.IsNextPlayerWhite && char.IsLower(piece))
+			{
+				// Cannot capture empty field or same color piece
+				throw new IncorrectFormatException(Component);
 			}
 		}
 	}
