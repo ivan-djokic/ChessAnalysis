@@ -56,6 +56,11 @@ namespace ChessAnalysis.Classes
 
 			foreach (var arg in Arguments.Last().Split(ParseConsts.ARGS_DELIMITER_COMA))
 			{
+				if (i > arguments.Length - 1)
+				{
+					break;
+				}	
+
 				arguments[i++] = arg;
 			}
 
