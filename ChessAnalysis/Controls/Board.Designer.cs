@@ -31,8 +31,6 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Board));
 			DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
 			DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-			DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-			DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
 			this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
 			this.lblPlayers = new DevExpress.XtraEditors.LabelControl();
 			this.lblResult = new DevExpress.XtraEditors.LabelControl();
@@ -41,7 +39,6 @@
 			this.lblNextPlayer = new DevExpress.XtraEditors.LabelControl();
 			this.btnFlip = new DevExpress.XtraEditors.SimpleButton();
 			this.imageBoard = new ChessAnalysis.Controls.CenteredImageBox();
-			this.btnCopy = new DevExpress.XtraEditors.SimpleButton();
 			this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
 			this.lciPlayers = new DevExpress.XtraLayout.LayoutControlItem();
 			this.lciResult = new DevExpress.XtraLayout.LayoutControlItem();
@@ -50,7 +47,6 @@
 			this.lciNextPlayer = new DevExpress.XtraLayout.LayoutControlItem();
 			this.lciFlip = new DevExpress.XtraLayout.LayoutControlItem();
 			this.lciImage = new DevExpress.XtraLayout.LayoutControlItem();
-			this.lciCopy = new DevExpress.XtraLayout.LayoutControlItem();
 			((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
 			this.layoutControl.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
@@ -61,7 +57,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.lciNextPlayer)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.lciFlip)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.lciImage)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.lciCopy)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// layoutControl
@@ -73,7 +68,6 @@
 			this.layoutControl.Controls.Add(this.lblNextPlayer);
 			this.layoutControl.Controls.Add(this.btnFlip);
 			this.layoutControl.Controls.Add(this.imageBoard);
-			this.layoutControl.Controls.Add(this.btnCopy);
 			this.layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.layoutControl.Location = new System.Drawing.Point(0, 0);
 			this.layoutControl.Name = "layoutControl";
@@ -128,12 +122,13 @@
 			// 
 			// lblNextPlayer
 			// 
+			this.lblNextPlayer.AllowHtmlString = true;
 			this.lblNextPlayer.Location = new System.Drawing.Point(12, 78);
 			this.lblNextPlayer.Name = "lblNextPlayer";
 			this.lblNextPlayer.Size = new System.Drawing.Size(198, 22);
 			this.lblNextPlayer.StyleController = this.layoutControl;
 			this.lblNextPlayer.TabIndex = 8;
-			this.lblNextPlayer.Text = "Next player: White";
+			this.lblNextPlayer.Text = "Next player: <b>White</b>";
 			// 
 			// btnFlip
 			// 
@@ -147,9 +142,9 @@
 			this.btnFlip.Name = "btnFlip";
 			this.btnFlip.Size = new System.Drawing.Size(24, 24);
 			this.btnFlip.StyleController = this.layoutControl;
-			toolTipItem2.Text = "Flip board";
-			superToolTip2.Items.Add(toolTipItem2);
-			this.btnFlip.SuperTip = superToolTip2;
+			toolTipItem1.Text = "Flip board";
+			superToolTip1.Items.Add(toolTipItem1);
+			this.btnFlip.SuperTip = superToolTip1;
 			this.btnFlip.TabIndex = 5;
 			this.btnFlip.Click += new System.EventHandler(this.btnFlip_Click);
 			// 
@@ -158,29 +153,8 @@
 			this.imageBoard.Image = null;
 			this.imageBoard.Location = new System.Drawing.Point(12, 104);
 			this.imageBoard.Name = "imageBoard";
-			this.imageBoard.Size = new System.Drawing.Size(403, 327);
+			this.imageBoard.Size = new System.Drawing.Size(403, 403);
 			this.imageBoard.TabIndex = 6;
-			// 
-			// btnCopy
-			// 
-			this.btnCopy.AllowFocus = false;
-			this.btnCopy.Appearance.Options.UseTextOptions = true;
-			this.btnCopy.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-			this.btnCopy.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter;
-			this.btnCopy.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
-			this.btnCopy.ImageOptions.SvgImageSize = new System.Drawing.Size(24, 24);
-			this.btnCopy.Location = new System.Drawing.Point(12, 435);
-			this.btnCopy.MaximumSize = new System.Drawing.Size(67, 72);
-			this.btnCopy.MinimumSize = new System.Drawing.Size(67, 72);
-			this.btnCopy.Name = "btnCopy";
-			this.btnCopy.Size = new System.Drawing.Size(67, 72);
-			this.btnCopy.StyleController = this.layoutControl;
-			toolTipItem1.Text = "Copy FEN to clipboard";
-			superToolTip1.Items.Add(toolTipItem1);
-			this.btnCopy.SuperTip = superToolTip1;
-			this.btnCopy.TabIndex = 7;
-			this.btnCopy.Text = "Copy FEN to clipboard";
-			this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
 			// 
 			// Root
 			// 
@@ -191,10 +165,9 @@
             this.lciResult,
             this.lciOpening,
             this.lciDefense,
-			this.lciNextPlayer,
-			this.lciFlip,
-            this.lciImage,
-            this.lciCopy});
+            this.lciNextPlayer,
+            this.lciFlip,
+            this.lciImage});
 			this.Root.Name = "Root";
 			this.Root.Size = new System.Drawing.Size(427, 519);
 			this.Root.TextVisible = false;
@@ -276,18 +249,9 @@
 			this.lciImage.Control = this.imageBoard;
 			this.lciImage.Location = new System.Drawing.Point(0, 92);
 			this.lciImage.Name = "lciImage";
-			this.lciImage.Size = new System.Drawing.Size(407, 331);
+			this.lciImage.Size = new System.Drawing.Size(407, 407);
 			this.lciImage.TextSize = new System.Drawing.Size(0, 0);
 			this.lciImage.TextVisible = false;
-			// 
-			// lciCopy
-			// 
-			this.lciCopy.Control = this.btnCopy;
-			this.lciCopy.Location = new System.Drawing.Point(0, 423);
-			this.lciCopy.Name = "lciCopy";
-			this.lciCopy.Size = new System.Drawing.Size(407, 76);
-			this.lciCopy.TextSize = new System.Drawing.Size(0, 0);
-			this.lciCopy.TextVisible = false;
 			// 
 			// Board
 			// 
@@ -306,7 +270,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.lciNextPlayer)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.lciFlip)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.lciImage)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.lciCopy)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -320,7 +283,6 @@
         private DevExpress.XtraEditors.LabelControl lblDefense;
 		private DevExpress.XtraEditors.LabelControl lblNextPlayer;
 		private DevExpress.XtraEditors.SimpleButton btnFlip;
-		private DevExpress.XtraEditors.SimpleButton btnCopy;
 		private CenteredImageBox imageBoard;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem lciPlayers;
@@ -330,7 +292,6 @@
 		private DevExpress.XtraLayout.LayoutControlItem lciNextPlayer;
 		private DevExpress.XtraLayout.LayoutControlItem lciFlip;
         private DevExpress.XtraLayout.LayoutControlItem lciImage;
-		private DevExpress.XtraLayout.LayoutControlItem lciCopy;
 		
 	}
 }

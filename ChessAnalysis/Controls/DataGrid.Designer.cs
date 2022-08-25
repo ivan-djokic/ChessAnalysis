@@ -28,17 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataGrid));
-			DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-			DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
 			DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
 			DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
 			DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
 			DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+			DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+			DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataGrid));
+			DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+			DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
 			this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
 			this.btnRestore = new DevExpress.XtraEditors.SimpleButton();
 			this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
 			this.btnRemove = new DevExpress.XtraEditors.SimpleButton();
+			this.btnCopy = new DevExpress.XtraEditors.SimpleButton();
 			this.gridControl = new DevExpress.XtraGrid.GridControl();
 			this.gridView = new ChessAnalysis.Controls.MultiSelectGridView();
 			this.colPlayers = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -56,6 +59,7 @@
 			this.lciRestore = new DevExpress.XtraLayout.LayoutControlItem();
 			this.lciEdit = new DevExpress.XtraLayout.LayoutControlItem();
 			this.lciRemove = new DevExpress.XtraLayout.LayoutControlItem();
+			this.lciCopy = new DevExpress.XtraLayout.LayoutControlItem();
 			this.lciGrid = new DevExpress.XtraLayout.LayoutControlItem();
 			((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
 			this.layoutControl.SuspendLayout();
@@ -65,6 +69,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.lciRestore)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.lciEdit)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.lciRemove)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.lciCopy)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.lciGrid)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -73,6 +78,7 @@
 			this.layoutControl.Controls.Add(this.btnRestore);
 			this.layoutControl.Controls.Add(this.btnEdit);
 			this.layoutControl.Controls.Add(this.btnRemove);
+			this.layoutControl.Controls.Add(this.btnCopy);
 			this.layoutControl.Controls.Add(this.gridControl);
 			this.layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.layoutControl.Location = new System.Drawing.Point(0, 0);
@@ -96,9 +102,9 @@
 			this.btnRestore.Name = "btnRestore";
 			this.btnRestore.Size = new System.Drawing.Size(67, 72);
 			this.btnRestore.StyleController = this.layoutControl;
-			toolTipItem1.Text = "Reload grid";
-			superToolTip1.Items.Add(toolTipItem1);
-			this.btnRestore.SuperTip = superToolTip1;
+			toolTipItem2.Text = "Reload grid";
+			superToolTip2.Items.Add(toolTipItem2);
+			this.btnRestore.SuperTip = superToolTip2;
 			this.btnRestore.TabIndex = 1;
 			this.btnRestore.Text = "Reload grid";
 			this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
@@ -117,9 +123,9 @@
 			this.btnEdit.Name = "btnEdit";
 			this.btnEdit.Size = new System.Drawing.Size(67, 72);
 			this.btnEdit.StyleController = this.layoutControl;
-			toolTipItem2.Text = "Edit focused item";
-			superToolTip2.Items.Add(toolTipItem2);
-			this.btnEdit.SuperTip = superToolTip2;
+			toolTipItem3.Text = "Edit focused item";
+			superToolTip3.Items.Add(toolTipItem3);
+			this.btnEdit.SuperTip = superToolTip3;
 			this.btnEdit.TabIndex = 2;
 			this.btnEdit.Text = "Edit focused item";
 			this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -138,12 +144,33 @@
 			this.btnRemove.Name = "btnRemove";
 			this.btnRemove.Size = new System.Drawing.Size(67, 72);
 			this.btnRemove.StyleController = this.layoutControl;
-			toolTipItem3.Text = "Remove selection";
-			superToolTip3.Items.Add(toolTipItem3);
-			this.btnRemove.SuperTip = superToolTip3;
+			toolTipItem4.Text = "Remove selection";
+			superToolTip4.Items.Add(toolTipItem4);
+			this.btnRemove.SuperTip = superToolTip4;
 			this.btnRemove.TabIndex = 3;
 			this.btnRemove.Text = "Remove selection";
 			this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+			// 
+			// btnCopy
+			// 
+			this.btnCopy.AllowFocus = false;
+			this.btnCopy.Appearance.Options.UseTextOptions = true;
+			this.btnCopy.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+			this.btnCopy.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter;
+			this.btnCopy.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCopy.ImageOptions.SvgImage")));
+			this.btnCopy.ImageOptions.SvgImageSize = new System.Drawing.Size(24, 24);
+			this.btnCopy.Location = new System.Drawing.Point(293, 12);
+			this.btnCopy.MaximumSize = new System.Drawing.Size(67, 72);
+			this.btnCopy.MinimumSize = new System.Drawing.Size(67, 72);
+			this.btnCopy.Name = "btnCopy";
+			this.btnCopy.Size = new System.Drawing.Size(67, 72);
+			this.btnCopy.StyleController = this.layoutControl;
+			toolTipItem1.Text = "Copy FEN to clipboard";
+			superToolTip1.Items.Add(toolTipItem1);
+			this.btnCopy.SuperTip = superToolTip1;
+			this.btnCopy.TabIndex = 8;
+			this.btnCopy.Text = "Copy FEN to clipboard";
+			this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
 			// 
 			// gridControl
 			// 
@@ -309,6 +336,7 @@
             this.lciRestore,
             this.lciEdit,
             this.lciRemove,
+			this.lciCopy,
             this.lciGrid});
 			this.Root.Name = "Root";
 			this.Root.Size = new System.Drawing.Size(742, 519);
@@ -338,9 +366,18 @@
 			this.lciRemove.Control = this.btnRemove;
 			this.lciRemove.Location = new System.Drawing.Point(186, 0);
 			this.lciRemove.Name = "lciRemove";
-			this.lciRemove.Size = new System.Drawing.Size(536, 76);
+			this.lciRemove.Size = new System.Drawing.Size(95, 76);
 			this.lciRemove.TextSize = new System.Drawing.Size(0, 0);
 			this.lciRemove.TextVisible = false;
+			// 
+			// lciCopy
+			// 
+			this.lciCopy.Control = this.btnCopy;
+			this.lciCopy.Location = new System.Drawing.Point(281, 0);
+			this.lciCopy.Name = "lciCopy";
+			this.lciCopy.Size = new System.Drawing.Size(441, 76);
+			this.lciCopy.TextSize = new System.Drawing.Size(0, 0);
+			this.lciCopy.TextVisible = false;
 			// 
 			// lciGrid
 			// 
@@ -366,6 +403,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.lciRestore)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.lciEdit)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.lciRemove)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.lciCopy)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.lciGrid)).EndInit();
 			this.ResumeLayout(false);
 
@@ -377,7 +415,8 @@
         private DevExpress.XtraEditors.SimpleButton btnRestore;
         private DevExpress.XtraEditors.SimpleButton btnEdit;
         private DevExpress.XtraEditors.SimpleButton btnRemove;
-        private DevExpress.XtraGrid.GridControl gridControl;
+		private DevExpress.XtraEditors.SimpleButton btnCopy;
+		private DevExpress.XtraGrid.GridControl gridControl;
         private MultiSelectGridView gridView;
         private DevExpress.XtraGrid.Columns.GridColumn colPlayers;
         private DevExpress.XtraGrid.Columns.GridColumn colRound;
@@ -394,6 +433,7 @@
         private DevExpress.XtraLayout.LayoutControlItem lciRestore;
         private DevExpress.XtraLayout.LayoutControlItem lciEdit;
         private DevExpress.XtraLayout.LayoutControlItem lciRemove;
-        private DevExpress.XtraLayout.LayoutControlItem lciGrid;
-    }
+		private DevExpress.XtraLayout.LayoutControlItem lciCopy;
+		private DevExpress.XtraLayout.LayoutControlItem lciGrid;		
+	}
 }

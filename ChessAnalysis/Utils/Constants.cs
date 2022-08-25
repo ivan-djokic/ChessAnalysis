@@ -46,7 +46,7 @@ namespace ChessAnalysis.Utils
 
 		public const int LINE_WIDTH = 50;
 
-		public const string NEXT_PLAYER = "Next player: {0}";
+		public const string NEXT_PLAYER = "Next player: <b>{0}</b>";
 
 		public const string OPTIONS_FILE_NAME = "Options.xml";
 

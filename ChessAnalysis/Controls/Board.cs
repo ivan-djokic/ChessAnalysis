@@ -86,8 +86,8 @@ namespace ChessAnalysis.Controls
 			lciResult.Visibility = m_controlsVisibility;
 			lciOpening.Visibility = m_controlsVisibility;
 			lciDefense.Visibility = m_controlsVisibility;
+			lciNextPlayer.Visibility = m_controlsVisibility;
 			lciFlip.Visibility = m_controlsVisibility;
-			lciCopy.Visibility = m_controlsVisibility;
 		}
 
 		private void DrawImage()

@@ -55,6 +55,14 @@ namespace ChessAnalysis.Controls
 			return m_gridHelper.GetDataSelection();
 		}
 
+		private void btnCopy_Click(object sender, EventArgs e)
+		{
+			if (gridView.FocusedRowHandle >= 0)
+			{
+				Clipboard.SetText(Collection[gridView.FocusedRowHandle].ToString());
+			}
+		}
+
 		private void btnEdit_Click(object sender, EventArgs e)
 		{
 			if (gridView.FocusedRowHandle >= 0)
@@ -80,6 +88,7 @@ namespace ChessAnalysis.Controls
 			lciRestore.Visibility = m_controlsVisibility;
 			lciEdit.Visibility = m_controlsVisibility;
 			lciRemove.Visibility = m_controlsVisibility;
+			lciCopy.Visibility = m_controlsVisibility;
 		}
 
 		private void CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
