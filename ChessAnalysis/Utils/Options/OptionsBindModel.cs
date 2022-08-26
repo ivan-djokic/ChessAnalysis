@@ -120,6 +120,12 @@ namespace ChessAnalysis.Utils
 			set => Options.Instance.ShortComment = value;
 		}
 
+		public bool ShortFen
+		{
+			get => Options.Instance.ShortFen;
+			set => Options.Instance.ShortFen = value;
+		}
+
 		public bool ShowCoordinates
 		{
 			get => Options.Instance.ShowCoordinates;
@@ -175,7 +181,7 @@ namespace ChessAnalysis.Utils
 			RaisePropertiesChanged(() => PieceClassic, () => PieceNeo, () => PieceWood);
 			RaisePropertyChanged(() => PlaySound);
 			RaisePropertiesChanged(() => SenderMail, () => SenderPassword);
-			RaisePropertyChanged(() => ShortComment);
+			RaisePropertiesChanged(() => ShortComment, () => ShortFen);
 			RaisePropertyChanged(() => ShowCoordinates);
 			RaisePropertyChanged(() => SmtpClient);
 			RaisePropertyChanged(() => SnapshotDirectory);

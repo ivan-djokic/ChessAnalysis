@@ -28,7 +28,7 @@ namespace ChessAnalysis.Classes
 
 		protected override (Point Start, Point End) Parse()
 		{
-			if (m_input == ParseConsts.ARG_NULL)
+			if (string.IsNullOrEmpty(m_input))
 			{
 				return (new Point(-1, -1), new Point(-1, -1));
 			}

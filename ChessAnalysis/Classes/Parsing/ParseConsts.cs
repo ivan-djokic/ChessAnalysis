@@ -11,6 +11,7 @@ namespace ChessAnalysis.Classes
 		public const int ALLOWED_PAWN_TWO_FIELDS_JUMP_BLACK = 3;
 		public const int ALLOWED_PAWN_TWO_FIELDS_JUMP_WHITE = 4;
 
+		public const string ARG_BEST_MOVE = "bm";
 		public const string ARG_COMMENT = "c0 ";
 		public const string ARG_ID = "id ";
 		public const string ARG_NULL = "-";
@@ -53,6 +54,7 @@ namespace ChessAnalysis.Classes
 		public const int KING_START_COLUMN = 4;
 
 		public const int POSITION_BEST_MOVE_INDEX = 7;
+		public const int POSITION_BEST_MOVE_KEY_WORD_INDEX = 6;
 		public const int POSITION_CASTLING_INDEX = 2;
 		public const int POSITION_EN_PASSANT_INDEX = 3;
 		public const int POSITION_FEN_INDEX = 0;

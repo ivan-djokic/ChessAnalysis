@@ -42,11 +42,29 @@ namespace ChessAnalysis.Classes
 
 		protected override Data Parse()
 		{
-			Comment? comment = null;
-
 			try
 			{
-				comment = CommentParser.Parse(Arguments[ParseConsts.DATA_COMMENT_INDEX]);
+				return new Data(m_input,
+					PositionParser.Parse(Arguments[ParseConsts.DATA_POSITION_INDEX]),
+					IdParser.Parse(Arguments[ParseConsts.DATA_ID_INDEX]),
+					GetComment());
+			}
+			catch
+			{
+				if (!Options.Instance.ShortFen)
+				{
+					throw;
+				}
+			}
+
+			return GetShortData();
+		}
+
+		private Comment GetComment()
+		{
+			try
+			{
+				return CommentParser.Parse(Arguments[ParseConsts.DATA_COMMENT_INDEX]);
 			}
 			catch
 			{
@@ -54,14 +72,17 @@ namespace ChessAnalysis.Classes
 				{
 					throw;
 				}
-				
-				comment = ShortCommentParser.Parse(Arguments[ParseConsts.DATA_COMMENT_INDEX]);
 			}
 
+			return ShortCommentParser.Parse(Arguments[ParseConsts.DATA_COMMENT_INDEX]);
+		}
+
+		private Data GetShortData()
+		{
 			return new Data(m_input,
-				PositionParser.Parse(Arguments[ParseConsts.DATA_POSITION_INDEX]),
-				IdParser.Parse(Arguments[ParseConsts.DATA_ID_INDEX]),
-				comment);
+				PositionParser.Parse($"{m_input} {ParseConsts.ARG_BEST_MOVE} {ParseConsts.ARG_NULL}"),
+				Guid.NewGuid().Short(),
+				new Comment());
 		}
 	}
 }

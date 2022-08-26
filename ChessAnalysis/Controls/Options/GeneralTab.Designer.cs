@@ -36,7 +36,8 @@
 			DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
 			this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
 			this.lblInput = new DevExpress.XtraEditors.LabelControl();
-			this.chxShortInput = new DevExpress.XtraEditors.CheckEdit();
+			this.chxShortFen = new DevExpress.XtraEditors.CheckEdit();
+			this.chxShortComment = new DevExpress.XtraEditors.CheckEdit();
 			this.lblOutput = new DevExpress.XtraEditors.LabelControl();
 			this.txtSnapshotDirectory = new DevExpress.XtraEditors.ButtonEdit();
 			this.lblTheme = new DevExpress.XtraEditors.LabelControl();
@@ -46,7 +47,8 @@
 			this.chxPlaySound = new DevExpress.XtraEditors.CheckEdit();
 			this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
 			this.lciInput = new DevExpress.XtraLayout.LayoutControlItem();
-			this.lciShortInput = new DevExpress.XtraLayout.LayoutControlItem();
+			this.lciShortFen = new DevExpress.XtraLayout.LayoutControlItem();
+			this.lciShortComment = new DevExpress.XtraLayout.LayoutControlItem();
 			this.lciOutput = new DevExpress.XtraLayout.LayoutControlItem();
 			this.lciSnapshotDirectory = new DevExpress.XtraLayout.LayoutControlItem();
 			this.lciTheme = new DevExpress.XtraLayout.LayoutControlItem();
@@ -57,14 +59,16 @@
 			this.emptySpaceItem = new DevExpress.XtraLayout.EmptySpaceItem();
 			((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
 			this.layoutControl.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.chxShortInput.Properties)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.chxShortFen.Properties)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.chxShortComment.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtSnapshotDirectory.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.rbDark.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.rbLight.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.chxPlaySound.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.lciInput)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.lciShortInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.lciShortFen)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.lciShortComment)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.lciOutput)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.lciSnapshotDirectory)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.lciTheme)).BeginInit();
@@ -73,13 +77,13 @@
 			((System.ComponentModel.ISupportInitialize)(this.lciSound)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.lciPlaySound)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem)).BeginInit();
-			
 			this.SuspendLayout();
 			// 
 			// layoutControl
 			// 
 			this.layoutControl.Controls.Add(this.lblInput);
-			this.layoutControl.Controls.Add(this.chxShortInput);
+			this.layoutControl.Controls.Add(this.chxShortFen);
+			this.layoutControl.Controls.Add(this.chxShortComment);
 			this.layoutControl.Controls.Add(this.lblOutput);
 			this.layoutControl.Controls.Add(this.txtSnapshotDirectory);
 			this.layoutControl.Controls.Add(this.lblTheme);
@@ -106,21 +110,33 @@
 			this.lblInput.TabIndex = 11;
 			this.lblInput.Text = "Input";
 			// 
-			// chxShortInput
+			// chxShortComment
 			// 
-			this.chxShortInput.Location = new System.Drawing.Point(32, 34);
-			this.chxShortInput.Name = "chxShortInput";
-			this.chxShortInput.Properties.AllowFocused = false;
-			this.chxShortInput.Properties.Caption = "Use short input standard";
-			this.chxShortInput.Size = new System.Drawing.Size(356, 20);
-			this.chxShortInput.StyleController = this.layoutControl;
-			this.chxShortInput.TabIndex = 12;
+			this.chxShortComment.EditValue = true;
+			this.chxShortComment.Location = new System.Drawing.Point(32, 58);
+			this.chxShortComment.Name = "chxShortComment";
+			this.chxShortComment.Properties.AllowFocused = false;
+			this.chxShortComment.Properties.Caption = "Include short comments";
+			this.chxShortComment.Size = new System.Drawing.Size(356, 20);
+			this.chxShortComment.StyleController = this.layoutControl;
+			this.chxShortComment.TabIndex = 12;
+			// 
+			// chxShortFen
+			// 
+			this.chxShortFen.EditValue = true;
+			this.chxShortFen.Location = new System.Drawing.Point(32, 34);
+			this.chxShortFen.Name = "chxShortFen";
+			this.chxShortFen.Properties.AllowFocused = false;
+			this.chxShortFen.Properties.Caption = "Include short FEN";
+			this.chxShortFen.Size = new System.Drawing.Size(356, 20);
+			this.chxShortFen.StyleController = this.layoutControl;
+			this.chxShortFen.TabIndex = 13;
 			// 
 			// lblOutput
 			// 
 			this.lblOutput.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			this.lblOutput.Appearance.Options.UseFont = true;
-			this.lblOutput.Location = new System.Drawing.Point(12, 58);
+			this.lblOutput.Location = new System.Drawing.Point(12, 82);
 			this.lblOutput.Name = "lblOutput";
 			this.lblOutput.Size = new System.Drawing.Size(45, 18);
 			this.lblOutput.StyleController = this.layoutControl;
@@ -130,7 +146,7 @@
 			// txtSnapshotDirectory
 			// 
 			this.txtSnapshotDirectory.EditValue = "C:\\Users\\User\\Documents\\Chess Analysis\\Snapshots";
-			this.txtSnapshotDirectory.Location = new System.Drawing.Point(139, 80);
+			this.txtSnapshotDirectory.Location = new System.Drawing.Point(139, 104);
 			this.txtSnapshotDirectory.Name = "txtSnapshotDirectory";
 			this.txtSnapshotDirectory.Properties.AllowFocused = false;
 			editorButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions2.SvgImage")));
@@ -147,7 +163,7 @@
 			// 
 			this.lblTheme.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			this.lblTheme.Appearance.Options.UseFont = true;
-			this.lblTheme.Location = new System.Drawing.Point(12, 109);
+			this.lblTheme.Location = new System.Drawing.Point(12, 133);
 			this.lblTheme.Name = "lblTheme";
 			this.lblTheme.Size = new System.Drawing.Size(47, 18);
 			this.lblTheme.StyleController = this.layoutControl;
@@ -157,7 +173,7 @@
 			// rbDark
 			// 
 			this.rbDark.EditValue = true;
-			this.rbDark.Location = new System.Drawing.Point(32, 131);
+			this.rbDark.Location = new System.Drawing.Point(32, 155);
 			this.rbDark.Name = "rbDark";
 			this.rbDark.Properties.AllowFocused = false;
 			this.rbDark.Properties.Caption = "Dark";
@@ -169,7 +185,7 @@
 			// 
 			// rbLight
 			// 
-			this.rbLight.Location = new System.Drawing.Point(82, 131);
+			this.rbLight.Location = new System.Drawing.Point(82, 155);
 			this.rbLight.Name = "rbLight";
 			this.rbLight.Properties.AllowFocused = false;
 			this.rbLight.Properties.Caption = "Light";
@@ -184,7 +200,7 @@
 			// 
 			this.lblSound.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			this.lblSound.Appearance.Options.UseFont = true;
-			this.lblSound.Location = new System.Drawing.Point(12, 160);
+			this.lblSound.Location = new System.Drawing.Point(12, 184);
 			this.lblSound.Name = "lblSound";
 			this.lblSound.Size = new System.Drawing.Size(40, 18);
 			this.lblSound.StyleController = this.layoutControl;
@@ -194,7 +210,7 @@
 			// chxPlaySound
 			// 
 			this.chxPlaySound.EditValue = true;
-			this.chxPlaySound.Location = new System.Drawing.Point(32, 182);
+			this.chxPlaySound.Location = new System.Drawing.Point(32, 206);
 			this.chxPlaySound.Name = "chxPlaySound";
 			this.chxPlaySound.Properties.AllowFocused = false;
 			this.chxPlaySound.Properties.Caption = "Play sounds in application";
@@ -207,9 +223,10 @@
 			this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
 			this.Root.GroupBordersVisible = false;
 			this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-			this.lciInput,
-			this.lciShortInput,
-			this.lciOutput,
+            this.lciInput,
+			this.lciShortFen,
+            this.lciShortComment,
+            this.lciOutput,
             this.lciSnapshotDirectory,
             this.lciTheme,
             this.lciDark,
@@ -230,20 +247,30 @@
 			this.lciInput.TextSize = new System.Drawing.Size(0, 0);
 			this.lciInput.TextVisible = false;
 			// 
-			// lciShortInput
+			// lciShortFen
 			// 
-			this.lciShortInput.Control = this.chxShortInput;
-			this.lciShortInput.Location = new System.Drawing.Point(0, 22);
-			this.lciShortInput.Name = "lciShortInput";
-			this.lciShortInput.Size = new System.Drawing.Size(380, 24);
-			this.lciShortInput.Spacing = new DevExpress.XtraLayout.Utils.Padding(20, 0, 0, 0);
-			this.lciShortInput.TextSize = new System.Drawing.Size(0, 0);
-			this.lciShortInput.TextVisible = false;
+			this.lciShortFen.Control = this.chxShortFen;
+			this.lciShortFen.Location = new System.Drawing.Point(0, 22);
+			this.lciShortFen.Name = "lciShortFen";
+			this.lciShortFen.Size = new System.Drawing.Size(380, 24);
+			this.lciShortFen.Spacing = new DevExpress.XtraLayout.Utils.Padding(20, 0, 0, 0);
+			this.lciShortFen.TextSize = new System.Drawing.Size(0, 0);
+			this.lciShortFen.TextVisible = false;
+			// 
+			// lciShortComment
+			// 
+			this.lciShortComment.Control = this.chxShortComment;
+			this.lciShortComment.Location = new System.Drawing.Point(0, 46);
+			this.lciShortComment.Name = "lciShortComment";
+			this.lciShortComment.Size = new System.Drawing.Size(380, 24);
+			this.lciShortComment.Spacing = new DevExpress.XtraLayout.Utils.Padding(20, 0, 0, 0);
+			this.lciShortComment.TextSize = new System.Drawing.Size(0, 0);
+			this.lciShortComment.TextVisible = false;
 			// 
 			// lciOutput
 			// 
 			this.lciOutput.Control = this.lblOutput;
-			this.lciOutput.Location = new System.Drawing.Point(0, 46);
+			this.lciOutput.Location = new System.Drawing.Point(0, 70);
 			this.lciOutput.Name = "lciOutput";
 			this.lciOutput.Size = new System.Drawing.Size(380, 22);
 			this.lciOutput.TextSize = new System.Drawing.Size(0, 0);
@@ -252,7 +279,7 @@
 			// lciSnapshotDirectory
 			// 
 			this.lciSnapshotDirectory.Control = this.txtSnapshotDirectory;
-			this.lciSnapshotDirectory.Location = new System.Drawing.Point(0, 68);
+			this.lciSnapshotDirectory.Location = new System.Drawing.Point(0, 92);
 			this.lciSnapshotDirectory.Name = "lciSnapshotDirectory";
 			this.lciSnapshotDirectory.Size = new System.Drawing.Size(380, 24);
 			this.lciSnapshotDirectory.Spacing = new DevExpress.XtraLayout.Utils.Padding(20, 0, 0, 0);
@@ -262,7 +289,7 @@
 			// lciTheme
 			// 
 			this.lciTheme.Control = this.lblTheme;
-			this.lciTheme.Location = new System.Drawing.Point(0, 92);
+			this.lciTheme.Location = new System.Drawing.Point(0, 116);
 			this.lciTheme.Name = "lciTheme";
 			this.lciTheme.Size = new System.Drawing.Size(380, 27);
 			this.lciTheme.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 5, 0);
@@ -272,7 +299,7 @@
 			// lciDark
 			// 
 			this.lciDark.Control = this.rbDark;
-			this.lciDark.Location = new System.Drawing.Point(0, 119);
+			this.lciDark.Location = new System.Drawing.Point(0, 143);
 			this.lciDark.Name = "lciDark";
 			this.lciDark.Size = new System.Drawing.Size(70, 24);
 			this.lciDark.Spacing = new DevExpress.XtraLayout.Utils.Padding(20, 0, 0, 0);
@@ -282,7 +309,7 @@
 			// lciLight
 			// 
 			this.lciLight.Control = this.rbLight;
-			this.lciLight.Location = new System.Drawing.Point(70, 119);
+			this.lciLight.Location = new System.Drawing.Point(70, 143);
 			this.lciLight.Name = "lciLight";
 			this.lciLight.Size = new System.Drawing.Size(310, 24);
 			this.lciLight.TextSize = new System.Drawing.Size(0, 0);
@@ -291,7 +318,7 @@
 			// lciSound
 			// 
 			this.lciSound.Control = this.lblSound;
-			this.lciSound.Location = new System.Drawing.Point(0, 143);
+			this.lciSound.Location = new System.Drawing.Point(0, 167);
 			this.lciSound.Name = "lciSound";
 			this.lciSound.Size = new System.Drawing.Size(380, 27);
 			this.lciSound.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 5, 0);
@@ -301,7 +328,7 @@
 			// lciPlaySound
 			// 
 			this.lciPlaySound.Control = this.chxPlaySound;
-			this.lciPlaySound.Location = new System.Drawing.Point(0, 170);
+			this.lciPlaySound.Location = new System.Drawing.Point(0, 194);
 			this.lciPlaySound.Name = "lciPlaySound";
 			this.lciPlaySound.Size = new System.Drawing.Size(380, 24);
 			this.lciPlaySound.Spacing = new DevExpress.XtraLayout.Utils.Padding(20, 0, 0, 0);
@@ -311,9 +338,9 @@
 			// emptySpaceItem
 			// 
 			this.emptySpaceItem.AllowHotTrack = false;
-			this.emptySpaceItem.Location = new System.Drawing.Point(0, 194);
+			this.emptySpaceItem.Location = new System.Drawing.Point(0, 218);
 			this.emptySpaceItem.Name = "emptySpaceItem";
-			this.emptySpaceItem.Size = new System.Drawing.Size(380, 86);
+			this.emptySpaceItem.Size = new System.Drawing.Size(380, 62);
 			this.emptySpaceItem.TextSize = new System.Drawing.Size(0, 0);
 			// 
 			// GeneralTab
@@ -325,11 +352,14 @@
 			this.Size = new System.Drawing.Size(400, 300);
 			((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
 			this.layoutControl.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.chxShortComment.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtSnapshotDirectory.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.rbDark.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.rbLight.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.chxPlaySound.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.lciInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.lciShortComment)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.lciOutput)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.lciSnapshotDirectory)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.lciTheme)).EndInit();
@@ -338,9 +368,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.lciSound)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.lciPlaySound)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.lciInput)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.chxShortInput.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.lciShortInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.chxShortFen.Properties)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.lciShortFen)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -349,7 +378,8 @@
 
         private DevExpress.XtraLayout.LayoutControl layoutControl;
 		private DevExpress.XtraEditors.LabelControl lblInput;
-		private DevExpress.XtraEditors.CheckEdit chxShortInput;
+		private DevExpress.XtraEditors.CheckEdit chxShortFen;
+		private DevExpress.XtraEditors.CheckEdit chxShortComment;
 		private DevExpress.XtraEditors.LabelControl lblOutput;
         private DevExpress.XtraEditors.ButtonEdit txtSnapshotDirectory;
         private DevExpress.XtraEditors.LabelControl lblTheme;
@@ -359,7 +389,8 @@
         private DevExpress.XtraEditors.CheckEdit chxPlaySound;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
 		private DevExpress.XtraLayout.LayoutControlItem lciInput;
-		private DevExpress.XtraLayout.LayoutControlItem lciShortInput;
+		private DevExpress.XtraLayout.LayoutControlItem lciShortFen;
+		private DevExpress.XtraLayout.LayoutControlItem lciShortComment;
 		private DevExpress.XtraLayout.LayoutControlItem lciOutput;
         private DevExpress.XtraLayout.LayoutControlItem lciSnapshotDirectory;
         private DevExpress.XtraLayout.LayoutControlItem lciTheme;
@@ -367,6 +398,6 @@
         private DevExpress.XtraLayout.LayoutControlItem lciLight;
         private DevExpress.XtraLayout.LayoutControlItem lciSound;        
         private DevExpress.XtraLayout.LayoutControlItem lciPlaySound;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem;		
 	}
 }

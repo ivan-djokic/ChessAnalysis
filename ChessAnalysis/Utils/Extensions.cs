@@ -121,6 +121,12 @@ namespace ChessAnalysis.Utils
 			timer.Start();
 		}
 
+		public static string Short(this Guid input)
+		{
+			// Get middle 1/3 of unique identifier
+			return Convert.ToBase64String(Guid.NewGuid().ToByteArray()).Substring(8, 8);
+		}
+
 		public static void ValidateIdUniqueness(this IEnumerable<Data> collection, string id, Data? skipIdValidation = null)
 		{
 			if (collection.Any(item => item?.Id == id && item?.Id != skipIdValidation?.Id))

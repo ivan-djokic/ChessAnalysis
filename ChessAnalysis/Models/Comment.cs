@@ -6,6 +6,10 @@ namespace ChessAnalysis.Models
 {
 	public class Comment
 	{
+		public Comment()
+		{
+		}
+
 		public Comment(string players, string result, string opening, string defense)
 		{
 			Defense = defense;
