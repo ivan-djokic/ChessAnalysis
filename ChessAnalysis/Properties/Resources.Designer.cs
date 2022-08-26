@@ -513,7 +513,7 @@ namespace ChessAnalysis.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Failed to snapshot image. 
-        ///Change Snapshot directory and try again.
+        ///Change position ID or Snapshot directory and try again.
         /// </summary>
         internal static string SnapshotError {
             get {

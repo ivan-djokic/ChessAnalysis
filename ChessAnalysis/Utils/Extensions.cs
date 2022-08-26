@@ -4,6 +4,7 @@
 
 using System.IO;
 using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 using ChessAnalysis.Classes;
 using ChessAnalysis.Models;
 using Timer = System.Windows.Forms.Timer;
@@ -63,16 +64,6 @@ namespace ChessAnalysis.Utils
 			return Color.FromArgb(224, r, g, b);
 		}
 
-		//public static bool Contains(this char[][] input, BestMove value)
-		//{
-		//	if (value.EndPoint.X < 0 || value.EndPoint.Y < 0)
-		//	{
-		//		return false;
-		//	}
-
-		//	return input[value.EndPoint.Y][value.EndPoint.X] == value.Piece;
-		//}
-
 		public static bool IsBoardColumn(this char input)
 		{
 			return !char.IsUpper(input) && input >= 'a' && input <= 'h';
@@ -123,8 +114,11 @@ namespace ChessAnalysis.Utils
 
 		public static string Short(this Guid input)
 		{
-			// Get middle 1/3 of unique identifier
-			return Convert.ToBase64String(Guid.NewGuid().ToByteArray()).Substring(8, 8);
+			// Removing special characters
+			var guid = Regex.Replace(Convert.ToBase64String(input.ToByteArray()), "[/+=]", string.Empty);
+
+			// Get first 8 characters of unique identifier
+			return guid.Remove(8);
 		}
 
 		public static void ValidateIdUniqueness(this IEnumerable<Data> collection, string id, Data? skipIdValidation = null)

@@ -277,7 +277,7 @@ Change configuration parameters and try again</value>
   </data>
   <data name="SnapshotError" xml:space="preserve">
     <value>Failed to snapshot image. 
-Change Snapshot directory and try again</value>
+Change position ID or Snapshot directory and try again</value>
   </data>
   <data name="Start" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\sounds\start.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
