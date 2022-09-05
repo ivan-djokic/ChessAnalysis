@@ -47,23 +47,25 @@ namespace ChessAnalysis.Classes
 			{
 				if (count >= ArgumentsCount)
 				{
+					// Number of elements in row is more than 8
 					throw new InvalidComponentsNumberException(Component);
 				}
 
-				// No matter is piece black (lower) or white (upper)
 				if (char.ToUpper(item).IsBoardPiece())
 				{
+					// Item is from set (B, K, N, P, Q, R)
 					result[count++] = item;
 					continue;
 				}
 
-				// Skip empty fields
-				// If item is not a number, this will throw exception
+				// If item is not board piece, so item is number of empty fields which we need to skip
+				// If item is not a number, exception will be thrown
 				count += item.AsNumber(Component);
 			}
 
 			if (count != ArgumentsCount)
 			{
+				// Number of elements in row is not 8
 				throw new InvalidComponentsNumberException(Component);
 			}
 

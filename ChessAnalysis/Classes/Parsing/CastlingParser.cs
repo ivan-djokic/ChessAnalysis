@@ -92,7 +92,7 @@ namespace ChessAnalysis.Classes
 
 		private Castling ExecuteOrOperation(Castling input, Castling value, Castling? prevValue = null)
 		{
-			// Remove Castling.None value
+			// Remove Castling.None value in case this is first OR operation
 			input &= ~Castling.None;
 
 			if (Contains(input, value) || prevValue.HasValue && Contains(input, prevValue.Value))

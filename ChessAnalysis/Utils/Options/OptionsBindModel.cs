@@ -38,19 +38,6 @@ namespace ChessAnalysis.Utils
 			}
 		}
 
-		public bool MarkIfBestMoveIsPlayed
-		{
-			get => Options.Instance.MarkIfBestMoveIsPlayed;
-			set
-			{
-				if (Options.Instance.MarkIfBestMoveIsPlayed != value)
-				{
-					Options.Instance.MarkIfBestMoveIsPlayed = value;
-					RaiseBoardOptionsChanged();
-				}
-			}
-		}
-
 		public bool PieceClassic
 		{
 			get => Options.Instance.PieceStyle == PieceStyles.Classic;
@@ -126,6 +113,19 @@ namespace ChessAnalysis.Utils
 			set => Options.Instance.ShortFen = value;
 		}
 
+		public bool ShowBestMove
+		{
+			get => Options.Instance.ShowBestMove;
+			set
+			{
+				if (Options.Instance.ShowBestMove != value)
+				{
+					Options.Instance.ShowBestMove = value;
+					RaiseBoardOptionsChanged();
+				}
+			}
+		}
+
 		public bool ShowCoordinates
 		{
 			get => Options.Instance.ShowCoordinates;
@@ -177,12 +177,11 @@ namespace ChessAnalysis.Utils
 		public void RaisePropertiesChanged()
 		{
 			RaisePropertiesChanged(() => FieldEmptyColor, () => FieldFillColor);
-			RaisePropertyChanged(() => MarkIfBestMoveIsPlayed);
 			RaisePropertiesChanged(() => PieceClassic, () => PieceNeo, () => PieceWood);
 			RaisePropertyChanged(() => PlaySound);
 			RaisePropertiesChanged(() => SenderMail, () => SenderPassword);
 			RaisePropertiesChanged(() => ShortComment, () => ShortFen);
-			RaisePropertyChanged(() => ShowCoordinates);
+			RaisePropertiesChanged(() => ShowBestMove, () => ShowCoordinates);
 			RaisePropertyChanged(() => SmtpClient);
 			RaisePropertyChanged(() => SnapshotDirectory);
 			RaisePropertiesChanged(() => ThemeDark, () => ThemeLight);

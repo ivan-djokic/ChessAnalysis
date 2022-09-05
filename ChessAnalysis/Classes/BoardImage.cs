@@ -79,7 +79,7 @@ namespace ChessAnalysis.Classes
 
 		private void DrawBestMove(Position position)
 		{
-			if (!Options.Instance.MarkIfBestMoveIsPlayed)
+			if (!Options.Instance.ShowBestMove)
 			{
 				return;
 			}
@@ -102,7 +102,8 @@ namespace ChessAnalysis.Classes
 				return;
 			}
 
-			using var font = new Font(Constants.FONT_NAME, m_fieldSize / Constants.SCALE_FACTOR_COORDINATE_FONT / ScreenHelper.Scaling, FontStyle.Bold);
+			var size = m_fieldSize / Constants.SCALE_FACTOR_COORDINATE_FONT / ScreenHelper.Scaling;
+			using var font = new Font(Constants.FONT_NAME, size, FontStyle.Bold);
 			var letterY = Constants.BOARD_SIZE * m_fieldSize - font.Height;
 
 			for (var i = 0; i < Constants.BOARD_SIZE; i++)
@@ -143,7 +144,7 @@ namespace ChessAnalysis.Classes
 			}
 		}
 
-		private static PointF[] GetArrowPoints(PointF start, PointF end)
+		private static PointF[] GetArrowPoints(Point start, Point end)
 		{
 			var length = Math.Sqrt(Math.Pow(Math.Abs(start.X - end.X), 2) + Math.Pow(Math.Abs(start.Y - end.Y), 2));
 

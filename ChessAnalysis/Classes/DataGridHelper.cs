@@ -72,8 +72,6 @@ namespace ChessAnalysis.Classes
 
 		private void UpdateHiddenSelection(object? sender, EventArgs e)
 		{
-			var p = m_previousSelection;
-
 			m_gridView.SelectionChanged -= RefreshPreviousSelection;
 			m_hiddenSelection.AddRange(m_previousSelection.Except(GetDataSelection()).Except(m_hiddenSelection));
 

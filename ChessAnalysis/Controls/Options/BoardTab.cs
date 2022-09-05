@@ -20,7 +20,7 @@ namespace ChessAnalysis.Controls
 			Options.Instance.Bind(colorFill, model => model.FieldFillColor);
 			Options.Instance.Bind(colorEmpty, model => model.FieldEmptyColor);
 			Options.Instance.Bind(chxCoords, model => model.ShowCoordinates);
-			Options.Instance.Bind(chxBestMove, model => model.MarkIfBestMoveIsPlayed);
+			Options.Instance.Bind(chxBestMove, model => model.ShowBestMove);
 			Options.Instance.Bind(rbClassic, model => model.PieceClassic);
 			Options.Instance.Bind(rbNeo, model => model.PieceNeo);
 			Options.Instance.Bind(rbWood, model => model.PieceWood);

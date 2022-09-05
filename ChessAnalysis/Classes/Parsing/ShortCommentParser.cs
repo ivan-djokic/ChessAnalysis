@@ -52,12 +52,15 @@ namespace ChessAnalysis.Classes
 		private string[] PostProcessArguments()
 		{
 			var arguments = new string[5];
+			arguments[0] = KeyWord;
+
 			var i = 1;
 
 			foreach (var arg in Arguments.Last().Split(ParseConsts.ARGS_DELIMITER_COMA))
 			{
 				if (i > arguments.Length - 1)
 				{
+					// More than 4 arguments
 					break;
 				}	
 

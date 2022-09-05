@@ -28,8 +28,6 @@ namespace ChessAnalysis.Utils
 
 		public string LastOutputDirectory { get; set; }
 
-		public bool MarkIfBestMoveIsPlayed { get; set; }
-
 		public PieceStyles PieceStyle { get; set; }
 
 		public bool PlaySound { get; set; }
@@ -43,6 +41,8 @@ namespace ChessAnalysis.Utils
 		public bool ShortComment { get; set; }
 
 		public bool ShortFen { get; set; }
+
+		public bool ShowBestMove { get; set; }
 
 		public bool ShowCoordinates { get; set; }
 
@@ -74,13 +74,13 @@ namespace ChessAnalysis.Utils
 		{
 			FieldEmptyColor = Color.FromArgb(255, 238, 236, 225);
 			FieldFillColor = Color.FromArgb(255, 79, 129, 189);
-			MarkIfBestMoveIsPlayed = true;
 			PieceStyle = PieceStyles.Classic;
 			PlaySound = true;
 			SenderMail = "chess.analysis.bot@gmail.com";
 			SenderPassword = "ihlwdcigekjkqonl";
 			ShortComment = true;
 			ShortFen = true;
+			ShowBestMove = true;
 			ShowCoordinates = true;
 			SmtpClient = "smtp.gmail.com";
 			SnapshotDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Constants.APP_NAME, Constants.SNAPSHOTS_DIR);
@@ -98,12 +98,12 @@ namespace ChessAnalysis.Utils
 			options.FieldFillColor = FieldFillColor;
 			options.LastInputDirectory = LastInputDirectory;
 			options.LastOutputDirectory = LastOutputDirectory;
-			options.MarkIfBestMoveIsPlayed = MarkIfBestMoveIsPlayed;
 			options.PieceStyle = PieceStyle;
 			options.PlaySound = PlaySound;
 			options.ReceiverMail = ReceiverMail;
 			options.SenderMail = SenderMail;
 			options.SenderPassword = Crypto.Decrypt(SenderPassword);
+			options.ShowBestMove = ShowBestMove;
 			options.ShowCoordinates = ShowCoordinates;
 			options.ShortComment = ShortComment;
 			options.ShortFen = ShortFen;

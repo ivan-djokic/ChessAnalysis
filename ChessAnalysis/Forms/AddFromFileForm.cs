@@ -59,14 +59,20 @@ namespace ChessAnalysis.Forms
 			var result = new Data[lines.Count];
 			var errors = new Error[lines.Count];
 
+			// Show Progress form to avoid other actions which can cause bad thread concurrency
 			ProgressForm<string>.ShowProgress(this, lines, i =>
 			{
 				try
 				{
 					var data = Parser.Parse(lines[i]);
 
+					// Validate ID uniquess in current collection
 					result.ValidateIdUniqueness(data.Id);
+
+					// Validate ID uniquess in already loaded collections in Add data from file form
 					panel.Collection.ValidateIdUniqueness(data.Id);
+
+					// Validate ID uniquess in already loaded collections in Main form
 					m_collection.ValidateIdUniqueness(data.Id);
 
 					result[i] = data;
@@ -77,6 +83,7 @@ namespace ChessAnalysis.Forms
 				}
 			});
 
+			// Trim collections to contain only non-null elements
 			errorList = errors.RemoveNullValues();
 			return new DataCollection(result.RemoveNullValues());
 		}

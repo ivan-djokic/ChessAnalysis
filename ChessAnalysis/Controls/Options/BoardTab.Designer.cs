@@ -144,7 +144,7 @@
             this.chxBestMove.Location = new System.Drawing.Point(32, 106);
             this.chxBestMove.Name = "chxBestMove";
             this.chxBestMove.Properties.AllowFocused = false;
-            this.chxBestMove.Properties.Caption = "Mark if best move is played";
+            this.chxBestMove.Properties.Caption = "Show best move";
             this.chxBestMove.Size = new System.Drawing.Size(356, 20);
             this.chxBestMove.StyleController = this.layoutControl;
             this.chxBestMove.TabIndex = 5;

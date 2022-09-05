@@ -124,8 +124,10 @@ namespace ChessAnalysis.Classes
 				// input: [pawnColumn]
 				ValidateArgumentsCount(1, 1);
 
+				var distance = Math.Abs(m_input[0] - column);
+
 				// Check is pawn captures on neighbour column
-				if (!capture || Math.Abs(m_input[0] - column) != 1)
+				if (!capture || distance != 1)
 				{
 					throw new UnallowedCharactersException(Component);
 				}

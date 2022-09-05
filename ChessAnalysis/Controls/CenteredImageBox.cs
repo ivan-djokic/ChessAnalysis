@@ -29,11 +29,13 @@ namespace ChessAnalysis.Controls
 		{
 			if (Width > Height)
 			{
+				// Centralize by X axis
 				pictureBox.Location = new Point((Width - Height) / 2, 0);
 				pictureBox.Size = new Size(Height, Height);
 				return;
 			}
 
+			// Centralize by Y axis
 			pictureBox.Location = new Point(0, (Height - Width) / 2);
 			pictureBox.Size = new Size(Width, Width);
 		}

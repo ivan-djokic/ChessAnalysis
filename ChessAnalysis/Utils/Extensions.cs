@@ -61,7 +61,7 @@ namespace ChessAnalysis.Utils
 			byte g = (byte)(color.G * 0.5 + backColor.G * 0.5);
 			byte b = (byte)(color.B * 0.5 + backColor.B * 0.5);
 
-			return Color.FromArgb(224, r, g, b);
+			return Color.FromArgb(r, g, b);
 		}
 
 		public static bool IsBoardColumn(this char input)
