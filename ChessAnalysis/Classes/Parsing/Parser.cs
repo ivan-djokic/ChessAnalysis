@@ -29,9 +29,31 @@ namespace ChessAnalysis.Classes
 			get => ParseConsts.ARGS_DELIMITER_SEMICOLON;
 		}
 
+		private string[] ShortArguments
+		{
+			get => new[]
+			{
+				$"{m_input} {ParseConsts.ARG_BEST_MOVE} {ParseConsts.ARG_NULL}"
+			};
+		}
+
 		public static string[] GetArguments(string input)
 		{
-			return new Parser(input).Arguments;
+			var parser = new Parser(input);
+
+			try
+			{
+				return parser.Arguments;
+			}
+			catch
+			{
+				if (!Options.Instance.ShortComment)
+				{
+					throw;
+				}
+			}
+
+			return parser.ShortArguments;
 		}
 
 		public static Data Parse(string input)
@@ -80,7 +102,7 @@ namespace ChessAnalysis.Classes
 		private Data GetShortData()
 		{
 			return new Data(m_input,
-				PositionParser.Parse($"{m_input} {ParseConsts.ARG_BEST_MOVE} {ParseConsts.ARG_NULL}"),
+				PositionParser.Parse(ShortArguments[ParseConsts.DATA_POSITION_INDEX]),
 				Guid.NewGuid().Short(),
 				new Comment());
 		}
