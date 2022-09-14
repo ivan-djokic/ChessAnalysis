@@ -10,10 +10,10 @@ namespace ChessAnalysis.Classes
 	{
 		private readonly BestMovePointsHelper m_helper;
 
-		private BestMovePointsParser(string input, char[][] fen, bool isNextPlayerWhite)
+		private BestMovePointsParser(string input, char[][] fen, bool isNextPlayerWhite, string enPassant)
 			: base(input)
 		{
-			m_helper = new BestMovePointsHelper(fen, isNextPlayerWhite);
+			m_helper = new BestMovePointsHelper(fen, isNextPlayerWhite, enPassant);
 		}
 
 		protected override Components Component
@@ -21,9 +21,9 @@ namespace ChessAnalysis.Classes
 			get => Components.BestMove;
 		}
 
-		public static (Point Start, Point End) Parse(string input, char[][] fen, bool isNextPlayerWhite)
+		public static (Point Start, Point End) Parse(string input, char[][] fen, bool isNextPlayerWhite, string enPassant)
 		{
-			return new BestMovePointsParser(input, fen, isNextPlayerWhite).Parse();
+			return new BestMovePointsParser(input, fen, isNextPlayerWhite, enPassant).Parse();
 		}
 
 		protected override (Point Start, Point End) Parse()
@@ -108,11 +108,12 @@ namespace ChessAnalysis.Classes
 
 			if (capture)
 			{
-				ValidateCapture(endPointPiece);
+				ValidateCapture(endPointPiece, m_helper.IsEnPassant(column, row));
 				m_input = m_input.RemoveLast();
 			}
 			else if (endPointPiece != Constants.EMPTY_CHAR)
 			{
+				// Cannot take non-empty field without capture
 				throw new IncorrectFormatException(Component);
 			}
 
@@ -159,9 +160,9 @@ namespace ChessAnalysis.Classes
 			}
 		}
 
-		private void ValidateCapture(char piece)
+		private void ValidateCapture(char piece, bool enPassant)
 		{
-			if (piece == Constants.EMPTY_CHAR
+			if (piece == Constants.EMPTY_CHAR && !enPassant
 				|| m_helper.IsNextPlayerWhite && char.IsUpper(piece) 
 				|| !m_helper.IsNextPlayerWhite && char.IsLower(piece))
 			{

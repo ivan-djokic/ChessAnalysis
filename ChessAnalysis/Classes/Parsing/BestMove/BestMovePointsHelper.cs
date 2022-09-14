@@ -8,12 +8,19 @@ namespace ChessAnalysis.Classes
 {
 	public class BestMovePointsHelper
 	{
+		private readonly string m_enPassant;
 		private readonly char[][] m_fen;
 
-		public BestMovePointsHelper(char[][] fen, bool isNextPlayerWhite)
+		public BestMovePointsHelper(char[][] fen, bool isNextPlayerWhite, string enPassant)
 		{
 			m_fen = fen;
+			m_enPassant = enPassant;
 			IsNextPlayerWhite = isNextPlayerWhite;
+		}
+
+		public bool IsEnPassant(char column, char row)
+		{
+			return m_enPassant == $"{column}{row}";
 		}
 
 		public bool IsNextPlayerWhite { get; }

@@ -86,7 +86,7 @@ namespace ChessAnalysis.Classes
 
 			try
 			{
-				var (Start, End) = BestMovePointsParser.Parse(position.BestMove, position.Board, position.NextPlayer == NextPlayer.White);
+				var (Start, End) = BestMovePointsParser.Parse(position.BestMove, position.Board, position.NextPlayer == NextPlayer.White, position.EnPassant);
 				DrawArrow(FormatPoint(Start), FormatPoint(End));
 			}
 			catch (ExeptionBase ex)
