@@ -59,7 +59,7 @@ namespace ChessAnalysis.Tests
 
 			try
 			{
-				BestMovePointsParser.Parse(input, m_fen, isWhite);
+				BestMovePointsParser.Parse(input, m_fen, isWhite, string.Empty);
 			}
 			catch
 			{
